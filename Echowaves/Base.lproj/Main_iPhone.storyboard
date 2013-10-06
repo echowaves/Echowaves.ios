@@ -41,6 +41,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="startWaving" destination="H6g-cN-QIw" id="APB-DF-2Bg"/>
+                        <outlet property="waveName" destination="fTh-mJ-gQQ" id="yNb-gX-s4I"/>
+                        <outlet property="wavePassword" destination="UWC-zs-7MW" id="aXQ-F1-Se0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>

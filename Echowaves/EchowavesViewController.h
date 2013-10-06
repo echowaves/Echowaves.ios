@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface EchowavesViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UITextField *waveName;
+@property (weak, nonatomic) IBOutlet UITextField *wavePassword;
+@property (weak, nonatomic) IBOutlet UIButton *startWaving;
 
 @end
