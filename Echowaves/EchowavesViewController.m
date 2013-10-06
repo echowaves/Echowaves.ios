@@ -13,7 +13,17 @@
 @end
 
 @implementation EchowavesViewController
-@synthesize waveName = _waveName;
-@synthesize wavePassword = _wavePassword;
+
+
+
+- (IBAction)startWaving:(UIButton *)sender {
+    NSLog(@" wave name %@ , wave password %@", _waveName.text, _wavePassword.text);
+    [_waveName setEnabled:NO];
+    [_wavePassword setEnabled:NO];
+    [sender setEnabled:NO];
+    [sender setTitle:@"Currently Waving" forState:UIControlStateNormal];
+    NSLog(@"button should be disabled now");
+
+}
 
 @end
