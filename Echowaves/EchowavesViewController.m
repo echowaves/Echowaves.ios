@@ -20,38 +20,37 @@
     // perform a basic validation, wave/password non balnk and exist in the server side, and enter a sending loop
     
     
-    // Setup request
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:@"http://echowaves.com/login"]];
+    NSMutableURLRequest *request =
+    [[NSMutableURLRequest alloc] initWithURL:
+     [NSURL URLWithString:@"http://echowaves.com/verify_credentials"]];
+    
     [request setHTTPMethod:@"POST"];
     
-    // set headers
-    NSString *contentType = [NSString stringWithFormat:@"text/plain"];
-    [request addValue:contentType forHTTPHeaderField:@"Content-Type"];
+    NSString *postString = [NSString stringWithFormat:@"name=%@&pass=%@", _waveName.text, _wavePassword.text];
     
-    // setup post string
-    NSMutableString *postString = [[NSMutableString alloc] init];
-    [postString appendFormat:@"name=%@", _waveName.text];
-    [postString appendFormat:@"&pass=%@", _wavePassword.text];
+    [request setValue:[NSString
+                       stringWithFormat:@"%d", [postString length]]
     
-    // I've been told not to use setHTTPBody for post variables, but how else do you do it?
-    [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
+    forHTTPHeaderField:@"Content-length"];
+    
+    [request setHTTPBody:[postString
+                          dataUsingEncoding:NSUTF8StringEncoding]];
     
     // get response
-    NSHTTPURLResponse *urlResponse = nil;
-//    NSError *error = [[NSError alloc] init];
+    NSHTTPURLResponse *urlResponse = [[NSHTTPURLResponse alloc] init];
+    NSError *error = [[NSError alloc] init];
     
-//    NSData *responseData = [NSURLConnection sendSynchronousRequest:request
-//                                                 returningResponse:&urlResponse
-//                                                             error:&error];
+    NSData *responseData = [NSURLConnection sendSynchronousRequest:request
+                                                 returningResponse:&urlResponse
+                                                             error:&error];
     
-//    NSString *result = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+    NSString *result = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
     
-    
+    NSLog(@"*****************************");
     NSLog(@"Response code: %d", [urlResponse statusCode]);
-  if ([urlResponse statusCode] >=200 && [urlResponse statusCode] <300)
+    NSLog(@"Response ==> %@", result);
+    if ([urlResponse statusCode] ==200)
     {
-//        NSLog(@"Response ==> %@", result);
         NSLog(@"user name/password found");
     } else {
         NSLog(@"user name/password not found");
