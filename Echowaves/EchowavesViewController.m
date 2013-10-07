@@ -52,16 +52,15 @@
     if ([urlResponse statusCode] ==200)
     {
         NSLog(@"user name/password found");
+        NSLog(@" wave name %@ ", _waveName.text);
+        [_waveName setEnabled:NO];
+        [_wavePassword setEnabled:NO];
+        [sender setEnabled:NO];
+        [sender setTitle:[NSString stringWithFormat:@"Currently waving %@", _waveName.text] forState:UIControlStateNormal];
+        
     } else {
         NSLog(@"user name/password not found");
     }
-
-    
-    NSLog(@" wave name %@ ", _waveName.text);
-    [_waveName setEnabled:NO];
-    [_wavePassword setEnabled:NO];
-    [sender setEnabled:NO];
-    [sender setTitle:@"Currently Waving" forState:UIControlStateNormal];
 
 
 }
