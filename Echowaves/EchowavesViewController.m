@@ -22,7 +22,7 @@
     
     NSMutableURLRequest *request =
     [[NSMutableURLRequest alloc] initWithURL:
-     [NSURL URLWithString:@"http://echowaves.com/verify_credentials"]];
+    [NSURL URLWithString:@"http://echowaves.com/verify_credentials"]];
     
     [request setHTTPMethod:@"POST"];
     
