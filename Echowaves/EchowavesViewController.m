@@ -61,14 +61,8 @@
         [sender setEnabled:NO];
         [sender setTitle:[NSString stringWithFormat:@"Currently waving %@", _waveName.text] forState:UIControlStateNormal];
         
-        
-        // here is a core loop that troes to identify the new images and upload them in real time.
-        while(true) {
-            
-            [self performSelectorInBackground:@selector(postLastImage) withObject:nil];
-            NSLog(@"sleeping for 3 second...");
-            [NSThread sleepForTimeInterval:0.1f];
-        } // while YES
+        //start a thread that posts the image
+        [self performSelectorInBackground:@selector(postLastImage) withObject:nil];
         
         
         
@@ -81,55 +75,39 @@
 
 - (void) postLastImage
 {
-    NSMutableArray *assets = [[NSMutableArray alloc]init];
-    
-    ALAssetsLibrary *library = [[ALAssetsLibrary alloc]init];
-    
-    [library enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos usingBlock:^(ALAssetsGroup   *group,  BOOL *stop){
-        
-        if(group != NULL){
-            
-            [group enumerateAssetsUsingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop){
-                
-                if(result != NULL){
-                    [assets addObject:result];
-                    NSLog(@"added picture %@", result);
-                }else NSLog(@"NO photo");;
-            }];
+    while(true) {
+//http://iphonedevsdk.com/forum/iphone-sdk-development/94700-directly-access-latest-photo-from-saved-photos-camera-roll.html        
+        ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
+        // Enumerate just the photos and videos group by using ALAssetsGroupSavedPhotos.
+        [library enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
+            // Within the group enumeration block, filter to enumerate just videos.
+            [group setAssetsFilter:[ALAssetsFilter allPhotos]];
+            // For this example, we're only interested in the first item.
+            [group enumerateAssetsAtIndexes:[NSIndexSet indexSetWithIndex:([group numberOfAssets]-1)] //change this for latest photo
+                                    options:0
+                                 usingBlock:^(ALAsset *alAsset, NSUInteger index, BOOL *innerStop) {
+                                     // The end of the enumeration is signaled by asset == nil.
+                                     if (alAsset) {
+                                         ALAssetRepresentation *representation = [alAsset defaultRepresentation];
+                                         NSError* error = nil;
+                                         NSLog(@"%@", [error localizedDescription]);
+                                         UIImage *latestPhoto = [UIImage imageWithCGImage:[representation fullResolutionImage]];
+
+                                         // post image to echowaves.com
+                                         NSLog(@"image %@", latestPhoto.description);
+                                         NSLog(@"asset %@", alAsset.description);
+                                     }
+                                 }];
         }
-    }
-                         failureBlock:^(NSError *error){NSLog(@"Error");}];
+                             failureBlock: ^(NSError *error) {
+                                 // Typically you should handle an error more gracefully than this.
+                                 NSLog(@"No groups");
+                             }];
+        
+        NSLog(@"sleeping for 2 second...");
+        [NSThread sleepForTimeInterval:2.0f];
+    } // while YES
     
-    
-//    ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
-//    
-//    // Enumerate just the photos and videos group by using ALAssetsGroupSavedPhotos.
-//    [library enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
-//        
-//        // Within the group enumeration block, filter to enumerate just videos.
-//        [group setAssetsFilter:[ALAssetsFilter allPhotos]];
-//        
-//        // For this example, we're only interested in the first item.
-//        [group enumerateAssetsAtIndexes:[NSIndexSet indexSetWithIndex:([group numberOfAssets]-1)] //change this for latest photo
-//                                options:0
-//                             usingBlock:^(ALAsset *alAsset, NSUInteger index, BOOL *innerStop) {
-//                                 
-//                                 // The end of the enumeration is signaled by asset == nil.
-//                                 if (alAsset) {
-//                                     ALAssetRepresentation *representation = [alAsset defaultRepresentation];
-//                                     NSURL *url = [representation url];
-//                                     //ALAsset *avAsset = [ALAsset URL //[ALAsset URLAssetWithURL:url options:nil];
-//                                     UIImage *latestPhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
-//                                     
-//                                     // Do something interesting with the AV asset.
-//                                     NSLog(@"image %@", latestPhoto.description);
-//                                 }
-//                             }];
-//    }
-//                         failureBlock: ^(NSError *error) {
-//                             // Typically you should handle an error more gracefully than this.
-//                             NSLog(@"No groups");
-//                         }];
 }
 
 @end
