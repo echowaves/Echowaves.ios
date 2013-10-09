@@ -101,7 +101,7 @@
         }
                              failureBlock: ^(NSError *error) {
                                  // Typically you should handle an error more gracefully than this.
-                                 NSLog(@"No groups");
+                                 NSLog(@"No groups. %@", error);
                              }];
         
         NSLog(@"sleeping for 2 second...");
