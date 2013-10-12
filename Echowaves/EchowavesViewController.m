@@ -37,7 +37,7 @@ AFHTTPRequestOperationManager *manager;
                                  @"pass": _wavePassword.text};
     
     [manager POST:[NSString stringWithFormat:@"%@/login", host] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"response: %@", responseObject);
+//        NSLog(@"response: %@", responseObject);
         NSLog(@"user name/password found");
         NSLog(@"wave name %@ ", _waveName.text);
         
@@ -90,14 +90,22 @@ AFHTTPRequestOperationManager *manager;
                                      // post image to echowaves.com
                                      /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                      
-                                     //                                         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-                                     NSDictionary *parameters = @{@"name": _waveName.text,
-                                                                  @"pass": _wavePassword.text};
-                                     NSURL *filePath = [representation url];
+                                     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                                     [formatter setDateFormat:@"yyyyMMddHHmmss"];
+                                     NSString *dateString = [formatter stringFromDate:[NSDate date]];
+                                     
+                                     NSDictionary *parameters = @{@"name": _waveName.text};//,
+//                                                                  @"pass": _wavePassword.text};
+//                                     NSURL *filePath = [representation url];
+                                     
+                                     UIImage  *copyOfOriginalImage = [UIImage imageWithCGImage:[representation fullResolutionImage]];
+                                     NSData *webUploadData=UIImageJPEGRepresentation(copyOfOriginalImage, 1.0);
+
                                      [manager POST:[NSString stringWithFormat:@"%@/upload", host] parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-                                         [formData appendPartWithFileURL:filePath name:@"image" error:nil];
+//                                         [formData appendPartWithFileURL:filePath name:@"file" error:nil];
+                                         [formData appendPartWithFileData:webUploadData name:@"file" fileName:[NSString stringWithFormat:@"%@.jpg", dateString] mimeType:@"image/jpeg"];
                                      } success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                                         NSLog(@"Success posting image: %@", responseObject);
+                                         NSLog(@"Success posting image");
                                      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                                          NSLog(@"Error posting image: %@", error);
                                      }];
