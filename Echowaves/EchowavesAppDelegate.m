@@ -13,6 +13,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     return YES;
 }
 							
@@ -41,6 +42,24 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+
+-(void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
+{
+    NSLog(@"I'm running in the background!");
+    // Execute your background request here:
+//    NSError *error = nil;
+//    NSString *string = [NSString stringWithContentsOfURL:[NSURL URLWithString:@"http://www.brightmediums.com"] encoding:NSUTF8StringEncoding error:&error];
+//    NSLog(@"Error: %@, Response %@", error, string);
+    //Make sure to run one of the following methods:
+
+    completionHandler(UIBackgroundFetchResultNewData);
+    /*
+     * Other options are:
+     UIBackgroundFetchResultFailed
+     UIBackgroundFetchResultNoData
+     */
 }
 
 @end
