@@ -16,8 +16,8 @@
 @end
 
 @implementation EchowavesViewController
-//static NSString *host = @"http://echowaves.com";
-static NSString *host = @"http://localhost:3000";
+static NSString *host = @"http://echowaves.com";
+//static NSString *host = @"http://localhost:3000";
 AFHTTPRequestOperationManager *manager;
 NSDate *lastCheckTime;
 
@@ -52,9 +52,7 @@ NSDate *lastCheckTime;
             [sender setTitle:[NSString stringWithFormat:@"Currently waving %@", _waveName.text] forState:UIControlStateNormal];
             //let's remember when we started the app, from now on -- send all the pictures
             lastCheckTime = [NSDate date];
-
-            //            //start a thread that posts the image
-            //            [self performSelectorInBackground:@selector(postLastImage) withObject:nil];
+            
         } else {
             // a wrong login, sign in again
             NSLog(@"wrong login, try again");
@@ -79,60 +77,57 @@ NSDate *lastCheckTime;
         
         // iterating over all assets
         [group enumerateAssetsUsingBlock:^(ALAsset *alAsset, NSUInteger index, BOOL *innerStop) {
-                                 // The end of the enumeration is signaled by asset == nil.
-                                 if (alAsset)
-                                 {
-                                     NSDate *currentAssetDateTime = [alAsset valueForProperty:ALAssetPropertyDate];
-
-                                     NSTimeInterval timeSinceLastPost =
-                                        [currentAssetDateTime timeIntervalSinceDate:lastCheckTime]; // diff
-
-                                     if(timeSinceLastPost > 0.0) {//this means, found an image that was not posted
-                                         NSLog(@"found image that was posted %f seconds since last check", timeSinceLastPost);
-
-                                         ALAssetRepresentation *representation = [alAsset defaultRepresentation];
-                                         //                                         NSError* error = nil;
-                                         //                                         NSLog(@"%@", [error localizedDescription]);
-                                         //                                         UIImage *latestPhoto = [UIImage imageWithCGImage:[representation fullResolutionImage]];
-                                         
-                                         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                         // post image to echowaves.com
-                                         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                         
-                                         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-                                         [formatter setDateFormat:@"yyyyMMddHHmmss"];
-                                         NSString *dateString = [formatter stringFromDate:currentAssetDateTime];
-                                         
-                                         NSDictionary *parameters = @{@"name": _waveName.text};//,
-                                         //                                                                  @"pass": _wavePassword.text};
-                                         //                                     NSURL *filePath = [representation url];
-                                         
-                                         UIImage  *copyOfOriginalImage = [UIImage imageWithCGImage:[representation fullResolutionImage]];
-                                         NSData *webUploadData=UIImageJPEGRepresentation(copyOfOriginalImage, 1.0);
-                                         
-                                         [manager POST:[NSString stringWithFormat:@"%@/upload", host] parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-                                             //                                         [formData appendPartWithFileURL:filePath name:@"file" error:nil];
-                                             [formData appendPartWithFileData:webUploadData name:@"file" fileName:[NSString stringWithFormat:@"%@.jpg", dateString] mimeType:@"image/jpeg"];
-
-//                                             [NSThread sleepForTimeInterval:20.0f];
-
-                                         } success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                                             //reset the date here
-                                             lastCheckTime = currentAssetDateTime;
-                                             NSLog(@"Success posting image");
-                                         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                             NSLog(@"Error posting image: %@", error);
-                                         }];
-                                         
-                                     } // if timeSinceLastPost
-                                     
-                                     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                     //                                         NSLog(@"image %@", latestPhoto.description);
-                                     //                                         NSLog(@"asset %@", alAsset.description);
-                                 }
-                             }];
+            // The end of the enumeration is signaled by asset == nil.
+            if (alAsset)
+            {
+                NSDate *currentAssetDateTime = [alAsset valueForProperty:ALAssetPropertyDate];
+                
+                NSTimeInterval timeSinceLastPost =
+                [currentAssetDateTime timeIntervalSinceDate:lastCheckTime]; // diff
+                
+                if(timeSinceLastPost > 0.0) {//this means, found an image that was not posted
+                    NSLog(@"found image that was posted %f seconds since last check", timeSinceLastPost);
+                    
+                    ALAssetRepresentation *representation = [alAsset defaultRepresentation];
+                    //                                         NSError* error = nil;
+                    //                                         NSLog(@"%@", [error localizedDescription]);
+                    //                                         UIImage *latestPhoto = [UIImage imageWithCGImage:[representation fullResolutionImage]];
+                    
+                    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    // post image to echowaves.com
+                    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    
+                    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                    [formatter setDateFormat:@"yyyyMMddHHmmss"];
+                    NSString *dateString = [formatter stringFromDate:currentAssetDateTime];
+                    
+                    NSDictionary *parameters = @{@"name": _waveName.text};//,
+                    //                                                                  @"pass": _wavePassword.text};
+                    //                                     NSURL *filePath = [representation url];
+                    
+                    UIImage  *copyOfOriginalImage = [UIImage imageWithCGImage:[representation fullResolutionImage]];
+                    NSData *webUploadData=UIImageJPEGRepresentation(copyOfOriginalImage, 1.0);
+                    
+                    [manager POST:[NSString stringWithFormat:@"%@/upload", host] parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+                        [formData appendPartWithFileData:webUploadData name:@"file" fileName:[NSString stringWithFormat:@"%@.jpg", dateString] mimeType:@"image/jpeg"];
+                        
+                    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                        //reset the date here
+                        lastCheckTime = currentAssetDateTime;
+                        NSLog(@"Success posting image");
+                    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                        NSLog(@"Error posting image: %@", error);
+                    }];
+                    
+                } // if timeSinceLastPost
+                
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                //                                         NSLog(@"image %@", latestPhoto.description);
+                //                                         NSLog(@"asset %@", alAsset.description);
+            }
+        }];
     }
                          failureBlock: ^(NSError *error) {
                              // Typically you should handle an error more gracefully than this.
