@@ -7,6 +7,7 @@
 //
 
 #import "EchowavesAppDelegate.h"
+#import "EchowavesViewController.h"
 
 @implementation EchowavesAppDelegate
 
@@ -49,16 +50,27 @@
 {
     NSLog(@"I'm running in the background!");
     // Execute your background request here:
-//    NSError *error = nil;
-//    NSString *string = [NSString stringWithContentsOfURL:[NSURL URLWithString:@"http://www.brightmediums.com"] encoding:NSUTF8StringEncoding error:&error];
-//    NSLog(@"Error: %@, Response %@", error, string);
-    //Make sure to run one of the following methods:
 
+    EchowavesViewController* echowavesViewController = (EchowavesViewController*)  self.window.rootViewController;
+
+    
+    [echowavesViewController postLastImages];
+    
+    //Make sure to run one of the following methods:
     completionHandler(UIBackgroundFetchResultNewData);
     /*
      * Other options are:
      UIBackgroundFetchResultFailed
      UIBackgroundFetchResultNoData
+     */
+}
+/** when a push notification comes it, perform a background fetch/push */
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))handler
+{
+    NSLog(@"PUSH notification received.");
+    /*
+     * Inspect the userInfo dictionary for any data values passed from the server.
+     * Ideal would be a string and ID for a remote data object to be fetched here.
      */
 }
 

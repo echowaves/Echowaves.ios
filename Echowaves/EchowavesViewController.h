@@ -12,5 +12,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *waveName;
 @property (weak, nonatomic) IBOutlet UITextField *wavePassword;
 
+- (void) postLastImages;
 
 @end
