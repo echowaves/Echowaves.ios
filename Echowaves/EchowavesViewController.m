@@ -104,18 +104,31 @@ NSDate *lastCheckTime;
                     NSDictionary *parameters = @{@"name": _waveName.text};//,
                     //                                                                  @"pass": _wavePassword.text};
                     //                                     NSURL *filePath = [representation url];
+                    CGImageRef fullResImage = [representation fullResolutionImage];
+                    UIImage  *copyOfOriginalImage = [UIImage imageWithCGImage:fullResImage];
+
+//                    UIImage *copyOfOriginalImage = [UIImage imageWithCGImage:fullResImage
+//                                                          scale:1
+//                                                    orientation:0];
                     
-                    UIImage  *copyOfOriginalImage = [UIImage imageWithCGImage:[representation fullResolutionImage]];
-                    NSData *webUploadData=UIImageJPEGRepresentation(copyOfOriginalImage, 1.0);
+//                    NSLog(@"Original size: %f , Resized image: %f", fullCopyOfOriginalImage.size.height, copyOfOriginalImage.size.height);
                     
+                    
+                    
+                    NSData *webUploadData=UIImageJPEGRepresentation(copyOfOriginalImage, 0.5);
+//                    NSData *webUploadData=UIImagePNGRepresentation(copyOfOriginalImage);
+                    [_appStatus setText:[NSString stringWithFormat:@"uploading image"]];
+
                     [manager POST:[NSString stringWithFormat:@"%@/upload", host] parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
                         [formData appendPartWithFileData:webUploadData name:@"file" fileName:[NSString stringWithFormat:@"%@.jpg", dateString] mimeType:@"image/jpeg"];
                         
                     } success:^(AFHTTPRequestOperation *operation, id responseObject) {
                         //reset the date here
                         lastCheckTime = currentAssetDateTime;
+                        [_appStatus setText:[NSString stringWithFormat:@"finished uploading"]];
                         NSLog(@"Success posting image");
                     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                        [_appStatus setText:[NSString stringWithFormat:@"error uploading"]];
                         NSLog(@"Error posting image: %@", error);
                     }];
                     

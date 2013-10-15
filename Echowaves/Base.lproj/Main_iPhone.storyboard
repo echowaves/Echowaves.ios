@@ -40,10 +40,18 @@
                                     <action selector="startWaving:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="B3s-fl-eSa"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WIa-AO-6hA">
+                                <rect key="frame" x="20" y="221" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="appStatus" destination="WIa-AO-6hA" id="kJn-Qf-pvI"/>
                         <outlet property="waveName" destination="cm0-VF-O8n" id="a7T-PH-hLa"/>
                         <outlet property="wavePassword" destination="87F-Vz-knN" id="MMd-AO-ZLe"/>
                     </connections>
