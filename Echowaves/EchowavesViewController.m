@@ -87,36 +87,40 @@ NSDate *lastCheckTime;
                 
                 if(timeSinceLastPost > 0.0) {//this means, found an image that was not posted
                     NSLog(@"found image that was posted %f seconds since last check", timeSinceLastPost);
-                    
-                    ALAssetRepresentation *representation = [alAsset defaultRepresentation];
-                    //                                         NSError* error = nil;
-                    //                                         NSLog(@"%@", [error localizedDescription]);
-                    //                                         UIImage *latestPhoto = [UIImage imageWithCGImage:[representation fullResolutionImage]];
-                    
-                    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                    // post image to echowaves.com
-                    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                    
+
                     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
                     [formatter setDateFormat:@"yyyyMMddHHmmss"];
                     NSString *dateString = [formatter stringFromDate:currentAssetDateTime];
                     
                     NSDictionary *parameters = @{@"name": _waveName.text};//,
-                    //                                                                  @"pass": _wavePassword.text};
-                    //                                     NSURL *filePath = [representation url];
-                    CGImageRef fullResImage = [representation fullResolutionImage];
-                    UIImage  *copyOfOriginalImage = [UIImage imageWithCGImage:fullResImage];
+                    
+                    ALAssetRepresentation *representation = [alAsset defaultRepresentation];
+                    
+                    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    // post image to echowaves.com
+                    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    UIImageOrientation orientation = UIImageOrientationUp;
+                    NSNumber* orientationValue = [alAsset valueForProperty:@"ALAssetPropertyOrientation"];
+                    if (orientationValue != nil) {
+                        orientation = [orientationValue intValue];
+                    }
+                    
+                    UIImage* orientedImage = [UIImage imageWithCGImage:[representation fullResolutionImage]
+                                                         scale:1.0 orientation:orientation];
+                    
+                    CGSize newSize = orientedImage.size;
+                    newSize.height = newSize.height / 2.0;
+                    newSize.width = newSize.width / 2.0;
+                    
+                    UIGraphicsBeginImageContext( newSize );// a CGSize that has the size you want
+                    [orientedImage drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+                    //image is the original UIImage
+                    UIImage* resizedImage = UIGraphicsGetImageFromCurrentImageContext();
+                    UIGraphicsEndImageContext();
 
-//                    UIImage *copyOfOriginalImage = [UIImage imageWithCGImage:fullResImage
-//                                                          scale:1
-//                                                    orientation:0];
-                    
-//                    NSLog(@"Original size: %f , Resized image: %f", fullCopyOfOriginalImage.size.height, copyOfOriginalImage.size.height);
                     
                     
-                    
-                    NSData *webUploadData=UIImageJPEGRepresentation(copyOfOriginalImage, 0.5);
-//                    NSData *webUploadData=UIImagePNGRepresentation(copyOfOriginalImage);
+                    NSData *webUploadData=UIImageJPEGRepresentation(resizedImage, 0.7);
                     [_appStatus setText:[NSString stringWithFormat:@"uploading image"]];
 
                     [manager POST:[NSString stringWithFormat:@"%@/upload", host] parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
