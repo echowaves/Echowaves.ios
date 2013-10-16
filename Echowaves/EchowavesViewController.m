@@ -20,6 +20,7 @@ static NSString *host = @"http://echowaves.com";
 //static NSString *host = @"http://localhost:3000";
 AFHTTPRequestOperationManager *manager;
 NSDate *lastCheckTime;
+int imageCount = 0;
 
 - (IBAction)startWaving:(UIButton *)sender {
     //wipe out cookies first
@@ -121,7 +122,7 @@ NSDate *lastCheckTime;
                     
                     
                     NSData *webUploadData=UIImageJPEGRepresentation(resizedImage, 0.7);
-                    [_appStatus setText:[NSString stringWithFormat:@"uploading image"]];
+                    [_appStatus setText:[NSString stringWithFormat:@"uploading image %d", imageCount]];
 
                     [manager POST:[NSString stringWithFormat:@"%@/upload", host] parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
                         [formData appendPartWithFileData:webUploadData name:@"file" fileName:[NSString stringWithFormat:@"%@.jpg", dateString] mimeType:@"image/jpeg"];
@@ -129,7 +130,7 @@ NSDate *lastCheckTime;
                     } success:^(AFHTTPRequestOperation *operation, id responseObject) {
                         //reset the date here
                         lastCheckTime = currentAssetDateTime;
-                        [_appStatus setText:[NSString stringWithFormat:@"finished uploading"]];
+                        [_appStatus setText:[NSString stringWithFormat:@"finished uploading image %d", imageCount++]];
                         NSLog(@"Success posting image");
                     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                         [_appStatus setText:[NSString stringWithFormat:@"error uploading"]];
