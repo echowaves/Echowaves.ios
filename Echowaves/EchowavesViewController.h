@@ -14,6 +14,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *wavePassword;
 @property (weak, nonatomic) IBOutlet UILabel *appStatus;
 
-- (void) postLastImages;
+- (BOOL) postLastImages;
 
 @end

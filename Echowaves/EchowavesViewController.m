@@ -67,8 +67,10 @@ int imageCount = 0;
     ///////////////////////////////////////////////////////////////////////////////////
 }
 
-- (void) postLastImages
+
+- (BOOL) postLastImages
 {
+    __block BOOL imageFound = NO;
     //http://iphonedevsdk.com/forum/iphone-sdk-development/94700-directly-access-latest-photo-from-saved-photos-camera-roll.html
     ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
     // Enumerate just the photos and videos group by using ALAssetsGroupSavedPhotos.
@@ -78,6 +80,7 @@ int imageCount = 0;
         
         // iterating over all assets
         [group enumerateAssetsUsingBlock:^(ALAsset *alAsset, NSUInteger index, BOOL *innerStop) {
+            __block BOOL imageFound = NO;
             // The end of the enumeration is signaled by asset == nil.
             if (alAsset)
             {
@@ -87,6 +90,7 @@ int imageCount = 0;
                 [currentAssetDateTime timeIntervalSinceDate:lastCheckTime]; // diff
                 
                 if(timeSinceLastPost > 0.0) {//this means, found an image that was not posted
+                    imageFound = YES;
                     NSLog(@"found image that was posted %f seconds since last check", timeSinceLastPost);
 
                     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -151,7 +155,7 @@ int imageCount = 0;
                              // Typically you should handle an error more gracefully than this.
                              NSLog(@"No groups. %@", error);
                          }];
-    
+    return imageFound;
 }
 
 @end
