@@ -16,7 +16,7 @@
     NSLog(@"called didFinishLaunchingWithOptions");
     // Override point for customization after application launch.
 //    [application setMinimumBackgroundFetchInterval:1];
-    [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
+//    [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
 //    [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalNever];
 
     return YES;
@@ -35,8 +35,53 @@
 //    http://developer.blueearth.net/2011/12/02/quick-tip-clearing-up-ios-multitasking/
     NSLog(@"called applicationDidEnterBackground");
     
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        
+//        // Create and register your timers
+//        
+//        // ...
+//        
+//        NSTimer *timer = [ NSTimer
+//                 scheduledTimerWithTimeInterval:30
+//                 
+//                 target:self
+//                 
+//                 selector:@selector(postLastImages)
+//                 
+//                 userInfo:nil
+//                 
+//                 repeats:NO
+//                 ];
+//        
+//        //change to NSRunLoopCommonModes
+//        
+//        [ [NSRunLoop currentRunLoop]
+//         addTimer:timer
+//         forMode:NSRunLoopCommonModes
+//         ];
+//        
+//        // Create/get a run loop an run it
+//        
+//        // Note: will return after the last timer's delegate has completed its job
+//        
+//        [[NSRunLoop currentRunLoop] run];
+//        
+//    });
+//    
+//    __block UIBackgroundTaskIdentifier back =
+//    [[UIApplication sharedApplication]
+//     beginBackgroundTaskWithExpirationHandler:^{
+//         
+//         [self startCoreUpdate];
+//         
+//         [ [UIApplication sharedApplication]
+//          endBackgroundTask:back
+//          ];
+//         
+//     } ];
+    
+//    - See more at: http://developer.blueearth.net/2011/12/02/quick-tip-clearing-up-ios-multitasking/#sthash.usmXPGVI.dpuf
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -63,37 +108,107 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
--(void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
-{
-//    http://www.objc.io/issue-5/multitasking.html
-    NSLog(@"called performFetchWithCompletionHandler");
-    NSLog(@"I'm running in the background!");
-    // Execute your background request here:
-    
-    EchowavesViewController* echowavesViewController = (EchowavesViewController*)  self.window.rootViewController;
-    
-    BOOL imageFound = [echowavesViewController postLastImages];
-    
-    //Make sure to run one of the following methods:
-    if(imageFound == YES) {
-        NSLog(@"returning UIBackgroundFetchResultNewData");
-        completionHandler(UIBackgroundFetchResultNewData);
-    } else if (imageFound == NO) {
-        NSLog(@"returning UIBackgroundFetchResultNoData");
-        completionHandler(UIBackgroundFetchResultNoData);
-    }
-//    NSLog(@"returning UIBackgroundFetchResultFailed");
-//    completionHandler(UIBackgroundFetchResultFailed);
-}
+
+
+//-(void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
+//{
+////    http://www.objc.io/issue-5/multitasking.html
+//    NSLog(@"called performFetchWithCompletionHandler");
+//    // Execute your background request here:
+//    completionHandler(UIBackgroundFetchResultNoData);
+//}
 
 /** when a push notification comes it, perform a background fetch/push */
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))handler
-{
-    NSLog(@"called didReceiveRemoteNotification");
-    /*
-     * Inspect the userInfo dictionary for any data values passed from the server.
-     * Ideal would be a string and ID for a remote data object to be fetched here.
-     */
-}
+//- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))handler
+//{
+//    NSLog(@"called didReceiveRemoteNotification");
+//    /*
+//     * Inspect the userInfo dictionary for any data values passed from the server.
+//     * Ideal would be a string and ID for a remote data object to be fetched here.
+//     */
+//}
+
+
+
+
+//- (void) startCoreUpdate {
+//    NSLog(@"called postLastImages");
+//    NSLog(@"I'm running in the background!");
+//    // Execute your background request here:
+//    
+//    EchowavesViewController* echowavesViewController = (EchowavesViewController*)  self.window.rootViewController;
+//    
+//    BOOL imageFound = [echowavesViewController postLastImages];
+//    
+//    //Make sure to run one of the following methods:
+//    if(imageFound == YES) {
+//        NSLog(@"image fond -- posted");
+//    } else if (imageFound == NO) {
+//        NSLog(@"image not found -- skipped");
+//    }
+//
+//}
+
+//-(void)backgroundUpdate
+//
+//{
+//    
+//    [ self startCoreUpdate ];
+//    
+//    __block UIBackgroundTaskIdentifier back =
+//    [[UIApplication sharedApplication]
+//     beginBackgroundTaskWithExpirationHandler:^{
+//         
+//         [self startCoreUpdate];
+//         
+//         [ [UIApplication sharedApplication]
+//          endBackgroundTask:back
+//          ];
+//         
+//     } ];
+//    
+//    UIApplicationState state = [[UIApplication sharedApplication] applicationState];
+//    
+//    // Check first to see if notification was fired while app was active.
+//    
+//    if (state != UIApplicationStateActive) {
+//        
+//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//            
+//            // Create and register your timers
+//            
+//            // ...
+//            
+//            NSTimer *timer = [ NSTimer
+//                     scheduledTimerWithTimeInterval:30
+//                     
+//                     target:self
+//                     
+//                     selector:@selector(backgroundUpdate)
+//                     
+//                     userInfo:nil
+//                     
+//                     repeats:NO
+//                     ];
+//            
+//            //change to NSRunLoopCommonModes
+//            
+//            [ [NSRunLoop currentRunLoop]
+//             addTimer:timer
+//             forMode:NSRunLoopCommonModes
+//             ];
+//            
+//            // Create/get a run loop an run it
+//            
+//            // Note: will return after the last timer's delegate has completed its job
+//            
+//            [[NSRunLoop currentRunLoop] run];
+//            
+//        });
+//        
+//    }
+//    
+//}
+
 
 @end
