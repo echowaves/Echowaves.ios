@@ -36,50 +36,50 @@
     NSLog(@"called applicationDidEnterBackground");
     
 
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//        
-//        // Create and register your timers
-//        
-//        // ...
-//        
-//        NSTimer *timer = [ NSTimer
-//                 scheduledTimerWithTimeInterval:30
-//                 
-//                 target:self
-//                 
-//                 selector:@selector(postLastImages)
-//                 
-//                 userInfo:nil
-//                 
-//                 repeats:NO
-//                 ];
-//        
-//        //change to NSRunLoopCommonModes
-//        
-//        [ [NSRunLoop currentRunLoop]
-//         addTimer:timer
-//         forMode:NSRunLoopCommonModes
-//         ];
-//        
-//        // Create/get a run loop an run it
-//        
-//        // Note: will return after the last timer's delegate has completed its job
-//        
-//        [[NSRunLoop currentRunLoop] run];
-//        
-//    });
-//    
-//    __block UIBackgroundTaskIdentifier back =
-//    [[UIApplication sharedApplication]
-//     beginBackgroundTaskWithExpirationHandler:^{
-//         
-//         [self startCoreUpdate];
-//         
-//         [ [UIApplication sharedApplication]
-//          endBackgroundTask:back
-//          ];
-//         
-//     } ];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        // Create and register your timers
+        
+        // ...
+        
+        NSTimer *timer = [ NSTimer
+                 scheduledTimerWithTimeInterval:30
+                 
+                 target:self
+                 
+                 selector:@selector(backgroundUpdate)
+                 
+                 userInfo:nil
+                 
+                 repeats:NO
+                 ];
+        
+        //change to NSRunLoopCommonModes
+        
+        [ [NSRunLoop currentRunLoop]
+         addTimer:timer
+         forMode:NSRunLoopCommonModes
+         ];
+        
+        // Create/get a run loop an run it
+        
+        // Note: will return after the last timer's delegate has completed its job
+        
+        [[NSRunLoop currentRunLoop] run];
+        
+    });
+    
+    __block UIBackgroundTaskIdentifier back =
+    [[UIApplication sharedApplication]
+     beginBackgroundTaskWithExpirationHandler:^{
+         
+         [self startCoreUpdate];
+         
+         [ [UIApplication sharedApplication]
+          endBackgroundTask:back
+          ];
+         
+     } ];
     
 //    - See more at: http://developer.blueearth.net/2011/12/02/quick-tip-clearing-up-ios-multitasking/#sthash.usmXPGVI.dpuf
 }
@@ -118,6 +118,7 @@
 //    completionHandler(UIBackgroundFetchResultNoData);
 //}
 
+
 /** when a push notification comes it, perform a background fetch/push */
 //- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))handler
 //{
@@ -131,84 +132,84 @@
 
 
 
-//- (void) startCoreUpdate {
-//    NSLog(@"called postLastImages");
-//    NSLog(@"I'm running in the background!");
-//    // Execute your background request here:
-//    
-//    EchowavesViewController* echowavesViewController = (EchowavesViewController*)  self.window.rootViewController;
-//    
-//    BOOL imageFound = [echowavesViewController postLastImages];
-//    
-//    //Make sure to run one of the following methods:
-//    if(imageFound == YES) {
-//        NSLog(@"image fond -- posted");
-//    } else if (imageFound == NO) {
-//        NSLog(@"image not found -- skipped");
-//    }
-//
-//}
+- (void) startCoreUpdate {
+    NSLog(@"called postLastImages");
+    NSLog(@"I'm running in the background!");
+    // Execute your background request here:
+    
+    EchowavesViewController* echowavesViewController = (EchowavesViewController*)  self.window.rootViewController;
+    
+    BOOL imageFound = [echowavesViewController postLastImages];
+    
+    //Make sure to run one of the following methods:
+    if(imageFound == YES) {
+        NSLog(@"image fond -- posted");
+    } else if (imageFound == NO) {
+        NSLog(@"image not found -- skipped");
+    }
 
-//-(void)backgroundUpdate
-//
-//{
-//    
-//    [ self startCoreUpdate ];
-//    
-//    __block UIBackgroundTaskIdentifier back =
-//    [[UIApplication sharedApplication]
-//     beginBackgroundTaskWithExpirationHandler:^{
-//         
-//         [self startCoreUpdate];
-//         
-//         [ [UIApplication sharedApplication]
-//          endBackgroundTask:back
-//          ];
-//         
-//     } ];
-//    
-//    UIApplicationState state = [[UIApplication sharedApplication] applicationState];
-//    
-//    // Check first to see if notification was fired while app was active.
-//    
-//    if (state != UIApplicationStateActive) {
-//        
-//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//            
-//            // Create and register your timers
-//            
-//            // ...
-//            
-//            NSTimer *timer = [ NSTimer
-//                     scheduledTimerWithTimeInterval:30
-//                     
-//                     target:self
-//                     
-//                     selector:@selector(backgroundUpdate)
-//                     
-//                     userInfo:nil
-//                     
-//                     repeats:NO
-//                     ];
-//            
-//            //change to NSRunLoopCommonModes
-//            
-//            [ [NSRunLoop currentRunLoop]
-//             addTimer:timer
-//             forMode:NSRunLoopCommonModes
-//             ];
-//            
-//            // Create/get a run loop an run it
-//            
-//            // Note: will return after the last timer's delegate has completed its job
-//            
-//            [[NSRunLoop currentRunLoop] run];
-//            
-//        });
-//        
-//    }
-//    
-//}
+}
+
+-(void)backgroundUpdate
+
+{
+    
+    [ self startCoreUpdate ];
+    
+    __block UIBackgroundTaskIdentifier back =
+    [[UIApplication sharedApplication]
+     beginBackgroundTaskWithExpirationHandler:^{
+         
+         [self startCoreUpdate];
+         
+         [ [UIApplication sharedApplication]
+          endBackgroundTask:back
+          ];
+         
+     } ];
+    
+    UIApplicationState state = [[UIApplication sharedApplication] applicationState];
+    
+    // Check first to see if notification was fired while app was active.
+    
+    if (state != UIApplicationStateActive) {
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            
+            // Create and register your timers
+            
+            // ...
+            
+            NSTimer *timer = [ NSTimer
+                     scheduledTimerWithTimeInterval:30
+                     
+                     target:self
+                     
+                     selector:@selector(backgroundUpdate)
+                     
+                     userInfo:nil
+                     
+                     repeats:NO
+                     ];
+            
+            //change to NSRunLoopCommonModes
+            
+            [ [NSRunLoop currentRunLoop]
+             addTimer:timer
+             forMode:NSRunLoopCommonModes
+             ];
+            
+            // Create/get a run loop an run it
+            
+            // Note: will return after the last timer's delegate has completed its job
+            
+            [[NSRunLoop currentRunLoop] run];
+            
+        });
+        
+    }
+    
+}
 
 
 @end

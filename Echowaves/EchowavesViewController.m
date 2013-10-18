@@ -114,8 +114,8 @@ int imageCount = 0;
                                                          scale:1.0 orientation:orientation];
                     
                     CGSize newSize = orientedImage.size;
-                    newSize.height = newSize.height / 2.0;
-                    newSize.width = newSize.width / 2.0;
+                    newSize.height = newSize.height / 3.0;
+                    newSize.width = newSize.width / 3.0;
                     
                     UIGraphicsBeginImageContext( newSize );// a CGSize that has the size you want
                     [orientedImage drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
@@ -125,7 +125,7 @@ int imageCount = 0;
 
                     
                     
-                    NSData *webUploadData=UIImageJPEGRepresentation(resizedImage, 0.7);
+                    NSData *webUploadData=UIImageJPEGRepresentation(resizedImage, 1.0);
                     [_appStatus setText:[NSString stringWithFormat:@"uploading image %d", imageCount]];
 
                     [manager POST:[NSString stringWithFormat:@"%@/upload", host] parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
