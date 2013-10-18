@@ -72,7 +72,7 @@ int imageCount = 0;
 
 - (BOOL) postLastImages
 {
-    if([[AFNetworkReachabilityManager sharedManager] accessibilityActivate]) {
+    if([[AFNetworkReachabilityManager sharedManager] isReachable]) {
         __block BOOL imageFound = NO;
         //http://iphonedevsdk.com/forum/iphone-sdk-development/94700-directly-access-latest-photo-from-saved-photos-camera-roll.html
         ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
