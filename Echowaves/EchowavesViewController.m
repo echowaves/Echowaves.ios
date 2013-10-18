@@ -53,10 +53,12 @@ int imageCount = 0;
             [sender setTitle:[NSString stringWithFormat:@"Currently waving %@", _waveName.text] forState:UIControlStateNormal];
             //let's remember when we started the app, from now on -- send all the pictures
             lastCheckTime = [NSDate date];
-            
+            [_appStatus setText:[NSString stringWithFormat:@"successfully signed in"]];
+
         } else {
             // a wrong login, sign in again
             NSLog(@"wrong login, try again");
+            [_appStatus setText:[NSString stringWithFormat:@"wrong wave/password, try again"]];
         }
         
         
