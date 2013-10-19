@@ -7,7 +7,7 @@
 //
 
 #import "EchowavesViewController.h"
-#import <AFHTTPRequestOperationManager.h>
+#import "AFHTTPRequestOperationManager.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 
 
@@ -73,6 +73,7 @@ int imageCount = 0;
 - (BOOL) postLastImages
 {
     if([[AFNetworkReachabilityManager sharedManager] isReachable]) {
+        NSLog(@"networking is reachable -- posting!!!!!!!!!!!!");
         __block BOOL imageFound = NO;
         //http://iphonedevsdk.com/forum/iphone-sdk-development/94700-directly-access-latest-photo-from-saved-photos-camera-roll.html
         ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
@@ -160,6 +161,8 @@ int imageCount = 0;
                              }];
         return imageFound;
     }
+    NSLog(@"networking is not reachable -- not !!!!!!!!!! posting!!!!!!!!!!!!");
+
     return NO;
 }
 
