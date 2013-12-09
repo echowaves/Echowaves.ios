@@ -5,6 +5,7 @@
 //  Created by Dmitry on 10/6/13.
 //  Copyright (c) 2013 Echowaves. All rights reserved.
 //
+#import "Flurry.h"
 
 #import "EchowavesAppDelegate.h"
 #import "EchowavesViewController.h"
@@ -14,6 +15,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [Flurry setCrashReportingEnabled:YES];
+    //note: iOS only allows one crash reporting tool per app; if using another, set to: NO
+    [Flurry startSession:@"77TXPC3GDBGYX4NM8WNN"];
     return YES;
 }
 
