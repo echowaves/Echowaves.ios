@@ -23,6 +23,7 @@ NSDate *lastCheckTime;
 int imageCount = 0;
 
 - (IBAction)startWaving:(UIButton *)sender {
+    if ([self isWaving] == false) {
     //wipe out cookies first
     NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
     NSArray* cookies = [ cookieStorage cookiesForURL:[NSURL URLWithString:host]];
@@ -52,13 +53,16 @@ int imageCount = 0;
             [_waveName setEnabled:NO];
             [_wavePassword setEnabled:NO];
             [sender setEnabled:NO];
-            [sender setTitle:[NSString stringWithFormat:@"Currently waving %@", _waveName.text] forState:UIControlStateNormal];
+            [sender setTitle:[NSString stringWithFormat:@"stop waving"] forState:UIControlStateNormal];
+            [sender setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
             //let's remember when we started the app, from now on -- send all the pictures
             lastCheckTime = [NSDate date];
+            [self setWaving:true];
             
         } else {
             // a wrong login, sign in again
             NSLog(@"wrong login, try again");
+            [_appStatus setText:[NSString stringWithFormat:@"wrong login, try again..."]];
         }
         
         
@@ -66,6 +70,13 @@ int imageCount = 0;
         NSLog(@"Error: %@", error);
     }];
     
+    } else {
+        //stop waiving here
+        [self setWaving:false];
+        [_appStatus setText:[NSString stringWithFormat:@"waving stopped"]];
+        [sender setTitle:[NSString stringWithFormat:@"start waving"] forState:UIControlStateNormal];
+        [sender setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];        
+    }
     ///////////////////////////////////////////////////////////////////////////////////
 }
 
