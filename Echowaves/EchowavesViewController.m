@@ -52,13 +52,12 @@ int imageCount = 0;
             // at this point the sign in is successfull, let's disable the UI fields so they can't be changed.
             [_waveName setEnabled:NO];
             [_wavePassword setEnabled:NO];
-            [sender setEnabled:NO];
             [sender setTitle:[NSString stringWithFormat:@"stop waving"] forState:UIControlStateNormal];
-            [sender setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+            [sender setBackgroundColor:[UIColor redColor]];
             //let's remember when we started the app, from now on -- send all the pictures
             lastCheckTime = [NSDate date];
             [self setWaving:true];
-            
+            [_appStatus setText:[NSString stringWithFormat:@"started waving..."]];
         } else {
             // a wrong login, sign in again
             NSLog(@"wrong login, try again");
@@ -73,9 +72,11 @@ int imageCount = 0;
     } else {
         //stop waiving here
         [self setWaving:false];
+        [_waveName setEnabled:YES];
+        [_wavePassword setEnabled:YES];
         [_appStatus setText:[NSString stringWithFormat:@"waving stopped"]];
         [sender setTitle:[NSString stringWithFormat:@"start waving"] forState:UIControlStateNormal];
-        [sender setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];        
+        [sender setBackgroundColor:[UIColor blueColor]];
     }
     ///////////////////////////////////////////////////////////////////////////////////
 }
