@@ -130,8 +130,8 @@ int imageCount = 0;
                                                                      scale:1.0 orientation:orientation];
                         
                         CGSize newSize = orientedImage.size;
-                        newSize.height = newSize.height / 3.0;
-                        newSize.width = newSize.width / 3.0;
+                        newSize.height = newSize.height / 2.0;
+                        newSize.width = newSize.width / 2.0;
                         
                         UIGraphicsBeginImageContext( newSize );// a CGSize that has the size you want
                         [orientedImage drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
@@ -153,7 +153,7 @@ int imageCount = 0;
                             [_appStatus setText:[NSString stringWithFormat:@"finished uploading image %d", imageCount++]];
                             NSLog(@"Success posting image");
                         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                            [_appStatus setText:[NSString stringWithFormat:@"error uploading"]];
+                            [_appStatus setText:[NSString stringWithFormat:@"error uploading: %@", error]];
                             NSLog(@"Error posting image: %@", error);
                         }];
                         
