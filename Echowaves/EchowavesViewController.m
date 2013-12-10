@@ -20,55 +20,58 @@ static NSString *host = @"http://echowaves.com";
 //static NSString *host = @"http://localhost:3000";
 AFHTTPRequestOperationManager *manager;
 NSDate *lastCheckTime;
-int imageCount = 0;
+NSMutableArray *imagesQueue;
+
 
 - (IBAction)startWaving:(UIButton *)sender {
     if ([self isWaving] == false) {
-    //wipe out cookies first
-    NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-    NSArray* cookies = [ cookieStorage cookiesForURL:[NSURL URLWithString:host]];
-    for (NSHTTPCookie* cookie in cookies) {
-        [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
-    }
-    
-    // perform authentication, wave/password non blank and exist in the server side, and enter a sending loop
-    manager = [AFHTTPRequestOperationManager manager];
-    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
-    
-    //ideally not going to need the following line, if making a request to json service
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    NSDictionary *parameters = @{@"name": _waveName.text,
-                                 @"pass": _wavePassword.text};
-    
-    [manager POST:[NSString stringWithFormat:@"%@/login", host] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        //        NSLog(@"response: %@", responseObject);
-        NSLog(@"user name/password found");
-        NSLog(@"wave name %@ ", _waveName.text);
+        //init new imagesQueue
         
-        
-        //try to retrieve a cookie
+        //wipe out cookies first
+        NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
         NSArray* cookies = [ cookieStorage cookiesForURL:[NSURL URLWithString:host]];
-        if(cookies.count >0) {// this means we are successfully signed in and can start posting images
-            // at this point the sign in is successfull, let's disable the UI fields so they can't be changed.
-            [_waveName setEnabled:NO];
-            [_wavePassword setEnabled:NO];
-            [sender setTitle:[NSString stringWithFormat:@"stop waving"] forState:UIControlStateNormal];
-            [sender setBackgroundColor:[UIColor redColor]];
-            //let's remember when we started the app, from now on -- send all the pictures
-            lastCheckTime = [NSDate date];
-            [self setWaving:true];
-            [_appStatus setText:[NSString stringWithFormat:@"started waving..."]];
-        } else {
-            // a wrong login, sign in again
-            NSLog(@"wrong login, try again");
-            [_appStatus setText:[NSString stringWithFormat:@"wrong login, try again..."]];
+        for (NSHTTPCookie* cookie in cookies) {
+            [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
         }
         
+        // perform authentication, wave/password non blank and exist in the server side, and enter a sending loop
+        manager = [AFHTTPRequestOperationManager manager];
+        [[AFNetworkReachabilityManager sharedManager] startMonitoring];
         
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
-    }];
-    
+        //ideally not going to need the following line, if making a request to json service
+        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+        NSDictionary *parameters = @{@"name": _waveName.text,
+                                     @"pass": _wavePassword.text};
+        
+        [manager POST:[NSString stringWithFormat:@"%@/login", host] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            //        NSLog(@"response: %@", responseObject);
+            NSLog(@"user name/password found");
+            NSLog(@"wave name %@ ", _waveName.text);
+            
+            
+            //try to retrieve a cookie
+            NSArray* cookies = [ cookieStorage cookiesForURL:[NSURL URLWithString:host]];
+            if(cookies.count >0) {// this means we are successfully signed in and can start posting images
+                // at this point the sign in is successfull, let's disable the UI fields so they can't be changed.
+                [_waveName setEnabled:NO];
+                [_wavePassword setEnabled:NO];
+                [sender setTitle:[NSString stringWithFormat:@"stop waving"] forState:UIControlStateNormal];
+                [sender setBackgroundColor:[UIColor redColor]];
+                //let's remember when we started the app, from now on -- send all the pictures
+                lastCheckTime = [NSDate date];
+                [self setWaving:true];
+                [_appStatus setText:[NSString stringWithFormat:@"started waving..."]];
+            } else {
+                // a wrong login, sign in again
+                NSLog(@"wrong login, try again");
+                [_appStatus setText:[NSString stringWithFormat:@"wrong login, try again..."]];
+            }
+            
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"Error: %@", error);
+        }];
+        
     } else {
         //stop waiving here
         [self setWaving:false];
@@ -106,6 +109,8 @@ int imageCount = 0;
                     [currentAssetDateTime timeIntervalSinceDate:lastCheckTime]; // diff
                     
                     if(timeSinceLastPost > 0.0) {//this means, found an image that was not posted
+                        //first lets add the image to a collection, we will process this collection later.
+                        
                         imageFound = YES;
                         NSLog(@"found image that was posted %f seconds since last check", timeSinceLastPost);
                         
@@ -174,7 +179,7 @@ int imageCount = 0;
         return imageFound;
     }
     NSLog(@"networking is not reachable -- not !!!!!!!!!! posting!!!!!!!!!!!!");
-
+    
     return NO;
 }
 
