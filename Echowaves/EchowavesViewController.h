@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *waveName;
 @property (weak, nonatomic) IBOutlet UITextField *wavePassword;
 @property (weak, nonatomic) IBOutlet UILabel *appStatus;
+@property (nonatomic, retain, readwrite) IBOutlet UIImageView *imageCurrentlyUploading;
 
 
 @property (strong, atomic) AFHTTPRequestOperationManager *manager;

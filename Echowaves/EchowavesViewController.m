@@ -185,7 +185,7 @@ static NSString *host = @"http://echowaves.com";
                 NSData *imageToPost = [_imagesToPost objectForKey:imageDate];
                 [_manager POST:[NSString stringWithFormat:@"%@/upload", host] parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
                     NSLog(@"+++++++++++++++uploading %@", dateString);
-                    
+                    [_imageCurrentlyUploading setImage:[UIImage imageWithData:imageToPost]];
                     [formData appendPartWithFileData:imageToPost name:@"file" fileName:[NSString stringWithFormat:@"%@.jpg", dateString] mimeType:@"image/jpeg"];
                 } success:^(AFHTTPRequestOperation *operation, id responseObject) {
                     //reset the date here
@@ -209,6 +209,7 @@ static NSString *host = @"http://echowaves.com";
         }
         NSLog(@"+++++++++++++++at the end of posting cycle, imagesToUpload %d", _imagesToPost.count);
     }//synchronized
+    
     return YES;
 }
 
