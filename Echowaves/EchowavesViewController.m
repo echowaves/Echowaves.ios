@@ -141,15 +141,19 @@ static NSString *host = @"http://echowaves.com";
                         
                         
                         NSURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:[NSString stringWithFormat:@"%@/upload", host] parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData){
-                            [formData appendPartWithFileData:webUploadData name:@"file" fileName:[NSString stringWithFormat:@"%@.jpg", dateString] mimeType:@"image/jpeg"];                            
+                            [formData appendPartWithFileData:webUploadData name:@"file" fileName:[NSString stringWithFormat:@"%@.jpg", dateString] mimeType:@"image/jpeg"];
                         } error:nil];
                                                  
 
                         AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
 
+//                        [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *currentOperation, id responseObject) {
+//                            _imageCurrentlyUploading = [UIImageView alloc];
+//                            [_imageCurrentlyUploading setImage:resizedImage];
+//                        } failure:nil];
                         
                         [imagesToPostOperations addObject:operation];
-                        
+
                         
                         NSLog(@"+++++++++++++++ images to upload while checking %d", imagesToPostOperations.count);
                         
@@ -178,22 +182,19 @@ static NSString *host = @"http://echowaves.com";
         
         NSArray *operations = [AFURLConnectionOperation batchOfRequestOperations:imagesToPostOperations progressBlock:^(NSUInteger numberOfFinishedOperations, NSUInteger totalNumberOfOperations) {
             NSLog(@"%d of %d complete", numberOfFinishedOperations, totalNumberOfOperations);
-            
-            //                [_imagesToPost removeObjectForKey:imageDate];
-            [_appStatus setText:[NSString stringWithFormat:@"uploaded %d of %d", numberOfFinishedOperations, totalNumberOfOperations]];
-            
-            //                [_imageCurrentlyUploading setImage:[UIImage imageWithData:imageToPost]];
-            
+            [_appStatus setText:[NSString stringWithFormat:@"Uploading %d of %d.", numberOfFinishedOperations, totalNumberOfOperations]];
         } completionBlock:^(NSArray *operations) {
             NSLog(@"All operations in batch complete");
             NSLog(@"operations count %d", operations.count);
             [imagesToPostOperations removeAllObjects];
-            
+            [_appStatus setText:@"Nothing to upload."];
+
         }];
         [[NSOperationQueue mainQueue] addOperations:operations waitUntilFinished:NO];
         
     } else {
         NSLog(@"+++++++++++++++networking is not reachable -- not !!!!!!!!!! posting!!!!!!!!!!!!");
+        [_appStatus setText:@"Network is not reachable, try again later."];
         return NO;
     }
     NSLog(@"+++++++++++++++at the end of posting cycle, imagesToUpload %d",     imagesToPostOperations.count);
