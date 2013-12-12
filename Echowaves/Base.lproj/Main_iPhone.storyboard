@@ -47,16 +47,11 @@
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Ah-yu-5Bx">
-                                <rect key="frame" x="40" y="250" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="appStatus" destination="WIa-AO-6hA" id="kJn-Qf-pvI"/>
-                        <outlet property="imageCurrentlyUploading" destination="9Ah-yu-5Bx" id="La9-PP-LE3"/>
                         <outlet property="waveName" destination="cm0-VF-O8n" id="a7T-PH-hLa"/>
                         <outlet property="wavePassword" destination="87F-Vz-knN" id="MMd-AO-ZLe"/>
                     </connections>

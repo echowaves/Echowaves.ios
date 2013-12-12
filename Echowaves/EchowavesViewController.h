@@ -14,18 +14,13 @@
 @property (weak, nonatomic) IBOutlet UITextField *waveName;
 @property (weak, nonatomic) IBOutlet UITextField *wavePassword;
 @property (weak, nonatomic) IBOutlet UILabel *appStatus;
-@property (nonatomic, retain, readwrite) IBOutlet UIImageView *imageCurrentlyUploading;
-
 
 @property (strong, atomic) AFHTTPRequestOperationManager *manager;
 
 @property (nonatomic, assign, getter=isWaving) BOOL waving;
 
 @property (strong, atomic) NSDate *lastCheckTime;
-@property (strong, atomic) NSMapTable *imagesToPost;
 
-
-- (BOOL) checkForImages;
-- (BOOL) postNewImages;
-
+- (BOOL) checkForNewImages;
+- (BOOL) postNewImages:NSMutableArray;
 @end

@@ -9,7 +9,6 @@
 #import "EchowavesViewController.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 
-
 @interface EchowavesViewController ()
 
 @end
@@ -21,8 +20,6 @@ static NSString *host = @"http://echowaves.com";
 
 - (IBAction)startWaving:(UIButton *)sender {
     if ([self isWaving] == false) {
-        //init new imagesQueue
-        _imagesToPost = [NSMapTable strongToStrongObjectsMapTable];
         
         //wipe out cookies first
         NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
@@ -71,7 +68,8 @@ static NSString *host = @"http://echowaves.com";
         
     } else { // not waiving
         //stop waiving here
-        _imagesToPost = NULL; //release any unposted images;
+        [[NSOperationQueue mainQueue] cancelAllOperations];
+        
         [self setWaving:false];
         [_waveName setEnabled:YES];
         [_wavePassword setEnabled:YES];
@@ -83,12 +81,10 @@ static NSString *host = @"http://echowaves.com";
 }
 
 
-- (BOOL) checkForImages
+- (BOOL) checkForNewImages
 {
-    @synchronized(_imagesToPost)
-    {
         NSLog(@"----------------- Checking images");
-        
+        NSMutableArray *imagesToPostOperations = [NSMutableArray array];;
         //find if there are any new images to post
         //http://iphonedevsdk.com/forum/iphone-sdk-development/94700-directly-access-latest-photo-from-saved-photos-camera-roll.html
         ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
@@ -136,80 +132,72 @@ static NSString *host = @"http://echowaves.com";
                         UIGraphicsEndImageContext();
                         
                         
+                        NSDictionary *parameters = @{@"name": _waveName.text};
+                        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                        [formatter setDateFormat:@"yyyyMMddHHmmss"];
                         
                         NSData *webUploadData=UIImageJPEGRepresentation(resizedImage, 1.0);
+                        NSString *dateString = [formatter stringFromDate:currentAssetDateTime];
                         
-                        [_imagesToPost setObject:webUploadData forKey:currentAssetDateTime];
                         
-                        [_appStatus setText:[NSString stringWithFormat:@"images to upload %d", _imagesToPost.count]];
+                        NSURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:[NSString stringWithFormat:@"%@/upload", host] parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData){
+                            [formData appendPartWithFileData:webUploadData name:@"file" fileName:[NSString stringWithFormat:@"%@.jpg", dateString] mimeType:@"image/jpeg"];                            
+                        } error:nil];
+                                                 
+
+                        AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+
                         
-                        NSLog(@"+++++++++++++++ images to upload while checking %d", _imagesToPost.count);
-                        [self postNewImages];
+                        [imagesToPostOperations addObject:operation];
+                        
+                        
+                        NSLog(@"+++++++++++++++ images to upload while checking %d", imagesToPostOperations.count);
                         
                     } // if timeSinceLastPost
                     
-                    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                    //                                         NSLog(@"image %@", latestPhoto.description);
-                    //                                         NSLog(@"asset %@", alAsset.description);
+                } else { // here is at the end of the iterating over assets
+                    [self postNewImages:imagesToPostOperations];
+                    _lastCheckTime = [NSDate date];
                 }
             }];
-        }
-                             failureBlock: ^(NSError *error) {
-                                 // Typically you should handle an error more gracefully than this.
-                                 NSLog(@"+++++++++++++++ No groups. %@", error);
-                             }];
-    }//synchronized
-    return TRUE;
+        } failureBlock: ^(NSError *error) {
+            // Typically you should handle an error more gracefully than this.
+            NSLog(@"+++++++++++++++ No groups. %@", error);
+        }];
+    
+    
+    return YES;
 }
 
-- (BOOL) postNewImages
+- (BOOL) postNewImages:(NSMutableArray *)imagesToPostOperations
 {
-    @synchronized(_imagesToPost)
-    {
-        NSLog(@"----------------- Posting images");
-        if([[AFNetworkReachabilityManager sharedManager] isReachable]) {
-            NSLog(@"+++++++++++++++networking is reachable -- posting!!!!!!!!!!!!");
-            NSLog(@"+++++++++++++++images to upload while posting %d", _imagesToPost.count);
+    NSLog(@"----------------- Posting images");
+    if([[AFNetworkReachabilityManager sharedManager] isReachable]) {
+        NSLog(@"+++++++++++++++networking is reachable -- posting!!!!!!!!!!!!");
+        NSLog(@"+++++++++++++++images to upload while posting %d", imagesToPostOperations.count);
+        
+        NSArray *operations = [AFURLConnectionOperation batchOfRequestOperations:imagesToPostOperations progressBlock:^(NSUInteger numberOfFinishedOperations, NSUInteger totalNumberOfOperations) {
+            NSLog(@"%d of %d complete", numberOfFinishedOperations, totalNumberOfOperations);
             
-            NSDictionary *parameters = @{@"name": _waveName.text};
-            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-            [formatter setDateFormat:@"yyyyMMddHHmmss"];
-            // now lets iterate images to post and post
-            //        while ( imagesToPost.count > 0 ) {
-            NSEnumerator *imageDates = [_imagesToPost keyEnumerator];
-            NSDate *imageDate;
-            while ((imageDate = [imageDates nextObject])) {
-                NSString *dateString = [formatter stringFromDate:imageDate];
-                NSData *imageToPost = [_imagesToPost objectForKey:imageDate];
-                [_manager POST:[NSString stringWithFormat:@"%@/upload", host] parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-                    NSLog(@"+++++++++++++++uploading %@", dateString);
-                    [_imageCurrentlyUploading setImage:[UIImage imageWithData:imageToPost]];
-                    [formData appendPartWithFileData:imageToPost name:@"file" fileName:[NSString stringWithFormat:@"%@.jpg", dateString] mimeType:@"image/jpeg"];
-                } success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                    //reset the date here
-                    _lastCheckTime = imageDate;
-                    [_imagesToPost removeObjectForKey:imageDate];
-                    [_appStatus setText:[NSString stringWithFormat:@"images to upload %d", _imagesToPost.count]];
-                    NSLog(@"+++++++++++++++Success posting image %@", dateString);
-                } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                    [_appStatus setText:[NSString stringWithFormat:@"error uploading: %@", error]];
-                    NSLog(@"Error posting image: %@", error);
-                    NSLog(@"+++++++++++++++Failed posting image %@", dateString);
-                    
-                }];
-            } // while imageDates nextObject
-            //        } // while imagesToPost.count
+            //                [_imagesToPost removeObjectForKey:imageDate];
+            [_appStatus setText:[NSString stringWithFormat:@"uploaded %d of %d", numberOfFinishedOperations, totalNumberOfOperations]];
             
+            //                [_imageCurrentlyUploading setImage:[UIImage imageWithData:imageToPost]];
             
-        } else {
-            NSLog(@"+++++++++++++++networking is not reachable -- not !!!!!!!!!! posting!!!!!!!!!!!!");
-            return NO;
-        }
-        NSLog(@"+++++++++++++++at the end of posting cycle, imagesToUpload %d", _imagesToPost.count);
-    }//synchronized
-    
+        } completionBlock:^(NSArray *operations) {
+            NSLog(@"All operations in batch complete");
+            NSLog(@"operations count %d", operations.count);
+            [imagesToPostOperations removeAllObjects];
+            
+        }];
+        [[NSOperationQueue mainQueue] addOperations:operations waitUntilFinished:NO];
+        
+    } else {
+        NSLog(@"+++++++++++++++networking is not reachable -- not !!!!!!!!!! posting!!!!!!!!!!!!");
+        return NO;
+    }
+    NSLog(@"+++++++++++++++at the end of posting cycle, imagesToUpload %d",     imagesToPostOperations.count);
+
     return YES;
 }
 
