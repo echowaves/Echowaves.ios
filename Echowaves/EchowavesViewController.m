@@ -54,11 +54,11 @@ static NSString *host = @"http://echowaves.com";
                 //let's remember when we started the app, from now on -- send all the pictures
                 _lastCheckTime = [NSDate date];
                 [self setWaving:true];
-                [_appStatus setText:[NSString stringWithFormat:@"started waving..."]];
+                [_appStatus setText:[NSString stringWithFormat:@"Now Waving ..."]];
             } else {
                 // a wrong wave, sign in again
-                NSLog(@"wrong wave or password, try again");
-                [_appStatus setText:[NSString stringWithFormat:@"wrong wave or password, try again..."]];
+                NSLog(@"Wrong wave or password, try again.");
+                [_appStatus setText:[NSString stringWithFormat:@"Wrong wave or password, try again..."]];
             }
             
             
@@ -73,7 +73,7 @@ static NSString *host = @"http://echowaves.com";
         [self setWaving:false];
         [_waveName setEnabled:YES];
         [_wavePassword setEnabled:YES];
-        [_appStatus setText:[NSString stringWithFormat:@"waving stopped"]];
+        [_appStatus setText:[NSString stringWithFormat:@"Stopped Waving."]];
         [sender setTitle:[NSString stringWithFormat:@"start waving"] forState:UIControlStateNormal];
         [sender setBackgroundColor:[UIColor blueColor]];
     }
@@ -84,7 +84,8 @@ static NSString *host = @"http://echowaves.com";
 - (BOOL) checkForNewImages
 {
         NSLog(@"----------------- Checking images");
-        NSMutableArray *imagesToPostOperations = [NSMutableArray array];;
+        NSMutableArray *imagesToPostOperations = [NSMutableArray array];
+        [_appStatus setText:[NSString stringWithFormat:@"Checking for new images ..."]];
         //find if there are any new images to post
         //http://iphonedevsdk.com/forum/iphone-sdk-development/94700-directly-access-latest-photo-from-saved-photos-camera-roll.html
         ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
