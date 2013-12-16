@@ -178,12 +178,13 @@ static NSString *host = @"http://echowaves.com";
 {
     NSLog(@"----------------- Posting images");
     if([[AFNetworkReachabilityManager sharedManager] isReachable]) {
+        [_appStatus setText:[NSString stringWithFormat:@"Starting uploading ..."]];
         NSLog(@"+++++++++++++++networking is reachable -- posting!!!!!!!!!!!!");
         NSLog(@"+++++++++++++++images to upload while posting %d", imagesToPostOperations.count);
         
         NSArray *operations = [AFURLConnectionOperation batchOfRequestOperations:imagesToPostOperations progressBlock:^(NSUInteger numberOfFinishedOperations, NSUInteger totalNumberOfOperations) {
             NSLog(@"%d of %d complete", numberOfFinishedOperations, totalNumberOfOperations);
-            [_appStatus setText:[NSString stringWithFormat:@"Uploading %d of %d.", numberOfFinishedOperations, totalNumberOfOperations]];
+            [_appStatus setText:[NSString stringWithFormat:@"Uploaded %d of %d images.", numberOfFinishedOperations, totalNumberOfOperations]];
         } completionBlock:^(NSArray *operations) {
             NSLog(@"All operations in batch complete");
             NSLog(@"operations count %d", operations.count);
