@@ -102,7 +102,7 @@ static NSString *host = @"http://echowaves.com";
 {
         NSLog(@"----------------- Checking images");
         NSMutableArray *imagesToPostOperations = [NSMutableArray array];
-        [_appStatus setText:[NSString stringWithFormat:@"Checking for new images ..."]];
+        [_appStatus setText:[NSString stringWithFormat:@"Checking for new pictures ..."]];
         //find if there are any new images to post
         //http://iphonedevsdk.com/forum/iphone-sdk-development/94700-directly-access-latest-photo-from-saved-photos-camera-roll.html
         ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
@@ -202,7 +202,7 @@ static NSString *host = @"http://echowaves.com";
             NSLog(@"All operations in batch complete");
             NSLog(@"operations count %d", operations.count);
             [imagesToPostOperations removeAllObjects];
-            [_appStatus setText:@"Finished uploading."];
+            [_appStatus setText:@"Done uploading."];
         }];
         [[NSOperationQueue mainQueue] addOperations:operations waitUntilFinished:NO];
         
