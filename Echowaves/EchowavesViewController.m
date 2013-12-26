@@ -20,9 +20,9 @@ static NSString *host = @"http://echowaves.com";
 
 - (IBAction)startWaving:(UIButton *)sender {
     if ([self isWaving] == false) {
+        _lastCheckTime = [NSDate date];
         [self tuneIn];
         //let's remember when we started the app, from now on -- send all the pictures
-        _lastCheckTime = [NSDate date];
     } else { // not waiving
         [self tuneOut];
         //stop waiving here
