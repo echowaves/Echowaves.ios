@@ -16,6 +16,10 @@
 {
     // Override point for customization after application launch.
     [Flurry setCrashReportingEnabled:YES];
+    [Flurry setSessionReportsOnCloseEnabled:NO];
+    [Flurry setSessionReportsOnPauseEnabled:NO];
+    [Flurry setBackgroundSessionEnabled:YES];
+    
     //note: iOS only allows one crash reporting tool per app; if using another, set to: NO
     [Flurry startSession:@"77TXPC3GDBGYX4NM8WNN"];
     return YES;

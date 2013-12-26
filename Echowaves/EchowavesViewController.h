@@ -13,6 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *waveName;
 @property (weak, nonatomic) IBOutlet UITextField *wavePassword;
+@property (weak, nonatomic) IBOutlet UIButton *startButton;
 @property (weak, nonatomic) IBOutlet UILabel *appStatus;
 
 @property (strong, nonatomic) IBOutlet UIImageView *imageCurrentlyUploading;
