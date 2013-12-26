@@ -20,7 +20,7 @@
 
 @property (strong, atomic) AFHTTPRequestOperationManager *manager;
 
-@property (nonatomic, assign, getter=isWaving) BOOL waving;
+@property (atomic, assign, getter=isWaving) BOOL waving;
 
 @property (strong, atomic) NSDate *lastCheckTime;
 

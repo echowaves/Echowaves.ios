@@ -34,6 +34,8 @@ static NSString *host = @"http://echowaves.com";
 
 - (void) tuneIn
 {
+    [self setWaving:false];
+
     //wipe out cookies first
     NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
     NSArray* cookies = [ cookieStorage cookiesForURL:[NSURL URLWithString:host]];
@@ -194,18 +196,42 @@ static NSString *host = @"http://echowaves.com";
         NSLog(@"+++++++++++++++images to upload while posting %d", imagesToPostOperations.count);
         
         [self tuneIn];
-
-        NSArray *operations = [AFURLConnectionOperation batchOfRequestOperations:imagesToPostOperations progressBlock:^(NSUInteger numberOfFinishedOperations, NSUInteger totalNumberOfOperations) {
-            NSLog(@"%d of %d complete", numberOfFinishedOperations, totalNumberOfOperations);
-            [_appStatus setText:[NSString stringWithFormat:@"Uploaded %d of %d pictures.", numberOfFinishedOperations, totalNumberOfOperations]];
-        } completionBlock:^(NSArray *operations) {
-            NSLog(@"All operations in batch complete");
-            NSLog(@"operations count %d", operations.count);
-            [imagesToPostOperations removeAllObjects];
-            [_appStatus setText:@"Done uploading."];
-        }];
-        [[NSOperationQueue mainQueue] addOperations:operations waitUntilFinished:NO];
-        
+        sleep(3);
+        //yaikes, sleep for max 5 seconds
+//        if([self isWaving] == false) {
+//            NSLog(@"===========sleeping 1");
+//            sleep(1);
+//        }
+//        if([self isWaving] == false) {
+//            NSLog(@"===========sleeping 2");
+//            sleep(1);
+//        }
+//        if([self isWaving] == false) {
+//            NSLog(@"===========sleeping 3");
+//            sleep(1);
+//        }
+//        if([self isWaving] == false) {
+//            NSLog(@"===========sleeping 4");
+//            sleep(1);
+//        }
+//        if([self isWaving] == false) {
+//            NSLog(@"===========sleeping 5");
+//            sleep(1);
+//        }
+//        if([self isWaving] == true) {
+            NSArray *operations = [AFURLConnectionOperation batchOfRequestOperations:imagesToPostOperations progressBlock:^(NSUInteger numberOfFinishedOperations, NSUInteger totalNumberOfOperations) {
+                NSLog(@"%d of %d complete", numberOfFinishedOperations, totalNumberOfOperations);
+                [_appStatus setText:[NSString stringWithFormat:@"Uploaded %d of %d pictures.", numberOfFinishedOperations, totalNumberOfOperations]];
+            } completionBlock:^(NSArray *operations) {
+                NSLog(@"All operations in batch complete");
+                NSLog(@"operations count %d", operations.count);
+                [imagesToPostOperations removeAllObjects];
+                [_appStatus setText:@"Done uploading."];
+            }];
+            [[NSOperationQueue mainQueue] addOperations:operations waitUntilFinished:NO];
+//        } else {
+//            [self tuneOut];
+//        }
     } else {
         NSLog(@"+++++++++++++++networking is not reachable -- not !!!!!!!!!! posting!!!!!!!!!!!!");
         [_appStatus setText:@"Network is not reachable, try again later."];
