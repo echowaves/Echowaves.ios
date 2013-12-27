@@ -18,8 +18,6 @@
 
 @property (strong, nonatomic) IBOutlet UIImageView *imageCurrentlyUploading;
 
-@property (strong, atomic) AFHTTPRequestOperationManager *manager;
-
 @property (atomic, assign, getter=isWaving) BOOL waving;
 
 @property (strong, atomic) NSDate *lastCheckTime;
