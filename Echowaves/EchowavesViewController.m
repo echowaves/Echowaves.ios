@@ -27,7 +27,6 @@ static NSString *host = @"http://echowaves.com";
     } else { // not waiving
         [self tuneOut];
         //stop waiving here
-        [[NSOperationQueue mainQueue] cancelAllOperations];
         [_appStatus setText:[NSString stringWithFormat:@"Waving Stopped."]];
         _lastCheckTime = nil;
     }
@@ -192,70 +191,63 @@ static NSString *host = @"http://echowaves.com";
 
 - (BOOL) postNewImages:(NSMutableArray *)imagesToPostOperations
 {
-
-    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-        switch (status) {
-            case AFNetworkReachabilityStatusReachableViaWWAN:
-            case AFNetworkReachabilityStatusReachableViaWiFi:
-                [[NSOperationQueue mainQueue] setSuspended:NO];
-                break;
-            case AFNetworkReachabilityStatusNotReachable:
-            default:
-                [[NSOperationQueue mainQueue] setSuspended:YES];
-                break;
-        }
-    }];
     
     NSLog(@"----------------- Posting images");
     if([[AFNetworkReachabilityManager sharedManager] isReachable]) {
-        [[NSOperationQueue mainQueue] setSuspended:NO];
+//        [self.networkQueue setSuspended:NO];
 
-        [_appStatus setText:[NSString stringWithFormat:@"Uploading new pictures ..."]];
-        NSLog(@"+++++++++++++++networking is reachable -- posting!!!!!!!!!!!!");
-        NSLog(@"+++++++++++++++images to upload while posting %d", imagesToPostOperations.count);
-        
-
-        // sign in again first
-        //wipe out cookies
-        NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-        NSArray* cookies = [ cookieStorage cookiesForURL:[NSURL URLWithString:host]];
-        for (NSHTTPCookie* cookie in cookies) {
-            [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
-        }
-        
-        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-        
-        // perform authentication, wave/password non blank and exist in the server side, and enter a sending loop
-        
-        //ideally not going to need the following line, if making a request to json service
-        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-        NSDictionary *parameters = @{@"name": _waveName.text,
-                                     @"pass": _wavePassword.text};
-        
-        [manager POST:[NSString stringWithFormat:@"%@/login", host] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            //        NSLog(@"response: %@", responseObject);
-            NSLog(@"user name/password found");
-            NSLog(@"wave name %@ ", _waveName.text);
+//        [_appStatus setText:[NSString stringWithFormat:@"pictures %d ...", _networkQueue.operationCount]];
+        [_appStatus setText:[NSString stringWithFormat:@"Uploading pictures..."]];
+//        NSLog(@"+++++++++++++++networking is reachable -- posting!!!!!!!!!!!!");
+//        NSLog(@"+++++++++++++++images to upload while posting %d", imagesToPostOperations.count);
+//        
+//
+//        // sign in again first
+//        //wipe out cookies
+//        NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+//        NSArray* cookies = [ cookieStorage cookiesForURL:[NSURL URLWithString:host]];
+//        for (NSHTTPCookie* cookie in cookies) {
+//            [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
+//        }
+//        
+//        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+//        
+//        // perform authentication, wave/password non blank and exist in the server side, and enter a sending loop
+//        
+//        //ideally not going to need the following line, if making a request to json service
+//        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+//        NSDictionary *parameters = @{@"name": _waveName.text,
+//                                     @"pass": _wavePassword.text};
+//        
+//        [manager POST:[NSString stringWithFormat:@"%@/login", host] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//            //        NSLog(@"response: %@", responseObject);
+//            NSLog(@"user name/password found");
+//            NSLog(@"wave name %@ ", _waveName.text);
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
             
-            NSArray *operations = [AFURLConnectionOperation batchOfRequestOperations:imagesToPostOperations progressBlock:^(NSUInteger numberOfFinishedOperations, NSUInteger totalNumberOfOperations) {
-                NSLog(@"%d of %d complete", numberOfFinishedOperations, totalNumberOfOperations);
-                [_appStatus setText:[NSString stringWithFormat:@"Uploaded %d of %d pictures.", numberOfFinishedOperations, totalNumberOfOperations]];
-            } completionBlock:^(NSArray *operations) {
-                NSLog(@"All operations in batch complete");
-                NSLog(@"operations count %d", operations.count);
-                [imagesToPostOperations removeAllObjects];
-                [_appStatus setText:@"Done uploading."];
-            }];
-            [[NSOperationQueue mainQueue] addOperations:operations waitUntilFinished:NO];
+            
+//            NSArray *operations = [AFURLConnectionOperation batchOfRequestOperations:imagesToPostOperations progressBlock:^(NSUInteger numberOfFinishedOperations, NSUInteger totalNumberOfOperations) {
+//                NSLog(@"%d of %d complete", numberOfFinishedOperations, totalNumberOfOperations);
+//                [_appStatus setText:[NSString stringWithFormat:@"Uploaded %d of %d pictures.", numberOfFinishedOperations, totalNumberOfOperations]];
+//            } completionBlock:^(NSArray *operations) {
+//                NSLog(@"All operations in batch complete");
+//                NSLog(@"operations count %d", operations.count);
+//                [imagesToPostOperations removeAllObjects];
+//                [_appStatus setText:@"Done uploading."];
+//            }];
+//            [[NSOperationQueue mainQueue] addOperations:operations waitUntilFinished:NO];
 
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@"Error: %@", error);
-        }];
+            for(AFHTTPRequestOperation *operation in imagesToPostOperations) {
+                [self.networkQueue addOperation:operation];
+            }
+            
+//        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//            NSLog(@"Error: %@", error);
+//        }];
 
     } else {
         NSLog(@"+++++++++++++++networking is not reachable -- not !!!!!!!!!! posting!!!!!!!!!!!!");
-        [_appStatus setText:@"Network is not reachable, try again later."];
-        [[NSOperationQueue mainQueue] setSuspended:YES];
+//        [self.networkQueue setSuspended:YES];
         return NO;
     }
     NSLog(@"+++++++++++++++at the end of posting cycle, imagesToUpload %d",     imagesToPostOperations.count);

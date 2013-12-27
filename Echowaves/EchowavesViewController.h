@@ -15,12 +15,18 @@
 @property (weak, nonatomic) IBOutlet UITextField *wavePassword;
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
 @property (weak, nonatomic) IBOutlet UILabel *appStatus;
+@property (weak, nonatomic) IBOutlet UILabel *pictruresCount;
+
 
 @property (strong, nonatomic) IBOutlet UIImageView *imageCurrentlyUploading;
 
 @property (atomic, assign, getter=isWaving) BOOL waving;
 
 @property (strong, atomic) NSDate *lastCheckTime;
+
+@property (nonatomic, strong) NSOperationQueue *networkQueue;
+
+@property (nonatomic, strong) NSTimer *aTimer;
 
 - (BOOL) checkForNewImages;
 - (BOOL) postNewImages:NSMutableArray;

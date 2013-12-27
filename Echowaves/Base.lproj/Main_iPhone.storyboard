@@ -47,8 +47,15 @@
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0rK-ee-NN5">
+                                <rect key="frame" x="20" y="250" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KlY-9T-23J">
-                                <rect key="frame" x="47" y="250" width="240" height="128"/>
+                                <rect key="frame" x="47" y="307" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -57,6 +64,7 @@
                     <connections>
                         <outlet property="appStatus" destination="WIa-AO-6hA" id="kJn-Qf-pvI"/>
                         <outlet property="imageCurrentlyUploading" destination="KlY-9T-23J" id="ezi-tF-xpn"/>
+                        <outlet property="pictruresCount" destination="0rK-ee-NN5" id="Rgl-yh-235"/>
                         <outlet property="startButton" destination="y5P-lL-Ivo" id="55b-tx-4V4"/>
                         <outlet property="waveName" destination="cm0-VF-O8n" id="a7T-PH-hLa"/>
                         <outlet property="wavePassword" destination="87F-Vz-knN" id="MMd-AO-ZLe"/>
