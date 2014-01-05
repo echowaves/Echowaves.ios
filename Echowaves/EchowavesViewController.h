@@ -28,6 +28,6 @@
 
 @property (nonatomic, strong) NSTimer *aTimer;
 
+- (void) tuneIn;
 - (BOOL) checkForNewImages;
-- (BOOL) postNewImages:NSMutableArray;
 @end
