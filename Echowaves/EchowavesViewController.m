@@ -7,7 +7,7 @@
 //
 
 #import "EchowavesViewController.h"
-#import <AssetsLibrary/AssetsLibrary.h>
+@import AssetsLibrary;
 
 @interface EchowavesViewController ()
 

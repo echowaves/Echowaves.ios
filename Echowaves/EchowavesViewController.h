@@ -11,11 +11,11 @@
 
 @interface EchowavesViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UITextField *waveName;
-@property (weak, nonatomic) IBOutlet UITextField *wavePassword;
-@property (weak, nonatomic) IBOutlet UIButton *startButton;
-@property (weak, nonatomic) IBOutlet UILabel *appStatus;
-@property (weak, nonatomic) IBOutlet UILabel *pictruresCount;
+@property (strong, nonatomic) IBOutlet UITextField *waveName;
+@property (strong, nonatomic) IBOutlet UITextField *wavePassword;
+@property (strong, nonatomic) IBOutlet UIButton *startButton;
+@property (strong, nonatomic) IBOutlet UILabel *appStatus;
+@property (strong, nonatomic) IBOutlet UILabel *pictruresCount;
 
 
 @property (strong, nonatomic) IBOutlet UIImageView *imageCurrentlyUploading;
@@ -24,9 +24,9 @@
 
 @property (strong, atomic) NSDate *lastCheckTime;
 
-@property (nonatomic, strong) NSOperationQueue *networkQueue;
+@property (atomic, strong) NSOperationQueue *networkQueue;
 
-@property (nonatomic, strong) NSTimer *aTimer;
+@property (atomic, strong) NSTimer *aTimer;
 
 - (void) tuneIn;
 - (BOOL) checkForNewImages;

@@ -201,8 +201,6 @@
 			isa = PBXGroup;
 			children = (
 				0A34C00F18556B4800E085BC /* Resources */,
-				0AD6E25718011F59008303E0 /* EchowavesAppDelegate.h */,
-				0AD6E25818011F59008303E0 /* EchowavesAppDelegate.m */,
 				0AD6E25A18011F59008303E0 /* Main_iPhone.storyboard */,
 				0AD6E25D18011F59008303E0 /* Main_iPad.storyboard */,
 				0AD6E26018011F59008303E0 /* EchowavesViewController.h */,
@@ -216,6 +214,8 @@
 		0AD6E24F18011F59008303E0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0AD6E25718011F59008303E0 /* EchowavesAppDelegate.h */,
+				0AD6E25818011F59008303E0 /* EchowavesAppDelegate.m */,
 				0AD6E25018011F59008303E0 /* Echowaves-Info.plist */,
 				0AD6E25118011F59008303E0 /* InfoPlist.strings */,
 				0AD6E25418011F59008303E0 /* main.m */,
