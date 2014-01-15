@@ -17,9 +17,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *appStatus;
 @property (strong, nonatomic) IBOutlet UILabel *pictruresCount;
 
-
-@property (strong, nonatomic) IBOutlet UIImageView *imageCurrentlyUploading;
-
 @property (atomic, assign, getter=isWaving) BOOL waving;
 
 @property (strong, atomic) NSDate *lastCheckTime;
@@ -30,4 +27,6 @@
 
 - (void) tuneIn;
 - (BOOL) checkForNewImages;
+
+//nsuserdefaults
 @end

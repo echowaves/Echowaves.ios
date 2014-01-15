@@ -54,16 +54,11 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KlY-9T-23J">
-                                <rect key="frame" x="47" y="307" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="appStatus" destination="WIa-AO-6hA" id="kJn-Qf-pvI"/>
-                        <outlet property="imageCurrentlyUploading" destination="KlY-9T-23J" id="ezi-tF-xpn"/>
                         <outlet property="pictruresCount" destination="0rK-ee-NN5" id="Rgl-yh-235"/>
                         <outlet property="startButton" destination="y5P-lL-Ivo" id="55b-tx-4V4"/>
                         <outlet property="waveName" destination="cm0-VF-O8n" id="a7T-PH-hLa"/>
