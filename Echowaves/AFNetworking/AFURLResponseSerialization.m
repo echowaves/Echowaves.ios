@@ -398,12 +398,7 @@ extern NSString * const AFNetworkingOperationFailingURLResponseErrorKey;
         }
     }
 
-    id responseObject;
-    if (data) {
-        responseObject = [NSPropertyListSerialization propertyListWithData:data options:self.readOptions format:NULL error:error];
-    }
-
-    return responseObject;
+    return [NSPropertyListSerialization propertyListWithData:data options:self.readOptions format:NULL error:error];
 }
 
 #pragma mark - NSCoding
@@ -597,7 +592,7 @@ static UIImage * AFInflatedImageFromResponseWithDataAtScale(NSHTTPURLResponse *r
     }
 
 #if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
-    self.imageScale = [[decoder decodeObjectForKey:NSStringFromSelector(@selector(imageScale))] floatValue];
+    self.imageScale = [decoder decodeFloatForKey:NSStringFromSelector(@selector(imageScale))];
     self.automaticallyInflatesResponseImage = [decoder decodeBoolForKey:NSStringFromSelector(@selector(automaticallyInflatesResponseImage))];
 #endif
 
@@ -608,7 +603,7 @@ static UIImage * AFInflatedImageFromResponseWithDataAtScale(NSHTTPURLResponse *r
     [super encodeWithCoder:coder];
 
 #if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
-    [coder encodeObject:@(self.imageScale) forKey:NSStringFromSelector(@selector(imageScale))];
+    [coder encodeFloat:self.imageScale forKey:NSStringFromSelector(@selector(imageScale))];
     [coder encodeBool:self.automaticallyInflatesResponseImage forKey:NSStringFromSelector(@selector(automaticallyInflatesResponseImage))];
 #endif
 }

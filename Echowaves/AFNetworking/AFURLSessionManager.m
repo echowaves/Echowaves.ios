@@ -132,14 +132,7 @@ typedef void (^AFURLSessionTaskCompletionHandler)(NSURLResponse *response, id re
     totalBytesSent:(int64_t)totalBytesSent
 totalBytesExpectedToSend:(int64_t)totalBytesExpectedToSend
 {
-    int64_t totalUnitCount = totalBytesExpectedToSend;
-    if(totalUnitCount == NSURLSessionTransferSizeUnknown) {
-        NSString *contentLength = [task.originalRequest valueForHTTPHeaderField:@"Content-Length"];
-        if(contentLength) {
-            totalUnitCount = (int64_t) [contentLength longLongValue];
-        }
-    }
-    self.uploadProgress.totalUnitCount = totalUnitCount;
+    self.uploadProgress.totalUnitCount = totalBytesExpectedToSend;
     self.uploadProgress.completedUnitCount = totalBytesSent;
 }
 
@@ -471,19 +464,13 @@ expectedTotalBytes:(int64_t)expectedTotalBytes {
                                       progress:(NSProgress * __autoreleasing *)progress
                              completionHandler:(void (^)(NSURLResponse *response, id responseObject, NSError *error))completionHandler
 {
-    NSParameterAssert(uploadTask);
+    if (!uploadTask) {
+        return nil;
+    }
     
     AFURLSessionManagerTaskDelegate *delegate = [AFURLSessionManagerTaskDelegate delegateForManager:self completionHandler:completionHandler];
 
-    int64_t totalUnitCount = uploadTask.countOfBytesExpectedToSend;
-    if(totalUnitCount == NSURLSessionTransferSizeUnknown) {
-        NSString *contentLength = [uploadTask.originalRequest valueForHTTPHeaderField:@"Content-Length"];
-        if(contentLength) {
-            totalUnitCount = (int64_t) [contentLength longLongValue];
-        }
-    }
-
-    delegate.uploadProgress = [NSProgress progressWithTotalUnitCount:totalUnitCount];
+    delegate.uploadProgress = [NSProgress progressWithTotalUnitCount:uploadTask.countOfBytesExpectedToSend];
     delegate.uploadProgress.pausingHandler = ^{
         [uploadTask suspend];
     };
@@ -529,7 +516,9 @@ expectedTotalBytes:(int64_t)expectedTotalBytes {
                                        destination:(NSURL * (^)(NSURL *targetPath, NSURLResponse *response))destination
                                  completionHandler:(void (^)(NSURLResponse *response, NSURL *filePath, NSError *error))completionHandler
 {
-    NSParameterAssert(downloadTask);
+    if (!downloadTask) {
+        return nil;
+    }
     
     AFURLSessionManagerTaskDelegate *delegate = [AFURLSessionManagerTaskDelegate delegateForManager:self completionHandler:completionHandler];
     delegate.downloadTaskDidFinishDownloading = ^NSURL * (NSURLSession * __unused session, NSURLSessionDownloadTask *task, NSURL *location) {
@@ -640,7 +629,7 @@ didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge
         disposition = self.sessionDidReceiveAuthenticationChallenge(session, challenge, &credential);
     } else {
         if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
-            if ([self.securityPolicy evaluateServerTrust:challenge.protectionSpace.serverTrust forDomain:challenge.protectionSpace.host]) {
+            if ([self.securityPolicy evaluateServerTrust:challenge.protectionSpace.serverTrust]) {
                 credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
                 if (credential) {
                     disposition = NSURLSessionAuthChallengeUseCredential;
@@ -691,7 +680,7 @@ didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge
         disposition = self.taskDidReceiveAuthenticationChallenge(session, task, challenge, &credential);
     } else {
         if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
-            if ([self.securityPolicy evaluateServerTrust:challenge.protectionSpace.serverTrust forDomain:challenge.protectionSpace.host]) {
+            if ([self.securityPolicy evaluateServerTrust:challenge.protectionSpace.serverTrust]) {
                 disposition = NSURLSessionAuthChallengeUseCredential;
                 credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
             } else {
@@ -750,8 +739,10 @@ didCompleteWithError:(NSError *)error
     }
 
     [self removeDelegateForTask:task];
-
-    [task removeObserver:self forKeyPath:@"state" context:AFTaskStateChangedContext];
+    
+    @try {
+        [task removeObserver:self forKeyPath:@"state" context:AFTaskStateChangedContext];
+    } @catch (NSException *exception) {}
 }
 
 #pragma mark - NSURLSessionDataDelegate
@@ -776,13 +767,6 @@ didReceiveResponse:(NSURLResponse *)response
           dataTask:(NSURLSessionDataTask *)dataTask
 didBecomeDownloadTask:(NSURLSessionDownloadTask *)downloadTask
 {
-    AFURLSessionManagerTaskDelegate *delegate = [self delegateForTask:dataTask];
-    [self removeDelegateForTask:dataTask];
-    [dataTask removeObserver:self forKeyPath:@"state" context:AFTaskStateChangedContext];
-
-    [self setDelegate:delegate forTask:downloadTask];
-    [downloadTask addObserver:self forKeyPath:@"state" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:AFTaskStateChangedContext];
-
     if (self.dataTaskDidBecomeDownloadTask) {
         self.dataTaskDidBecomeDownloadTask(session, dataTask, downloadTask);
     }
