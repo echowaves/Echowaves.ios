@@ -28,5 +28,7 @@
 - (void) tuneIn;
 - (BOOL) checkForNewImages;
 
-//nsuserdefaults
+
 @end
+//nsuserdefaults
+//http://stackoverflow.com/questions/8565087/afnetworking-and-cookies/17997943#17997943
