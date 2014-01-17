@@ -24,25 +24,6 @@
 		0A4621891888E29C005CC161 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4621761888E29C005CC161 /* UIImageView+AFNetworking.m */; };
 		0A46218A1888E29C005CC161 /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4621791888E29C005CC161 /* UIProgressView+AFNetworking.m */; };
 		0A46218B1888E29C005CC161 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A46217B1888E29C005CC161 /* UIWebView+AFNetworking.m */; };
-		0A4621B81888E3E9005CC161 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 0A46218D1888E3E9005CC161 /* .gitignore */; };
-		0A4621B91888E3E9005CC161 /* NSArray+STAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4621901888E3E9005CC161 /* NSArray+STAdditions.m */; };
-		0A4621BA1888E3E9005CC161 /* NSData+STAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4621921888E3E9005CC161 /* NSData+STAdditions.m */; };
-		0A4621BB1888E3E9005CC161 /* NSDate+STAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4621941888E3E9005CC161 /* NSDate+STAdditions.m */; };
-		0A4621BC1888E3E9005CC161 /* NSDictionary+STAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4621961888E3E9005CC161 /* NSDictionary+STAdditions.m */; };
-		0A4621BD1888E3E9005CC161 /* NSFileHandle+STAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4621981888E3E9005CC161 /* NSFileHandle+STAdditions.m */; };
-		0A4621BE1888E3E9005CC161 /* NSMutableString+STAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A46219A1888E3E9005CC161 /* NSMutableString+STAdditions.m */; };
-		0A4621BF1888E3E9005CC161 /* NSObject+STAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A46219C1888E3E9005CC161 /* NSObject+STAdditions.m */; };
-		0A4621C01888E3E9005CC161 /* NSOutputStream+STAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A46219E1888E3E9005CC161 /* NSOutputStream+STAdditions.m */; };
-		0A4621C11888E3E9005CC161 /* NSString+STAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4621A01888E3E9005CC161 /* NSString+STAdditions.m */; };
-		0A4621C21888E3E9005CC161 /* NSURL+STAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4621A21888E3E9005CC161 /* NSURL+STAdditions.m */; };
-		0A4621C31888E3E9005CC161 /* CLLocation+STAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4621A61888E3E9005CC161 /* CLLocation+STAdditions.m */; };
-		0A4621C41888E3E9005CC161 /* STEditableTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4621A91888E3E9005CC161 /* STEditableTableViewCell.m */; };
-		0A4621C51888E3E9005CC161 /* STLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4621AB1888E3E9005CC161 /* STLoginViewController.m */; };
-		0A4621C61888E3E9005CC161 /* STRandomization.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4621AE1888E3E9005CC161 /* STRandomization.m */; };
-		0A4621C71888E3E9005CC161 /* STTargetActionQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4621B01888E3E9005CC161 /* STTargetActionQueue.m */; };
-		0A4621C81888E3E9005CC161 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 0A4621B11888E3E9005CC161 /* README.md */; };
-		0A4621C91888E3E9005CC161 /* entities.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0A4621B31888E3E9005CC161 /* entities.strings */; };
-		0A4621CA1888E3E9005CC161 /* STKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4621B61888E3E9005CC161 /* STKeychain.m */; };
 		0AC91E66186BF50300D61381 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AC91E65186BF50300D61381 /* Security.framework */; };
 		0AC91E68186BF52F00D61381 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AC91E67186BF52F00D61381 /* SystemConfiguration.framework */; };
 		0AD6E24918011F59008303E0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AD6E24818011F59008303E0 /* Foundation.framework */; };
@@ -108,42 +89,6 @@
 		0A4621791888E29C005CC161 /* UIProgressView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIProgressView+AFNetworking.m"; sourceTree = "<group>"; };
 		0A46217A1888E29C005CC161 /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		0A46217B1888E29C005CC161 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
-		0A46218D1888E3E9005CC161 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		0A46218F1888E3E9005CC161 /* NSArray+STAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+STAdditions.h"; sourceTree = "<group>"; };
-		0A4621901888E3E9005CC161 /* NSArray+STAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+STAdditions.m"; sourceTree = "<group>"; };
-		0A4621911888E3E9005CC161 /* NSData+STAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+STAdditions.h"; sourceTree = "<group>"; };
-		0A4621921888E3E9005CC161 /* NSData+STAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+STAdditions.m"; sourceTree = "<group>"; };
-		0A4621931888E3E9005CC161 /* NSDate+STAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+STAdditions.h"; sourceTree = "<group>"; };
-		0A4621941888E3E9005CC161 /* NSDate+STAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+STAdditions.m"; sourceTree = "<group>"; };
-		0A4621951888E3E9005CC161 /* NSDictionary+STAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+STAdditions.h"; sourceTree = "<group>"; };
-		0A4621961888E3E9005CC161 /* NSDictionary+STAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+STAdditions.m"; sourceTree = "<group>"; };
-		0A4621971888E3E9005CC161 /* NSFileHandle+STAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileHandle+STAdditions.h"; sourceTree = "<group>"; };
-		0A4621981888E3E9005CC161 /* NSFileHandle+STAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileHandle+STAdditions.m"; sourceTree = "<group>"; };
-		0A4621991888E3E9005CC161 /* NSMutableString+STAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableString+STAdditions.h"; sourceTree = "<group>"; };
-		0A46219A1888E3E9005CC161 /* NSMutableString+STAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableString+STAdditions.m"; sourceTree = "<group>"; };
-		0A46219B1888E3E9005CC161 /* NSObject+STAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+STAdditions.h"; sourceTree = "<group>"; };
-		0A46219C1888E3E9005CC161 /* NSObject+STAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+STAdditions.m"; sourceTree = "<group>"; };
-		0A46219D1888E3E9005CC161 /* NSOutputStream+STAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSOutputStream+STAdditions.h"; sourceTree = "<group>"; };
-		0A46219E1888E3E9005CC161 /* NSOutputStream+STAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSOutputStream+STAdditions.m"; sourceTree = "<group>"; };
-		0A46219F1888E3E9005CC161 /* NSString+STAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+STAdditions.h"; sourceTree = "<group>"; };
-		0A4621A01888E3E9005CC161 /* NSString+STAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+STAdditions.m"; sourceTree = "<group>"; };
-		0A4621A11888E3E9005CC161 /* NSURL+STAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+STAdditions.h"; sourceTree = "<group>"; };
-		0A4621A21888E3E9005CC161 /* NSURL+STAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+STAdditions.m"; sourceTree = "<group>"; };
-		0A4621A51888E3E9005CC161 /* CLLocation+STAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLocation+STAdditions.h"; sourceTree = "<group>"; };
-		0A4621A61888E3E9005CC161 /* CLLocation+STAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocation+STAdditions.m"; sourceTree = "<group>"; };
-		0A4621A81888E3E9005CC161 /* STEditableTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STEditableTableViewCell.h; sourceTree = "<group>"; };
-		0A4621A91888E3E9005CC161 /* STEditableTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STEditableTableViewCell.m; sourceTree = "<group>"; };
-		0A4621AA1888E3E9005CC161 /* STLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLoginViewController.h; sourceTree = "<group>"; };
-		0A4621AB1888E3E9005CC161 /* STLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLoginViewController.m; sourceTree = "<group>"; };
-		0A4621AD1888E3E9005CC161 /* STRandomization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STRandomization.h; sourceTree = "<group>"; };
-		0A4621AE1888E3E9005CC161 /* STRandomization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRandomization.m; sourceTree = "<group>"; };
-		0A4621AF1888E3E9005CC161 /* STTargetActionQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTargetActionQueue.h; sourceTree = "<group>"; };
-		0A4621B01888E3E9005CC161 /* STTargetActionQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTargetActionQueue.m; sourceTree = "<group>"; };
-		0A4621B11888E3E9005CC161 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		0A4621B31888E3E9005CC161 /* entities.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = entities.strings; sourceTree = "<group>"; };
-		0A4621B51888E3E9005CC161 /* STKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKeychain.h; sourceTree = "<group>"; };
-		0A4621B61888E3E9005CC161 /* STKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKeychain.m; sourceTree = "<group>"; };
-		0A4621B71888E3E9005CC161 /* STUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STUtils.h; sourceTree = "<group>"; };
 		0AC91E65186BF50300D61381 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		0AC91E67186BF52F00D61381 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0AD6E24518011F59008303E0 /* Echowaves.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Echowaves.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -207,7 +152,6 @@
 		0A34C00F18556B4800E085BC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				0A46218C1888E3E9005CC161 /* STUtils */,
 				0A4621571888E29C005CC161 /* AFNetworking */,
 				0A34C00B18556B4100E085BC /* Flurry */,
 			);
@@ -270,106 +214,6 @@
 				0A46217B1888E29C005CC161 /* UIWebView+AFNetworking.m */,
 			);
 			path = "UIKit+AFNetworking";
-			sourceTree = "<group>";
-		};
-		0A46218C1888E3E9005CC161 /* STUtils */ = {
-			isa = PBXGroup;
-			children = (
-				0A46218D1888E3E9005CC161 /* .gitignore */,
-				0A46218E1888E3E9005CC161 /* Additions */,
-				0A4621A31888E3E9005CC161 /* iOS */,
-				0A4621AC1888E3E9005CC161 /* Misc */,
-				0A4621B11888E3E9005CC161 /* README.md */,
-				0A4621B21888E3E9005CC161 /* Resources */,
-				0A4621B41888E3E9005CC161 /* Security */,
-				0A4621B71888E3E9005CC161 /* STUtils.h */,
-			);
-			name = STUtils;
-			path = Resources/STUtils;
-			sourceTree = "<group>";
-		};
-		0A46218E1888E3E9005CC161 /* Additions */ = {
-			isa = PBXGroup;
-			children = (
-				0A46218F1888E3E9005CC161 /* NSArray+STAdditions.h */,
-				0A4621901888E3E9005CC161 /* NSArray+STAdditions.m */,
-				0A4621911888E3E9005CC161 /* NSData+STAdditions.h */,
-				0A4621921888E3E9005CC161 /* NSData+STAdditions.m */,
-				0A4621931888E3E9005CC161 /* NSDate+STAdditions.h */,
-				0A4621941888E3E9005CC161 /* NSDate+STAdditions.m */,
-				0A4621951888E3E9005CC161 /* NSDictionary+STAdditions.h */,
-				0A4621961888E3E9005CC161 /* NSDictionary+STAdditions.m */,
-				0A4621971888E3E9005CC161 /* NSFileHandle+STAdditions.h */,
-				0A4621981888E3E9005CC161 /* NSFileHandle+STAdditions.m */,
-				0A4621991888E3E9005CC161 /* NSMutableString+STAdditions.h */,
-				0A46219A1888E3E9005CC161 /* NSMutableString+STAdditions.m */,
-				0A46219B1888E3E9005CC161 /* NSObject+STAdditions.h */,
-				0A46219C1888E3E9005CC161 /* NSObject+STAdditions.m */,
-				0A46219D1888E3E9005CC161 /* NSOutputStream+STAdditions.h */,
-				0A46219E1888E3E9005CC161 /* NSOutputStream+STAdditions.m */,
-				0A46219F1888E3E9005CC161 /* NSString+STAdditions.h */,
-				0A4621A01888E3E9005CC161 /* NSString+STAdditions.m */,
-				0A4621A11888E3E9005CC161 /* NSURL+STAdditions.h */,
-				0A4621A21888E3E9005CC161 /* NSURL+STAdditions.m */,
-			);
-			path = Additions;
-			sourceTree = "<group>";
-		};
-		0A4621A31888E3E9005CC161 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				0A4621A41888E3E9005CC161 /* Additions */,
-				0A4621A71888E3E9005CC161 /* UIKit */,
-			);
-			path = iOS;
-			sourceTree = "<group>";
-		};
-		0A4621A41888E3E9005CC161 /* Additions */ = {
-			isa = PBXGroup;
-			children = (
-				0A4621A51888E3E9005CC161 /* CLLocation+STAdditions.h */,
-				0A4621A61888E3E9005CC161 /* CLLocation+STAdditions.m */,
-			);
-			path = Additions;
-			sourceTree = "<group>";
-		};
-		0A4621A71888E3E9005CC161 /* UIKit */ = {
-			isa = PBXGroup;
-			children = (
-				0A4621A81888E3E9005CC161 /* STEditableTableViewCell.h */,
-				0A4621A91888E3E9005CC161 /* STEditableTableViewCell.m */,
-				0A4621AA1888E3E9005CC161 /* STLoginViewController.h */,
-				0A4621AB1888E3E9005CC161 /* STLoginViewController.m */,
-			);
-			path = UIKit;
-			sourceTree = "<group>";
-		};
-		0A4621AC1888E3E9005CC161 /* Misc */ = {
-			isa = PBXGroup;
-			children = (
-				0A4621AD1888E3E9005CC161 /* STRandomization.h */,
-				0A4621AE1888E3E9005CC161 /* STRandomization.m */,
-				0A4621AF1888E3E9005CC161 /* STTargetActionQueue.h */,
-				0A4621B01888E3E9005CC161 /* STTargetActionQueue.m */,
-			);
-			path = Misc;
-			sourceTree = "<group>";
-		};
-		0A4621B21888E3E9005CC161 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				0A4621B31888E3E9005CC161 /* entities.strings */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		0A4621B41888E3E9005CC161 /* Security */ = {
-			isa = PBXGroup;
-			children = (
-				0A4621B51888E3E9005CC161 /* STKeychain.h */,
-				0A4621B61888E3E9005CC161 /* STKeychain.m */,
-			);
-			path = Security;
 			sourceTree = "<group>";
 		};
 		0A5ADAA01888C07900D492BC /* iPad */ = {
@@ -541,10 +385,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A4621B81888E3E9005CC161 /* .gitignore in Resources */,
-				0A4621C91888E3E9005CC161 /* entities.strings in Resources */,
 				0AD6E26418011F59008303E0 /* Images.xcassets in Resources */,
-				0A4621C81888E3E9005CC161 /* README.md in Resources */,
 				0AD6E25C18011F59008303E0 /* Main_iPhone.storyboard in Resources */,
 				0AD6E25318011F59008303E0 /* InfoPlist.strings in Resources */,
 			);
@@ -565,41 +406,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A4621C31888E3E9005CC161 /* CLLocation+STAdditions.m in Sources */,
-				0A4621C71888E3E9005CC161 /* STTargetActionQueue.m in Sources */,
 				0A46217C1888E29C005CC161 /* AFHTTPRequestOperation.m in Sources */,
-				0A4621B91888E3E9005CC161 /* NSArray+STAdditions.m in Sources */,
 				0A4621891888E29C005CC161 /* UIImageView+AFNetworking.m in Sources */,
 				0AD6E26218011F59008303E0 /* EchowavesViewController.m in Sources */,
-				0A4621CA1888E3E9005CC161 /* STKeychain.m in Sources */,
-				0A4621C01888E3E9005CC161 /* NSOutputStream+STAdditions.m in Sources */,
-				0A4621C21888E3E9005CC161 /* NSURL+STAdditions.m in Sources */,
 				0A46217D1888E29C005CC161 /* AFHTTPRequestOperationManager.m in Sources */,
-				0A4621C41888E3E9005CC161 /* STEditableTableViewCell.m in Sources */,
 				0A46218A1888E29C005CC161 /* UIProgressView+AFNetworking.m in Sources */,
 				0A46217F1888E29C005CC161 /* AFNetworkReachabilityManager.m in Sources */,
 				0A4621831888E29C005CC161 /* AFURLResponseSerialization.m in Sources */,
 				0A4621811888E29C005CC161 /* AFURLConnectionOperation.m in Sources */,
-				0A4621BA1888E3E9005CC161 /* NSData+STAdditions.m in Sources */,
-				0A4621BF1888E3E9005CC161 /* NSObject+STAdditions.m in Sources */,
 				0A4621881888E29C005CC161 /* UIButton+AFNetworking.m in Sources */,
 				0A4621861888E29C005CC161 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
-				0A4621C51888E3E9005CC161 /* STLoginViewController.m in Sources */,
 				0A4621801888E29C005CC161 /* AFSecurityPolicy.m in Sources */,
 				0A46217E1888E29C005CC161 /* AFHTTPSessionManager.m in Sources */,
 				0A4621871888E29C005CC161 /* UIAlertView+AFNetworking.m in Sources */,
 				0A4621821888E29C005CC161 /* AFURLRequestSerialization.m in Sources */,
-				0A4621C11888E3E9005CC161 /* NSString+STAdditions.m in Sources */,
 				0A4621851888E29C005CC161 /* AFNetworkActivityIndicatorManager.m in Sources */,
-				0A4621BC1888E3E9005CC161 /* NSDictionary+STAdditions.m in Sources */,
 				0A46218B1888E29C005CC161 /* UIWebView+AFNetworking.m in Sources */,
-				0A4621C61888E3E9005CC161 /* STRandomization.m in Sources */,
-				0A4621BD1888E3E9005CC161 /* NSFileHandle+STAdditions.m in Sources */,
-				0A4621BE1888E3E9005CC161 /* NSMutableString+STAdditions.m in Sources */,
 				0A4621841888E29C005CC161 /* AFURLSessionManager.m in Sources */,
 				0AD6E25918011F59008303E0 /* EchowavesAppDelegate.m in Sources */,
 				0AD6E25518011F59008303E0 /* main.m in Sources */,
-				0A4621BB1888E3E9005CC161 /* NSDate+STAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
