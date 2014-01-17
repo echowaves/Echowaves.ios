@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0A34C00E18556B4100E085BC /* libFlurry_4.3.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A34C00D18556B4100E085BC /* libFlurry_4.3.0.a */; };
-		0A6CBB221886061A003344DD /* STKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6CBB201886061A003344DD /* STKeychain.m */; };
 		0A6CBB381886084E003344DD /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6CBB261886084E003344DD /* AFHTTPRequestOperation.m */; };
 		0A6CBB391886084E003344DD /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6CBB281886084E003344DD /* AFHTTPRequestOperationManager.m */; };
 		0A6CBB3A1886084E003344DD /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6CBB2A1886084E003344DD /* AFHTTPSessionManager.m */; };
@@ -34,7 +33,6 @@
 		0AD6E25518011F59008303E0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD6E25418011F59008303E0 /* main.m */; };
 		0AD6E25918011F59008303E0 /* EchowavesAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD6E25818011F59008303E0 /* EchowavesAppDelegate.m */; };
 		0AD6E25C18011F59008303E0 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AD6E25A18011F59008303E0 /* Main_iPhone.storyboard */; };
-		0AD6E25F18011F59008303E0 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AD6E25D18011F59008303E0 /* Main_iPad.storyboard */; };
 		0AD6E26218011F59008303E0 /* EchowavesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD6E26118011F59008303E0 /* EchowavesViewController.m */; };
 		0AD6E26418011F59008303E0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AD6E26318011F59008303E0 /* Images.xcassets */; };
 		0AD6E26B18011F59008303E0 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AD6E26A18011F59008303E0 /* XCTest.framework */; };
@@ -57,9 +55,6 @@
 /* Begin PBXFileReference section */
 		0A34C00C18556B4100E085BC /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
 		0A34C00D18556B4100E085BC /* libFlurry_4.3.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.3.0.a; sourceTree = "<group>"; };
-		0A6CBB201886061A003344DD /* STKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKeychain.m; sourceTree = "<group>"; };
-		0A6CBB211886061A003344DD /* STKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKeychain.h; sourceTree = "<group>"; };
-		0A6CBB231886066C003344DD /* STUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STUtils.h; sourceTree = "<group>"; };
 		0A6CBB251886084E003344DD /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		0A6CBB261886084E003344DD /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		0A6CBB271886084E003344DD /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -107,7 +102,6 @@
 		0AD6E25718011F59008303E0 /* EchowavesAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EchowavesAppDelegate.h; sourceTree = "<group>"; };
 		0AD6E25818011F59008303E0 /* EchowavesAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EchowavesAppDelegate.m; sourceTree = "<group>"; };
 		0AD6E25B18011F59008303E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		0AD6E25E18011F59008303E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		0AD6E26018011F59008303E0 /* EchowavesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EchowavesViewController.h; sourceTree = "<group>"; };
 		0AD6E26118011F59008303E0 /* EchowavesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EchowavesViewController.m; sourceTree = "<group>"; };
 		0AD6E26318011F59008303E0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -159,20 +153,16 @@
 			isa = PBXGroup;
 			children = (
 				0A6CBB241886084E003344DD /* AFNetworking */,
-				0A6CBB1C18860413003344DD /* SFHFKeychainUtils */,
 				0A34C00B18556B4100E085BC /* Flurry */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		0A6CBB1C18860413003344DD /* SFHFKeychainUtils */ = {
+		0A5ADAA01888C07900D492BC /* iPad */ = {
 			isa = PBXGroup;
 			children = (
-				0A6CBB231886066C003344DD /* STUtils.h */,
-				0A6CBB201886061A003344DD /* STKeychain.m */,
-				0A6CBB211886061A003344DD /* STKeychain.h */,
 			);
-			name = SFHFKeychainUtils;
+			name = iPad;
 			sourceTree = "<group>";
 		};
 		0A6CBB241886084E003344DD /* AFNetworking */ = {
@@ -260,8 +250,8 @@
 			isa = PBXGroup;
 			children = (
 				0A34C00F18556B4800E085BC /* Resources */,
+				0A5ADAA01888C07900D492BC /* iPad */,
 				0AD6E25A18011F59008303E0 /* Main_iPhone.storyboard */,
-				0AD6E25D18011F59008303E0 /* Main_iPad.storyboard */,
 				0AD6E26018011F59008303E0 /* EchowavesViewController.h */,
 				0AD6E26118011F59008303E0 /* EchowavesViewController.m */,
 				0AD6E26318011F59008303E0 /* Images.xcassets */,
@@ -386,7 +376,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0AD6E25F18011F59008303E0 /* Main_iPad.storyboard in Resources */,
 				0AD6E26418011F59008303E0 /* Images.xcassets in Resources */,
 				0AD6E25C18011F59008303E0 /* Main_iPhone.storyboard in Resources */,
 				0AD6E25318011F59008303E0 /* InfoPlist.strings in Resources */,
@@ -427,7 +416,6 @@
 				0A6CBB3F1886084E003344DD /* AFURLResponseSerialization.m in Sources */,
 				0A6CBB401886084E003344DD /* AFURLSessionManager.m in Sources */,
 				0A6CBB511886093C003344DD /* AFNetworkActivityIndicatorManager.m in Sources */,
-				0A6CBB221886061A003344DD /* STKeychain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,14 +452,6 @@
 				0AD6E25B18011F59008303E0 /* Base */,
 			);
 			name = Main_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		0AD6E25D18011F59008303E0 /* Main_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0AD6E25E18011F59008303E0 /* Base */,
-			);
-			name = Main_iPad.storyboard;
 			sourceTree = "<group>";
 		};
 		0AD6E27318011F59008303E0 /* InfoPlist.strings */ = {
@@ -567,6 +547,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Echowaves/Echowaves-Prefix.pch";
 				INFOPLIST_FILE = "Echowaves/Echowaves-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/dmitry/hacks/ios/Echowaves.ios/Echowaves/Resources/Flurry,
@@ -588,6 +569,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Echowaves/Echowaves-Prefix.pch";
 				INFOPLIST_FILE = "Echowaves/Echowaves-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/dmitry/hacks/ios/Echowaves.ios/Echowaves/Resources/Flurry,
