@@ -6,14 +6,14 @@
 //  Copyright (c) 2013 Echowaves. All rights reserved.
 //
 
-#import "EchowavesViewController.h"
+#import "WavingViewController.h"
 @import AssetsLibrary;
 
-@interface EchowavesViewController ()
+@interface WavingViewController ()
 
 @end
 
-@implementation EchowavesViewController
+@implementation WavingViewController
 static NSString *host = @"http://echowaves.com";
 //static NSString *host = @"http://localhost:3000";
 

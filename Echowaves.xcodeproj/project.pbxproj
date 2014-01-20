@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A28E5D71889B87B00B7BDDB /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A28E5D61889B87B00B7BDDB /* SignUpViewController.m */; };
+		0A28E5DA1889B8B300B7BDDB /* EchoWaveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A28E5D91889B8B300B7BDDB /* EchoWaveViewController.m */; };
+		0A28E5DD1889B8C400B7BDDB /* BlendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A28E5DC1889B8C400B7BDDB /* BlendsViewController.m */; };
+		0A28E5E11889C5EF00B7BDDB /* EWWave.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A28E5E01889C5EF00B7BDDB /* EWWave.m */; };
+		0A28E5E41889C60400B7BDDB /* EWImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A28E5E31889C60400B7BDDB /* EWImage.m */; };
+		0A28E5E71889C61500B7BDDB /* EWBlend.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A28E5E61889C61500B7BDDB /* EWBlend.m */; };
 		0A34C00E18556B4100E085BC /* libFlurry_4.3.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A34C00D18556B4100E085BC /* libFlurry_4.3.0.a */; };
 		0A46217C1888E29C005CC161 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A46215A1888E29C005CC161 /* AFHTTPRequestOperation.m */; };
 		0A46217D1888E29C005CC161 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A46215C1888E29C005CC161 /* AFHTTPRequestOperationManager.m */; };
@@ -33,7 +39,7 @@
 		0AD6E25518011F59008303E0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD6E25418011F59008303E0 /* main.m */; };
 		0AD6E25918011F59008303E0 /* EchowavesAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD6E25818011F59008303E0 /* EchowavesAppDelegate.m */; };
 		0AD6E25C18011F59008303E0 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AD6E25A18011F59008303E0 /* Main_iPhone.storyboard */; };
-		0AD6E26218011F59008303E0 /* EchowavesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD6E26118011F59008303E0 /* EchowavesViewController.m */; };
+		0AD6E26218011F59008303E0 /* WavingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD6E26118011F59008303E0 /* WavingViewController.m */; };
 		0AD6E26418011F59008303E0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AD6E26318011F59008303E0 /* Images.xcassets */; };
 		0AD6E26B18011F59008303E0 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AD6E26A18011F59008303E0 /* XCTest.framework */; };
 		0AD6E26C18011F59008303E0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AD6E24818011F59008303E0 /* Foundation.framework */; };
@@ -53,6 +59,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A28E5D51889B87B00B7BDDB /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
+		0A28E5D61889B87B00B7BDDB /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		0A28E5D81889B8B300B7BDDB /* EchoWaveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EchoWaveViewController.h; sourceTree = "<group>"; };
+		0A28E5D91889B8B300B7BDDB /* EchoWaveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EchoWaveViewController.m; sourceTree = "<group>"; };
+		0A28E5DB1889B8C400B7BDDB /* BlendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlendsViewController.h; sourceTree = "<group>"; };
+		0A28E5DC1889B8C400B7BDDB /* BlendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlendsViewController.m; sourceTree = "<group>"; };
+		0A28E5DF1889C5EF00B7BDDB /* EWWave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWWave.h; sourceTree = "<group>"; };
+		0A28E5E01889C5EF00B7BDDB /* EWWave.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWWave.m; sourceTree = "<group>"; };
+		0A28E5E21889C60400B7BDDB /* EWImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWImage.h; sourceTree = "<group>"; };
+		0A28E5E31889C60400B7BDDB /* EWImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWImage.m; sourceTree = "<group>"; };
+		0A28E5E51889C61500B7BDDB /* EWBlend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWBlend.h; sourceTree = "<group>"; };
+		0A28E5E61889C61500B7BDDB /* EWBlend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWBlend.m; sourceTree = "<group>"; };
 		0A34C00C18556B4100E085BC /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
 		0A34C00D18556B4100E085BC /* libFlurry_4.3.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.3.0.a; sourceTree = "<group>"; };
 		0A4621591888E29C005CC161 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -102,8 +120,8 @@
 		0AD6E25718011F59008303E0 /* EchowavesAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EchowavesAppDelegate.h; sourceTree = "<group>"; };
 		0AD6E25818011F59008303E0 /* EchowavesAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EchowavesAppDelegate.m; sourceTree = "<group>"; };
 		0AD6E25B18011F59008303E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		0AD6E26018011F59008303E0 /* EchowavesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EchowavesViewController.h; sourceTree = "<group>"; };
-		0AD6E26118011F59008303E0 /* EchowavesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EchowavesViewController.m; sourceTree = "<group>"; };
+		0AD6E26018011F59008303E0 /* WavingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WavingViewController.h; sourceTree = "<group>"; };
+		0AD6E26118011F59008303E0 /* WavingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WavingViewController.m; sourceTree = "<group>"; };
 		0AD6E26318011F59008303E0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0AD6E26918011F59008303E0 /* EchowavesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EchowavesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AD6E26A18011F59008303E0 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -139,6 +157,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A28E5DE1889C5C000B7BDDB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0A28E5DF1889C5EF00B7BDDB /* EWWave.h */,
+				0A28E5E01889C5EF00B7BDDB /* EWWave.m */,
+				0A28E5E21889C60400B7BDDB /* EWImage.h */,
+				0A28E5E31889C60400B7BDDB /* EWImage.m */,
+				0A28E5E51889C61500B7BDDB /* EWBlend.h */,
+				0A28E5E61889C61500B7BDDB /* EWBlend.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		0A34C00B18556B4100E085BC /* Flurry */ = {
 			isa = PBXGroup;
 			children = (
@@ -258,11 +289,18 @@
 		0AD6E24E18011F59008303E0 /* Echowaves */ = {
 			isa = PBXGroup;
 			children = (
+				0A28E5DE1889C5C000B7BDDB /* Model */,
 				0A34C00F18556B4800E085BC /* Resources */,
 				0A5ADAA01888C07900D492BC /* iPad */,
 				0AD6E25A18011F59008303E0 /* Main_iPhone.storyboard */,
-				0AD6E26018011F59008303E0 /* EchowavesViewController.h */,
-				0AD6E26118011F59008303E0 /* EchowavesViewController.m */,
+				0A28E5D81889B8B300B7BDDB /* EchoWaveViewController.h */,
+				0A28E5D91889B8B300B7BDDB /* EchoWaveViewController.m */,
+				0A28E5DB1889B8C400B7BDDB /* BlendsViewController.h */,
+				0A28E5DC1889B8C400B7BDDB /* BlendsViewController.m */,
+				0A28E5D51889B87B00B7BDDB /* SignUpViewController.h */,
+				0A28E5D61889B87B00B7BDDB /* SignUpViewController.m */,
+				0AD6E26018011F59008303E0 /* WavingViewController.h */,
+				0AD6E26118011F59008303E0 /* WavingViewController.m */,
 				0AD6E26318011F59008303E0 /* Images.xcassets */,
 				0AD6E24F18011F59008303E0 /* Supporting Files */,
 			);
@@ -408,20 +446,26 @@
 			files = (
 				0A46217C1888E29C005CC161 /* AFHTTPRequestOperation.m in Sources */,
 				0A4621891888E29C005CC161 /* UIImageView+AFNetworking.m in Sources */,
-				0AD6E26218011F59008303E0 /* EchowavesViewController.m in Sources */,
+				0A28E5DD1889B8C400B7BDDB /* BlendsViewController.m in Sources */,
+				0AD6E26218011F59008303E0 /* WavingViewController.m in Sources */,
 				0A46217D1888E29C005CC161 /* AFHTTPRequestOperationManager.m in Sources */,
 				0A46218A1888E29C005CC161 /* UIProgressView+AFNetworking.m in Sources */,
 				0A46217F1888E29C005CC161 /* AFNetworkReachabilityManager.m in Sources */,
+				0A28E5DA1889B8B300B7BDDB /* EchoWaveViewController.m in Sources */,
+				0A28E5D71889B87B00B7BDDB /* SignUpViewController.m in Sources */,
 				0A4621831888E29C005CC161 /* AFURLResponseSerialization.m in Sources */,
 				0A4621811888E29C005CC161 /* AFURLConnectionOperation.m in Sources */,
 				0A4621881888E29C005CC161 /* UIButton+AFNetworking.m in Sources */,
+				0A28E5E11889C5EF00B7BDDB /* EWWave.m in Sources */,
 				0A4621861888E29C005CC161 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				0A4621801888E29C005CC161 /* AFSecurityPolicy.m in Sources */,
 				0A46217E1888E29C005CC161 /* AFHTTPSessionManager.m in Sources */,
 				0A4621871888E29C005CC161 /* UIAlertView+AFNetworking.m in Sources */,
 				0A4621821888E29C005CC161 /* AFURLRequestSerialization.m in Sources */,
 				0A4621851888E29C005CC161 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				0A28E5E41889C60400B7BDDB /* EWImage.m in Sources */,
 				0A46218B1888E29C005CC161 /* UIWebView+AFNetworking.m in Sources */,
+				0A28E5E71889C61500B7BDDB /* EWBlend.m in Sources */,
 				0A4621841888E29C005CC161 /* AFURLSessionManager.m in Sources */,
 				0AD6E25918011F59008303E0 /* EchowavesAppDelegate.m in Sources */,
 				0AD6E25518011F59008303E0 /* main.m in Sources */,

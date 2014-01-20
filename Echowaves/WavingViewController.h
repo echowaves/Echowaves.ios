@@ -9,7 +9,7 @@
 //#import <UIKit/UIKit.h>
 #import "AFHTTPRequestOperationManager.h"
 
-@interface EchowavesViewController : UIViewController
+@interface WavingViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UITextField *waveName;
 @property (strong, nonatomic) IBOutlet UITextField *wavePassword;
