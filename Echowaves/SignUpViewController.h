@@ -10,10 +10,12 @@
 
 @interface SignUpViewController : UIViewController
 
-- (void) signInWith:(NSString*)waveName andPassowrd:(NSString*)password;
-- (void) create:(NSString*)waveName withPassowrd:(NSString*)password;
+@property (strong, nonatomic) IBOutlet UITextField *waveName;
+@property (strong, nonatomic) IBOutlet UITextField *wavePassowrd;
+@property (strong, nonatomic) IBOutlet UITextField *confirmPassword;
 
-@property (nonatomic, strong) UITextField *waveName;
-@property (nonatomic, strong) UITextField *wavePassword;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+
++ (NSURLProtectionSpace*) echowavesProtectionSpace;
 
 @end

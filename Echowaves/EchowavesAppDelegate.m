@@ -8,23 +8,41 @@
 #import "Flurry.h"
 
 #import "EchowavesAppDelegate.h"
-#import "WavingViewController.h"
+#import "SignUpViewController.h"
 
 @implementation EchowavesAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-//    // Override point for customization after application launch.
-//    [Flurry setCrashReportingEnabled:YES];
-//    [Flurry setSessionReportsOnCloseEnabled:NO];
-//    [Flurry setSessionReportsOnPauseEnabled:NO];
-//    [Flurry setBackgroundSessionEnabled:YES];
+    // Override point for customization after application launch.
+    [Flurry setCrashReportingEnabled:YES];
+    [Flurry setSessionReportsOnCloseEnabled:NO];
+    [Flurry setSessionReportsOnPauseEnabled:NO];
+    [Flurry setBackgroundSessionEnabled:YES];
+
+    //note: iOS only allows one crash reporting tool per app; if using another, set to: NO
+    [Flurry startSession:@"77TXPC3GDBGYX4NM8WNN"];
+
+    
+    
+    //check if credentials are already stored, then show it in the tune in fields
+//    SignUpViewController* signUpViewController = (SignUpViewController*)  self.window.rootViewController.childViewControllers.firstObject;
 //    
-//    //note: iOS only allows one crash reporting tool per app; if using another, set to: NO
-//    [Flurry startSession:@"77TXPC3GDBGYX4NM8WNN"];
 //    
-//    EchowavesViewController* echowavesViewController = (EchowavesViewController*)  self.window.rootViewController;
-//
+//    NSURLCredential *credential;
+//    NSDictionary *credentials;
+//    
+//    credentials = [[NSURLCredentialStorage sharedCredentialStorage] credentialsForProtectionSpace:SignUpViewController.echowavesProtectionSpace];
+//    credential = [credentials.objectEnumerator nextObject];
+//    if(credential) {
+//        NSLog(@"User %@ already connected with password %@", credential.user, credential.password);
+//        signUpViewController.waveName.text = credential.user;
+//        signUpViewController.wavePassowrd.text = credential.password;
+//    }
+    
+
+    
+    
 //    echowavesViewController.networkQueue = [[NSOperationQueue alloc] init];
 //    echowavesViewController.networkQueue.name = @"com.echowaves.app.networkqueue";
 //    
@@ -90,7 +108,9 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-//    NSLog(@"++++++++++++++++++called applicationDidBecomeActive");
+    NSLog(@"++++++++++++++++++called applicationDidBecomeActive");
+    
+    
 //    EchowavesViewController* echowavesViewController = (EchowavesViewController*)  self.window.rootViewController;
 //    echowavesViewController.aTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
 //                                                                      target:self
