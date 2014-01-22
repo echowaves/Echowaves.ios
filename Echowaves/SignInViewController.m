@@ -15,4 +15,23 @@
 @implementation SignInViewController
 
 
+- (IBAction)tuneIn:(UIButton *) sender {
+    
+    NSURLCredential *credential;
+    credential = [NSURLCredential credentialWithUser:[self.waveName text] password:[self.wavePassowrd text] persistence:NSURLCredentialPersistencePermanent];
+    [[NSURLCredentialStorage sharedCredentialStorage] setCredential:credential forProtectionSpace:SignInViewController.echowavesProtectionSpace];
+    
+}
+
++ (NSURLProtectionSpace*) echowavesProtectionSpace {
+    NSURL *url = [NSURL URLWithString:@"http://echowaves.com"];
+    NSURLProtectionSpace *protSpace = [[NSURLProtectionSpace alloc] initWithHost:url.host
+                                                                            port:[url.port integerValue]
+                                                                        protocol:url.scheme
+                                                                           realm:nil
+                                                            authenticationMethod:NSURLAuthenticationMethodHTMLForm];
+    return protSpace;
+    
+}
+
 @end

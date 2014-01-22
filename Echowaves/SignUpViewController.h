@@ -16,6 +16,5 @@
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
-+ (NSURLProtectionSpace*) echowavesProtectionSpace;
 
 @end

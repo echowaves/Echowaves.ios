@@ -10,4 +10,9 @@
 
 @interface SignInViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UITextField *waveName;
+@property (strong, nonatomic) IBOutlet UITextField *wavePassowrd;
+
++ (NSURLProtectionSpace*) echowavesProtectionSpace;
+
 @end
