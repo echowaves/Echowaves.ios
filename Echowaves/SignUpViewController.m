@@ -18,5 +18,10 @@
 - (IBAction)createWave:(UIButton *)sender {
 }
 
+- (IBAction)backToHomeViewController:(UIStoryboardSegue *)segue
+{
+    NSLog(@"from segue id: %@", segue.identifier);
+}
+
 
 @end

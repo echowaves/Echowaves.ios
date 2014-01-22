@@ -113,8 +113,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="TuneIn" id="xpG-MP-7KL">
-                        <barButtonItem key="backBarButtonItem" title="TuneOut" id="tMQ-lQ-d6k"/>
+                    <navigationItem key="navigationItem" title="TuneIn" id="kkb-YB-gdW">
+                        <barButtonItem key="backBarButtonItem" title="TuneOut" id="tbY-O4-A9V"/>
                     </navigationItem>
                     <connections>
                         <outlet property="confirmPassword" destination="5OS-z3-l2j" id="flJ-eD-j3f"/>
@@ -176,7 +176,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Create new Wave" id="JmM-i8-viC"/>
+                    <navigationItem key="navigationItem" title="Create new Wave" id="JmM-i8-viC">
+                        <barButtonItem key="backBarButtonItem" title="TuneOut" id="a6j-xL-fhK"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jFf-um-F7X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -310,6 +312,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="h0z-up-Au7"/>
+        <segue reference="AnV-QM-P86"/>
     </inferredMetricsTieBreakers>
 </document>
