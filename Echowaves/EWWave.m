@@ -22,12 +22,16 @@
 
 
 + (void) storeCredentialForWaveName:(NSString *)waveName withPassword:(NSString *)wavePassword {    NSLog(@"storing credentials %@ : %@", waveName, wavePassword);
-    NSURLCredential *credential;
     NSDictionary *credentials;
     credentials = [[NSURLCredentialStorage sharedCredentialStorage] credentialsForProtectionSpace:EWWave.echowavesProtectionSpace];
-    //remove credential
-    credential = [credentials.objectEnumerator nextObject];
-    [[NSURLCredentialStorage sharedCredentialStorage] removeCredential:credential forProtectionSpace:EWWave.echowavesProtectionSpace];
+    
+    NSURLCredential *credential;
+    NSLog(@"there are %d credentials", credentials.count);
+    //remove all credentials 
+    for(NSString* credentialKey in credentials) {
+        credential = [credentials objectForKey:credentialKey];
+        [[NSURLCredentialStorage sharedCredentialStorage] removeCredential:credential forProtectionSpace:EWWave.echowavesProtectionSpace];
+    }
     //store new credential
     credential = [NSURLCredential credentialWithUser:waveName password:wavePassword persistence:NSURLCredentialPersistencePermanent];
     [[NSURLCredentialStorage sharedCredentialStorage] setCredential:credential forProtectionSpace:EWWave.echowavesProtectionSpace];
