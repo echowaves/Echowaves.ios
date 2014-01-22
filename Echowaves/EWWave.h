@@ -10,6 +10,7 @@
 
 @interface EWWave : NSObject
 
+
 + (NSURLProtectionSpace*) echowavesProtectionSpace;
 + (void) storeCredentialForWaveName:(NSString *)waveName withPassword:(NSString *)wavePassword;
 + (NSURLCredential*) getStoredCredential;

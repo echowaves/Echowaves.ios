@@ -14,8 +14,6 @@
 @end
 
 @implementation WavingViewController
-static NSString *host = @"http://echowaves.com";
-//static NSString *host = @"http://localhost:3000";
 
 - (IBAction)startWaving:(UIButton *)sender {
     if ([self isWaving] == false) {
@@ -39,7 +37,7 @@ static NSString *host = @"http://echowaves.com";
     
     //wipe out cookies first
     NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-    NSArray* cookies = [ cookieStorage cookiesForURL:[NSURL URLWithString:host]];
+    NSArray* cookies = [ cookieStorage cookiesForURL:[NSURL URLWithString:EWHost]];
     for (NSHTTPCookie* cookie in cookies) {
         [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
     }
@@ -54,13 +52,13 @@ static NSString *host = @"http://echowaves.com";
     NSDictionary *parameters = @{@"name": _waveName.text,
                                  @"pass": _wavePassword.text};
     
-    [manager POST:[NSString stringWithFormat:@"%@/login", host] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:[NSString stringWithFormat:@"%@/login", EWHost] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //        NSLog(@"response: %@", responseObject);
         NSLog(@"user name/password found");
         NSLog(@"wave name %@ ", _waveName.text);
         
         //try to retrieve a cookie
-        NSArray* cookies = [ cookieStorage cookiesForURL:[NSURL URLWithString:host]];
+        NSArray* cookies = [ cookieStorage cookiesForURL:[NSURL URLWithString:EWHost]];
         if(cookies.count >0) {// this means we are successfully signed in and can start posting images
             [self setWaving:true];
             [_appStatus setText:[NSString stringWithFormat:@"Now Waving ..."]];
@@ -162,7 +160,7 @@ static NSString *host = @"http://echowaves.com";
                     NSString *dateString = [formatter stringFromDate:currentAssetDateTime];
                     
                     
-                    NSURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:[NSString stringWithFormat:@"%@/upload", host] parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData){
+                    NSURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:[NSString stringWithFormat:@"%@/upload", EWHost] parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData){
                         [formData appendPartWithFileData:webUploadData name:@"file" fileName:[NSString stringWithFormat:@"%@.jpg", dateString] mimeType:@"image/jpeg"];
                     }];
                     
