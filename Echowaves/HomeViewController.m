@@ -14,5 +14,10 @@
 
 @implementation HomeViewController
 
+- (IBAction)backToHomeViewController:(UIStoryboardSegue *)segue
+{
+    NSLog(@"from segue id: %@", segue.identifier);
+}
+
 
 @end
