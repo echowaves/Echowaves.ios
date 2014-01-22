@@ -65,7 +65,6 @@
         <!--Sign In View Controller - TuneIn-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
                 <viewController id="vXZ-lx-hvc" customClass="SignInViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MOQ-Qm-GUA"/>
@@ -75,18 +74,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="wave name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cm0-VF-O8n">
-                                <rect key="frame" x="20" y="81" width="280" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="wave password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="87F-Vz-knN">
-                                <rect key="frame" x="20" y="119" width="280" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                            </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0rK-ee-NN5">
                                 <rect key="frame" x="20" y="166" width="280" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -107,16 +94,28 @@
                                     <segue destination="4Wa-qa-6Wy" kind="push" identifier="TuneIn" id="AnV-QM-P86"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="wave password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LhM-EG-VTk">
+                                <rect key="frame" x="20" y="128" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="wave name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qm2-iU-b8u">
+                                <rect key="frame" x="20" y="90" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="TuneIn" id="kkb-YB-gdW"/>
                     <connections>
-                        <outlet property="confirmPassword" destination="5OS-z3-l2j" id="flJ-eD-j3f"/>
-                        <outlet property="waveName" destination="VSM-hW-9JI" id="t1e-fL-DIs"/>
-                        <outlet property="wavePassowrd" destination="9Tw-CD-b0R" id="Fco-f6-nB1"/>
+                        <outlet property="waveName" destination="Qm2-iU-b8u" id="aW2-uP-bPi"/>
+                        <outlet property="wavePassword" destination="LhM-EG-VTk" id="wX2-kX-4OR"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="531" y="-370"/>
         </scene>
@@ -146,6 +145,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="createWave:" destination="wWl-ta-JWX" eventType="touchUpInside" id="oyq-Rp-OKj"/>
                                     <action selector="createWave:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="rMZ-Jj-VTV"/>
                                     <segue destination="4Wa-qa-6Wy" kind="push" identifier="CreateWave" id="h0z-up-Au7"/>
                                 </connections>
@@ -172,6 +172,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Create new Wave" id="JmM-i8-viC"/>
+                    <connections>
+                        <outlet property="confirmPassword" destination="5OS-z3-l2j" id="7hK-se-3Su"/>
+                        <outlet property="waveName" destination="VSM-hW-9JI" id="w3F-jA-GXa"/>
+                        <outlet property="wavePassword" destination="9Tw-CD-b0R" id="v4I-1G-tJe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jFf-um-F7X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -312,6 +317,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="h0z-up-Au7"/>
+        <segue reference="AnV-QM-P86"/>
     </inferredMetricsTieBreakers>
 </document>

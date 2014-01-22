@@ -25,24 +25,6 @@
 
     
     
-    //check if credentials are already stored, then show it in the tune in fields
-//    SignUpViewController* signUpViewController = (SignUpViewController*)  self.window.rootViewController.childViewControllers.firstObject;
-//    
-//    
-//    NSURLCredential *credential;
-//    NSDictionary *credentials;
-//    
-//    credentials = [[NSURLCredentialStorage sharedCredentialStorage] credentialsForProtectionSpace:SignUpViewController.echowavesProtectionSpace];
-//    credential = [credentials.objectEnumerator nextObject];
-//    if(credential) {
-//        NSLog(@"User %@ already connected with password %@", credential.user, credential.password);
-//        signUpViewController.waveName.text = credential.user;
-//        signUpViewController.wavePassowrd.text = credential.password;
-//    }
-    
-
-    
-    
 //    echowavesViewController.networkQueue = [[NSOperationQueue alloc] init];
 //    echowavesViewController.networkQueue.name = @"com.echowaves.app.networkqueue";
 //    

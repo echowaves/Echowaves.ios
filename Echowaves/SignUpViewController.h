@@ -11,10 +11,7 @@
 @interface SignUpViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UITextField *waveName;
-@property (strong, nonatomic) IBOutlet UITextField *wavePassowrd;
+@property (strong, nonatomic) IBOutlet UITextField *wavePassword;
 @property (strong, nonatomic) IBOutlet UITextField *confirmPassword;
-
-@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
-
 
 @end

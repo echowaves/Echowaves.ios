@@ -7,6 +7,7 @@
 //
 
 #import "SignInViewController.h"
+#import "EWWave.h"
 
 @interface SignInViewController ()
 
@@ -16,22 +17,20 @@
 
 
 - (IBAction)tuneIn:(UIButton *) sender {
-    
-    NSURLCredential *credential;
-    credential = [NSURLCredential credentialWithUser:[self.waveName text] password:[self.wavePassowrd text] persistence:NSURLCredentialPersistencePermanent];
-    [[NSURLCredentialStorage sharedCredentialStorage] setCredential:credential forProtectionSpace:SignInViewController.echowavesProtectionSpace];
-    
+
+    [EWWave storeCredentialForWaveName:self.waveName.text withPassword:self.wavePassword.text];
+
 }
 
-+ (NSURLProtectionSpace*) echowavesProtectionSpace {
-    NSURL *url = [NSURL URLWithString:@"http://echowaves.com"];
-    NSURLProtectionSpace *protSpace = [[NSURLProtectionSpace alloc] initWithHost:url.host
-                                                                            port:[url.port integerValue]
-                                                                        protocol:url.scheme
-                                                                           realm:nil
-                                                            authenticationMethod:NSURLAuthenticationMethodHTMLForm];
-    return protSpace;
+- (void)viewDidLoad {
+    [super viewDidLoad];
     
+    NSURLCredential *credential = [EWWave getStoredCredential];
+    if(credential) {
+        NSLog(@"User %@ already connected with password %@", credential.user, credential.password);
+        self.waveName.text = credential.user;
+        self.wavePassword.text = credential.password;
+    }
 }
 
 @end
