@@ -15,7 +15,7 @@
     #import <Foundation/Foundation.h>
 #endif
 
-#define EWHost @"http://echowaves.com"
-//#define Host @"http://localhost:3000"
+//#define EWHost @"http://echowaves.com"
+#define Host @"http://localhost:3000"
 
 
