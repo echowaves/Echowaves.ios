@@ -7,7 +7,7 @@
 //
 
 #import "HomeViewController.h"
-
+#import "EWWave.h"
 @interface HomeViewController ()
 
 @end
@@ -18,7 +18,9 @@
 - (IBAction)backToHomeViewController:(UIStoryboardSegue *)segue
 {
     NSLog(@"from segue id: %@", segue.identifier);
+    [EWWave tuneOut];
 }
+
 
 
 @end

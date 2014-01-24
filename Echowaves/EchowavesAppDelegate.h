@@ -11,5 +11,5 @@
 #import "EWWave.h"
 
 @interface EchowavesAppDelegate : UIResponder <UIApplicationDelegate>
-
+@property (strong, nonatomic) UIWindow *window;
 @end
