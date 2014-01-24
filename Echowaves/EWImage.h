@@ -7,7 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "EWDataModel.h"
 
-@interface EWImage : NSObject
+//#import "EWWave.h"
+@interface EWImage : EWDataModel
+
+//@property (strong, atomic) EWWave *wave;
 
 @end

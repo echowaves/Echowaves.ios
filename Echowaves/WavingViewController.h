@@ -11,8 +11,6 @@
 
 @interface WavingViewController : UIViewController
 
-@property (strong, nonatomic) IBOutlet UITextField *waveName;
-@property (strong, nonatomic) IBOutlet UITextField *wavePassword;
 @property (strong, nonatomic) IBOutlet UIButton *startButton;
 @property (strong, nonatomic) IBOutlet UILabel *appStatus;
 @property (strong, nonatomic) IBOutlet UILabel *pictruresCount;
@@ -25,7 +23,6 @@
 
 @property (atomic, strong) NSTimer *aTimer;
 
-- (void) tuneIn;
 - (BOOL) checkForNewImages;
 
 

@@ -8,7 +8,6 @@
 #import "Flurry.h"
 
 #import "EchowavesAppDelegate.h"
-#import "SignUpViewController.h"
 
 @implementation EchowavesAppDelegate
 

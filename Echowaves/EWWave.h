@@ -7,13 +7,29 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AFHTTPRequestOperationManager.h"
+#import "EWDataModel.h"
 
-@interface EWWave : NSObject
+@interface EWWave : EWDataModel
+
+@property (strong, nonatomic) NSString *waveName;
 
 
 + (NSURLProtectionSpace*) echowavesProtectionSpace;
 + (void) storeCredentialForWaveName:(NSString *)waveName withPassword:(NSString *)wavePassword;
 + (NSURLCredential*) getStoredCredential;
+
++(void) createWaveWithName:(NSString *)waveName
+               andPassword:(NSString*)wavePassword
+                   success:(void (^)(NSString *waveName))success
+                   failure:(void (^)(NSString *errorMessage))failure;
+
++(void) tuneInWithName:(NSString *)waveName
+           andPassword:(NSString*)wavePassword
+               success:(void (^)(NSString *waveName))success
+               failure:(void (^)(NSString *errorMessage))failure;
+
++(void) tuneOut;
 
 
 @end

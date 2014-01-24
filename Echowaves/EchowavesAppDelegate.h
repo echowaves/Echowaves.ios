@@ -8,8 +8,8 @@
 
 @import UIKit;
 
-@interface EchowavesAppDelegate : UIResponder <UIApplicationDelegate>
+#import "EWWave.h"
 
-@property (strong, nonatomic) UIWindow *window;
+@interface EchowavesAppDelegate : UIResponder <UIApplicationDelegate>
 
 @end

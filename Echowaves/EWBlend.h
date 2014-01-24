@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "EWDataModel.h"
 
-@interface EWBlend : NSObject
+@interface EWBlend : EWDataModel
 
 @end

@@ -18,7 +18,8 @@
 
 - (IBAction)tuneIn:(UIButton *) sender {
 
-    [EWWave storeCredentialForWaveName:self.waveName.text withPassword:self.wavePassword.text];
+
+    
 
 }
 
