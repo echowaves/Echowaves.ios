@@ -22,7 +22,9 @@
     //note: iOS only allows one crash reporting tool per app; if using another, set to: NO
     [Flurry startSession:@"77TXPC3GDBGYX4NM8WNN"];
 
-    
+    // perform authentication, wave/password non blank and exist in the server side, and enter a sending loop
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+
     
 //    echowavesViewController.networkQueue = [[NSOperationQueue alloc] init];
 //    echowavesViewController.networkQueue.name = @"com.echowaves.app.networkqueue";

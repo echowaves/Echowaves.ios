@@ -52,11 +52,52 @@
 
 
 +(void) createWaveWithName:(NSString *)waveName
-               andPassword:(NSString*)wavePassword
+                  password:(NSString*)wavePassword
+           confirmPassword:(NSString*)confirmPassword
                    success:(void (^)(NSString *waveName))success
                    failure:(void (^)(NSString *errorMessage))failure
 {
+    //wipe out cookies first
+    NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    NSArray* cookies = [ cookieStorage cookiesForURL:[NSURL URLWithString:EWHost]];
+    for (NSHTTPCookie* cookie in cookies) {
+        [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
+    }
     
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    // perform authentication, wave/password non blank and exist in the server side, and enter a sending loop
+    
+    //ideally not going to need the following line, if making a request to json service
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSDictionary *parameters = @{@"name": waveName,
+                                 @"pass": wavePassword,
+                                 @"pass1": confirmPassword};
+    
+    [manager POST:[NSString stringWithFormat:@"%@/register.json", EWHost] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        //        NSLog(@"response: %@", responseObject);
+        NSLog(@"+++wave created");
+        NSLog(@"wave name %@ ", waveName);
+        
+        //try to retrieve a cookie
+        NSArray* cookies = [ cookieStorage cookiesForURL:[NSURL URLWithString:EWHost]];
+        if(cookies.count >0) {// this means we are successfully signed in and can start posting images
+            [EWWave storeCredentialForWaveName:waveName withPassword:wavePassword];
+            
+            success(waveName);
+        } else {
+            // a wrong wave, sign in again
+            NSLog(@"Wrong wave or password, try again.");
+            failure(@"Unable to create wave.");
+            
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+        failure(@"Unable to createWave, try again.");
+    }];
+    
+   
 }
 
 
@@ -73,9 +114,6 @@
     }
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    
-    // perform authentication, wave/password non blank and exist in the server side, and enter a sending loop
-    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     
     //ideally not going to need the following line, if making a request to json service
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];

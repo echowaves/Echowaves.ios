@@ -20,7 +20,8 @@
 + (NSURLCredential*) getStoredCredential;
 
 +(void) createWaveWithName:(NSString *)waveName
-               andPassword:(NSString*)wavePassword
+                  password:(NSString*)wavePassword
+           confirmPassword:(NSString*)confirmPassword
                    success:(void (^)(NSString *waveName))success
                    failure:(void (^)(NSString *errorMessage))failure;
 

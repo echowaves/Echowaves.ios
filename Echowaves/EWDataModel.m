@@ -23,13 +23,14 @@ static UIAlertView *loadingIndicator;
 //        [loadingIndicator addSubview:progress];
 //        [progress startAnimating];
 //    }
-    
+
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     [loadingIndicator show];
-    
 }
 
 + (void)hideLoadingIndicator:(id)sender {
     [loadingIndicator dismissWithClickedButtonIndex:0 animated:YES];
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
 + (BOOL)isLoadingIndicatorShowing {
