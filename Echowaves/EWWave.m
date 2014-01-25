@@ -130,7 +130,19 @@
 }
 
 +(void) tuneOut {
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
+    //ideally not going to need the following line, if making a request to json service
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    [manager POST:[NSString stringWithFormat:@"%@/logout.json", EWHost] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"+++TunedOut");
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"+++Error tuninOut");
+    }];
+    
+
 }
 
 
