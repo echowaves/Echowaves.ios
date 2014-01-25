@@ -78,19 +78,11 @@
     
     [manager POST:[NSString stringWithFormat:@"%@/register.json", EWHost] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-        //try to retrieve a cookie
-        NSArray* cookies = [ cookieStorage cookiesForURL:[NSURL URLWithString:EWHost]];
-        if(cookies.count >0) {// this means we are successfully signed in and can start posting images
-            NSLog(@"+++wave created");
-            NSLog(@"wave name %@ ", waveName);
-
-            [EWWave storeCredentialForWaveName:waveName withPassword:wavePassword];
-            success(waveName);
-        } else {
-            // a wrong wave, sign in again
-            NSLog(@"Unable to create wave. %@", responseObject);
-            failure(@"Unable to create wave.");
-        }
+        NSLog(@"+++wave created");
+        NSLog(@"wave name %@ ", waveName);
+        
+        [EWWave storeCredentialForWaveName:waveName withPassword:wavePassword];
+        success(waveName);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
         NSLog(@"Response: %@", [operation.responseObject objectForKey:@"error"]);
@@ -116,33 +108,24 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
     //ideally not going to need the following line, if making a request to json service
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
     NSDictionary *parameters = @{@"name": waveName,
                                  @"pass": wavePassword};
     
-    [manager POST:[NSString stringWithFormat:@"%@/login", EWHost] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:[NSString stringWithFormat:@"%@/login.json", EWHost] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //        NSLog(@"response: %@", responseObject);
         NSLog(@"user name/password found");
         NSLog(@"wave name %@ ", waveName);
         
-        //try to retrieve a cookie
-        NSArray* cookies = [ cookieStorage cookiesForURL:[NSURL URLWithString:EWHost]];
-        if(cookies.count >0) {// this means we are successfully signed in and can start posting images
-            [EWWave storeCredentialForWaveName:waveName withPassword:wavePassword];
-            
-            success(waveName);
-        } else {
-            // a wrong wave, sign in again
-            NSLog(@"Wrong wave or password, try again.");
-            failure(@"Wrong wave or password, try again.");
-            
-        }
+        [EWWave storeCredentialForWaveName:waveName withPassword:wavePassword];
+        success(waveName);
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
-        failure(@"Unable to tuneIn, try again.");
+        failure([NSString stringWithFormat:@"Unable to tuneIn. %@", [operation.responseObject objectForKey:@"error"]]);
     }];
-    
 
 }
 
