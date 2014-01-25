@@ -214,7 +214,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="EchoWave" id="qTv-cn-Zs7"/>
+                    <tabBarItem key="tabBarItem" title="EchoWave" image="echowave" id="qTv-cn-Zs7"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bdt-PK-ACm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -280,7 +280,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Blends" id="ZBo-Ng-WgS"/>
+                    <tabBarItem key="tabBarItem" title="Blends" image="blends" id="ZBo-Ng-WgS"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H5c-jD-Jqd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -308,7 +308,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Waving" id="iP7-VR-HlN"/>
+                    <tabBarItem key="tabBarItem" title="Waving" image="waving" id="iP7-VR-HlN"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vlj-IN-e4q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -334,7 +334,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="blends" width="32" height="32"/>
+        <image name="echowave" width="32" height="32"/>
         <image name="under-construction-template" width="1233" height="1076"/>
+        <image name="waving" width="32" height="32"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
