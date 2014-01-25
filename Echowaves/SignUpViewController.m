@@ -17,7 +17,7 @@
 
 
 - (IBAction)createWave:(UIButton *)sender {
-    NSLog(@"-------calling tuneIn");
+    NSLog(@"-------calling createWave");
     [EWWave showLoadingIndicator:self];
     [EWWave createWaveWithName:self.waveName.text
                       password:self.wavePassword.text

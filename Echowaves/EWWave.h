@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "AFHTTPRequestOperationManager.h"
+
 #import "EWDataModel.h"
 
 @interface EWWave : EWDataModel

@@ -69,34 +69,34 @@
     // perform authentication, wave/password non blank and exist in the server side, and enter a sending loop
     
     //ideally not going to need the following line, if making a request to json service
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+
     NSDictionary *parameters = @{@"name": waveName,
                                  @"pass": wavePassword,
                                  @"pass1": confirmPassword};
     
     [manager POST:[NSString stringWithFormat:@"%@/register.json", EWHost] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        //        NSLog(@"response: %@", responseObject);
-        NSLog(@"+++wave created");
-        NSLog(@"wave name %@ ", waveName);
         
         //try to retrieve a cookie
         NSArray* cookies = [ cookieStorage cookiesForURL:[NSURL URLWithString:EWHost]];
         if(cookies.count >0) {// this means we are successfully signed in and can start posting images
+            NSLog(@"+++wave created");
+            NSLog(@"wave name %@ ", waveName);
+
             [EWWave storeCredentialForWaveName:waveName withPassword:wavePassword];
-            
             success(waveName);
         } else {
             // a wrong wave, sign in again
-            NSLog(@"Wrong wave or password, try again.");
+            NSLog(@"Unable to create wave. %@", responseObject);
             failure(@"Unable to create wave.");
-            
         }
-        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
-        failure(@"Unable to createWave, try again.");
+        NSLog(@"Response: %@", [operation.responseObject objectForKey:@"error"]);
+        failure([NSString stringWithFormat:@"Unable to createWave. %@", [operation.responseObject objectForKey:@"error"]]);
+        
     }];
-    
    
 }
 
