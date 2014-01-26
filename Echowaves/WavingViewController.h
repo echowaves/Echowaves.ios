@@ -11,11 +11,9 @@
 
 @interface WavingViewController : UIViewController
 
-@property (strong, nonatomic) IBOutlet UIButton *startButton;
-@property (strong, nonatomic) IBOutlet UILabel *appStatus;
-@property (strong, nonatomic) IBOutlet UILabel *pictruresCount;
+@property (strong, nonatomic) IBOutlet UILabel *imagesToUpload;
 
-@property (atomic, assign, getter=isWaving) BOOL waving;
+@property (strong, nonatomic) IBOutlet UISwitch *waving;
 
 @property (strong, atomic) NSDate *lastCheckTime;
 
@@ -23,7 +21,6 @@
 
 @property (atomic, strong) NSTimer *aTimer;
 
-- (BOOL) checkForNewImages;
 
 
 @end

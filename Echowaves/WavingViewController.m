@@ -7,6 +7,7 @@
 //
 
 #import "WavingViewController.h"
+#import "EchowavesAppDelegate.h"
 @import AssetsLibrary;
 
 @interface WavingViewController ()
@@ -15,20 +16,20 @@
 
 @implementation WavingViewController
 
-- (IBAction)startWaving:(UIButton *)sender {
-    if ([self isWaving] == false) {
-        if(_lastCheckTime == nil) {
-            _lastCheckTime = [NSDate date];
-        }
-        //let's remember when we started the app, from now on -- send all the pictures
-    } else { // not waiving
-        //stop waiving here
-        [_appStatus setText:[NSString stringWithFormat:@"Waving Stopped."]];
-        _lastCheckTime = nil;
-    }
-    ///////////////////////////////////////////////////////////////////////////////////
-}
-
+//- (IBAction)startWaving:(UIButton *)sender {
+//    if ([self isWaving] == false) {
+//        if(_lastCheckTime == nil) {
+//            _lastCheckTime = [NSDate date];
+//        }
+//        //let's remember when we started the app, from now on -- send all the pictures
+//    } else { // not waiving
+//        //stop waiving here
+//        [_appStatus setText:[NSString stringWithFormat:@"Waving Stopped."]];
+//        _lastCheckTime = nil;
+//    }
+//    ///////////////////////////////////////////////////////////////////////////////////
+//}
+//
 - (BOOL) checkForNewImages
 {
 //    NSLog(@"----------------- Checking images");    
@@ -124,10 +125,10 @@
     
     NSLog(@"----------------- Posting images");
     if([[AFNetworkReachabilityManager sharedManager] isReachable]) {
-        [_appStatus setText:[NSString stringWithFormat:@"Uploading pictures..."]];
+//        [_appStatus setText:[NSString stringWithFormat:@"Uploading pictures..."]];
         
         for(AFHTTPRequestOperation *operation in imagesToPostOperations) {
-            [self.networkQueue addOperation:operation];
+//            [self.networkQueue addOperation:operation];
         }
         
         
@@ -139,5 +140,14 @@
     
     return YES;
 }
+
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    NSLog(@"#### WavingViewController viewDidLoad ");
+    EchowavesAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    appDelegate.wavingViewController = self;
+}
+
 
 @end

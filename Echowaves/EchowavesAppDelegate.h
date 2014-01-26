@@ -9,9 +9,13 @@
 @import UIKit;
 
 #import "EWWave.h"
+#import "WavingViewController.h"
 
 @interface EchowavesAppDelegate : UIResponder <UIApplicationDelegate>
+
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) WavingViewController *wavingViewController;
+
 @end
 
 

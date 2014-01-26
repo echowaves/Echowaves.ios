@@ -5,9 +5,9 @@
 //  Created by Dmitry on 10/6/13.
 //  Copyright (c) 2013 Echowaves. All rights reserved.
 //
-#import "Flurry.h"
 
 #import "EchowavesAppDelegate.h"
+#import "Flurry.h"
 
 @implementation EchowavesAppDelegate
 
@@ -87,11 +87,16 @@
 //    EchowavesViewController* echowavesViewController = (EchowavesViewController*)  self.window.rootViewController;
 //    [echowavesViewController.aTimer fire];
 //    echowavesViewController.aTimer = nil;
+    
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     NSLog(@"++++++++++++++++++called applicationDidBecomeActive");
+    
+    [self.wavingViewController.tabBarController setSelectedIndex:0]; // make first tab active, so we can always see what's uploading when came back to the app.
+    self.wavingViewController.imagesToUpload.text = [NSString stringWithFormat:@"%d",(self.wavingViewController.imagesToUpload.text.intValue + 1)];
+    
     
     
 //    EchowavesViewController* echowavesViewController = (EchowavesViewController*)  self.window.rootViewController;
