@@ -220,11 +220,11 @@
             </objects>
             <point key="canvasLocation" x="1709" y="-40"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Navigation Tab Bar View Controller - Wave-->
         <scene sceneID="ssY-qE-FTr">
             <objects>
-                <tabBarController definesPresentationContext="YES" id="4Wa-qa-6Wy" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="70E-4t-zqk">
+                <tabBarController definesPresentationContext="YES" id="4Wa-qa-6Wy" customClass="NavigationTabBarViewController" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" title="Wave" id="70E-4t-zqk">
                         <barButtonItem key="leftBarButtonItem" title="TuneOut" id="eXP-6K-HVp">
                             <connections>
                                 <segue destination="Ua8-6L-qdg" kind="unwind" unwindAction="backToHomeViewController:" id="qKP-6b-qsN"/>
@@ -238,6 +238,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <outlet property="WaveName" destination="70E-4t-zqk" id="Qso-H0-1th"/>
+                        <outlet property="waveName" destination="70E-4t-zqk" id="a5A-q0-YrB"/>
                         <segue destination="8lZ-lH-xhR" kind="relationship" relationship="viewControllers" id="OzU-Ir-F5h"/>
                         <segue destination="Wr0-jG-xAd" kind="relationship" relationship="viewControllers" id="cTz-Q0-fWs"/>
                         <segue destination="Edp-kY-vOe" kind="relationship" relationship="viewControllers" id="2TA-f1-FAK"/>
@@ -246,7 +248,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Xi-DV-OqN" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Ua8-6L-qdg" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1081" y="-40"/>
+            <point key="canvasLocation" x="1070" y="-40"/>
         </scene>
         <!--Blends View Controller - Blends-->
         <scene sceneID="3r8-nV-WDX">
@@ -298,13 +300,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Waving" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdb-FH-TQC">
-                                <rect key="frame" x="20" y="111" width="57" height="21"/>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" onImage="waving" offImage="echowave" translatesAutoresizingMaskIntoConstraints="NO" id="uDr-ak-c3B">
+                                <rect key="frame" x="251" y="77" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <accessibility key="accessibilityConfiguration" label="Wave is currently">
+                                    <accessibilityTraits key="traits" none="YES" button="YES" playsSound="YES"/>
+                                    <bool key="isElement" value="NO"/>
+                                </accessibility>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -345,6 +348,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="AnV-QM-P86"/>
+        <segue reference="h0z-up-Au7"/>
     </inferredMetricsTieBreakers>
 </document>

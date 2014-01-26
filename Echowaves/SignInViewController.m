@@ -8,6 +8,7 @@
 
 #import "SignInViewController.h"
 #import "EWWave.h"
+#import "NavigationTabBarViewController.h"
 
 @interface SignInViewController ()
 
@@ -38,20 +39,25 @@
     
     NSURLCredential *credential = [EWWave getStoredCredential];
     if(credential) {
-        NSLog(@"User %@ already connected with password %@", credential.user, credential.password);
+        NSLog(@"User %@ already connected with password.", credential.user);
         self.waveName.text = credential.user;
         self.wavePassword.text = credential.password;
     }
 }
 
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-//{
-//    // Make sure your segue name in storyboard is the same as this line
-//    if ([[segue identifier] isEqualToString:@"TuneIn"])
-//    {
-//        NSLog(@"----calling prepareForSegue TuneIn");
-//    }
-//}
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSLog(@"----------------seguiing");
+    NavigationTabBarViewController *navigationTabBarViewController = segue.destinationViewController;
+
+    // Make sure your segue name in storyboard is the same as this line
+    if ([[segue identifier] isEqualToString:@"TuneIn"])
+    {
+        NSLog(@"----calling prepareForSegue TuneIn");
+        navigationTabBarViewController.waveName.title = self.waveName.text;
+    }
+}
+
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
 {
