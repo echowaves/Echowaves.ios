@@ -11,10 +11,16 @@
 #import "EWWave.h"
 #import "WavingViewController.h"
 
+
 @interface EchowavesAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) WavingViewController *wavingViewController;
+
+@property (weak, nonatomic) WavingViewController *wavingViewController;
+
+@property (atomic, strong) NSOperationQueue *networkQueue;
+@property (atomic, strong) NSTimer *aTimer;
+
 
 @end
 

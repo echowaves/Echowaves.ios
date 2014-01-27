@@ -26,45 +26,45 @@
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
 
     
-//    echowavesViewController.networkQueue = [[NSOperationQueue alloc] init];
-//    echowavesViewController.networkQueue.name = @"com.echowaves.app.networkqueue";
-//    
-//    // if you want it to be a serial queue, set maxConcurrentOperationCount to 1
-//    //
-//    echowavesViewController.networkQueue.maxConcurrentOperationCount = 1;
-//    
-//    //
-//    // if you want it to be a concurrent queue, set it to some reasonable value
-//    //
-//    // self.networkQueue.maxConcurrentOperationCount = 4;
-//    
-//    
-//    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-//        switch (status) {
-//            case AFNetworkReachabilityStatusReachableViaWWAN:
-//            case AFNetworkReachabilityStatusReachableViaWiFi:
-//                [echowavesViewController.networkQueue setSuspended:NO];
-//                [echowavesViewController.appStatus setText:@"Network is not reachable, try again later."];
-//                break;
-//            case AFNetworkReachabilityStatusNotReachable:
-//            default:
-//                [echowavesViewController.networkQueue setSuspended:YES];
-//                [echowavesViewController.appStatus setText:@"Network is not reachable, try again later."];
-//                break;
-//        }
-//    }];
+    self.networkQueue = [[NSOperationQueue alloc] init];
+    self.networkQueue.name = @"com.echowaves.app.networkqueue";
+    
+    // if you want it to be a serial queue, set maxConcurrentOperationCount to 1
+    //
+    self.networkQueue.maxConcurrentOperationCount = 1;
+    
+    //
+    // if you want it to be a concurrent queue, set it to some reasonable value
+    //
+    // self.networkQueue.maxConcurrentOperationCount = 4;
+    
+    
+    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        switch (status) {
+            case AFNetworkReachabilityStatusReachableViaWWAN:
+            case AFNetworkReachabilityStatusReachableViaWiFi:
+                [self.networkQueue setSuspended:NO];
+                [self.wavingViewController.appStatus setText:@""];
+                break;
+            case AFNetworkReachabilityStatusNotReachable:
+            case AFNetworkReachabilityStatusUnknown:
+            default:
+                [self.networkQueue setSuspended:YES];
+                [self.wavingViewController.appStatus setText:@"Network is not reachable, try again later."];
+                break;
+        }
+    }];
     return YES;
 }
 
-//-(void)timerFired:(NSTimer *) theTimer
-//{
-//    EchowavesViewController* echowavesViewController = (EchowavesViewController*)  self.window.rootViewController;
-//    if(echowavesViewController.networkQueue.operationCount == 0) {
-//        [echowavesViewController.pictruresCount setText:[NSString stringWithFormat:@"Nothing to upload."]];
-//    } else {
-//        [echowavesViewController.pictruresCount setText:[NSString stringWithFormat:@"pending pictures %d...", echowavesViewController.networkQueue.operationCount]];
-//    }
-//}
+-(void)timerFired:(NSTimer *) theTimer
+{
+    if(self.networkQueue.operationCount == 0) {
+        [self.wavingViewController.imagesToUpload setText:@"0"];
+    } else {
+        [self.wavingViewController.imagesToUpload setText:[NSString stringWithFormat:@"%d", self.networkQueue.operationCount]];
+    }
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
@@ -76,18 +76,12 @@
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-//    EchowavesViewController* echowavesViewController = (EchowavesViewController*)  self.window.rootViewController;
-//    [echowavesViewController.aTimer invalidate];
-
+    [self.aTimer invalidate];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-//    EchowavesViewController* echowavesViewController = (EchowavesViewController*)  self.window.rootViewController;
-//    [echowavesViewController.aTimer fire];
-//    echowavesViewController.aTimer = nil;
-    
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
@@ -95,27 +89,27 @@
     NSLog(@"++++++++++++++++++called applicationDidBecomeActive");
     
     [self.wavingViewController.tabBarController setSelectedIndex:0]; // make first tab active, so we can always see what's uploading when came back to the app.
-    self.wavingViewController.imagesToUpload.text = [NSString stringWithFormat:@"%d",(self.wavingViewController.imagesToUpload.text.intValue + 1)];
+    self.wavingViewController.imagesToUpload.text = @"";
+    self.wavingViewController.appStatus.text = @"";
     
+    self.aTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                                   target:self
+                                                 selector:@selector(timerFired:)
+                                                 userInfo:nil
+                                                  repeats:YES];
+    [self.aTimer fire];
+
+    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+
+
     
-    
-//    EchowavesViewController* echowavesViewController = (EchowavesViewController*)  self.window.rootViewController;
-//    echowavesViewController.aTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
-//                                                                      target:self
-//                                                                    selector:@selector(timerFired:)
-//                                                                    userInfo:nil
-//                                                                     repeats:YES];
-//    [echowavesViewController.aTimer fire];
-//
-//    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-//
-//    if ([echowavesViewController isWaving]) {
-//        //this prevents from loosing session in case the server was bounced
+    if (self.wavingViewController.waving.on) {
+        //this prevents from loosing session in case the server was bounced
 //        [echowavesViewController tuneIn];
-//        [NSThread sleepForTimeInterval:1.0f];
-//
-//        [echowavesViewController checkForNewImages];
-//    }
+        [NSThread sleepForTimeInterval:1.0f];
+
+        [self.wavingViewController checkForNewImages];
+    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

@@ -12,6 +12,15 @@
 //#import "EWWave.h"
 @interface EWImage : EWDataModel
 
-//@property (strong, atomic) EWWave *wave;
++ (void) checkForNewImagesToPostToWave:(NSString*) waveName
+                        whenImageFound:(void (^)(UIImage* image, NSDate* imageDate))imageFoundBlock
+                           whenCheckingDone:(void (^)(void)) checkCompleteBlock
+                             whenError:(void (^)(NSError *error)) failureBlock;
+
++ (AFHTTPRequestOperation*) createPostOperationFromImage:(UIImage *) image
+                                               imageDate:(NSDate *) imageDate
+                                             forWaveName:(NSString *) waveName;
+
++ (void) postAllNewImages:(NSMutableArray *)imagesToPostOperations;
 
 @end

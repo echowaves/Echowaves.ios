@@ -5,6 +5,7 @@
 //
 
 #import <Availability.h>
+#import "EchowavesAppDelegate.h"
 
 #ifndef __IPHONE_5_0
 #warning "This project uses features only available in iOS SDK 5.0 and later."
@@ -15,7 +16,10 @@
     #import <Foundation/Foundation.h>
 #endif
 
-//#define EWHost @"http://echowaves.com"
-#define EWHost @"http://localhost:3000"
+#define APP_DELEGATE ((EchowavesAppDelegate*)([[UIApplication sharedApplication] delegate]))
+#define USER_DEFAULTS [NSUserDefaults standardUserDefaults]
+
+#define EWHost @"http://echowaves.com"
+//#define EWHost @"http://localhost:3000"
 
 

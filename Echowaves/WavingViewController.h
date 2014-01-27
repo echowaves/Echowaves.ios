@@ -8,20 +8,17 @@
 
 //#import <UIKit/UIKit.h>
 #import "AFHTTPRequestOperationManager.h"
+#import "EchowavesAppDelegate.h"
 
 @interface WavingViewController : UIViewController
 
+
+@property (nonatomic) IBOutlet UISwitch *waving;
+
 @property (strong, nonatomic) IBOutlet UILabel *imagesToUpload;
+@property (strong, nonatomic) IBOutlet UILabel *appStatus;
 
-@property (strong, nonatomic) IBOutlet UISwitch *waving;
-
-@property (strong, atomic) NSDate *lastCheckTime;
-
-@property (atomic, strong) NSOperationQueue *networkQueue;
-
-@property (atomic, strong) NSTimer *aTimer;
-
-
+- (void) checkForNewImages;
 
 @end
 //nsuserdefaults
