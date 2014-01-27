@@ -47,6 +47,7 @@
     NSString* waveName = navigationTabBarViewController.waveName.title;
     
     NSMutableArray *imagesToPostOperations = [NSMutableArray array];
+    [self appStatus].text = @"Checking for new images...";
     
     if (self.waving.on) {
         [EWImage checkForNewImagesToPostToWave:waveName
