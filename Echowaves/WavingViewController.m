@@ -61,28 +61,27 @@
                                 whenImageFound:^(UIImage *image, NSDate *imageDate) {
                                     AFHTTPRequestOperation* operation = [EWImage createPostOperationFromImage:image
                                                                                                     imageDate:imageDate
-                                                                                                  forWaveName:waveName
-                                                                                           delegateController:self];
+                                                                                                  forWaveName:waveName];
                                     [operation setUploadProgressBlock:^(NSUInteger bytesWritten,
                                                                         long long totalBytesWritten,
                                                                         long long totalBytesExpectedToWrite) {
-//                                        NSLog(@"Wrote %lld/%lld", totalBytesWritten, totalBytesExpectedToWrite);
                                         if(!self.currentlyUploadingImage.image) {
                                             self.currentlyUploadingImage.image = image;
+                                            self.currentlyUploadingImage.hidden = FALSE;
                                             [self imagesToUpload].text = [NSString stringWithFormat:@"%d", APP_DELEGATE.networkQueue.operationCount];
                                             [self imagesToUpload].hidden = FALSE;
-//                                            self.uploadProgressBar.
                                         }
                                         
                                         self.uploadProgressBar.progress = (float)totalBytesWritten / totalBytesExpectedToWrite;
+//                                        NSLog(@"Wrote %lld/%lld", totalBytesWritten, totalBytesExpectedToWrite);
 //                                        NSLog(@"progress %@", [[NSNumber numberWithDouble:((float)totalBytesWritten/totalBytesExpectedToWrite)] stringValue]);
                                         
                                     }];
                                     [operation setCompletionBlock:^{
+                                        self.currentlyUploadingImage.hidden = TRUE;
                                         self.currentlyUploadingImage.image = nil;
                                         self.imagesToUpload.hidden = TRUE;
                                         self.uploadProgressBar.progress = 0.0;
-
                                     }];
                                     
                                     
