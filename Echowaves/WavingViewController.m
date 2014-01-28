@@ -24,6 +24,9 @@
     if(self.waving.on) {
         NSLog(@"======== reset lastCheckTime");
         [USER_DEFAULTS setObject:[NSDate date] forKey:@"lastCheckTime"];
+        [self appStatus].text = @"Use iPhone cam, then come back to EW...";
+    } else {
+        [self appStatus].text = @"No iPhone images will be uploaded...";
     }
     
     [USER_DEFAULTS setBool:self.waving.on forKey:@"waving"];
@@ -38,7 +41,7 @@
     
     NSLog(@"=======waving initializing was %d changed to: %d", self.waving.on, [USER_DEFAULTS boolForKey:@"waving"]);
     self.waving.on = [USER_DEFAULTS boolForKey:@"waving"];
-    [self appStatus].text = @"";
+//    [self appStatus].text = @"Use iPhone camera now, come back to EW to start upload";
     [self imagesToUpload].hidden = TRUE;
     [self currentlyUploadingImage].contentMode = UIViewContentModeScaleAspectFit;
     self.uploadProgressBar.progress = 0.0;
@@ -84,13 +87,14 @@
                                     
                                     
                                     [imagesToPostOperations addObject:operation];
-                                    [self appStatus].text = [NSString stringWithFormat:@"found new images to post: %d", imagesToPostOperations.count];
                                     
                                     NSLog(@"@@@@@@@@@@@@@ uploading image %@", imageDate.description);
                                     
                                 }
                               whenCheckingDone:^{
-                                  [self appStatus].text = @"";
+                                  [self appStatus].text = @"Use iPhone cam, then come back to EW...";
+
+//                                  [self appStatus].text = @"uploading now";
                                   [EWImage postAllNewImages:imagesToPostOperations];
                               }
                                      whenError:^(NSError *error) {

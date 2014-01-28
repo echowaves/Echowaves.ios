@@ -44,7 +44,6 @@
             case AFNetworkReachabilityStatusReachableViaWWAN:
             case AFNetworkReachabilityStatusReachableViaWiFi:
                 [self.networkQueue setSuspended:NO];
-                [self.wavingViewController.appStatus setText:@""];
                 [self.wavingViewController.appStatus setText:@"Network operates properly."];
                 break;
             case AFNetworkReachabilityStatusNotReachable:
@@ -90,8 +89,6 @@
     NSLog(@"++++++++++++++++++called applicationDidBecomeActive");
     
     [self.wavingViewController.tabBarController setSelectedIndex:0]; // make first tab active, so we can always see what's uploading when came back to the app.
-    self.wavingViewController.imagesToUpload.text = @"";
-    self.wavingViewController.appStatus.text = @"";
     
 //    self.aTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
 //                                                   target:self
