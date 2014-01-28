@@ -68,9 +68,11 @@
                                             self.currentlyUploadingImage.image = image;
                                             [self imagesToUpload].text = [NSString stringWithFormat:@"%d", APP_DELEGATE.networkQueue.operationCount];
                                             [self imagesToUpload].hidden = FALSE;
+//                                            self.uploadProgressBar.
                                         }
                                         
-                                        self.uploadProgressBar.progress = totalBytesWritten / totalBytesExpectedToWrite;
+                                        self.uploadProgressBar.progress = (float)totalBytesWritten / totalBytesExpectedToWrite;
+//                                        NSLog(@"progress %@", [[NSNumber numberWithDouble:((float)totalBytesWritten/totalBytesExpectedToWrite)] stringValue]);
                                         
                                     }];
                                     [operation setCompletionBlock:^{
