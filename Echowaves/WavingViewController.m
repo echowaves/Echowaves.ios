@@ -33,9 +33,15 @@
     [USER_DEFAULTS synchronize];
 }
 
+- (IBAction)cancelingCurrentUploadOperation:(id)sender {
+    [self.currentUploadOperation cancel];
+    [self cleanupCurrentUploadView];
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self cleanupCurrentUploadView];
     NSLog(@"#### WavingViewController viewDidLoad ");
     APP_DELEGATE.wavingViewController = self;
     
@@ -59,13 +65,21 @@
     if (self.waving.on) {
         [EWImage checkForNewImagesToPostToWave:waveName
                                 whenImageFound:^(UIImage *image, NSDate *imageDate) {
-                                    AFHTTPRequestOperation* operation = [EWImage createPostOperationFromImage:image
+                                    
+                                    
+                                                                
+                                    AFHTTPRequestOperation* _operation = [EWImage createPostOperationFromImage:image
                                                                                                     imageDate:imageDate
                                                                                                   forWaveName:waveName];
+                                    __weak AFHTTPRequestOperation *operation = _operation;
+                                    
                                     [operation setUploadProgressBlock:^(NSUInteger bytesWritten,
                                                                         long long totalBytesWritten,
                                                                         long long totalBytesExpectedToWrite) {
-                                        if(!self.currentlyUploadingImage.image) {
+                                        if(!self.currentlyUploadingImage.image) { // beginning new upload operation here
+                                            self.cancelUpload.hidden = FALSE;
+
+                                            self.currentUploadOperation = operation;
                                             self.currentlyUploadingImage.image = image;
                                             self.currentlyUploadingImage.hidden = FALSE;
                                             [self imagesToUpload].text = [NSString stringWithFormat:@"%d", APP_DELEGATE.networkQueue.operationCount];
@@ -78,10 +92,7 @@
                                         
                                     }];
                                     [operation setCompletionBlock:^{
-                                        self.currentlyUploadingImage.hidden = TRUE;
-                                        self.currentlyUploadingImage.image = nil;
-                                        self.imagesToUpload.hidden = TRUE;
-                                        self.uploadProgressBar.progress = 0.0;
+                                        [self cleanupCurrentUploadView];
                                     }];
                                     
                                     
@@ -103,5 +114,15 @@
     }
 }
 
+- (void) cleanupCurrentUploadView {
+    self.currentUploadOperation = nil;
+    
+    self.currentlyUploadingImage.hidden = TRUE;
+    self.currentlyUploadingImage.image = nil;
+    self.imagesToUpload.hidden = TRUE;
+    self.uploadProgressBar.progress = 0.0;
+    
+    self.cancelUpload.hidden = TRUE;
+}
 
 @end

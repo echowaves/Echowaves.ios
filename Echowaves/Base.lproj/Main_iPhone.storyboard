@@ -324,11 +324,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vAW-9v-Ujx">
-                                <rect key="frame" x="20" y="154" width="280" height="351"/>
+                                <rect key="frame" x="20" y="144" width="280" height="359"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jYk-U6-mFr">
-                                <rect key="frame" x="93" y="185" width="134" height="116"/>
+                                <rect key="frame" x="93" y="226" width="134" height="116"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="75"/>
@@ -336,15 +336,28 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="qH3-pe-nSv">
-                                <rect key="frame" x="20" y="144" width="280" height="2"/>
+                                <rect key="frame" x="20" y="134" width="280" height="2"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </progressView>
+                            <button opaque="NO" alpha="0.74999999999999978" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pNe-RB-eAF">
+                                <rect key="frame" x="158" y="144" width="142" height="59"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Cancel Image">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelingCurrentUploadOperation:" destination="8lZ-lH-xhR" eventType="touchUpInside" id="kor-bc-GqG"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Waving" image="waving" id="iP7-VR-HlN"/>
                     <connections>
                         <outlet property="appStatus" destination="8NL-ON-yoL" id="1EF-Ff-nMb"/>
+                        <outlet property="cancelUpload" destination="pNe-RB-eAF" id="QQg-wh-G7D"/>
                         <outlet property="currentlyUploadingImage" destination="vAW-9v-Ujx" id="qvk-8n-mR0"/>
                         <outlet property="imagesToUpload" destination="jYk-U6-mFr" id="Yts-Fj-3So"/>
                         <outlet property="uploadProgressBar" destination="qH3-pe-nSv" id="eER-J7-C2K"/>
