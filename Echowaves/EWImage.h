@@ -19,7 +19,8 @@
 
 + (AFHTTPRequestOperation*) createPostOperationFromImage:(UIImage *) image
                                                imageDate:(NSDate *) imageDate
-                                             forWaveName:(NSString *) waveName;
+                                             forWaveName:(NSString *) waveName
+                                      delegateController:(WavingViewController *) wavingViewController;
 
 + (void) postAllNewImages:(NSMutableArray *)imagesToPostOperations;
 

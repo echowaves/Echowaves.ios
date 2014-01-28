@@ -84,7 +84,9 @@
 
 + (AFHTTPRequestOperation*) createPostOperationFromImage:(UIImage *) image
                                                imageDate:(NSDate *) imageDate
-                                             forWaveName:(NSString *) waveName {
+                                             forWaveName:(NSString *) waveName
+                                      delegateController:(WavingViewController *) wavingViewController
+{
     NSDictionary *parameters = @{@"name": waveName};
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyyMMddHHmmssSSSS"];
@@ -106,6 +108,7 @@
                                                                    error:nil];
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+
     return operation;
 }
 

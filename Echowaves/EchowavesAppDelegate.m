@@ -38,13 +38,14 @@
     //
     // self.networkQueue.maxConcurrentOperationCount = 4;
     
-    
+
     [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         switch (status) {
             case AFNetworkReachabilityStatusReachableViaWWAN:
             case AFNetworkReachabilityStatusReachableViaWiFi:
                 [self.networkQueue setSuspended:NO];
                 [self.wavingViewController.appStatus setText:@""];
+                [self.wavingViewController.appStatus setText:@"Network operates properly."];
                 break;
             case AFNetworkReachabilityStatusNotReachable:
             case AFNetworkReachabilityStatusUnknown:
@@ -57,14 +58,14 @@
     return YES;
 }
 
--(void)timerFired:(NSTimer *) theTimer
-{
-    if(self.networkQueue.operationCount == 0) {
-        [self.wavingViewController.imagesToUpload setText:@"0"];
-    } else {
-        [self.wavingViewController.imagesToUpload setText:[NSString stringWithFormat:@"%d", self.networkQueue.operationCount]];
-    }
-}
+//-(void)timerFired:(NSTimer *) theTimer
+//{
+//    if(self.networkQueue.operationCount == 0) {
+//        [self.wavingViewController.imagesToUpload setText:@"0"];
+//    } else {
+//        [self.wavingViewController.imagesToUpload setText:[NSString stringWithFormat:@"%d", self.networkQueue.operationCount]];
+//    }
+//}
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
@@ -76,7 +77,7 @@
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    [self.aTimer invalidate];
+//    [self.aTimer invalidate];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -92,12 +93,12 @@
     self.wavingViewController.imagesToUpload.text = @"";
     self.wavingViewController.appStatus.text = @"";
     
-    self.aTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
-                                                   target:self
-                                                 selector:@selector(timerFired:)
-                                                 userInfo:nil
-                                                  repeats:YES];
-    [self.aTimer fire];
+//    self.aTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
+//                                                   target:self
+//                                                 selector:@selector(timerFired:)
+//                                                 userInfo:nil
+//                                                  repeats:YES];
+//    [self.aTimer fire];
 
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 

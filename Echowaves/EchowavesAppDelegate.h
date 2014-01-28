@@ -19,7 +19,7 @@
 @property (weak, nonatomic) WavingViewController *wavingViewController;
 
 @property (atomic, strong) NSOperationQueue *networkQueue;
-@property (atomic, strong) NSTimer *aTimer;
+//@property (atomic, strong) NSTimer *aTimer;
 
 
 @end

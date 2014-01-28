@@ -12,11 +12,15 @@
 
 @interface WavingViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UIProgressView *uploadProgressBar;
 
 @property (nonatomic) IBOutlet UISwitch *waving;
 
-@property (strong, nonatomic) IBOutlet UILabel *imagesToUpload;
 @property (strong, nonatomic) IBOutlet UILabel *appStatus;
+
+@property (strong, nonatomic) IBOutlet UILabel *imagesToUpload;
+
+@property (strong, nonatomic) IBOutlet UIImageView *currentlyUploadingImage;
 
 - (void) checkForNewImages;
 
