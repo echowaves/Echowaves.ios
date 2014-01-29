@@ -48,7 +48,7 @@
     NSLog(@"=======waving initializing was %d changed to: %d", self.waving.on, [USER_DEFAULTS boolForKey:@"waving"]);
     self.waving.on = [USER_DEFAULTS boolForKey:@"waving"];
 //    [self appStatus].text = @"Use iPhone camera now, come back to EW to start upload";
-    [self imagesToUpload].hidden = TRUE;
+//    [self imagesToUpload].hidden = TRUE;
     [self currentlyUploadingImage].contentMode = UIViewContentModeScaleAspectFit;
     self.uploadProgressBar.progress = 0.0;
 
@@ -83,7 +83,7 @@
                                             self.currentlyUploadingImage.image = image;
                                             self.currentlyUploadingImage.hidden = FALSE;
                                             [self imagesToUpload].text = [NSString stringWithFormat:@"%d", APP_DELEGATE.networkQueue.operationCount];
-                                            [self imagesToUpload].hidden = FALSE;
+//                                            [self imagesToUpload].hidden = FALSE;
                                         }
                                         
                                         self.uploadProgressBar.progress = (float)totalBytesWritten / totalBytesExpectedToWrite;
@@ -95,16 +95,23 @@
                                         [self cleanupCurrentUploadView];
                                     }];
                                     
+                                    NSLog(@"@@@@@@@@@@@@@ image found %@", imageDate.description);
                                     
                                     [imagesToPostOperations addObject:operation];
+
+                                    [self imagesToUpload].text = [NSString stringWithFormat:@"%d", imagesToPostOperations.count];
+                                    //the following like is needed to force update the label
+                                    [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantPast]];
+
                                     
-                                    NSLog(@"@@@@@@@@@@@@@ uploading image %@", imageDate.description);
+                                    NSLog(@"@@@@@@@@@@@@@@@@ images to post %d", imagesToPostOperations.count);
                                     
                                 }
                               whenCheckingDone:^{
                                   [self appStatus].text = @"Use iPhone cam, then come back to EW...";
 
 //                                  [self appStatus].text = @"uploading now";
+//                                  [self imagesToUpload].hidden = TRUE;
                                   [EWImage postAllNewImages:imagesToPostOperations];
                               }
                                      whenError:^(NSError *error) {
@@ -119,9 +126,9 @@
     
     self.currentlyUploadingImage.hidden = TRUE;
     self.currentlyUploadingImage.image = nil;
-    self.imagesToUpload.hidden = TRUE;
+//    self.imagesToUpload.hidden = TRUE;
+    [self imagesToUpload].text = [NSString stringWithFormat:@"%d", APP_DELEGATE.networkQueue.operationCount];
     self.uploadProgressBar.progress = 0.0;
-    
     self.cancelUpload.hidden = TRUE;
 }
 
