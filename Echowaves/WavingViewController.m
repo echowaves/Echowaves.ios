@@ -66,8 +66,6 @@
         [EWImage checkForNewImagesToPostToWave:waveName
                                 whenImageFound:^(UIImage *image, NSDate *imageDate) {
                                     
-                                    
-                                                                
                                     AFHTTPRequestOperation* _operation = [EWImage createPostOperationFromImage:image
                                                                                                     imageDate:imageDate
                                                                                                   forWaveName:waveName];
