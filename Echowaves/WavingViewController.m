@@ -7,7 +7,7 @@
 //
 
 #import "WavingViewController.h"
-#import "NavigationTabBarViewController.h"
+#import "EWWave.h"
 #import "EWImage.h"
 
 //@interface WavingViewController ()
@@ -56,67 +56,88 @@
 }
 
 - (void) checkForNewImages {
-    NavigationTabBarViewController *navigationTabBarViewController = (NavigationTabBarViewController*)self.tabBarController;
-    NSString* waveName = navigationTabBarViewController.waveName.title;
     
-    NSMutableArray *imagesToPostOperations = [NSMutableArray array];
-    [self appStatus].text = @"Checking for new images...";
-    
-    if (self.waving.on) {
-        [EWImage checkForNewImagesToPostToWave:waveName
-                                whenImageFound:^(UIImage *image, NSDate *imageDate) {
-                                    
-                                    AFHTTPRequestOperation* _operation = [EWImage createPostOperationFromImage:image
-                                                                                                    imageDate:imageDate
-                                                                                                  forWaveName:waveName];
-                                    __weak AFHTTPRequestOperation *operation = _operation;
-                                    
-                                    [operation setUploadProgressBlock:^(NSUInteger bytesWritten,
-                                                                        long long totalBytesWritten,
-                                                                        long long totalBytesExpectedToWrite) {
-                                        if(!self.currentlyUploadingImage.image) { // beginning new upload operation here
-                                            self.cancelUpload.hidden = FALSE;
-
-                                            self.currentUploadOperation = operation;
-                                            self.currentlyUploadingImage.image = image;
-                                            self.currentlyUploadingImage.hidden = FALSE;
-                                            [self imagesToUpload].text = [NSString stringWithFormat:@"%d", APP_DELEGATE.networkQueue.operationCount];
-//                                            [self imagesToUpload].hidden = FALSE;
-                                        }
+    //try to sign in to see if connection is awailable
+    NSURLCredential *credential = [EWWave getStoredCredential];
+    if(credential) {
+        NSLog(@"User %@ already connected with password.", credential.user);
+        NSString* waveName = credential.user;
+        
+        [EWWave tuneInWithName:credential.user
+                   andPassword:credential.password
+                       success:^(NSString *waveName) {
+                           NSLog(@"successsfully signed in");
+                       }
+                       failure:^(NSString *errorMessage) {
+                           [EWWave showErrorAlertWithMessage:errorMessage FromSender:self];
+                       }];
+        
+        
+        
+        NSMutableArray *imagesToPostOperations = [NSMutableArray array];
+        [self appStatus].text = @"Checking for new images...";
+        
+        if (self.waving.on) {
+            [EWImage checkForNewImagesToPostToWave:waveName
+                                    whenImageFound:^(UIImage *image, NSDate *imageDate) {
                                         
-                                        self.uploadProgressBar.progress = (float)totalBytesWritten / totalBytesExpectedToWrite;
-//                                        NSLog(@"Wrote %lld/%lld", totalBytesWritten, totalBytesExpectedToWrite);
-//                                        NSLog(@"progress %@", [[NSNumber numberWithDouble:((float)totalBytesWritten/totalBytesExpectedToWrite)] stringValue]);
+                                        AFHTTPRequestOperation* _operation = [EWImage createPostOperationFromImage:image
+                                                                                                         imageDate:imageDate
+                                                                                                       forWaveName:waveName];
+                                        __weak AFHTTPRequestOperation *operation = _operation;
                                         
-                                    }];
-                                    [operation setCompletionBlock:^{
-                                        [self cleanupCurrentUploadView];
-                                    }];
-                                    
-                                    NSLog(@"@@@@@@@@@@@@@ image found %@", imageDate.description);
-                                    
-                                    [imagesToPostOperations addObject:operation];
-
-                                    [self imagesToUpload].text = [NSString stringWithFormat:@"%d", imagesToPostOperations.count];
-                                    //the following like is needed to force update the label
-                                    [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantPast]];
-
-                                    
-                                    NSLog(@"@@@@@@@@@@@@@@@@ images to post %d", imagesToPostOperations.count);
-                                    
-                                }
-                              whenCheckingDone:^{
-                                  [self appStatus].text = @"Use iPhone cam, then come back to EW...";
-
-//                                  [self appStatus].text = @"uploading now";
-//                                  [self imagesToUpload].hidden = TRUE;
-                                  [EWImage postAllNewImages:imagesToPostOperations];
-                              }
-                                     whenError:^(NSError *error) {
-                                         NSLog(@"this error should never happen %@", error.description);
-                                         [self appStatus].text = error.description;
-                                     }];
+                                        [operation setUploadProgressBlock:^(NSUInteger bytesWritten,
+                                                                            long long totalBytesWritten,
+                                                                            long long totalBytesExpectedToWrite) {
+                                            if(!self.currentlyUploadingImage.image) { // beginning new upload operation here
+                                                self.cancelUpload.hidden = FALSE;
+                                                
+                                                self.currentUploadOperation = operation;
+                                                self.currentlyUploadingImage.image = image;
+                                                self.currentlyUploadingImage.hidden = FALSE;
+                                                [self imagesToUpload].text = [NSString stringWithFormat:@"%d", APP_DELEGATE.networkQueue.operationCount];
+                                                //                                            [self imagesToUpload].hidden = FALSE;
+                                            }
+                                            
+                                            self.uploadProgressBar.progress = (float)totalBytesWritten / totalBytesExpectedToWrite;
+                                            //                                        NSLog(@"Wrote %lld/%lld", totalBytesWritten, totalBytesExpectedToWrite);
+                                            //                                        NSLog(@"progress %@", [[NSNumber numberWithDouble:((float)totalBytesWritten/totalBytesExpectedToWrite)] stringValue]);
+                                            
+                                        }];
+                                        [operation setCompletionBlock:^{
+                                            [self cleanupCurrentUploadView];
+                                        }];
+                                        
+                                        NSLog(@"@@@@@@@@@@@@@ image found %@", imageDate.description);
+                                        
+                                        [imagesToPostOperations addObject:operation];
+                                        
+                                        [self imagesToUpload].text = [NSString stringWithFormat:@"%d", imagesToPostOperations.count];
+                                        //the following like is needed to force update the label
+                                        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantPast]];
+                                        
+                                        
+                                        NSLog(@"@@@@@@@@@@@@@@@@ images to post %d", imagesToPostOperations.count);
+                                        
+                                    }
+                                  whenCheckingDone:^{
+                                      [self appStatus].text = @"Use iPhone cam, then come back to EW...";
+                                      
+                                      //                                  [self appStatus].text = @"uploading now";
+                                      //                                  [self imagesToUpload].hidden = TRUE;
+                                      [EWImage postAllNewImages:imagesToPostOperations];
+                                  }
+                                         whenError:^(NSError *error) {
+                                             NSLog(@"this error should never happen %@", error.description);
+                                             [self appStatus].text = error.description;
+                                         }];
+        }
+        
+        
+    } else { // credentials are not set, can't really ever happen, something is really wrong here
+        NSLog(@"this error should never happen credentials are not set, can't really ever happen, something is really wrong here");
     }
+    
 }
 
 - (void) cleanupCurrentUploadView {
