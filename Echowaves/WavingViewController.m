@@ -61,7 +61,6 @@
     NSURLCredential *credential = [EWWave getStoredCredential];
     if(credential) {
         NSLog(@"User %@ already connected with password.", credential.user);
-        NSString* waveName = credential.user;
         
         [EWWave tuneInWithName:credential.user
                    andPassword:credential.password

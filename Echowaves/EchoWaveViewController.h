@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EchoWaveViewController : UIViewController
+@interface EchoWaveViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource>
+
+@property (weak, nonatomic) NSArray *waveImages;
 
 @end
