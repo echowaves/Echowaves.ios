@@ -14,7 +14,7 @@
 
 + (void) checkForNewImagesToPostToWave:(NSString*) waveName
                         whenImageFound:(void (^)(UIImage* image, NSDate* imageDate))imageFoundBlock
-                           whenCheckingDone:(void (^)(void)) checkCompleteBlock
+                      whenCheckingDone:(void (^)(void)) checkCompleteBlock
                              whenError:(void (^)(NSError *error)) failureBlock;
 
 + (AFHTTPRequestOperation*) createPostOperationFromImage:(UIImage *) image
@@ -22,5 +22,10 @@
                                              forWaveName:(NSString *) waveName;
 
 + (void) postAllNewImages:(NSMutableArray *)imagesToPostOperations;
+
++ (void) getAllImagesForWave:(NSString*) waveName
+                     success:(void (^)(NSArray *waveImages))success
+                     failure:(void (^)(NSError *error))failure;
+
 
 @end

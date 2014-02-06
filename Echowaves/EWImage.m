@@ -14,7 +14,7 @@
 
 + (void) checkForNewImagesToPostToWave:(NSString*) waveName
                         whenImageFound:(void (^)(UIImage* image, NSDate* imageDate))imageFoundBlock
-                           whenCheckingDone:(void (^)(void)) checkCompleteBlock
+                      whenCheckingDone:(void (^)(void)) checkCompleteBlock
                              whenError:(void (^)(NSError *error)) failureBlock
 {
     NSLog(@"----------------- Checking images");
@@ -107,18 +107,40 @@
                                                                    error:nil];
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-
+    
     return operation;
 }
 
 + (void) postAllNewImages:(NSMutableArray *)imagesToPostOperations
 {
     NSLog(@"----------------- Posting images");
-
+    
     for(AFHTTPRequestOperation *operation in imagesToPostOperations) {
         [APP_DELEGATE.networkQueue addOperation:operation];
     }
 }
+
+
+
++ (void) getAllImagesForWave:(NSString*) waveName
+                     success:(void (^)(NSArray *waveImages))success
+                     failure:(void (^)(NSError *error))failure {
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    //ideally not going to need the following line, if making a request to json service
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    
+    [manager GET:[NSString stringWithFormat:@"%@/wave.json", EWHost]
+      parameters:nil
+         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+             success((NSArray*)responseObject);
+         }
+         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             NSLog(@"Error: %@", error);
+             failure(error);
+         }];
+};
 
 
 @end

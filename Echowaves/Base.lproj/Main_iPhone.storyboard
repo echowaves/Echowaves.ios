@@ -229,6 +229,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="EchoWave" image="echowave" id="qTv-cn-Zs7"/>
+                    <connections>
+                        <outlet property="imagesCollectionView" destination="t2L-Tu-34G" id="OTr-B9-kUp"/>
+                        <outlet property="tabBarItem" destination="qTv-cn-Zs7" id="SMP-CM-eEV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bdt-PK-ACm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

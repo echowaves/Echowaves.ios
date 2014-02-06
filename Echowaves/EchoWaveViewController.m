@@ -7,6 +7,8 @@
 //
 
 #import "EchoWaveViewController.h"
+#import "NavigationTabBarViewController.h"
+#import "EWImage.h"
 
 @interface EchoWaveViewController ()
 
@@ -24,29 +26,25 @@
 //}
 
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     NSLog(@"$$$$$$$$$$$$$$$$calling viewDidLoad for EchoWaveViewController");
-    // Initialize recipe image array
-    self.waveImages = [NSArray arrayWithObjects:
-                       @"http://echowaves.com/img/dmitry/thumb_201402021422030720.jpg",
-                       @"http://echowaves.com/img/dmitry/thumb_201402021422030720.jpg",
-                       @"http://echowaves.com/img/dmitry/thumb_201402021422030720.jpg",
-                       @"http://echowaves.com/img/dmitry/thumb_201402021422030720.jpg",
-                       @"http://echowaves.com/img/dmitry/thumb_201402021422030720.jpg",
-                       @"http://echowaves.com/img/dmitry/thumb_201402021422030720.jpg",
-                       @"http://echowaves.com/img/dmitry/thumb_201402021422030720.jpg",
-                       @"http://echowaves.com/img/dmitry/thumb_201402021422030720.jpg",
-                       @"http://echowaves.com/img/dmitry/thumb_201402021422030720.jpg",
-                       @"http://echowaves.com/img/dmitry/thumb_201402021422030720.jpg",
-                       @"http://echowaves.com/img/dmitry/thumb_201402021422030720.jpg",
-                       @"http://echowaves.com/img/dmitry/thumb_201402021422030720.jpg",
-                       @"http://echowaves.com/img/dmitry/thumb_201402021422030720.jpg",
-                       @"http://echowaves.com/img/dmitry/thumb_201402021422030720.jpg",
-                       @"http://echowaves.com/img/dmitry/thumb_201402021422030720.jpg",
-                       nil];
     
+    NavigationTabBarViewController* navigationTabBarViewController = (NavigationTabBarViewController*)self.tabBarController;
+    NSString* waveName = navigationTabBarViewController.waveName.title;
+
+    [EWImage getAllImagesForWave:waveName
+                         success:^(NSArray *waveImages) {
+                             self.waveImages = waveImages;
+                             NSLog(@"@total images %d", [self.waveImages count]);
+                             [self.imagesCollectionView reloadData];
+                         }
+                         failure:^(NSError *error) {
+                             NSLog(@"error %@", error.description);
+                         }];
+
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -55,12 +53,21 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"@@@at index %d", indexPath.row);
     
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageCell" forIndexPath:indexPath];
     
     UIImageView *waveImageView = (UIImageView *)[cell viewWithTag:100];
     
-    waveImageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[self.waveImages objectAtIndex:indexPath.row]]]];
+    NSString* imageName = [((NSDictionary*)[self.waveImages objectAtIndex:indexPath.row]) objectForKey:@"name"];
+    NSLog(@"image name: %@", imageName);
+    NSString* waveName = [((NSDictionary*)[self.waveImages objectAtIndex:indexPath.row]) objectForKey:@"name_2"];
+    NSLog(@"wave name: %@", waveName);
+    NSString* imageUrl = [NSString stringWithFormat:@"%@/img/%@/thumb_%@", EWHost, waveName, imageName];
+    NSLog(@"image URL: %@", imageUrl);
+    
+//    NSString* tmpImageUrl = @"http://echowaves.com/img/dmitry/thumb_201402051249067210.jpg";
+    waveImageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl]]];
     
     return cell;
 }

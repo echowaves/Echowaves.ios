@@ -10,6 +10,8 @@
 
 @interface EchoWaveViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource>
 
-@property (weak, nonatomic) NSArray *waveImages;
+@property (strong, nonatomic) IBOutlet UICollectionView *imagesCollectionView;
+
+@property (strong, nonatomic) NSArray *waveImages;
 
 @end
