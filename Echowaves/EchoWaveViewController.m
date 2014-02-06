@@ -16,6 +16,7 @@
 
 @implementation EchoWaveViewController
 
+NSMutableArray* imagesCache;
 
 //- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 //{
@@ -59,15 +60,20 @@
     
     UIImageView *waveImageView = (UIImageView *)[cell viewWithTag:100];
     
-    NSString* imageName = [((NSDictionary*)[self.waveImages objectAtIndex:indexPath.row]) objectForKey:@"name"];
-    NSLog(@"image name: %@", imageName);
-    NSString* waveName = [((NSDictionary*)[self.waveImages objectAtIndex:indexPath.row]) objectForKey:@"name_2"];
-    NSLog(@"wave name: %@", waveName);
-    NSString* imageUrl = [NSString stringWithFormat:@"%@/img/%@/thumb_%@", EWHost, waveName, imageName];
-    NSLog(@"image URL: %@", imageUrl);
     
-//    NSString* tmpImageUrl = @"http://echowaves.com/img/dmitry/thumb_201402051249067210.jpg";
-    waveImageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl]]];
+    if(!imagesCache) {
+        imagesCache = [NSMutableArray arrayWithCapacity:100];
+    }
+    if([imagesCache count] < [indexPath row] + 1) {
+        NSString* imageName = [((NSDictionary*)[self.waveImages objectAtIndex:indexPath.row]) objectForKey:@"name"];
+        NSString* waveName = [((NSDictionary*)[self.waveImages objectAtIndex:indexPath.row]) objectForKey:@"name_2"];
+        NSString* imageUrl = [NSString stringWithFormat:@"%@/img/%@/thumb_%@", EWHost, waveName, imageName];
+
+        [imagesCache insertObject:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl]]] atIndex:indexPath.row];
+    }
+    waveImageView.image = [imagesCache objectAtIndex:indexPath.row];
+    waveImageView.contentMode = UIViewContentModeScaleAspectFit;
+
     
     return cell;
 }

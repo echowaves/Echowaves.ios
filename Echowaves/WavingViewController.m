@@ -125,11 +125,6 @@
                                                             }];
                            }
                            
-                           
-                           
-                           
-                           
-                           
                        }
                        failure:^(NSString *errorMessage) {
                            [EWWave showErrorAlertWithMessage:errorMessage FromSender:self];
