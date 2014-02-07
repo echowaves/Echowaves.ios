@@ -30,12 +30,24 @@
 {
     [super viewDidLoad];
     NSLog(@"$$$$$$$$$$$$$$$$calling viewDidLoad for EchoWaveViewController");
+    self.imagesCollectionView.alwaysBounceVertical = YES;
+
+    
+    [self refresh];
+    
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(startRefresh:)
+             forControlEvents:UIControlEventValueChanged];
+    [self.imagesCollectionView addSubview:refreshControl];
+}
+
+- (void) refresh {
     
     self.imagesCache = [[NSMutableArray alloc] init];
-
+    
     NavigationTabBarViewController* navigationTabBarViewController = (NavigationTabBarViewController*)self.tabBarController;
     NSString* waveName = navigationTabBarViewController.waveName.title;
-
+    
     [EWImage getAllImagesForWave:waveName
                          success:^(NSArray *waveImages) {
                              self.waveImages = waveImages;
@@ -45,7 +57,22 @@
                          failure:^(NSError *error) {
                              NSLog(@"error %@", error.description);
                          }];
+
+}
+
+- (void) startRefresh:(UIRefreshControl *)sender {
+    NSLog(@"starting the refresh");
+
     
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        // Instead of sleeping, I do a webrequest here.
+        [self refresh];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.imagesCollectionView reloadData];
+            [sender endRefreshing];
+        });
+    });
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
