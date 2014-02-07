@@ -31,7 +31,6 @@
     [super viewDidLoad];
     NSLog(@"$$$$$$$$$$$$$$$$calling viewDidLoad for EchoWaveViewController");
     self.imagesCollectionView.alwaysBounceVertical = YES;
-
     
     [self refresh];
     
