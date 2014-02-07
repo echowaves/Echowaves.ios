@@ -27,5 +27,9 @@
                      success:(void (^)(NSArray *waveImages))success
                      failure:(void (^)(NSError *error))failure;
 
++ (void) loadImageFromUrl:(NSString*) url
+                  success:(void (^)(UIImage *image))success
+                  failure:(void (^)(NSError *error))failure;
+
 
 @end

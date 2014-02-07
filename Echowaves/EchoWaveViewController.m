@@ -16,8 +16,6 @@
 
 @implementation EchoWaveViewController
 
-NSMutableArray* imagesCache;
-
 //- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 //{
 //    // TODO: Select Item
@@ -33,6 +31,8 @@ NSMutableArray* imagesCache;
     [super viewDidLoad];
     NSLog(@"$$$$$$$$$$$$$$$$calling viewDidLoad for EchoWaveViewController");
     
+    self.imagesCache = [NSMutableArray arrayWithCapacity:100];
+
     NavigationTabBarViewController* navigationTabBarViewController = (NavigationTabBarViewController*)self.tabBarController;
     NSString* waveName = navigationTabBarViewController.waveName.title;
 
@@ -59,22 +59,58 @@ NSMutableArray* imagesCache;
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageCell" forIndexPath:indexPath];
     
     UIImageView *waveImageView = (UIImageView *)[cell viewWithTag:100];
-    
-    
-    if(!imagesCache) {
-        imagesCache = [NSMutableArray arrayWithCapacity:100];
-    }
-    if([imagesCache count] < [indexPath row] + 1) {
-        NSString* imageName = [((NSDictionary*)[self.waveImages objectAtIndex:indexPath.row]) objectForKey:@"name"];
-        NSString* waveName = [((NSDictionary*)[self.waveImages objectAtIndex:indexPath.row]) objectForKey:@"name_2"];
-        NSString* imageUrl = [NSString stringWithFormat:@"%@/img/%@/thumb_%@", EWHost, waveName, imageName];
 
-        [imagesCache insertObject:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl]]] atIndex:indexPath.row];
-    }
-    waveImageView.image = [imagesCache objectAtIndex:indexPath.row];
+    NSString* imageName = [((NSDictionary*)[self.waveImages objectAtIndex:indexPath.row]) objectForKey:@"name"];
+    NSString* waveName = [((NSDictionary*)[self.waveImages objectAtIndex:indexPath.row]) objectForKey:@"name_2"];
+    NSString* imageUrl = [NSString stringWithFormat:@"%@/img/%@/thumb_%@", EWHost, waveName, imageName];
+
+
+//    if([self.imagesCache count] < [indexPath row] + 1) {
+//        NSLog(@"................initilizing imageCache");
+//        [self.imagesCache insertObject:[UIImage imageNamed:@"echowave.png"] atIndex:indexPath.row];
+//        
+//        [EWImage loadImageFromUrl:imageUrl
+//                          success:^(UIImage *image) {
+//                              [self.imagesCache insertObject:image atIndex:indexPath.row];
+//                              ((UIImageView *)[cell viewWithTag:100]).image = image;
+//                              waveImageView.contentMode = UIViewContentModeScaleAspectFit;
+////                              [self.imagesCollectionView reloadItemsAtIndexPaths:[NSArray arrayWithObject:indexPath]];
+//                              [cell setNeedsDisplay];
+//                          }
+//                          failure:^(NSError *error) {
+//                              NSLog(@"error: %@", error.description);
+//                          }];
+//        
+//    } else {
+//        ((UIImageView *)[cell viewWithTag:100]).image = [self.imagesCache objectAtIndex:indexPath.row];
+//        waveImageView.contentMode = UIViewContentModeScaleAspectFit;
+//    }
+    
+//    [self.imagesCollectionView reloadItemsAtIndexPaths:[NSArray arrayWithObject:indexPath]];
+
+//    [self.imagesCollectionView reloadInputViews];
+//    [self.imagesCollectionView reloadData];
+    
+    
+    
+    ((UIImageView *)[cell viewWithTag:100]).image = [UIImage imageNamed:@"echowave.png"];
     waveImageView.contentMode = UIViewContentModeScaleAspectFit;
 
+    [EWImage loadImageFromUrl:imageUrl
+                      success:^(UIImage *image) {
+                          ((UIImageView *)[cell viewWithTag:100]).image = image;
+                          waveImageView.contentMode = UIViewContentModeScaleAspectFit;
+                          //                              [self.imagesCollectionView reloadItemsAtIndexPaths:[NSArray arrayWithObject:indexPath]];
+                          //                              [cell setNeedsDisplay];
+                      }
+                      failure:^(NSError *error) {
+                          NSLog(@"error: %@", error.description);
+                      }];
+
     
+//    [cell setNeedsDisplay];
+//    cell.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+
     return cell;
 }
 

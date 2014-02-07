@@ -14,4 +14,7 @@
 
 @property (strong, nonatomic) NSArray *waveImages;
 
+@property (strong, atomic) NSMutableArray* imagesCache;
+
+
 @end

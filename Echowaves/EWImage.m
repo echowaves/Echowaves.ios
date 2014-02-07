@@ -142,5 +142,34 @@
          }];
 };
 
++ (void) loadImageFromUrl:(NSString*) url
+                  success:(void (^)(UIImage *image))success
+                  failure:(void (^)(NSError *error))failure {
+
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+
+    AFHTTPRequestOperation *imgOperation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    imgOperation.responseSerializer = [AFImageResponseSerializer serializer];
+    [imgOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"Response: %@", responseObject);
+        success(responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        failure(error);
+    }];
+    [imgOperation start];
+
+    
+    
+    
+//    UIImage* tmpImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:url]]];
+//
+//    if(tmpImage) {
+//        success(tmpImage);
+//    } else {
+//        failure([[NSError alloc]initWithDomain:@"failed downloading image" code:404 userInfo:nil]);
+//    }
+    
+}
+
 
 @end
