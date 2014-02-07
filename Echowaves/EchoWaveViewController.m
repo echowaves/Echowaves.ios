@@ -31,7 +31,7 @@
     [super viewDidLoad];
     NSLog(@"$$$$$$$$$$$$$$$$calling viewDidLoad for EchoWaveViewController");
     
-    self.imagesCache = [NSMutableArray arrayWithCapacity:100];
+    self.imagesCache = [[NSMutableArray alloc] init];
 
     NavigationTabBarViewController* navigationTabBarViewController = (NavigationTabBarViewController*)self.tabBarController;
     NSString* waveName = navigationTabBarViewController.waveName.title;
@@ -45,7 +45,7 @@
                          failure:^(NSError *error) {
                              NSLog(@"error %@", error.description);
                          }];
-
+    
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -65,51 +65,23 @@
     NSString* imageUrl = [NSString stringWithFormat:@"%@/img/%@/thumb_%@", EWHost, waveName, imageName];
 
 
-//    if([self.imagesCache count] < [indexPath row] + 1) {
-//        NSLog(@"................initilizing imageCache");
-//        [self.imagesCache insertObject:[UIImage imageNamed:@"echowave.png"] atIndex:indexPath.row];
-//        
-//        [EWImage loadImageFromUrl:imageUrl
-//                          success:^(UIImage *image) {
-//                              [self.imagesCache insertObject:image atIndex:indexPath.row];
-//                              ((UIImageView *)[cell viewWithTag:100]).image = image;
-//                              waveImageView.contentMode = UIViewContentModeScaleAspectFit;
-////                              [self.imagesCollectionView reloadItemsAtIndexPaths:[NSArray arrayWithObject:indexPath]];
-//                              [cell setNeedsDisplay];
-//                          }
-//                          failure:^(NSError *error) {
-//                              NSLog(@"error: %@", error.description);
-//                          }];
-//        
-//    } else {
-//        ((UIImageView *)[cell viewWithTag:100]).image = [self.imagesCache objectAtIndex:indexPath.row];
-//        waveImageView.contentMode = UIViewContentModeScaleAspectFit;
-//    }
-    
-//    [self.imagesCollectionView reloadItemsAtIndexPaths:[NSArray arrayWithObject:indexPath]];
+    if( [self.imagesCache count] < indexPath.row +1 ) {
+        [self.imagesCache addObject:[UIImage imageNamed:@"echowave.png"]];
+        
+        [EWImage loadImageFromUrl:imageUrl
+                          success:^(UIImage *image) {
+                              [self.imagesCache replaceObjectAtIndex:indexPath.row withObject:image];
+                              ((UIImageView *)[cell viewWithTag:100]).image = [self.imagesCache objectAtIndex:indexPath.row];
+                              
+                              waveImageView.contentMode = UIViewContentModeScaleAspectFit;
+                          }
+                          failure:^(NSError *error) {
+                              NSLog(@"error: %@", error.description);
+                          }];
+    }
 
-//    [self.imagesCollectionView reloadInputViews];
-//    [self.imagesCollectionView reloadData];
-    
-    
-    
-    ((UIImageView *)[cell viewWithTag:100]).image = [UIImage imageNamed:@"echowave.png"];
+    ((UIImageView *)[cell viewWithTag:100]).image = [self.imagesCache objectAtIndex:indexPath.row];
     waveImageView.contentMode = UIViewContentModeScaleAspectFit;
-
-    [EWImage loadImageFromUrl:imageUrl
-                      success:^(UIImage *image) {
-                          ((UIImageView *)[cell viewWithTag:100]).image = image;
-                          waveImageView.contentMode = UIViewContentModeScaleAspectFit;
-                          //                              [self.imagesCollectionView reloadItemsAtIndexPaths:[NSArray arrayWithObject:indexPath]];
-                          //                              [cell setNeedsDisplay];
-                      }
-                      failure:^(NSError *error) {
-                          NSLog(@"error: %@", error.description);
-                      }];
-
-    
-//    [cell setNeedsDisplay];
-//    cell.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 
     return cell;
 }
