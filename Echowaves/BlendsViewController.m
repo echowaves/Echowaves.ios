@@ -14,5 +14,9 @@
 
 @implementation BlendsViewController
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+}
 
 @end

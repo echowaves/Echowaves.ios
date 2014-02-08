@@ -281,31 +281,103 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="under-construction-template" translatesAutoresizingMaskIntoConstraints="NO" id="g9G-fz-jpv">
-                                <rect key="frame" x="0.0" y="64" width="320" height="310"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="to view your blends" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4mR-Mm-UVV">
-                                <rect key="frame" x="85" y="382" width="150" height="21"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gOo-Tp-qTX">
+                                <rect key="frame" x="20" y="193" width="280" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="visit http://echowaves.com" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OeC-6s-nIc">
-                                <rect key="frame" x="57" y="411" width="207" height="21"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Blends:">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="T7h-8L-Kar" kind="push" id="nOd-Z8-f0x"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zWa-F5-h8m">
+                                <rect key="frame" x="20" y="104" width="280" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Requests:">
+                                    <color key="titleColor" red="0.50196081399917603" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="9Gw-YE-fDN" kind="push" id="Y6d-pO-cS8"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Blends" image="blends" id="ZBo-Ng-WgS"/>
+                    <toolbarItems>
+                        <barButtonItem title="Item" id="Azz-jv-9Vy"/>
+                    </toolbarItems>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H5c-jD-Jqd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1709" y="650"/>
+        </scene>
+        <!--View Controller - Blends-->
+        <scene sceneID="N7X-CP-qxc">
+            <objects>
+                <viewController id="T7h-8L-Kar" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="t4G-MO-sT1"/>
+                        <viewControllerLayoutGuide type="bottom" id="fBb-B7-4zU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eaf-iX-WvP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Blends" id="HYG-hD-Tal"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eha-tV-C8G" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2242" y="1150"/>
+        </scene>
+        <!--View Controller - Requests-->
+        <scene sceneID="EzK-Nz-gJu">
+            <objects>
+                <viewController id="9Gw-YE-fDN" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cmA-8e-IRF"/>
+                        <viewControllerLayoutGuide type="bottom" id="DaI-Z6-Jfs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JjB-1h-LrQ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Requests" id="Pzz-Xs-VSd">
+                        <barButtonItem key="rightBarButtonItem" title="+" id="rPT-yZ-Jvc">
+                            <connections>
+                                <segue destination="pZQ-Ce-1l5" kind="push" id="EHs-bJ-901"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZHd-jC-avd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2242" y="427"/>
+        </scene>
+        <!--View Controller - Add Blend Request-->
+        <scene sceneID="IYs-4e-501">
+            <objects>
+                <viewController id="pZQ-Ce-1l5" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="orX-3n-8jl"/>
+                        <viewControllerLayoutGuide type="bottom" id="xkD-SD-HJ1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ISA-OR-3BA">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add Blend Request" id="EjG-kJ-DBb"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xie-qP-UVJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2654" y="427"/>
         </scene>
         <!--Waving View Controller - Waving-->
         <scene sceneID="TFz-V2-zQT">
@@ -409,7 +481,6 @@
     <resources>
         <image name="blends" width="32" height="32"/>
         <image name="echowave" width="32" height="32"/>
-        <image name="under-construction-template" width="1233" height="1076"/>
         <image name="waving" width="32" height="32"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
