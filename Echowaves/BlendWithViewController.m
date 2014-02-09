@@ -67,4 +67,10 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *waveNameSelected = [((NSDictionary*)[self.searchResults objectAtIndex:indexPath.row]) objectForKey:@"label"];
+    NSLog(@"didSelectRowAtIndex: %d, value %@", indexPath.row, waveNameSelected);
+}
+
+
 @end
