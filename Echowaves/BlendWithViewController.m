@@ -70,6 +70,16 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *waveNameSelected = [((NSDictionary*)[self.searchResults objectAtIndex:indexPath.row]) objectForKey:@"label"];
     NSLog(@"didSelectRowAtIndex: %d, value %@", indexPath.row, waveNameSelected);
+
+    [EWBlend requestBlendingWith:waveNameSelected
+                         success:^{
+                             [self.navigationController popViewControllerAnimated:true];
+                         }
+                         failure:^(NSError *error) {
+                             [EWBlend showErrorAlertWithMessage:[error description]
+                                                     FromSender:self];
+                             [self.navigationController popViewControllerAnimated:true];
+                         }];    
 }
 
 

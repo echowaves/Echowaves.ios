@@ -14,4 +14,9 @@
 +(void) autoCompleteFor:(NSString *) waveName
                 success:(void (^)(NSArray *waveNames))success
                 failure:(void (^)(NSError *error))failure;
+
++(void) requestBlendingWith:(NSString *)waveName
+                   success:(void (^)(void))success
+                   failure:(void (^)(NSError *error))failure;
+
 @end
