@@ -11,4 +11,7 @@
 
 @interface EWBlend : EWDataModel
 
++(void) autoCompleteFor:(NSString *) waveName
+                success:(void (^)(NSArray *waveNames))success
+                failure:(void (^)(NSError *error))failure;
 @end

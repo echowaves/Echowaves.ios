@@ -10,7 +10,8 @@
 
 @interface BlendWithViewController : UIViewController<UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) IBOutlet UISearchBar *blendWithSearchBar;
+@property (strong, nonatomic) IBOutlet UITableView *wavesNamesTableView;
 
-@property (strong, nonatomic) IBOutlet UITableView *blendsCompletionTable;
+@property (strong, atomic) NSArray *searchResults;
 
 @end

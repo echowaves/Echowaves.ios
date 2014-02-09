@@ -7,6 +7,7 @@
 //
 
 #import "BlendWithViewController.h"
+#import "EWBlend.h"
 
 @implementation BlendWithViewController
 
@@ -25,19 +26,41 @@
 }
 
 
-- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText;   // called when text changes (including clear)
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText   // called when text changes (including clear)
 {
     NSLog(@"search text: %@", searchText);
+    if(searchText.length <100 && searchText.length > 3) {
+        [EWBlend autoCompleteFor:searchText
+                         success:^(NSArray *waveNames) {
+                             self.searchResults = waveNames;
+                             [self.wavesNamesTableView reloadInputViews];
+                             [self.wavesNamesTableView reloadData];
+                         }
+                         failure:^(NSError *error) {
+                             [EWWave showErrorAlertWithMessage:[error description] FromSender:self];
+                         }];
+    }
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    NSLog(@"tableView number of rows: %d", self.searchResults.count);
+    return self.searchResults.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return nil;
+    NSLog(@"tableView cellForRowAtIndexPath: %d", indexPath.row);
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WaveCompletionTableCell" forIndexPath:indexPath];
+    
+    UILabel *waveNameLabel = (UILabel *)[cell viewWithTag:42];
+    
+    NSString *waveName = [((NSDictionary*)[self.searchResults objectAtIndex:indexPath.row]) objectForKey:@"label"];
+
+    waveNameLabel.text = waveName;
+    
+    return cell;
 }
 
 @end
