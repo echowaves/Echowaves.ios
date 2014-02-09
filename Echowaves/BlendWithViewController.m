@@ -39,6 +39,10 @@
                          failure:^(NSError *error) {
                              [EWWave showErrorAlertWithMessage:[error description] FromSender:self];
                          }];
+    } else {
+        self.searchResults = [[NSArray alloc] init];
+        [self.wavesNamesTableView reloadInputViews];
+        [self.wavesNamesTableView reloadData];
     }
 }
 
