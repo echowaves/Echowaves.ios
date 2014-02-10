@@ -100,20 +100,35 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
+
+    UILabel *waveLabel = (UILabel *)[cell viewWithTag:100];
+
+    NSLog(@"wave label: %@", waveLabel.text);
     
     switch([indexPath section]){
         case 0:
-            cell.textLabel.text = [self.requestedBlends objectAtIndex:[indexPath row]];
+            waveLabel.text = [self.requestedBlends objectAtIndex:[indexPath row]];
             break;
         case 1:
-            cell.textLabel.text = [self.unconfirmedBlends objectAtIndex:[indexPath row]];
+            waveLabel.text = [self.unconfirmedBlends objectAtIndex:[indexPath row]];
             break;
         case 2:
-            cell.textLabel.text = [self.blendedWith objectAtIndex:[indexPath row]];
+            waveLabel.text = [self.blendedWith objectAtIndex:[indexPath row]];
             break;
     }
     
     return cell;
 }
+
+- (IBAction)acceptButtonClicked:(id)sender {
+    NSLog(@"acceptButtonClicked %@", sender);
+}
+- (IBAction)rejectButtonClicked:(id)sender {
+    NSLog(@"rejectButtonClicked %@", sender);
+}
+- (IBAction)unblendButtonClicked:(id)sender {
+    NSLog(@"unblendButtonClicked %@", sender);
+}
+
 
 @end
