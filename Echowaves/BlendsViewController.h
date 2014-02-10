@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BlendsViewController : UIViewController
+@interface BlendsViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 
+@property (strong, atomic) NSArray *requestedBlends;
+@property (strong, atomic) NSArray *unconfirmedBlends;
+@property (strong, atomic) NSArray *blendedWith;
 
 @end

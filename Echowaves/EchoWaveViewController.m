@@ -94,6 +94,13 @@
                               ((UIImageView *)[cell viewWithTag:100]).image = [self.imagesCache objectAtIndex:indexPath.row];
                               
                               waveImageView.contentMode = UIViewContentModeScaleAspectFit;
+                              // dropping shadow
+//                              CALayer * layer = [waveImageView layer];
+//                              [layer setShadowOffset:CGSizeMake(0, 2)];
+//                              [layer setShadowRadius:1.0];
+//                              [layer setShadowColor:[UIColor grayColor].CGColor] ;
+//                              [layer setShadowOpacity:0.5];
+//                              [layer setShadowPath:[[UIBezierPath bezierPathWithRect:cell.bounds] CGPath]];
                           }
                           failure:^(NSError *error) {
                               NSLog(@"error: %@", error.description);
