@@ -319,7 +319,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="acceptButtonClicked:" destination="Edp-kY-vOe" eventType="touchUpInside" id="Aki-4D-EiV"/>
+                                                        <action selector="acceptButtonClicked:" destination="Edp-kY-vOe" eventType="touchUpInside" id="p2C-f4-DyZ"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" tag="300" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hEV-IA-bK4">
@@ -329,7 +329,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="rejectButtonClicked:" destination="Edp-kY-vOe" eventType="touchUpInside" id="4yy-AK-xFO"/>
+                                                        <action selector="rejectButtonClicked:" destination="Edp-kY-vOe" eventType="touchUpInside" id="s91-jP-DKv"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -355,7 +355,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="unblendButtonClicked:" destination="Edp-kY-vOe" eventType="touchUpInside" id="ck2-yK-6ar"/>
+                                                        <action selector="unblendButtonClicked:" destination="Edp-kY-vOe" eventType="touchUpInside" id="3hA-7M-rdD"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -374,14 +374,14 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" tag="400" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OEq-XH-d93">
+                                                <button opaque="NO" tag="500" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OEq-XH-d93">
                                                     <rect key="frame" x="240" y="11" width="60" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Button" image="unblend">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="unblendButtonClicked:" destination="Edp-kY-vOe" eventType="touchUpInside" id="vSn-Of-zOD"/>
+                                                        <action selector="unblendBlendedButtonClicked:" destination="Edp-kY-vOe" eventType="touchUpInside" id="AG2-E9-LC1"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -397,6 +397,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Blends" image="blends" id="ZBo-Ng-WgS"/>
+                    <connections>
+                        <outlet property="tableView" destination="b5t-JB-wWW" id="fQm-3R-TWP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H5c-jD-Jqd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

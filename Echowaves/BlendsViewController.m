@@ -121,13 +121,72 @@
 }
 
 - (IBAction)acceptButtonClicked:(id)sender {
-    NSLog(@"acceptButtonClicked %@", sender);
+    UIView *button = sender;
+    NSString *waveName;
+    
+    for (UIView *parent = [button superview]; parent != nil; parent = [parent superview]) {
+        if ([parent isKindOfClass: [UITableViewCell class]]) {
+            UITableViewCell *cell = (UITableViewCell *) parent;
+            NSIndexPath *path = [self.tableView indexPathForCell: cell];
+            waveName = [self.requestedBlends objectAtIndex:path.row];
+            
+            break; // for
+        }
+    }
+
+    NSLog(@"accepting blend request from %@",waveName);
+    
 }
 - (IBAction)rejectButtonClicked:(id)sender {
-    NSLog(@"rejectButtonClicked %@", sender);
+    UIView *button = sender;
+    NSString *waveName;
+    
+    for (UIView *parent = [button superview]; parent != nil; parent = [parent superview]) {
+        if ([parent isKindOfClass: [UITableViewCell class]]) {
+            UITableViewCell *cell = (UITableViewCell *) parent;
+            NSIndexPath *path = [self.tableView indexPathForCell: cell];
+            waveName = [self.requestedBlends objectAtIndex:path.row];
+            
+            break; // for
+        }
+    }
+    
+    NSLog(@"rejecting blend request from %@",waveName);
+
 }
 - (IBAction)unblendButtonClicked:(id)sender {
-    NSLog(@"unblendButtonClicked %@", sender);
+    UIView *button = sender;
+    NSString *waveName;
+    
+    for (UIView *parent = [button superview]; parent != nil; parent = [parent superview]) {
+        if ([parent isKindOfClass: [UITableViewCell class]]) {
+            UITableViewCell *cell = (UITableViewCell *) parent;
+            NSIndexPath *path = [self.tableView indexPathForCell: cell];
+            waveName = [self.unconfirmedBlends objectAtIndex:path.row];
+            
+            break; // for
+        }
+    }
+
+    NSLog(@"unblending wave %@",waveName);
+
+}
+- (IBAction)unblendBlendedButtonClicked:(id)sender {
+    UIView *button = sender;
+    NSString *waveName;
+    
+    for (UIView *parent = [button superview]; parent != nil; parent = [parent superview]) {
+        if ([parent isKindOfClass: [UITableViewCell class]]) {
+            UITableViewCell *cell = (UITableViewCell *) parent;
+            NSIndexPath *path = [self.tableView indexPathForCell: cell];
+            waveName = [self.blendedWith objectAtIndex:path.row];
+            
+            break; // for
+        }
+    }
+
+    NSLog(@"unblending blended wave %@",waveName);
+    
 }
 
 

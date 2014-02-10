@@ -10,6 +10,8 @@
 
 @interface BlendsViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+
 @property (strong, atomic) NSArray *requestedBlends;
 @property (strong, atomic) NSArray *unconfirmedBlends;
 @property (strong, atomic) NSArray *blendedWith;
