@@ -16,7 +16,25 @@
                 failure:(void (^)(NSError *error))failure;
 
 +(void) requestBlendingWith:(NSString *)waveName
-                   success:(void (^)(void))success
+                    success:(void (^)(void))success
+                    failure:(void (^)(NSError *error))failure;
++(void) confirmBlendingWith:(NSString *)waveName
+                    success:(void (^)(void))success
+                    failure:(void (^)(NSError *error))failure;
++(void) unblendFrom:(NSString *)waveName
+            success:(void (^)(void))success
+            failure:(void (^)(NSError *error))failure;
+
+
+
+
++(void) getRequestedBlends:(void (^)(NSArray *waveNames))success
                    failure:(void (^)(NSError *error))failure;
++(void) getUnconfirmedBlends:(void (^)(NSArray *waveNames))success
+                     failure:(void (^)(NSError *error))failure;
++(void) getBlendedWith:(void (^)(NSArray *waveNames))success
+               failure:(void (^)(NSError *error))failure;
+
+
 
 @end
