@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A163DC418AAD72900148595 /* DetailedImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A163DC318AAD72900148595 /* DetailedImageViewController.m */; };
 		0A28E5D71889B87B00B7BDDB /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A28E5D61889B87B00B7BDDB /* SignUpViewController.m */; };
 		0A28E5DA1889B8B300B7BDDB /* EchoWaveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A28E5D91889B8B300B7BDDB /* EchoWaveViewController.m */; };
 		0A28E5DD1889B8C400B7BDDB /* BlendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A28E5DC1889B8C400B7BDDB /* BlendsViewController.m */; };
@@ -64,6 +65,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A163DC218AAD72900148595 /* DetailedImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailedImageViewController.h; sourceTree = "<group>"; };
+		0A163DC318AAD72900148595 /* DetailedImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailedImageViewController.m; sourceTree = "<group>"; };
 		0A28E5D51889B87B00B7BDDB /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		0A28E5D61889B87B00B7BDDB /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		0A28E5D81889B8B300B7BDDB /* EchoWaveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EchoWaveViewController.h; sourceTree = "<group>"; };
@@ -310,6 +313,8 @@
 				0A34C00F18556B4800E085BC /* Resources */,
 				0A5ADAA01888C07900D492BC /* iPad */,
 				0AD6E25A18011F59008303E0 /* Main_iPhone.storyboard */,
+				0A163DC218AAD72900148595 /* DetailedImageViewController.h */,
+				0A163DC318AAD72900148595 /* DetailedImageViewController.m */,
 				0AEB92BD18A6F3FC00DE51DC /* BlendWithViewController.h */,
 				0AEB92BE18A6F3FC00DE51DC /* BlendWithViewController.m */,
 				0A7C733A18948E9300292622 /* NavigationTabBarViewController.h */,
@@ -495,6 +500,7 @@
 				0A46218B1888E29C005CC161 /* UIWebView+AFNetworking.m in Sources */,
 				0A28E5E71889C61500B7BDDB /* EWBlend.m in Sources */,
 				0A28E5ED188F36D300B7BDDB /* HomeViewController.m in Sources */,
+				0A163DC418AAD72900148595 /* DetailedImageViewController.m in Sources */,
 				0AEB92BF18A6F3FC00DE51DC /* BlendWithViewController.m in Sources */,
 				0A4621841888E29C005CC161 /* AFURLSessionManager.m in Sources */,
 				0AD6E25918011F59008303E0 /* EchowavesAppDelegate.m in Sources */,

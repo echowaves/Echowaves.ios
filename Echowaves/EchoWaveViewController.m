@@ -9,6 +9,7 @@
 #import "EchoWaveViewController.h"
 #import "NavigationTabBarViewController.h"
 #import "EWImage.h"
+#import "DetailedImageViewController.h"
 
 @interface EchoWaveViewController ()
 
@@ -111,6 +112,24 @@
     waveImageView.contentMode = UIViewContentModeScaleAspectFit;
 
     return cell;
+}
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"DetailedImageSegue"]) {
+        
+        UICollectionViewCell *cell = (UICollectionViewCell *)sender;
+        NSIndexPath *indexPath = [self.imagesCollectionView indexPathForCell:cell];
+
+        NSLog(@"))))))))))))))))))indexPath: %d", indexPath.row);
+        
+        DetailedImageViewController *detailedImageViewController = (DetailedImageViewController *)segue.destinationViewController;
+        detailedImageViewController.imageFromJson = [self.waveImages objectAtIndex:indexPath.row];
+                
+//        vc2.name = self.textField.text;
+//        detailedImageViewController.imageUrl = 
+    }
 }
 
 @end
