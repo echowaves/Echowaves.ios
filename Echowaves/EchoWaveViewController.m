@@ -105,7 +105,8 @@
                           }
                           failure:^(NSError *error) {
                               NSLog(@"error: %@", error.description);
-                          }];
+                          }
+                         progress:nil];
     }
 
     ((UIImageView *)[cell viewWithTag:100]).image = [self.imagesCache objectAtIndex:indexPath.row];

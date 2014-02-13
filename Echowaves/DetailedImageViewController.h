@@ -10,7 +10,8 @@
 
 @interface DetailedImageViewController : UIViewController
 
-@property (strong, nonatomic) NSDictionary *imageFromJson;
-@property (strong, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) NSDictionary *imageFromJson;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (strong, nonatomic) IBOutlet UIProgressView *progressView;
 
 @end

@@ -29,7 +29,8 @@
 
 + (void) loadImageFromUrl:(NSString*) url
                   success:(void (^)(UIImage *image))success
-                  failure:(void (^)(NSError *error))failure;
+                  failure:(void (^)(NSError *error))failure
+                 progress:(void (^)(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead))progress;
 
 
 @end

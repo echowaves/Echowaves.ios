@@ -144,7 +144,8 @@
 
 + (void) loadImageFromUrl:(NSString*) url
                   success:(void (^)(UIImage *image))success
-                  failure:(void (^)(NSError *error))failure {
+                  failure:(void (^)(NSError *error))failure
+                 progress:(void (^)(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead))progress{
 
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
 
@@ -156,6 +157,11 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         failure(error);
     }];
+    if(progress) {
+        [imgOperation setDownloadProgressBlock:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
+            progress(bytesRead, totalBytesRead, totalBytesExpectedToRead);
+        }];
+    }
     [imgOperation start];
 
     

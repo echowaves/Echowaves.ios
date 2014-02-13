@@ -223,7 +223,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <connections>
-                                            <segue destination="5T2-Jh-Jpt" kind="modal" identifier="DetailedImageSegue" modalTransitionStyle="partialCurl" id="4D3-9N-Avj"/>
+                                            <segue destination="5T2-Jh-Jpt" kind="push" identifier="DetailedImageSegue" id="4D3-9N-Avj"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -259,15 +259,20 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="echowave" translatesAutoresizingMaskIntoConstraints="NO" id="8Zy-gT-xmg">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="97" width="320" height="422"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="4wt-P0-OB3">
+                                <rect key="frame" x="0.0" y="97" width="320" height="2"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="feT-eO-NXM"/>
                     <connections>
                         <outlet property="imageView" destination="8Zy-gT-xmg" id="RpA-nO-Q3C"/>
+                        <outlet property="progressView" destination="4wt-P0-OB3" id="8Wf-zc-AER"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Afd-yX-Vm5" userLabel="First Responder" sceneMemberID="firstResponder"/>
