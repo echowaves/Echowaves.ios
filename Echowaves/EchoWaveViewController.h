@@ -12,9 +12,7 @@
 
 @property (strong, nonatomic) IBOutlet UICollectionView *imagesCollectionView;
 
-@property (strong, nonatomic) NSArray *waveImages;
-
-@property (strong, atomic) NSMutableArray* imagesCache;
+@property (strong, atomic) NSArray *waveImages;
 
 
 @end

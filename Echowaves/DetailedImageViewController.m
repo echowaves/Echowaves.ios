@@ -14,17 +14,27 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [self setTitle:@"Detailed Image"];
-    [self.navigationItem setPrompt:[NSString stringWithFormat:@"Image Date %@", @"qweqwe"]];
-
-    
-//    NSLog(@"###########imageFromJson %@", self.imageFromJson);
+    //    NSLog(@"###########imageFromJson %@", self.imageFromJson);
     
     NSString* imageName = [self.imageFromJson objectForKey:@"name"];
     NSString* waveName = [self.imageFromJson objectForKey:@"name_2"];
-//    NSString* imageUrl = [NSString stringWithFormat:@"%@/img/%@/thumb_%@", EWHost, waveName, imageName];
+    //    NSString* imageUrl = [NSString stringWithFormat:@"%@/img/%@/thumb_%@", EWHost, waveName, imageName];
     NSString* imageUrl = [NSString stringWithFormat:@"%@/img/%@/%@", EWHost, waveName, imageName];
+    
+    [self.navigationItem setPrompt:waveName];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat : @"yyyyMMddHHmmssSSSS"];
+    NSString *dateString = [imageName substringWithRange:NSMakeRange(0, 18)];
+    NSLog(@"imageName  = %@", imageName);
+    NSLog(@"dateString = %@", dateString);
+    NSDate *dateTime = [formatter dateFromString:dateString];
+    
+//    [formatter release];
+    [formatter setDateFormat:@"MM/dd/yyyy HH:mm:ss"];
+    [self setTitle:[formatter stringFromDate:dateTime]];
+
+    
     
 //    [EWDataModel showLoadingIndicator:self];
     self.progressView.progress = 0.0;

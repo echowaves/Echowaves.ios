@@ -16,15 +16,7 @@
 @end
 
 @implementation EchoWaveViewController
-
-//- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    // TODO: Select Item
-//}
-//- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
-//    // TODO: Deselect item
-//}
-
+UIRefreshControl *refreshControl;
 
 
 - (void)viewDidLoad
@@ -33,33 +25,36 @@
     NSLog(@"$$$$$$$$$$$$$$$$calling viewDidLoad for EchoWaveViewController");
     self.imagesCollectionView.alwaysBounceVertical = YES;
     
-    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(startRefresh:)
              forControlEvents:UIControlEventValueChanged];
     [self.imagesCollectionView addSubview:refreshControl];
     
-    [self startRefresh:refreshControl];
+    //    [self startRefresh:refreshControl];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self startRefresh:refreshControl];
+    
+}
 
 - (void) startRefresh:(UIRefreshControl *)sender {
     NSLog(@"starting the refresh");
-
-    self.imagesCache = [[NSMutableArray alloc] init];
-
+    
     NavigationTabBarViewController* navigationTabBarViewController = (NavigationTabBarViewController*)self.tabBarController;
     NSString* waveName = navigationTabBarViewController.waveName.title;
-
+    
     [EWImage getAllImagesForWave:waveName
                          success:^(NSArray *waveImages) {
                              self.waveImages = waveImages;
                              NSLog(@"@total images %d", [self.waveImages count]);
-
+                             
                              dispatch_async(dispatch_get_global_queue(0, 0), ^{
                                  // Instead of sleeping, I do a webrequest here.
                                  dispatch_async(dispatch_get_main_queue(), ^{
-                                     [self.imagesCollectionView reloadInputViews];
                                      [self.imagesCollectionView reloadData];
+                                     [self.imagesCollectionView reloadInputViews];
                                      [sender endRefreshing];
                                  });
                              });
@@ -80,38 +75,24 @@
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageCell" forIndexPath:indexPath];
     
     UIImageView *waveImageView = (UIImageView *)[cell viewWithTag:100];
-
+    
     NSString* imageName = [((NSDictionary*)[self.waveImages objectAtIndex:indexPath.row]) objectForKey:@"name"];
     NSString* waveName = [((NSDictionary*)[self.waveImages objectAtIndex:indexPath.row]) objectForKey:@"name_2"];
     NSString* imageUrl = [NSString stringWithFormat:@"%@/img/%@/thumb_%@", EWHost, waveName, imageName];
-
-
-    if( [self.imagesCache count] < indexPath.row +1 ) {
-        [self.imagesCache addObject:[UIImage imageNamed:@"echowave.png"]];
-        
-        [EWImage loadImageFromUrl:imageUrl
-                          success:^(UIImage *image) {
-                              [self.imagesCache replaceObjectAtIndex:indexPath.row withObject:image];
-                              ((UIImageView *)[cell viewWithTag:100]).image = [self.imagesCache objectAtIndex:indexPath.row];
-                              
-                              waveImageView.contentMode = UIViewContentModeScaleAspectFit;
-                              // dropping shadow
-//                              CALayer * layer = [waveImageView layer];
-//                              [layer setShadowOffset:CGSizeMake(0, 2)];
-//                              [layer setShadowRadius:1.0];
-//                              [layer setShadowColor:[UIColor grayColor].CGColor] ;
-//                              [layer setShadowOpacity:0.5];
-//                              [layer setShadowPath:[[UIBezierPath bezierPathWithRect:cell.bounds] CGPath]];
-                          }
-                          failure:^(NSError *error) {
-                              NSLog(@"error: %@", error.description);
-                          }
-                         progress:nil];
-    }
-
-    ((UIImageView *)[cell viewWithTag:100]).image = [self.imagesCache objectAtIndex:indexPath.row];
-    waveImageView.contentMode = UIViewContentModeScaleAspectFit;
-
+    
+    
+    ((UIImageView *)[cell viewWithTag:100]).image = [UIImage imageNamed:@"echowave.png"];
+    
+    [EWImage loadImageFromUrl:imageUrl
+                      success:^(UIImage *image) {
+                          ((UIImageView *)[cell viewWithTag:100]).image = image;
+                          waveImageView.contentMode = UIViewContentModeScaleAspectFit;
+                      }
+                      failure:^(NSError *error) {
+                          NSLog(@"error: %@", error.description);
+                      }
+                     progress:nil];
+    
     return cell;
 }
 
@@ -122,14 +103,11 @@
         
         UICollectionViewCell *cell = (UICollectionViewCell *)sender;
         NSIndexPath *indexPath = [self.imagesCollectionView indexPathForCell:cell];
-
+        
         NSLog(@"))))))))))))))))))indexPath: %d", indexPath.row);
         
         DetailedImageViewController *detailedImageViewController = (DetailedImageViewController *)segue.destinationViewController;
         detailedImageViewController.imageFromJson = [self.waveImages objectAtIndex:indexPath.row];
-                
-//        vc2.name = self.textField.text;
-//        detailedImageViewController.imageUrl = 
     }
 }
 
