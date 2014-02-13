@@ -125,6 +125,8 @@
 + (void) getAllImagesForWave:(NSString*) waveName
                      success:(void (^)(NSArray *waveImages))success
                      failure:(void (^)(NSError *error))failure {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     //ideally not going to need the following line, if making a request to json service
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
@@ -135,9 +137,11 @@
       parameters:nil
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
              success((NSArray*)responseObject);
+             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
          }
          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
              NSLog(@"Error: %@", error);
+             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
              failure(error);
          }];
 };
@@ -146,6 +150,7 @@
                   success:(void (^)(UIImage *image))success
                   failure:(void (^)(NSError *error))failure
                  progress:(void (^)(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead))progress{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
 
@@ -154,7 +159,9 @@
     [imgOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"Response: %@", responseObject);
         success(responseObject);
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         failure(error);
     }];
     if(progress) {
@@ -163,18 +170,6 @@
         }];
     }
     [imgOperation start];
-
-    
-    
-    
-//    UIImage* tmpImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:url]]];
-//
-//    if(tmpImage) {
-//        success(tmpImage);
-//    } else {
-//        failure([[NSError alloc]initWithDomain:@"failed downloading image" code:404 userInfo:nil]);
-//    }
-    
 }
 
 
