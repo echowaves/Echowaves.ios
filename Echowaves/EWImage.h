@@ -32,5 +32,9 @@
                   failure:(void (^)(NSError *error))failure
                  progress:(void (^)(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead))progress;
 
++(void) deleteImage:(NSString *)imageName
+            success:(void (^)(void))success
+            failure:(void (^)(NSError *error))failure;
+
 
 @end

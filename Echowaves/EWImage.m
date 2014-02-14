@@ -157,7 +157,7 @@
     AFHTTPRequestOperation *imgOperation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     imgOperation.responseSerializer = [AFImageResponseSerializer serializer];
     [imgOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"Response: %@", responseObject);
+//        NSLog(@"Response: %@", responseObject);
         success(responseObject);
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -170,6 +170,29 @@
         }];
     }
     [imgOperation start];
+}
+
++(void) deleteImage:(NSString *)imageName
+            success:(void (^)(void))success
+            failure:(void (^)(NSError *error))failure {
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    // perform authentication, wave/password non blank and exist in the server side, and enter a sending loop
+    
+    //ideally not going to need the following line, if making a request to json service
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    NSDictionary *parameters = @{@"name": imageName};
+    
+    [manager POST:[NSString stringWithFormat:@"%@/delete-image.json", EWHost] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        success();
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+        NSLog(@"Response: %@", [operation.responseObject objectForKey:@"error"]);
+        failure(error);
+    }];
+
 }
 
 

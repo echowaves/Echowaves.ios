@@ -69,8 +69,18 @@
 }
 -(void)deleteImage {
     NSLog(@"deleting image");
-    [self.navigationController popViewControllerAnimated:FALSE];
-    
+    NSString* imageName = [self.imageFromJson objectForKey:@"name"];
+    [EWImage showLoadingIndicator:self];
+    [EWImage deleteImage:imageName
+                 success:^{
+                     [self.navigationController popViewControllerAnimated:FALSE];
+                     [EWImage hideLoadingIndicator:self];
+                 }
+                  failure:^(NSError *error) {
+                      [EWImage hideLoadingIndicator:self];
+                      [EWImage showErrorAlertWithMessage:@"Unable to delete image" FromSender:self];
+                      [self.navigationController popViewControllerAnimated:FALSE];
+                  }];
 }
 
 @end
