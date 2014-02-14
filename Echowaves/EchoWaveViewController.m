@@ -108,6 +108,7 @@ UIRefreshControl *refreshControl;
         
         DetailedImageViewController *detailedImageViewController = (DetailedImageViewController *)segue.destinationViewController;
         detailedImageViewController.imageFromJson = [self.waveImages objectAtIndex:indexPath.row];
+        detailedImageViewController.image = ((UIImageView *)[cell viewWithTag:100]).image;
     }
 }
 

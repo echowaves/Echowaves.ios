@@ -14,8 +14,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //    NSLog(@"###########imageFromJson %@", self.imageFromJson);
+    self.imageView.image = self.image;
+    self.imageView.contentMode = UIViewContentModeScaleAspectFit;
     
+    //    NSLog(@"###########imageFromJson %@", self.imageFromJson);
     NSString* imageName = [self.imageFromJson objectForKey:@"name"];
     NSString* waveName = [self.imageFromJson objectForKey:@"name_2"];
     //    NSString* imageUrl = [NSString stringWithFormat:@"%@/img/%@/thumb_%@", EWHost, waveName, imageName];
@@ -34,7 +36,14 @@
     [formatter setDateFormat:@"MM/dd/yyyy HH:mm:ss"];
     [self setTitle:[formatter stringFromDate:dateTime]];
 
-    
+    NSURLCredential *credential = [EWWave getStoredCredential];
+
+    NSLog(@":::::::::title = %@", credential.user);
+    if ([waveName isEqualToString:[credential user]]) {
+    [self navigationItem].rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"delete"
+                                                                                style:nil
+                                                                               target:nil action:nil];
+    }
     
 //    [EWDataModel showLoadingIndicator:self];
     self.progressView.progress = 0.0;
