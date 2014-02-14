@@ -41,8 +41,9 @@
     NSLog(@":::::::::title = %@", credential.user);
     if ([waveName isEqualToString:[credential user]]) {
     [self navigationItem].rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"delete"
-                                                                                style:nil
-                                                                               target:nil action:nil];
+                                                                                style:UIBarButtonItemStylePlain
+                                                                               target:self
+                                                                               action:@selector(deleteImage)];
     }
     
 //    [EWDataModel showLoadingIndicator:self];
@@ -66,6 +67,10 @@
                      }];
     
 }
-
+-(void)deleteImage {
+    NSLog(@"deleting image");
+    [self.navigationController popViewControllerAnimated:FALSE];
+    
+}
 
 @end
