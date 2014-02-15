@@ -70,7 +70,7 @@ UIRefreshControl *refreshControl;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"@@@at index %d", indexPath.row);
+//    NSLog(@"@@@at index %d", indexPath.row);
     
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageCell" forIndexPath:indexPath];
     
