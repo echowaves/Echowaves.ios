@@ -29,4 +29,7 @@
 //https://www.iconfinder.com/free_icons
 //https://www.iconfinder.com/search/?q=iconset%3Awpzoom-developer-icon-set
 
-// http://www.absoluteripple.com/1/post/2013/08/using-ios-storyboard-segues.html
+//http://www.absoluteripple.com/1/post/2013/08/using-ios-storyboard-segues.html
+
+
+//http://www.raywenderlich.com/32960/apple-push-notification-services-in-ios-6-tutorial-part-1
