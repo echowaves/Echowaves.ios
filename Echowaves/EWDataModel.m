@@ -11,30 +11,29 @@
 @implementation EWDataModel
 
 static UIAlertView *loadingIndicator;
+static BOOL alertShowing;
+
 
 + (void)showLoadingIndicator:(id)sender {
     //UIAlertView *loadingIndicator;
     if (!loadingIndicator) loadingIndicator = [[UIAlertView alloc] initWithTitle:@"Loading..." message:@"Please Wait" delegate:self cancelButtonTitle:nil otherButtonTitles: nil];
     
-//    if (NSFoundationVersionNumber <= NSFoundationVersionNumber_iOS_6_1) {
-//        if(!progress) progress = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(125, 80, 30, 30)];
-//        progress.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
-//        
-//        [loadingIndicator addSubview:progress];
-//        [progress startAnimating];
-//    }
-
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    [loadingIndicator show];
+    if (!alertShowing) {
+        [loadingIndicator show];
+    }
+    alertShowing = YES;
 }
 
 + (void)hideLoadingIndicator:(id)sender {
-    [loadingIndicator dismissWithClickedButtonIndex:0 animated:YES];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    [loadingIndicator dismissWithClickedButtonIndex:0 animated:YES];
+    loadingIndicator = nil;
+    alertShowing = NO;
 }
 
 + (BOOL)isLoadingIndicatorShowing {
-    return [loadingIndicator isVisible];
+    return alertShowing;
 }
 
 + (void)showErrorAlertWithMessage:(NSString *)message FromSender:(id)sender{
