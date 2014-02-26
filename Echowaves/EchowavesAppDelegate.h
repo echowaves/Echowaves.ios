@@ -21,6 +21,7 @@
 @property (atomic, strong) NSOperationQueue *networkQueue;
 //@property (atomic, strong) NSTimer *aTimer;
 
+@property (strong, nonatomic) NSString *deviceToken;
 
 @end
 
@@ -33,3 +34,7 @@
 
 
 //http://www.raywenderlich.com/32960/apple-push-notification-services-in-ios-6-tutorial-part-1
+
+// creating JKS store
+// https://github.com/timewarrior/herolabs-apns
+// http://www.agentbob.info/agentbob/79-AB.html

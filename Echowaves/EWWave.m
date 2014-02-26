@@ -93,6 +93,35 @@
 }
 
 
++(void) storeIosTokenForWave:(NSString *)waveName
+                       token:(NSString*)token
+                     success:(void (^)(NSString *waveName))success
+                     failure:(void (^)(NSString *errorMessage))failure
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    //ideally not going to need the following line, if making a request to json service
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    NSDictionary *parameters = @{@"name": waveName,
+                                 @"token": token};
+    
+    [manager POST:[NSString stringWithFormat:@"%@/register-ios-token.json", EWHost] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSLog(@"+++token stored");
+        NSLog(@"wave name %@ token %@", waveName, token);
+        
+        success(waveName);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+        NSLog(@"Response: %@", [operation.responseObject objectForKey:@"error"]);
+        failure([NSString stringWithFormat:@"Unable to createWave. %@", [operation.responseObject objectForKey:@"error"]]);
+    }];
+}
+
+
+
 +(void) tuneInWithName:(NSString *)waveName
            andPassword:(NSString*)wavePassword
                success:(void (^)(NSString *waveName))success

@@ -22,6 +22,13 @@
     //note: iOS only allows one crash reporting tool per app; if using another, set to: NO
     [Flurry startSession:@"77TXPC3GDBGYX4NM8WNN"];
 
+    
+    // Register for push notifications
+    [application registerForRemoteNotificationTypes:
+     UIRemoteNotificationTypeBadge |
+     UIRemoteNotificationTypeAlert |
+     UIRemoteNotificationTypeSound];
+    
     // perform authentication, wave/password non blank and exist in the server side, and enter a sending loop
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
 
@@ -115,5 +122,17 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
+{
+    self.deviceToken = [[[deviceToken description]
+                         stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]]
+                        stringByReplacingOccurrencesOfString:@" "
+                        withString:@""];
+	NSLog(@"My token is^^^^^^^^^^^^^^^^^^^^^^^^^: %@", [self deviceToken]);
+}
 
+- (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
+{
+	NSLog(@"Failed to get token, error^^^^^^^^^^^^^^^^^^^^^^^: %@", error);
+}
 @end
