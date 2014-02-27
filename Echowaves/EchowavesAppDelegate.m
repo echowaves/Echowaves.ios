@@ -97,6 +97,9 @@
     
     [self.wavingViewController.tabBarController setSelectedIndex:0]; // make first tab active, so we can always see what's uploading when came back to the app.
     
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+
+    
 //    self.aTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
 //                                                   target:self
 //                                                 selector:@selector(timerFired:)

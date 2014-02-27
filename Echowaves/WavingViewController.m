@@ -98,14 +98,6 @@
                                                            }];
                                                            [operation setCompletionBlock:^{
                                                                [self cleanupCurrentUploadView];
-                                                               [EWWave sendPushNotifyForWave:waveName
-                                                                                       badge:imagesToPostOperations.count
-                                                                                     success:^{
-                                                                                         NSLog(@"!!!!!!!!!!!!!!!pushed successfully");
-                                                                                     }
-                                                                                     failure:^(NSError *error) {
-                                                                                         NSLog(@"this error should never happen %@", error.description);
-                                                                                     }];
                                                            }];
                                                            
                                                            NSLog(@"@@@@@@@@@@@@@ image found %@", imageDate.description);
@@ -126,11 +118,29 @@
                                                          //                                  [self appStatus].text = @"uploading now";
                                                          //                                  [self imagesToUpload].hidden = TRUE;
                                                          [EWImage postAllNewImages:imagesToPostOperations];
+                                                         
+                                                         NSLog(@"~~~~~~~~~~~~~~~pushing notify to: %@", waveName);
+                                                         
+                                                         if (imagesToPostOperations.count >0) {
+                                                             [EWWave sendPushNotifyForWave:waveName
+                                                                                     badge:imagesToPostOperations.count
+                                                                                   success:^{
+                                                                                       NSLog(@"!!!!!!!!!!!!!!!pushed notify successfully");
+                                                                                   }
+                                                                                   failure:^(NSError *error) {
+                                                                                       NSLog(@"this error should never happen %@", error.description);
+                                                                                   }];
+
+                                                         }
+
+                                                         
+                                                         
                                                      }
                                                             whenError:^(NSError *error) {
                                                                 NSLog(@"this error should never happen %@", error.description);
                                                                 [self appStatus].text = error.description;
                                                             }];
+                               
                            }
                            
                        }

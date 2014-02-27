@@ -130,7 +130,8 @@
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
-    NSDictionary *parameters = @{@"badge": [NSString stringWithFormat: @"%d", numberOfImages]};
+    NSDictionary *parameters = @{@"badge": [NSString stringWithFormat: @"%d", numberOfImages],
+                                 @"wave_name": waveName};
     
     [manager POST:[NSString stringWithFormat:@"%@/send-push-notify.json", EWHost] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"+++notification pushed");
