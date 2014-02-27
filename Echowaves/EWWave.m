@@ -120,6 +120,28 @@
     }];
 }
 
++(void) sendPushNotifyForWave:(NSString *)waveName
+                        badge:(NSInteger) numberOfImages
+                      success:(void (^)())success
+                      failure:(void (^)(NSError *error))failure {
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    //ideally not going to need the following line, if making a request to json service
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    NSDictionary *parameters = @{@"badge": [NSString stringWithFormat: @"%d", numberOfImages]};
+    
+    [manager POST:[NSString stringWithFormat:@"%@/send-push-notify.json", EWHost] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"+++notification pushed");
+        success();
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+        NSLog(@"Response: %@", [operation.responseObject objectForKey:@"error"]);
+        failure(error);
+    }];
+    
+}
 
 
 +(void) tuneInWithName:(NSString *)waveName

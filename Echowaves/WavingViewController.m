@@ -98,6 +98,14 @@
                                                            }];
                                                            [operation setCompletionBlock:^{
                                                                [self cleanupCurrentUploadView];
+                                                               [EWWave sendPushNotifyForWave:waveName
+                                                                                       badge:imagesToPostOperations.count
+                                                                                     success:^{
+                                                                                         NSLog(@"!!!!!!!!!!!!!!!pushed successfully");
+                                                                                     }
+                                                                                     failure:^(NSError *error) {
+                                                                                         NSLog(@"this error should never happen %@", error.description);
+                                                                                     }];
                                                            }];
                                                            
                                                            NSLog(@"@@@@@@@@@@@@@ image found %@", imageDate.description);

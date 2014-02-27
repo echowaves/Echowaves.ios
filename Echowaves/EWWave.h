@@ -31,6 +31,11 @@
                    success:(void (^)(NSString *waveName))success
                    failure:(void (^)(NSString *errorMessage))failure;
 
++(void) sendPushNotifyForWave:(NSString *) waveName
+                        badge:(NSInteger) numberOfImages
+               success:(void (^)())success
+               failure:(void (^)(NSError *error))failure;
+
 
 +(void) tuneInWithName:(NSString *)waveName
            andPassword:(NSString*)wavePassword
