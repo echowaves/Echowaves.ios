@@ -71,8 +71,10 @@
     NSString *waveNameSelected = [((NSDictionary*)[self.searchResults objectAtIndex:indexPath.row]) objectForKey:@"label"];
     NSLog(@"didSelectRowAtIndex: %d, value %@", indexPath.row, waveNameSelected);
 
+    [EWBlend showLoadingIndicator:self];
     [EWBlend requestBlendingWith:waveNameSelected
                          success:^{
+                             [EWBlend hideLoadingIndicator:self];
                              [self.navigationController popViewControllerAnimated:true];
                          }
                          failure:^(NSError *error) {
