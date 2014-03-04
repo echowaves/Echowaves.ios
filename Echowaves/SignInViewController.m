@@ -18,10 +18,21 @@
 
 
 - (IBAction)tuneIn:(UIButton *) sender {
+    NSString *wave =self.waveName.text;
+    NSString *wavePassword =self.wavePassword.text;
+    /* Dmitry, do you want early check here or do you want a trip to a server
+     to show the error message uniformly?
+    if(![wave length] || ![wavePassword length]) {
+        NSString *message = NSLocalizedString(@"Both fields are required", nil);
+        UIAlertView *errorMessage = [[UIAlertView alloc] initWithTitle:@"Error" message:message delegate:sender cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+        [errorMessage show];
+        return;
+    }
+*/
     NSLog(@"-------calling tuneIn");
     [EWWave showLoadingIndicator:self];
-    [EWWave tuneInWithName:self.waveName.text
-               andPassword:self.wavePassword.text
+    [EWWave tuneInWithName:wave
+               andPassword:wavePassword
                    success:^(NSString *waveName) {
                        [EWWave hideLoadingIndicator:self];
                        [EWWave storeCredentialForWaveName:self.waveName.text withPassword:self.wavePassword.text];
