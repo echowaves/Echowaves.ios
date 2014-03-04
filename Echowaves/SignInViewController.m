@@ -25,16 +25,17 @@
                    success:^(NSString *waveName) {
                        [EWWave hideLoadingIndicator:self];
                        [EWWave storeCredentialForWaveName:self.waveName.text withPassword:self.wavePassword.text];
-
-                       [EWWave storeIosTokenForWave:self.waveName.text
-                                              token:[(EchowavesAppDelegate *)[[UIApplication sharedApplication] delegate] deviceToken]
+                       NSString *deviceToken=[(EchowavesAppDelegate *)[[UIApplication sharedApplication] delegate] deviceToken];
+                       if(deviceToken) {
+                           [EWWave storeIosTokenForWave:self.waveName.text
+                                              token:deviceToken
                                             success:^(NSString *waveName) {
                                                 NSLog(@"stored device token for: %@", waveName);
                                             }
                                             failure:^(NSString *errorMessage) {
                                                 NSLog(@"failed storing deviceToken %@", errorMessage);
                                             }];
-                       
+                       }
                        [self performSegueWithIdentifier: @"TuneIn" sender: self];
                    }
                    failure:^(NSString *errorMessage) {
@@ -74,6 +75,16 @@
     
     if ([identifier isEqualToString:@"TuneIn"]) {
         return NO;
+    }
+    return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
+    if(theTextField.tag==1) {
+        [_wavePassword becomeFirstResponder];
+    }else{
+        [theTextField resignFirstResponder];
+        [self tuneIn:nil];
     }
     return YES;
 }

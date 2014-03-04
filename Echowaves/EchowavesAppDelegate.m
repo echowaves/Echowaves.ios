@@ -132,6 +132,18 @@
                         stringByReplacingOccurrencesOfString:@" "
                         withString:@""];
 	NSLog(@"My token is^^^^^^^^^^^^^^^^^^^^^^^^^: %@", [self deviceToken]);
+    
+    NSURLCredential *credential = [EWWave getStoredCredential];
+    if([credential.user length]) {
+        [EWWave storeIosTokenForWave:credential.user
+                           token:self.deviceToken
+                         success:^(NSString *waveName) {
+                             NSLog(@"stored device token for: %@", waveName);
+                         }
+                         failure:^(NSString *errorMessage) {
+                             NSLog(@"failed storing deviceToken %@", errorMessage);
+                         }];
+    }
 }
 
 - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error

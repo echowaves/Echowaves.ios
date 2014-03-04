@@ -69,4 +69,21 @@
     return YES;
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)theTextField
+{
+    switch(theTextField.tag)
+    {
+        case 0:
+            [_wavePassword becomeFirstResponder];
+            break;
+        case 1:
+            [_confirmPassword becomeFirstResponder];
+            break;
+        default:
+            [theTextField resignFirstResponder];
+            [self createWave:nil];
+    }
+    return YES;
+}
+
 @end
