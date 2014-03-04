@@ -86,7 +86,7 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
         NSLog(@"Response: %@", [operation.responseObject objectForKey:@"error"]);
-        failure([NSString stringWithFormat:@"Unable to createWave. %@", [operation.responseObject objectForKey:@"error"]]);
+        failure([NSString stringWithFormat:@"Unable to createWave: %@", [operation.responseObject objectForKey:@"error"]]);
         
     }];
    
@@ -116,7 +116,7 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
         NSLog(@"Response: %@", [operation.responseObject objectForKey:@"error"]);
-        failure([NSString stringWithFormat:@"Unable to createWave. %@", [operation.responseObject objectForKey:@"error"]]);
+        failure([NSString stringWithFormat:@"Unable to createWave: %@", [operation.responseObject objectForKey:@"error"]]);
     }];
 }
 
@@ -176,7 +176,7 @@
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
-        failure([NSString stringWithFormat:@"Unable to tuneIn. %@", [operation.responseObject objectForKey:@"error"]]);
+        failure([NSString stringWithFormat:@"Unable to tuneIn: %@", [operation.responseObject objectForKey:@"error"]]);
     }];
 
 }

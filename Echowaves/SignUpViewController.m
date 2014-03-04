@@ -17,12 +17,22 @@
 @implementation SignUpViewController
 
 
-- (IBAction)createWave:(UIButton *)sender {
+- (IBAction)createWave:(UIButton *)sender
+{
+    NSString *wave =self.waveName.text;
+    NSString *wavePassword =self.wavePassword.text;
+    NSString *confirmPassword =self.confirmPassword.text;
+    if(![wave length] || ![wavePassword length] || ![confirmPassword length]) {
+        NSString *message = NSLocalizedString(@"All fields are required", nil);
+        UIAlertView *errorMessage = [[UIAlertView alloc] initWithTitle:@"Error" message:message delegate:sender cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+        [errorMessage show];
+        return;
+    }
     NSLog(@"-------calling createWave");
     [EWWave showLoadingIndicator:self];
-    [EWWave createWaveWithName:self.waveName.text
-                      password:self.wavePassword.text
-               confirmPassword:self.confirmPassword.text
+    [EWWave createWaveWithName:wave
+                      password:wavePassword
+               confirmPassword:confirmPassword
                    success:^(NSString *waveName) {
                        [EWWave hideLoadingIndicator:self];
                        [EWWave storeCredentialForWaveName:self.waveName.text withPassword:self.wavePassword.text];
