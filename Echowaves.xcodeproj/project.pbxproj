@@ -37,6 +37,7 @@
 		0AB1CF511890C1380056A94A /* EWDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB1CF501890C1380056A94A /* EWDataModel.m */; };
 		0AC91E66186BF50300D61381 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AC91E65186BF50300D61381 /* Security.framework */; };
 		0AC91E68186BF52F00D61381 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AC91E67186BF52F00D61381 /* SystemConfiguration.framework */; };
+		0AD529DF18C7A46C0047951D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AD529DE18C7A4470047951D /* Default-568h@2x.png */; };
 		0AD6E24918011F59008303E0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AD6E24818011F59008303E0 /* Foundation.framework */; };
 		0AD6E24B18011F59008303E0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AD6E24A18011F59008303E0 /* CoreGraphics.framework */; };
 		0AD6E24D18011F59008303E0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AD6E24C18011F59008303E0 /* UIKit.framework */; };
@@ -125,6 +126,9 @@
 		0AB1CF501890C1380056A94A /* EWDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWDataModel.m; sourceTree = "<group>"; };
 		0AC91E65186BF50300D61381 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		0AC91E67186BF52F00D61381 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		0AD529DC18C7A4200047951D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		0AD529DD18C7A4360047951D /* Default~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default~iphone.png"; sourceTree = "<group>"; };
+		0AD529DE18C7A4470047951D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		0AD6E24518011F59008303E0 /* Echowaves.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Echowaves.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AD6E24818011F59008303E0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0AD6E24A18011F59008303E0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -277,6 +281,9 @@
 		0AD6E23C18011F59008303E0 = {
 			isa = PBXGroup;
 			children = (
+				0AD529DE18C7A4470047951D /* Default-568h@2x.png */,
+				0AD529DD18C7A4360047951D /* Default~iphone.png */,
+				0AD529DC18C7A4200047951D /* Default.png */,
 				0AD6E24E18011F59008303E0 /* Echowaves */,
 				0AD6E27018011F59008303E0 /* EchowavesTests */,
 				0AD6E24718011F59008303E0 /* Frameworks */,
@@ -454,6 +461,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0AD6E26418011F59008303E0 /* Images.xcassets in Resources */,
+				0AD529DF18C7A46C0047951D /* Default-568h@2x.png in Resources */,
 				0AD6E25C18011F59008303E0 /* Main_iPhone.storyboard in Resources */,
 				0AD6E25318011F59008303E0 /* InfoPlist.strings in Resources */,
 			);
