@@ -10,10 +10,11 @@
 #import "EWWave.h"
 #import "EWImage.h"
 
-//@interface WavingViewController ()
-//
-//@end
-//
+@interface WavingViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *photoButton;
+
+@end
+
 
 @implementation WavingViewController
 
@@ -41,6 +42,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.delegate = self;
     [self cleanupCurrentUploadView];
     NSLog(@"#### WavingViewController viewDidLoad ");
     APP_DELEGATE.wavingViewController = self;
@@ -52,6 +54,11 @@
     [self currentlyUploadingImage].contentMode = UIViewContentModeScaleAspectFit;
     self.uploadProgressBar.progress = 0.0;
     
+    [self checkForNewImages];
+}
+
+-(void) pictureSaved
+{
     [self checkForNewImages];
 }
 

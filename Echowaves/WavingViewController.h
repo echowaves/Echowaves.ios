@@ -9,8 +9,9 @@
 //#import <UIKit/UIKit.h>
 #import "AFHTTPRequestOperationManager.h"
 #import "EchowavesAppDelegate.h"
+#import "EchowavesImagePickerController.h"
 
-@interface WavingViewController : UIViewController
+@interface WavingViewController : EchowavesImagePickerController<EchowavesImagePickerControllerProtocol>
 
 
 @property (nonatomic) IBOutlet UISwitch *waving;
