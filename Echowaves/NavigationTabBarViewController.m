@@ -14,5 +14,10 @@
 
 @implementation NavigationTabBarViewController
 
+- (IBAction)takePicture:(id)sender {
+    WavingViewController *wavingViewController = (WavingViewController*)[[self childViewControllers] objectAtIndex:0];
+    NSLog(@"taking picture");
+    [wavingViewController takepicture];
+}
 
 @end
