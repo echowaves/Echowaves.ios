@@ -575,7 +575,7 @@
                                 </connections>
                             </switch>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Currently Waving" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xe0-XU-TeL">
-                                <rect key="frame" x="112" y="76" width="131" height="21"/>
+                                <rect key="frame" x="93" y="76" width="150" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
@@ -614,10 +614,10 @@
                                     <action selector="cancelingCurrentUploadOperation:" destination="8lZ-lH-xhR" eventType="touchUpInside" id="kor-bc-GqG"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fBB-gB-Gkk">
-                                <rect key="frame" x="20" y="72" width="84" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fBB-gB-Gkk">
+                                <rect key="frame" x="20" y="72" width="33" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Take a Pic">
+                                <state key="normal" image="Camera">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -664,6 +664,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Camera" width="32" height="32"/>
         <image name="accept" width="200" height="50"/>
         <image name="blends" width="32" height="32"/>
         <image name="echowave" width="32" height="32"/>
