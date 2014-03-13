@@ -23,7 +23,13 @@
         UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
         imagePickerController.delegate = self;
         imagePickerController.sourceType = sourceType;
+        imagePickerController.allowsEditing = YES;
+        imagePickerController.wantsFullScreenLayout = YES;
+        if(backfacing) {
+            imagePickerController.cameraDevice = UIImagePickerControllerCameraDeviceFront;
+        }
         self.imagePickerController = imagePickerController;
+        
         UIResponder<UIApplicationDelegate> *appDelegate= [[UIApplication sharedApplication] delegate];
         [appDelegate.window addSubview:imagePickerController.view];
         //[self.navigationController pushViewController:imagePickerController animated:NO];
