@@ -114,9 +114,10 @@
     if (self.wavingViewController.waving.on) {
         //this prevents from loosing session in case the server was bounced
 //        [echowavesViewController tuneIn];
-        [NSThread sleepForTimeInterval:1.0f];
 
-        [self.wavingViewController checkForNewImages];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.wavingViewController checkForNewImages];
+        });
     }
 }
 

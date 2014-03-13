@@ -9,6 +9,7 @@
 #import "EchowavesImagePickerController.h"
 
 @interface EchowavesImagePickerController ()
+
 @property (nonatomic, retain) UIImagePickerController *imagePickerController;
 @end
 
@@ -19,19 +20,13 @@
 {
     if ([UIImagePickerController isSourceTypeAvailable:sourceType])
     {
-        self.imagePickerController = [[UIImagePickerController alloc] init];
-//        self.imagePickerController.showsCameraControls = YES;
-        self.imagePickerController.allowsEditing = YES;
-        self.imagePickerController.sourceType = sourceType;
-        self.imagePickerController.wantsFullScreenLayout = YES;
-        self.imagePickerController.delegate = self;
-        if(backfacing) {
-			self.imagePickerController.cameraDevice = UIImagePickerControllerCameraDeviceFront;
-		}
-        UIViewController *vc =self;
-        NSLog(@"sip vc %@", vc);
-		[vc presentViewController:self.imagePickerController animated:YES
-                         completion:nil];
+        UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+        imagePickerController.delegate = self;
+        imagePickerController.sourceType = sourceType;
+        self.imagePickerController = imagePickerController;
+        UIResponder<UIApplicationDelegate> *appDelegate= [[UIApplication sharedApplication] delegate];
+        [appDelegate.window addSubview:imagePickerController.view];
+        //[self.navigationController pushViewController:imagePickerController animated:NO];
 		return YES;
     }
 	return NO;
@@ -56,36 +51,39 @@
 #pragma mark -
 #pragma mark UIImagePickerControllerDelegate
 
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error
+  contextInfo:(void *)contextInfo
+{
+    if (error)
+    {
+        NSLog(@"image save completed with %@/%@", error, contextInfo);
+    }
+    else{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.delegate pictureSaved];
+        });
+    }
+    [self.imagePickerController.view removeFromSuperview];
+}
+
 // this get called when an image has been chosen from the library or taken from the camera
 //
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
-//        UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
-        
-        // Get the selected Video.
-        NSURL *videoURL = [info objectForKey:UIImagePickerControllerMediaURL];
-        // Convert to Video data.
-        NSData *imageData = [NSData dataWithContentsOfURL:videoURL];
-        
-        // Save Video to Photo Album
-        ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
-        NSURL *recordedVideoURL= [info objectForKey:UIImagePickerControllerMediaURL];
-        if ([library videoAtPathIsCompatibleWithSavedPhotosAlbum:recordedVideoURL]) {
-            [library writeImageDataToSavedPhotosAlbum:imageData metadata:info completionBlock:^(NSURL *assetURL, NSError *error)
-             {
-             }
-             ];
-        }
+    if (picker.sourceType == UIImagePickerControllerSourceTypeCamera)
+    {
+        UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
+        UIImageWriteToSavedPhotosAlbum(image, self,
+                                       @selector(image:didFinishSavingWithError:contextInfo:), nil);
+    }else{
+        [picker.view removeFromSuperview];
     }
-    [self.imagePickerController dismissViewControllerAnimated:NO completion:nil];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
-//    [self.delegate didFinishWithCamera];    // tell our delegate we are finished with the picker
-    [self.imagePickerController dismissViewControllerAnimated:NO completion:nil];
+    NSLog(@"camera cancelled");
+    [picker.view removeFromSuperview];
 }
-
 
 @end

@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EchowavesImagePickerController : UIViewController <UINavigationControllerDelegate,UIImagePickerControllerDelegate>
+@protocol EchowavesImagePickerControllerProtocol <NSObject>
 
+-(void)pictureSaved;
+
+@end
+@interface EchowavesImagePickerController : UIViewController <UINavigationControllerDelegate,UIImagePickerControllerDelegate>
+@property (nonatomic, weak) id<EchowavesImagePickerControllerProtocol> delegate;
 -(IBAction)takepicture;
 @end
