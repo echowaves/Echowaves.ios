@@ -326,6 +326,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <outlet property="waveName" destination="70E-4t-zqk" id="grw-wQ-WpR"/>
                         <segue destination="8lZ-lH-xhR" kind="relationship" relationship="viewControllers" id="OzU-Ir-F5h"/>
                         <segue destination="Wr0-jG-xAd" kind="relationship" relationship="viewControllers" id="cTz-Q0-fWs"/>
                         <segue destination="Edp-kY-vOe" kind="relationship" relationship="viewControllers" id="2TA-f1-FAK"/>
