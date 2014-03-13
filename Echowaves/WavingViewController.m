@@ -94,7 +94,7 @@
                                                                    self.currentUploadOperation = operation;
                                                                    self.currentlyUploadingImage.image = image;
                                                                    self.currentlyUploadingImage.hidden = FALSE;
-                                                                   [self imagesToUpload].text = [NSString stringWithFormat:@"%d", APP_DELEGATE.networkQueue.operationCount];
+                                                                   [self imagesToUpload].text = [NSString stringWithFormat:@"%lu", (unsigned long)APP_DELEGATE.networkQueue.operationCount];
                                                                    //                                            [self imagesToUpload].hidden = FALSE;
                                                                }
                                                                
@@ -111,12 +111,12 @@
                                                            
                                                            [imagesToPostOperations addObject:operation];
                                                            
-                                                           [self imagesToUpload].text = [NSString stringWithFormat:@"%d", imagesToPostOperations.count];
+                                                           [self imagesToUpload].text = [NSString stringWithFormat:@"%lu", (unsigned long)imagesToPostOperations.count];
                                                            //the following like is needed to force update the label
                                                            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantPast]];
                                                            
                                                            
-                                                           NSLog(@"@@@@@@@@@@@@@@@@ images to post %d", imagesToPostOperations.count);
+                                                           NSLog(@"@@@@@@@@@@@@@@@@ images to post %lu", (unsigned long)imagesToPostOperations.count);
                                                            
                                                        }
                                                      whenCheckingDone:^{
@@ -169,7 +169,7 @@
     self.currentlyUploadingImage.hidden = TRUE;
     self.currentlyUploadingImage.image = nil;
     //    self.imagesToUpload.hidden = TRUE;
-    [self imagesToUpload].text = [NSString stringWithFormat:@"%d", APP_DELEGATE.networkQueue.operationCount];
+    [self imagesToUpload].text = [NSString stringWithFormat:@"%lu", (unsigned long)APP_DELEGATE.networkQueue.operationCount];
     self.uploadProgressBar.progress = 0.0;
     self.cancelUpload.hidden = TRUE;
 }
