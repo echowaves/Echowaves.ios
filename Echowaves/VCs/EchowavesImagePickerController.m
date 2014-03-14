@@ -46,6 +46,11 @@
 
 -(IBAction)takepicture
 {
+    
+    EchowavesAppDelegate *appDelegate = (EchowavesAppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    [appDelegate.wavingViewController.waving setOn:TRUE];
+
     //if(!mDidFinishWCamera)
     {
 		if(![self showImagePicker:UIImagePickerControllerSourceTypeCamera backfacing:NO]) {
