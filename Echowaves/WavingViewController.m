@@ -86,8 +86,8 @@
                                                            __weak AFHTTPRequestOperation *operation = _operation;
                                                            
                                                            [operation setUploadProgressBlock:^(NSUInteger bytesWritten,
-                                                                                               long long totalBytesWritten,
-                                                                                               long long totalBytesExpectedToWrite) {
+                                                                                               NSInteger totalBytesWritten,
+                                                                                               NSInteger totalBytesExpectedToWrite) {
                                                                if(!self.currentlyUploadingImage.image) { // beginning new upload operation here
                                                                    self.cancelUpload.hidden = FALSE;
                                                                    
@@ -105,6 +105,19 @@
                                                            }];
                                                            [operation setCompletionBlock:^{
                                                                [self cleanupCurrentUploadView];
+                                                               
+                                                               if (imagesToPostOperations.count == 0) {
+                                                                   [EWWave sendPushNotifyForWave:waveName
+                                                                                           badge:1
+                                                                                         success:^{
+                                                                                             NSLog(@"!!!!!!!!!!!!!!!pushed notify successfully");
+                                                                                         }
+                                                                                         failure:^(NSError *error) {
+                                                                                             NSLog(@"this error should never happen %@", error.description);
+                                                                                         }];
+                                                                   
+                                                               }
+                                                               
                                                            }];
                                                            
                                                            NSLog(@"@@@@@@@@@@@@@ image found %@", imageDate.description);
@@ -127,19 +140,6 @@
                                                          [EWImage postAllNewImages:imagesToPostOperations];
                                                          
                                                          NSLog(@"~~~~~~~~~~~~~~~pushing notify to: %@", waveName);
-                                                         
-                                                         if (imagesToPostOperations.count >0) {
-                                                             [EWWave sendPushNotifyForWave:waveName
-                                                                                     badge:imagesToPostOperations.count
-                                                                                   success:^{
-                                                                                       NSLog(@"!!!!!!!!!!!!!!!pushed notify successfully");
-                                                                                   }
-                                                                                   failure:^(NSError *error) {
-                                                                                       NSLog(@"this error should never happen %@", error.description);
-                                                                                   }];
-
-                                                         }
-
                                                          
                                                          
                                                      }
