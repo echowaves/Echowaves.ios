@@ -16,6 +16,8 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
+@property (strong, nonatomic) NSString *waveName;
+
 @property (weak, nonatomic) WavingViewController *wavingViewController;
 
 @property (atomic, strong) NSOperationQueue *networkQueue;
@@ -38,3 +40,6 @@
 // creating JKS store
 // https://github.com/timewarrior/herolabs-apns
 // http://www.agentbob.info/agentbob/79-AB.html
+
+// nsoperation queue
+// http://www.raywenderlich.com/19788/how-to-use-nsoperations-and-nsoperationqueues

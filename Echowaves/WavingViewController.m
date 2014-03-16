@@ -105,19 +105,6 @@
                                                            }];
                                                            [operation setCompletionBlock:^{
                                                                [self cleanupCurrentUploadView];
-                                                               
-                                                               if (imagesToPostOperations.count == 0) {
-                                                                   [EWWave sendPushNotifyForWave:waveName
-                                                                                           badge:1
-                                                                                         success:^{
-                                                                                             NSLog(@"!!!!!!!!!!!!!!!pushed notify successfully");
-                                                                                         }
-                                                                                         failure:^(NSError *error) {
-                                                                                             NSLog(@"this error should never happen %@", error.description);
-                                                                                         }];
-                                                                   
-                                                               }
-                                                               
                                                            }];
                                                            
                                                            NSLog(@"@@@@@@@@@@@@@ image found %@", imageDate.description);
@@ -138,8 +125,6 @@
                                                          //                                  [self appStatus].text = @"uploading now";
                                                          //                                  [self imagesToUpload].hidden = TRUE;
                                                          [EWImage postAllNewImages:imagesToPostOperations];
-                                                         
-                                                         NSLog(@"~~~~~~~~~~~~~~~pushing notify to: %@", waveName);
                                                          
                                                          
                                                      }

@@ -64,24 +64,21 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     NSLog(@"---------------titleForHeaderInSection %ld", (long)section);
     
-    NavigationTabBarViewController* navigationTabBarViewController = (NavigationTabBarViewController*)self.tabBarController;
-    NSString* waveName = navigationTabBarViewController.waveName.title;
-    
     
     switch(section){
         case 0:
             return [NSString stringWithFormat:@"To %@: %lu",
-                    waveName,
+                    APP_DELEGATE.waveName,
                     (unsigned long)[self.requestedBlends count]];
             break;
         case 1:
             return [NSString stringWithFormat:@"From %@: %lu",
-                    waveName,
+                    APP_DELEGATE.waveName,
                     (unsigned long)[self.unconfirmedBlends count]];
             break;
         case 2:
             return [NSString stringWithFormat:@"%@ blends in with: %lu",
-                    waveName,
+                    APP_DELEGATE.waveName,
                     (unsigned long)[self.blendedWith count]];
             break;
     }
