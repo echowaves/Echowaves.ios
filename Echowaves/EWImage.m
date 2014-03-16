@@ -165,7 +165,7 @@
         failure(error);
     }];
     if(progress) {
-        [imgOperation setDownloadProgressBlock:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
+        [imgOperation setDownloadProgressBlock:^(NSUInteger bytesRead, NSInteger totalBytesRead, NSInteger totalBytesExpectedToRead) {
             progress(bytesRead, totalBytesRead, totalBytesExpectedToRead);
         }];
     }
