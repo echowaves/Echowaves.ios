@@ -62,7 +62,7 @@
     return 3;
 }
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    NSLog(@"---------------titleForHeaderInSection %d", section);
+    NSLog(@"---------------titleForHeaderInSection %ld", (long)section);
     
     NavigationTabBarViewController* navigationTabBarViewController = (NavigationTabBarViewController*)self.tabBarController;
     NSString* waveName = navigationTabBarViewController.waveName.title;
@@ -70,19 +70,19 @@
     
     switch(section){
         case 0:
-            return [NSString stringWithFormat:@"To %@: %d",
+            return [NSString stringWithFormat:@"To %@: %lu",
                     waveName,
-                    [self.requestedBlends count]];
+                    (unsigned long)[self.requestedBlends count]];
             break;
         case 1:
-            return [NSString stringWithFormat:@"From %@: %d",
+            return [NSString stringWithFormat:@"From %@: %lu",
                     waveName,
-                    [self.unconfirmedBlends count]];
+                    (unsigned long)[self.unconfirmedBlends count]];
             break;
         case 2:
-            return [NSString stringWithFormat:@"%@ blends in with: %d",
+            return [NSString stringWithFormat:@"%@ blends in with: %lu",
                     waveName,
-                    [self.blendedWith count]];
+                    (unsigned long)[self.blendedWith count]];
             break;
     }
     return 0;
@@ -90,19 +90,19 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"---------------numberOfRowsInSection %d", section);
+    NSLog(@"---------------numberOfRowsInSection %ld", (long)section);
     
     switch(section){
         case 0:
-            NSLog(@"%d", [self.requestedBlends count]);
+            NSLog(@"%lu", (unsigned long)[self.requestedBlends count]);
             return [self.requestedBlends count];
             break;
         case 1:
-            NSLog(@"%d", [self.unconfirmedBlends count]);
+            NSLog(@"%lu", (unsigned long)[self.unconfirmedBlends count]);
             return [self.unconfirmedBlends count];
             break;
         case 2:
-            NSLog(@"%d", [self.blendedWith count]);
+            NSLog(@"%lu", (unsigned long)[self.blendedWith count]);
             return [self.blendedWith count];
             break;
     }
@@ -113,7 +113,7 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"--------cellForRowAtIndexPath %d for section %d", indexPath.row, indexPath.section);
+    NSLog(@"--------cellForRowAtIndexPath %ld for section %ld", (long)indexPath.row, (long)indexPath.section);
     UITableViewCell *cell;
     NSString *cellIdentifier;
     switch([indexPath section]){

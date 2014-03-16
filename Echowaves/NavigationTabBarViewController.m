@@ -14,5 +14,16 @@
 
 @implementation NavigationTabBarViewController
 
+- (IBAction)takePicture:(id)sender {
+    
+    EchowavesAppDelegate *appDelegate = (EchowavesAppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    [appDelegate.wavingViewController.tabBarController setSelectedIndex:0];
+    
+    WavingViewController *wavingViewController = appDelegate.wavingViewController;
+    
+    NSLog(@"taking picture");
+    [wavingViewController takepicture];
+}
 
 @end

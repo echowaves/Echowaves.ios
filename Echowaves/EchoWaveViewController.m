@@ -48,7 +48,7 @@ UIRefreshControl *refreshControl;
     [EWImage getAllImagesForWave:waveName
                          success:^(NSArray *waveImages) {
                              self.waveImages = waveImages;
-                             NSLog(@"@total images %d", [self.waveImages count]);
+                             NSLog(@"@total images %lu", (unsigned long)[self.waveImages count]);
                              
                              dispatch_async(dispatch_get_global_queue(0, 0), ^{
                                  // Instead of sleeping, I do a webrequest here.
@@ -65,7 +65,7 @@ UIRefreshControl *refreshControl;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    NSLog(@"total images in wave: %d", self.waveImages.count);
+    NSLog(@"total images in wave: %lu", (unsigned long)self.waveImages.count);
     return [self.waveImages count];
 }
 
@@ -104,7 +104,7 @@ UIRefreshControl *refreshControl;
         UICollectionViewCell *cell = (UICollectionViewCell *)sender;
         NSIndexPath *indexPath = [self.imagesCollectionView indexPathForCell:cell];
         
-        NSLog(@"))))))))))))))))))indexPath: %d", indexPath.row);
+        NSLog(@"))))))))))))))))))indexPath: %ld", (long)indexPath.row);
         
         DetailedImageViewController *detailedImageViewController = (DetailedImageViewController *)segue.destinationViewController;
         detailedImageViewController.imageFromJson = [self.waveImages objectAtIndex:indexPath.row];

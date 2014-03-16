@@ -86,15 +86,15 @@
                                                            __weak AFHTTPRequestOperation *operation = _operation;
                                                            
                                                            [operation setUploadProgressBlock:^(NSUInteger bytesWritten,
-                                                                                               long long totalBytesWritten,
-                                                                                               long long totalBytesExpectedToWrite) {
+                                                                                               NSInteger totalBytesWritten,
+                                                                                               NSInteger totalBytesExpectedToWrite) {
                                                                if(!self.currentlyUploadingImage.image) { // beginning new upload operation here
                                                                    self.cancelUpload.hidden = FALSE;
                                                                    
                                                                    self.currentUploadOperation = operation;
                                                                    self.currentlyUploadingImage.image = image;
                                                                    self.currentlyUploadingImage.hidden = FALSE;
-                                                                   [self imagesToUpload].text = [NSString stringWithFormat:@"%d", APP_DELEGATE.networkQueue.operationCount];
+                                                                   [self imagesToUpload].text = [NSString stringWithFormat:@"%lu", (unsigned long)APP_DELEGATE.networkQueue.operationCount];
                                                                    //                                            [self imagesToUpload].hidden = FALSE;
                                                                }
                                                                
@@ -105,18 +105,31 @@
                                                            }];
                                                            [operation setCompletionBlock:^{
                                                                [self cleanupCurrentUploadView];
+                                                               
+                                                               if (imagesToPostOperations.count == 0) {
+                                                                   [EWWave sendPushNotifyForWave:waveName
+                                                                                           badge:1
+                                                                                         success:^{
+                                                                                             NSLog(@"!!!!!!!!!!!!!!!pushed notify successfully");
+                                                                                         }
+                                                                                         failure:^(NSError *error) {
+                                                                                             NSLog(@"this error should never happen %@", error.description);
+                                                                                         }];
+                                                                   
+                                                               }
+                                                               
                                                            }];
                                                            
                                                            NSLog(@"@@@@@@@@@@@@@ image found %@", imageDate.description);
                                                            
                                                            [imagesToPostOperations addObject:operation];
                                                            
-                                                           [self imagesToUpload].text = [NSString stringWithFormat:@"%d", imagesToPostOperations.count];
+                                                           [self imagesToUpload].text = [NSString stringWithFormat:@"%lu", (unsigned long)imagesToPostOperations.count];
                                                            //the following like is needed to force update the label
                                                            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantPast]];
                                                            
                                                            
-                                                           NSLog(@"@@@@@@@@@@@@@@@@ images to post %d", imagesToPostOperations.count);
+                                                           NSLog(@"@@@@@@@@@@@@@@@@ images to post %lu", (unsigned long)imagesToPostOperations.count);
                                                            
                                                        }
                                                      whenCheckingDone:^{
@@ -127,19 +140,6 @@
                                                          [EWImage postAllNewImages:imagesToPostOperations];
                                                          
                                                          NSLog(@"~~~~~~~~~~~~~~~pushing notify to: %@", waveName);
-                                                         
-                                                         if (imagesToPostOperations.count >0) {
-                                                             [EWWave sendPushNotifyForWave:waveName
-                                                                                     badge:imagesToPostOperations.count
-                                                                                   success:^{
-                                                                                       NSLog(@"!!!!!!!!!!!!!!!pushed notify successfully");
-                                                                                   }
-                                                                                   failure:^(NSError *error) {
-                                                                                       NSLog(@"this error should never happen %@", error.description);
-                                                                                   }];
-
-                                                         }
-
                                                          
                                                          
                                                      }
@@ -169,7 +169,7 @@
     self.currentlyUploadingImage.hidden = TRUE;
     self.currentlyUploadingImage.image = nil;
     //    self.imagesToUpload.hidden = TRUE;
-    [self imagesToUpload].text = [NSString stringWithFormat:@"%d", APP_DELEGATE.networkQueue.operationCount];
+    [self imagesToUpload].text = [NSString stringWithFormat:@"%lu", (unsigned long)APP_DELEGATE.networkQueue.operationCount];
     self.uploadProgressBar.progress = 0.0;
     self.cancelUpload.hidden = TRUE;
 }

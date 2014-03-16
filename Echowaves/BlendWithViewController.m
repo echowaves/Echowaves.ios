@@ -48,13 +48,13 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSLog(@"tableView number of rows: %d", self.searchResults.count);
+    NSLog(@"tableView number of rows: %lu", (unsigned long)self.searchResults.count);
     return self.searchResults.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"tableView cellForRowAtIndexPath: %d", indexPath.row);
+    NSLog(@"tableView cellForRowAtIndexPath: %ld", (long)indexPath.row);
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WaveCompletionTableCell" forIndexPath:indexPath];
     
@@ -69,7 +69,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *waveNameSelected = [((NSDictionary*)[self.searchResults objectAtIndex:indexPath.row]) objectForKey:@"label"];
-    NSLog(@"didSelectRowAtIndex: %d, value %@", indexPath.row, waveNameSelected);
+    NSLog(@"didSelectRowAtIndex: %ld, value %@", (long)indexPath.row, waveNameSelected);
 
     [EWBlend showLoadingIndicator:self];
     [EWBlend requestBlendingWith:waveNameSelected
