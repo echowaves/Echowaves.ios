@@ -36,14 +36,18 @@
     [formatter setDateFormat:@"MM/dd/yyyy HH:mm:ss"];
     [self setTitle:[formatter stringFromDate:dateTime]];
 
-    NSURLCredential *credential = [EWWave getStoredCredential];
 
-    NSLog(@":::::::::title = %@", credential.user);
-    if ([waveName isEqualToString:[credential user]]) {
-    [self navigationItem].rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"delete"
-                                                                                style:UIBarButtonItemStylePlain
-                                                                               target:self
-                                                                               action:@selector(deleteImage)];
+    if ([waveName isEqualToString:[APP_DELEGATE waveName]]) {
+        [self navigationItem].rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash
+                                                                                                 target:self
+                                                                                                 action:@selector(deleteImage)];
+
+        
+    } else {
+        [self navigationItem].rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave
+                                                                                                 target:self
+                                                                                                 action:@selector(saveImage)];
+        
     }
     
 //    [EWDataModel showLoadingIndicator:self];
@@ -83,4 +87,15 @@
                   }];
 }
 
+-(void)saveImage {
+    [EWImage saveImageToAssetLibrary:[self image]
+                             success:^{
+                                 [EWDataModel showAlertWithMessage:@"Photo Saved to iPhone"
+                                                        FromSender:self];
+                             }
+                             failure:^(NSError *error) {
+                                 [EWDataModel showErrorAlertWithMessage:@"Error saving" FromSender:self];
+                             }]
+    ;
+}
 @end

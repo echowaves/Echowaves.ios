@@ -195,5 +195,27 @@
 
 }
 
++(void) saveImageToAssetLibrary:(UIImage*) image
+                        success:(void (^)(void))success
+                        failure:(void (^)(NSError *error))failure;
+{
+    CGImageRef img = [image CGImage];
+    ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
+
+    [library writeImageToSavedPhotosAlbum:img
+                              orientation:ALAssetOrientationUp
+                          completionBlock:^(NSURL* assetURL, NSError* error) {
+                              if (error.code == 0) {
+                                  NSLog(@"saved image completed:\nurl: %@", assetURL);
+                                  success();
+                              }
+                              else {
+                                  NSLog(@"saved image failed.\nerror code %li\n%@", (long)error.code, [error localizedDescription]);
+                                  failure(error);
+                              }
+                          }];
+    
+}
+
 
 @end
