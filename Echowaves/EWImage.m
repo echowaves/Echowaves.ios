@@ -72,6 +72,7 @@
                 
             } else { // here is at the end of the iterating over assets
                 [USER_DEFAULTS setObject:[NSDate date] forKey:@"lastCheckTime"];
+                [USER_DEFAULTS synchronize];
                 checkCompleteBlock();
             }
         }];
@@ -207,6 +208,9 @@
                           completionBlock:^(NSURL* assetURL, NSError* error) {
                               if (error.code == 0) {
                                   NSLog(@"saved image completed:\nurl: %@", assetURL);
+                                  [USER_DEFAULTS setObject:[NSDate date] forKey:@"lastCheckTime"];
+                                  [USER_DEFAULTS synchronize];
+
                                   success();
                               }
                               else {

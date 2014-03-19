@@ -25,6 +25,7 @@
     if(self.waving.on) {
         NSLog(@"======== reset lastCheckTime");
         [USER_DEFAULTS setObject:[NSDate date] forKey:@"lastCheckTime"];
+        [USER_DEFAULTS synchronize];
         [self appStatus].text = @"Use iPhone cam, then come back to EW...";
     } else {
         [self appStatus].text = @"No iPhone images will be uploaded...";
