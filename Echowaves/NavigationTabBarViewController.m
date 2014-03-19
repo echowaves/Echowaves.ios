@@ -22,8 +22,13 @@
     
     WavingViewController *wavingViewController = appDelegate.wavingViewController;
     
+    
     NSLog(@"taking picture");
     [wavingViewController takepicture];
+}
+
+-(void) viewDidLoad {
+    self.waveName.title = APP_DELEGATE.waveName;
 }
 
 @end
