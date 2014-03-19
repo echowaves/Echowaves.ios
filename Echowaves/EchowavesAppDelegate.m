@@ -7,6 +7,7 @@
 //
 
 #import "EchowavesAppDelegate.h"
+#import "HomeViewController.h"
 #import "Flurry.h"
 
 @implementation EchowavesAppDelegate
@@ -63,42 +64,6 @@
                 break;
         }
     }];
-    
-    
-    //user is signed in before
-    //try to sign in to see if connection is awailable
-    NSURLCredential *credential = [EWWave getStoredCredential];
-    if(credential) {
-        NSLog(@"User %@ already connected with password.", credential.user);
-        
-//        [EWWave tuneInWithName:credential.user
-//                   andPassword:credential.password
-//                       success:^(NSString *waveName) {
-//
-////                           UIStoryboard *mainstoryboard = [UIStoryboard storyboardWithName:@"Main_iPhone.storyboard" bundle:nil];
-////                           NavigationTabBarViewController* navigationTabBarViewController = [mainstoryboard      instantiateViewControllerWithIdentifier:@"NavigationTabBarViewController"];
-////                           [self.window makeKeyAndVisible];
-////                           [self.window.rootViewController presentViewController:navigationTabBarViewController animated:YES completion:NULL];
-//
-//                       }
-//                       failure:^(NSString *errorMessage) {
-//                           [EWWave showErrorAlertWithMessage:errorMessage FromSender:self];
-//                       }];
-
-        
-//                           UIStoryboard *mainstoryboard = [UIStoryboard storyboardWithName:@"Main_iPhone.storyboard" bundle:nil];
-//                           NavigationTabBarViewController* navigationTabBarViewController = [mainstoryboard      instantiateViewControllerWithIdentifier:@"NavigationTabBarViewController"];
-//                           [self.window makeKeyAndVisible];
-//                           [self.window.rootViewController presentViewController:navigationTabBarViewController animated:YES completion:NULL];
-//
-
-
-    } else { // credentials are not set, can't really ever happen, something is really wrong here
-        NSLog(@"this error should never happen credentials are not set, can't really ever happen, something is really wrong here");
-    }
-
-    
-    
     
     return YES;
 }

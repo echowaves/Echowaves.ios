@@ -59,6 +59,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="JuL-3W-eYF"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <connections>
+                        <segue destination="4Wa-qa-6Wy" kind="push" identifier="AutoSignIn" id="lU3-tf-NsI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OBA-5A-V4k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -687,6 +690,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="AnV-QM-P86"/>
+        <segue reference="lU3-tf-NsI"/>
     </inferredMetricsTieBreakers>
 </document>
