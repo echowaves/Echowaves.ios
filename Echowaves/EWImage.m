@@ -72,6 +72,7 @@
                 
             } else { // here is at the end of the iterating over assets
                 [USER_DEFAULTS setObject:[NSDate date] forKey:@"lastCheckTime"];
+                [USER_DEFAULTS synchronize];
                 checkCompleteBlock();
             }
         }];
@@ -193,6 +194,31 @@
         failure(error);
     }];
 
+}
+
++(void) saveImageToAssetLibrary:(UIImage*) image
+                        success:(void (^)(void))success
+                        failure:(void (^)(NSError *error))failure;
+{
+    CGImageRef img = [image CGImage];
+    ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
+
+    [library writeImageToSavedPhotosAlbum:img
+                              orientation:ALAssetOrientationUp
+                          completionBlock:^(NSURL* assetURL, NSError* error) {
+                              if (error.code == 0) {
+                                  NSLog(@"saved image completed:\nurl: %@", assetURL);
+                                  [USER_DEFAULTS setObject:[NSDate date] forKey:@"lastCheckTime"];
+                                  [USER_DEFAULTS synchronize];
+
+                                  success();
+                              }
+                              else {
+                                  NSLog(@"saved image failed.\nerror code %li\n%@", (long)error.code, [error localizedDescription]);
+                                  failure(error);
+                              }
+                          }];
+    
 }
 
 
