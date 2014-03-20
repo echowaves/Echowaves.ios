@@ -17,6 +17,28 @@
 @implementation SignUpViewController
 
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    NSLog(@"------------viewDidLoad");
+
+    _waveName.layer.cornerRadius = 4.0f;
+    _waveName.layer.borderWidth = 1.0f;
+    _waveName.layer.borderColor= UIColorFromRGB(0xFFA500).CGColor;
+    
+    _wavePassword.layer.cornerRadius = 4.0f;
+    _wavePassword.layer.borderWidth = 1.0f;
+    _wavePassword.layer.borderColor= UIColorFromRGB(0xFFA500).CGColor;
+    
+    _confirmPassword.layer.cornerRadius = 4.0f;
+    _confirmPassword.layer.borderWidth = 1.0f;
+    _confirmPassword.layer.borderColor= UIColorFromRGB(0xFFA500).CGColor;
+    
+    _createWaveButton.layer.cornerRadius = 4.0f;
+    _createWaveButton.layer.borderWidth = 1.0f;
+    _createWaveButton.layer.borderColor= UIColorFromRGB(0xFFA500).CGColor;
+}
+
+
 - (IBAction)createWave:(UIButton *)sender
 {
     NSString *wave =self.waveName.text;

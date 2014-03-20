@@ -61,6 +61,18 @@
         self.waveName.text = credential.user;
         self.wavePassword.text = credential.password;
     }
+    
+    _tuneInButton.layer.cornerRadius = 4.0f;
+    _tuneInButton.layer.borderWidth = 1.0f;
+    _tuneInButton.layer.borderColor = UIColorFromRGB(0xFFA500).CGColor;
+    
+    _waveName.layer.cornerRadius = 4.0f;
+    _waveName.layer.borderWidth = 1.0f;
+    _waveName.layer.borderColor = UIColorFromRGB(0xFFA500).CGColor;
+    
+    _wavePassword.layer.cornerRadius = 4.0f;
+    _wavePassword.layer.borderWidth = 1.0f;
+    _wavePassword.layer.borderColor= UIColorFromRGB(0xFFA500).CGColor;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

@@ -44,11 +44,14 @@
         NSLog(@"this error should never happen credentials are not set, can't really ever happen, something is really wrong here");
     }
     
+    _tuneInButton.layer.cornerRadius = 4.0f;
+    _createNewWaveButton.layer.cornerRadius = 4.0f;
 }
 
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@" " style:UIBarButtonItemStyleDone target:nil action:nil];
+    [[self navigationItem] setBackBarButtonItem:backButton];
     if ([segue.identifier isEqualToString:@"AutoSignIn"]) {
         NSLog(@"seguiing autosignin");
 //        NavigationTabBarViewController* destinationController =  (NavigationTabBarViewController *)segue.destinationViewController;

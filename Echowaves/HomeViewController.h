@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface HomeViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UIButton *tuneInButton;
+@property (strong, nonatomic) IBOutlet UIButton *createNewWaveButton;
 
 
 @end
