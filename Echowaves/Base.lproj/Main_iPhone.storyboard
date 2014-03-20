@@ -298,7 +298,7 @@
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jWI-KZ-fzE">
                                 <rect key="frame" x="272" y="6" width="32" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="Camera"/>
+                                <state key="normal" image="Camera_i"/>
                                 <connections>
                                     <action selector="takePicture:" destination="4Wa-qa-6Wy" eventType="touchUpInside" id="Hfd-Zh-FXF"/>
                                 </connections>
@@ -661,6 +661,7 @@
     </scenes>
     <resources>
         <image name="Camera" width="32" height="32"/>
+        <image name="Camera_i" width="32" height="32"/>
         <image name="accept" width="200" height="50"/>
         <image name="blends" width="32" height="32"/>
         <image name="echowave" width="32" height="32"/>
