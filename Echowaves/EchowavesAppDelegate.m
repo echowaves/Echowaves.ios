@@ -7,6 +7,7 @@
 //
 
 #import "EchowavesAppDelegate.h"
+#import "HomeViewController.h"
 #import "Flurry.h"
 
 @implementation EchowavesAppDelegate
@@ -35,6 +36,8 @@
     
     self.networkQueue = [[NSOperationQueue alloc] init];
     self.networkQueue.name = @"com.echowaves.app.networkqueue";
+
+    [self.networkQueue addObserver:self forKeyPath:@"operations" options:0 context:NULL];
     
     // if you want it to be a serial queue, set maxConcurrentOperationCount to 1
     //
@@ -61,7 +64,41 @@
                 break;
         }
     }];
+    
+    //Set bar appearance
+    [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0xFFA500)];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], UITextAttributeTextColor, [UIColor whiteColor], UITextAttributeTextShadowColor, nil]];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
     return YES;
+}
+
+- (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
+                         change:(NSDictionary *)change context:(void *)context
+{
+    if (object == self.networkQueue && [keyPath isEqualToString:@"operations"]) {
+        if ([self.networkQueue.operations count] == 0) {
+            // Do something here when your queue has completed
+            NSLog(@"queue has completed");
+            
+            NSLog(@"!!!!!!!!!!!!!!!images to post operations: %lu", (unsigned long)[self.networkQueue.operations count]);
+            
+                [EWWave sendPushNotifyForWave:APP_DELEGATE.waveName
+                                        badge:1
+                                      success:^{
+                                          NSLog(@"!!!!!!!!!!!!!!!pushed notify successfully");
+                                      }
+                                      failure:^(NSError *error) {
+                                          NSLog(@"this error should never happen %@", error.description);
+                                      }];
+            
+        }
+    }
+    else {
+        [super observeValueForKeyPath:keyPath ofObject:object
+                               change:change context:context];
+    }
 }
 
 //-(void)timerFired:(NSTimer *) theTimer

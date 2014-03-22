@@ -36,6 +36,19 @@ static BOOL alertShowing;
     return alertShowing;
 }
 
+
++ (void)showAlertWithMessage:(NSString *)message FromSender:(id)sender {
+    UIAlertView *alertMessage = [[UIAlertView alloc] initWithTitle:@"Alert"
+                                                           message:message
+                                                          delegate:sender
+                                                 cancelButtonTitle:nil
+                                                 otherButtonTitles:@"OK", nil];
+    alertMessage.tag = 10002;
+    
+    [alertMessage show];
+    
+};
+
 + (void)showErrorAlertWithMessage:(NSString *)message FromSender:(id)sender{
     UIAlertView *errorMessage = [[UIAlertView alloc] initWithTitle:@"Error" message:message delegate:sender cancelButtonTitle:@"Cancel" otherButtonTitles: nil];
     errorMessage.tag = 10001;

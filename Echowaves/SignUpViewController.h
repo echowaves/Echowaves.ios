@@ -13,5 +13,6 @@
 @property (strong, nonatomic) IBOutlet UITextField *waveName;
 @property (strong, nonatomic) IBOutlet UITextField *wavePassword;
 @property (strong, nonatomic) IBOutlet UITextField *confirmPassword;
+@property (strong, nonatomic) IBOutlet UIButton *createWaveButton;
 
 @end

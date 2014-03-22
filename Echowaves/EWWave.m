@@ -36,6 +36,9 @@
     //store new credential
     credential = [NSURLCredential credentialWithUser:waveName password:wavePassword persistence:NSURLCredentialPersistencePermanent];
     [[NSURLCredentialStorage sharedCredentialStorage] setCredential:credential forProtectionSpace:EWWave.echowavesProtectionSpace];
+    
+    
+    APP_DELEGATE.waveName = waveName;
 
 }
 
@@ -172,6 +175,7 @@
         NSLog(@"wave name %@ ", waveName);
         
         [EWWave storeCredentialForWaveName:waveName withPassword:wavePassword];
+        
         success(waveName);
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

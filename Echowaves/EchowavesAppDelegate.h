@@ -11,10 +11,13 @@
 #import "EWWave.h"
 #import "WavingViewController.h"
 
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 @interface EchowavesAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+
+@property (strong, nonatomic) NSString *waveName;
 
 @property (weak, nonatomic) WavingViewController *wavingViewController;
 
@@ -38,3 +41,6 @@
 // creating JKS store
 // https://github.com/timewarrior/herolabs-apns
 // http://www.agentbob.info/agentbob/79-AB.html
+
+// nsoperation queue
+// http://www.raywenderlich.com/19788/how-to-use-nsoperations-and-nsoperationqueues

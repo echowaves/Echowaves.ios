@@ -36,5 +36,9 @@
             success:(void (^)(void))success
             failure:(void (^)(NSError *error))failure;
 
++(void) saveImageToAssetLibrary:(UIImage*) image
+                        success:(void (^)(void))success
+                        failure:(void (^)(NSError *error))failure;
+;
 
 @end
