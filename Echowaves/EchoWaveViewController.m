@@ -99,6 +99,7 @@ UIRefreshControl *refreshControl;
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+
     if ([segue.identifier isEqualToString:@"DetailedImageSegue"]) {
         
         UICollectionViewCell *cell = (UICollectionViewCell *)sender;

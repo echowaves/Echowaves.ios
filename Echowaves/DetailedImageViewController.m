@@ -23,7 +23,8 @@
     //    NSString* imageUrl = [NSString stringWithFormat:@"%@/img/%@/thumb_%@", EWHost, waveName, imageName];
     NSString* imageUrl = [NSString stringWithFormat:@"%@/img/%@/%@", EWHost, waveName, imageName];
     
-    [self.navigationItem setPrompt:waveName];
+//    [self.navigationItem setPrompt:waveName];
+    [[self waveName] setText:waveName];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat : @"yyyyMMddHHmmssSSSS"];
@@ -35,8 +36,9 @@
 //    [formatter release];
     [formatter setDateFormat:@"MM/dd/yyyy HH:mm:ss"];
     [self setTitle:[formatter stringFromDate:dateTime]];
-
-
+    
+//    [[self navigationItem].backBarButtonItem setTitle:@" "];
+    
     if ([waveName isEqualToString:[APP_DELEGATE waveName]]) {
         [self navigationItem].rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash
                                                                                                  target:self
@@ -71,6 +73,12 @@
                      }];
     
 }
+
+-(void) popBack {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
 -(void)deleteImage {
     NSLog(@"deleting image");
     NSString* imageName = [self.imageFromJson objectForKey:@"name"];

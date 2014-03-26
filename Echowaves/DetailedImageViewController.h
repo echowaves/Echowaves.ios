@@ -13,6 +13,8 @@
 @property (weak, nonatomic) NSDictionary *imageFromJson;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) UIImage *image;
+@property (strong, nonatomic) IBOutlet UILabel *waveName;
+
 @property (strong, nonatomic) IBOutlet UIProgressView *progressView;
 
 @end

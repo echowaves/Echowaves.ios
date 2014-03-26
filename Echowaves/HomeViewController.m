@@ -23,6 +23,10 @@
 
 
 - (void) viewDidLoad {
+    
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@" " style:UIBarButtonItemStyleDone target:nil action:nil];
+    [[self navigationItem] setBackBarButtonItem:backButton];
+
     //user is signed in before
     //try to sign in to see if connection is awailable
     NSURLCredential *credential = [EWWave getStoredCredential];
@@ -50,8 +54,6 @@
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@" " style:UIBarButtonItemStyleDone target:nil action:nil];
-    [[self navigationItem] setBackBarButtonItem:backButton];
     if ([segue.identifier isEqualToString:@"AutoSignIn"]) {
         NSLog(@"seguiing autosignin");
 //        NavigationTabBarViewController* destinationController =  (NavigationTabBarViewController *)segue.destinationViewController;
