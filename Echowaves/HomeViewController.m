@@ -41,6 +41,7 @@
                            [self performSegueWithIdentifier: @"AutoSignIn" sender: self];
                        }
                        failure:^(NSString *errorMessage) {
+                           [EWWave hideLoadingIndicator:self];
                            [EWWave showErrorAlertWithMessage:errorMessage FromSender:self];
                        }];
         
