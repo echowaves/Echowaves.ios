@@ -23,5 +23,8 @@
 #warning "Dont forget to switch to production before the deployment"
 #define EWHost @"http://192.168.1.105:3000"
 
+//#define EWAWSBucket @"http://images.echowaves.com"
+#warning "Dont forget to switch to production before the deployment"
+#define EWAWSBucket @"http://imagesdev.echowaves.com"
 
 
