@@ -21,7 +21,7 @@
     NSString* imageName = [self.imageFromJson objectForKey:@"name"];
     NSString* waveName = [self.imageFromJson objectForKey:@"name_2"];
     //    NSString* imageUrl = [NSString stringWithFormat:@"%@/img/%@/thumb_%@", EWHost, waveName, imageName];
-    NSString* imageUrl = [NSString stringWithFormat:@"%@/img/%@/%@", EWHost, waveName, imageName];
+    NSString* imageUrl = [NSString stringWithFormat:@"%@/img/%@/%@", EWAWSBucket, waveName, imageName];
     
 //    [self.navigationItem setPrompt:waveName];
     [[self waveName] setText:waveName];
