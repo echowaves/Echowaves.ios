@@ -633,7 +633,7 @@
         <!--Upload Progress View Controller-->
         <scene sceneID="Fhg-ub-qXd">
             <objects>
-                <viewController id="9z9-Kg-9sc" customClass="UploadProgressViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UploadView" id="9z9-Kg-9sc" customClass="UploadProgressViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qPV-Ut-meA"/>
                         <viewControllerLayoutGuide type="bottom" id="iBZ-Fp-Uzx"/>

@@ -124,7 +124,12 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    UploadProgressViewController *uploadProgressViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil] instantiateViewControllerWithIdentifier:@"UploadView"];
+    [(UINavigationController *)self.window.rootViewController pushViewController:uploadProgressViewController animated:NO];
+    // [pvc release]; if not using ARC
+
 }
+
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
@@ -145,20 +150,23 @@
 
 
     
-    if (self.wavingViewController.waving.on) {
-        //this prevents from loosing session in case the server was bounced
-//        [echowavesViewController tuneIn];
-
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self.uploadProgressViewController checkForNewImages];
-        });
-    }
+//    if (self.wavingViewController.waving.on) {
+//        //this prevents from loosing session in case the server was bounced
+////        [echowavesViewController tuneIn];
+//
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            [self.uploadProgressViewController checkForNewImages];
+//        });
+//    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+
+
 
 - (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
 {

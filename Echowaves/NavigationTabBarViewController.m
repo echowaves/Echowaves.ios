@@ -19,11 +19,11 @@
     EchowavesAppDelegate *appDelegate = (EchowavesAppDelegate *)[[UIApplication sharedApplication] delegate];
     
     
-    UploadProgressViewController *uploadProgressViewController = appDelegate.uploadProgressViewController;
+//    UploadProgressViewController *uploadProgressViewController = appDelegate.uploadProgressViewController;
     
     
     NSLog(@"taking picture");
-    [uploadProgressViewController takepicture];
+//    [uploadProgressViewController takepicture];
 }
 
 -(void) viewDidLoad {

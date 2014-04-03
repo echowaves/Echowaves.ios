@@ -38,7 +38,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    APP_DELEGATE.wavingViewController = self;
     NSLog(@"=======waving initializing was %d changed to: %d", self.waving.on, [USER_DEFAULTS boolForKey:@"waving"]);
     self.waving.on = [USER_DEFAULTS boolForKey:@"waving"];
 

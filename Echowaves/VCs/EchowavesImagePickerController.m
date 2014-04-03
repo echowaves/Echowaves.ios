@@ -52,7 +52,7 @@
     //adjust waving to on
     [appDelegate.wavingViewController.waving setOn:TRUE];
     [USER_DEFAULTS setObject:[NSDate date] forKey:@"lastCheckTime"];
-    [appDelegate.wavingViewController appStatus].text = @"Use iPhone cam, then come back to EW...";
+//    [appDelegate.wavingViewController appStatus].text = @"Use iPhone cam, then come back to EW...";
 
     [USER_DEFAULTS setBool:appDelegate.wavingViewController.waving.on forKey:@"waving"];
     [USER_DEFAULTS synchronize];

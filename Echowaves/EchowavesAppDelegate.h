@@ -20,7 +20,7 @@
 
 @property (strong, nonatomic) NSString *waveName;
 
-@property (weak, nonatomic) UploadProgressViewController *uploadProgressViewController;
+//@property (weak, nonatomic) UploadProgressViewController *uploadProgressViewController;
 @property (weak, nonatomic) WavingViewController *wavingViewController;
 
 @property (atomic, strong) NSOperationQueue *networkQueue;
