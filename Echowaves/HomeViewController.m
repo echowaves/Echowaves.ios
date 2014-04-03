@@ -54,12 +54,13 @@
 }
 
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"AutoSignIn"]) {
-        NSLog(@"seguiing autosignin");
-//        NavigationTabBarViewController* destinationController =  (NavigationTabBarViewController *)segue.destinationViewController;
-    }
-}
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    if ([segue.identifier isEqualToString:@"AutoSignIn"]) {
+//        NSLog(@"seguiing autosignin");
+////        NavigationTabBarViewController* destinationController =  (NavigationTabBarViewController *)segue.destinationViewController;
+//    }
+//
+//}
 
 
 @end

@@ -28,6 +28,8 @@
 
 @property (strong, nonatomic) NSString *deviceToken;
 
+- (void)checkForUpload;
+
 @end
 
 

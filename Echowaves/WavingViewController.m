@@ -41,14 +41,14 @@
     APP_DELEGATE.wavingViewController = self;
     NSLog(@"=======waving initializing was %d changed to: %d", self.waving.on, [USER_DEFAULTS boolForKey:@"waving"]);
     self.waving.on = [USER_DEFAULTS boolForKey:@"waving"];
-
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-//    UploadProgressViewController *uploadProgressViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil] instantiateViewControllerWithIdentifier:@"UploadView"];
-//    [(UINavigationController *)self pushViewController:uploadProgressViewController animated:YES];
-
+    if([self checkedAtload] == false) {
+        self.checkedAtload = true;
+        [APP_DELEGATE checkForUpload];
+    }
 }
 
 

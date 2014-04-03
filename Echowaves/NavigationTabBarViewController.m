@@ -34,6 +34,9 @@
     self.waveName.title = APP_DELEGATE.waveName;
 }
 
+-(void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
 
+}
 
 @end

@@ -97,6 +97,7 @@
         [super observeValueForKeyPath:keyPath ofObject:object
                                change:change context:context];
     }
+    
 }
 
 //-(void)timerFired:(NSTimer *) theTimer
@@ -128,7 +129,7 @@
 }
 
 
--(void)checkForUpload {
+- (void)checkForUpload {
     UploadProgressViewController *uploadProgressViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil] instantiateViewControllerWithIdentifier:@"UploadView"];
     [(UINavigationController *)self.window.rootViewController pushViewController:uploadProgressViewController animated:YES];
     // [pvc release]; if not using ARC

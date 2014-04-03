@@ -11,6 +11,8 @@
 
 @interface WavingViewController : UIViewController
 
+//it's a hack, but can't figure out how to make it work with in standard life cycle
+@property (nonatomic) bool checkedAtload;
 
 @property (nonatomic) IBOutlet UISwitch *waving;
 
