@@ -130,8 +130,10 @@
 
 
 - (void)checkForUpload {
+    if(self.wavingViewController.waving.on) {
     UploadProgressViewController *uploadProgressViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil] instantiateViewControllerWithIdentifier:@"UploadView"];
     [(UINavigationController *)self.window.rootViewController pushViewController:uploadProgressViewController animated:YES];
+    }
     // [pvc release]; if not using ARC
 }
 
