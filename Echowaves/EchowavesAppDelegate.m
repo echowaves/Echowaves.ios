@@ -54,13 +54,11 @@
             case AFNetworkReachabilityStatusReachableViaWWAN:
             case AFNetworkReachabilityStatusReachableViaWiFi:
                 [self.networkQueue setSuspended:NO];
-                [self.wavingViewController.appStatus setText:@"Network operates properly."];
                 break;
             case AFNetworkReachabilityStatusNotReachable:
             case AFNetworkReachabilityStatusUnknown:
             default:
                 [self.networkQueue setSuspended:YES];
-                [self.wavingViewController.appStatus setText:@"Network is not reachable, try again later."];
                 break;
         }
     }];
@@ -132,7 +130,6 @@
 {
     NSLog(@"++++++++++++++++++called applicationDidBecomeActive");
     
-    [self.wavingViewController.tabBarController setSelectedIndex:0]; // make first tab active, so we can always see what's uploading when came back to the app.
     
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 
@@ -153,7 +150,7 @@
 //        [echowavesViewController tuneIn];
 
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self.wavingViewController checkForNewImages];
+            [self.uploadProgressViewController checkForNewImages];
         });
     }
 }

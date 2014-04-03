@@ -8,27 +8,11 @@
 
 //#import <UIKit/UIKit.h>
 #import "AFHTTPRequestOperationManager.h"
-#import "EchowavesAppDelegate.h"
-#import "EchowavesImagePickerController.h"
 
-@interface WavingViewController : EchowavesImagePickerController<EchowavesImagePickerControllerProtocol>
+@interface WavingViewController : UIViewController
 
 
 @property (nonatomic) IBOutlet UISwitch *waving;
-
-@property (strong, nonatomic) IBOutlet UILabel *appStatus;
-
-@property (strong, nonatomic) IBOutlet UIProgressView *uploadProgressBar;
-
-@property (strong, nonatomic) IBOutlet UIButton *cancelUpload;
-
-@property (strong, nonatomic) IBOutlet UILabel *imagesToUpload;
-
-@property (strong, nonatomic) IBOutlet UIImageView *currentlyUploadingImage;
-
-@property (weak, nonatomic) AFHTTPRequestOperation *currentUploadOperation;
-
-- (void) checkForNewImages;
 
 
 @end

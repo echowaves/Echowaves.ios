@@ -18,13 +18,12 @@
     
     EchowavesAppDelegate *appDelegate = (EchowavesAppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    [appDelegate.wavingViewController.tabBarController setSelectedIndex:0];
     
-    WavingViewController *wavingViewController = appDelegate.wavingViewController;
+    UploadProgressViewController *uploadProgressViewController = appDelegate.uploadProgressViewController;
     
     
     NSLog(@"taking picture");
-    [wavingViewController takepicture];
+    [uploadProgressViewController takepicture];
 }
 
 -(void) viewDidLoad {

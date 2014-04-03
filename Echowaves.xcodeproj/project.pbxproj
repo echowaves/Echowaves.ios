@@ -53,6 +53,8 @@
 		0AD6E27518011F59008303E0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0AD6E27318011F59008303E0 /* InfoPlist.strings */; };
 		0AD6E27718011F59008303E0 /* EchowavesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD6E27618011F59008303E0 /* EchowavesTests.m */; };
 		0AEB92BF18A6F3FC00DE51DC /* BlendWithViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEB92BE18A6F3FC00DE51DC /* BlendWithViewController.m */; };
+		0AFD9A6D18ECD457007F5749 /* UploadProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFD9A6C18ECD457007F5749 /* UploadProgressViewController.m */; };
+		0AFD9A7018ECEBA2007F5749 /* AddChildWaveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFD9A6F18ECEBA2007F5749 /* AddChildWaveViewController.m */; };
 		7A65E0D618CB19B800204530 /* EchowavesImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A65E0D518CB19B800204530 /* EchowavesImagePickerController.m */; };
 /* End PBXBuildFile section */
 
@@ -151,6 +153,10 @@
 		0AD6E27618011F59008303E0 /* EchowavesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EchowavesTests.m; sourceTree = "<group>"; };
 		0AEB92BD18A6F3FC00DE51DC /* BlendWithViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlendWithViewController.h; sourceTree = "<group>"; };
 		0AEB92BE18A6F3FC00DE51DC /* BlendWithViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlendWithViewController.m; sourceTree = "<group>"; };
+		0AFD9A6B18ECD457007F5749 /* UploadProgressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadProgressViewController.h; sourceTree = "<group>"; };
+		0AFD9A6C18ECD457007F5749 /* UploadProgressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadProgressViewController.m; sourceTree = "<group>"; };
+		0AFD9A6E18ECEBA2007F5749 /* AddChildWaveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddChildWaveViewController.h; sourceTree = "<group>"; };
+		0AFD9A6F18ECEBA2007F5749 /* AddChildWaveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddChildWaveViewController.m; sourceTree = "<group>"; };
 		7A65E0D418CB19B800204530 /* EchowavesImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EchowavesImagePickerController.h; sourceTree = "<group>"; };
 		7A65E0D518CB19B800204530 /* EchowavesImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EchowavesImagePickerController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -324,6 +330,10 @@
 				0A34C00F18556B4800E085BC /* Resources */,
 				0A5ADAA01888C07900D492BC /* iPad */,
 				0AD6E25A18011F59008303E0 /* Main_iPhone.storyboard */,
+				0AFD9A6E18ECEBA2007F5749 /* AddChildWaveViewController.h */,
+				0AFD9A6F18ECEBA2007F5749 /* AddChildWaveViewController.m */,
+				0AFD9A6B18ECD457007F5749 /* UploadProgressViewController.h */,
+				0AFD9A6C18ECD457007F5749 /* UploadProgressViewController.m */,
 				0A163DC218AAD72900148595 /* DetailedImageViewController.h */,
 				0A163DC318AAD72900148595 /* DetailedImageViewController.m */,
 				0AEB92BD18A6F3FC00DE51DC /* BlendWithViewController.h */,
@@ -505,9 +515,11 @@
 				0AB1CF511890C1380056A94A /* EWDataModel.m in Sources */,
 				0A46217F1888E29C005CC161 /* AFNetworkReachabilityManager.m in Sources */,
 				0A28E5DA1889B8B300B7BDDB /* EchoWaveViewController.m in Sources */,
+				0AFD9A6D18ECD457007F5749 /* UploadProgressViewController.m in Sources */,
 				7A65E0D618CB19B800204530 /* EchowavesImagePickerController.m in Sources */,
 				0A28E5D71889B87B00B7BDDB /* SignUpViewController.m in Sources */,
 				0A4621831888E29C005CC161 /* AFURLResponseSerialization.m in Sources */,
+				0AFD9A7018ECEBA2007F5749 /* AddChildWaveViewController.m in Sources */,
 				0A7C733C18948E9300292622 /* NavigationTabBarViewController.m in Sources */,
 				0A4621811888E29C005CC161 /* AFURLConnectionOperation.m in Sources */,
 				0A4621881888E29C005CC161 /* UIButton+AFNetworking.m in Sources */,
