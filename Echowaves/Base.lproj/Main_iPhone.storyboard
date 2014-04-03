@@ -584,16 +584,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fBB-gB-Gkk">
-                                <rect key="frame" x="20" y="72" width="33" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="Camera">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="takepicture" destination="8lZ-lH-xhR" eventType="touchUpInside" id="4JP-uW-haD"/>
-                                </connections>
-                            </button>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LsQ-Jh-ogW">
                                 <rect key="frame" x="0.0" y="203" width="320" height="162"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -604,7 +594,6 @@
                     <tabBarItem key="tabBarItem" title="Waving" image="waving" id="iP7-VR-HlN"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
-                        <outlet property="photoButton" destination="fBB-gB-Gkk" id="HQ2-s2-uNO"/>
                         <outlet property="waving" destination="uDr-ak-c3B" id="4Da-Qj-kYH"/>
                     </connections>
                 </viewController>
@@ -615,17 +604,7 @@
         <!--Add Child Wave View Controller-->
         <scene sceneID="oyo-o5-znC">
             <objects>
-                <viewController id="zip-H5-Qqk" customClass="AddChildWaveViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Xmf-Li-7Bc"/>
-                        <viewControllerLayoutGuide type="bottom" id="E0r-DN-wrZ"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="7tm-9m-Yy2">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
+                <viewController id="zip-H5-Qqk" customClass="AddChildWaveViewController" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nrg-Gd-Rks" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1106" y="-674"/>
@@ -705,7 +684,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Camera" width="32" height="32"/>
         <image name="Camera_i" width="32" height="32"/>
         <image name="accept" width="200" height="50"/>
         <image name="blends" width="32" height="32"/>

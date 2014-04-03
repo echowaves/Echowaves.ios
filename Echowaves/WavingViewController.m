@@ -44,7 +44,12 @@
 
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+//    UploadProgressViewController *uploadProgressViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil] instantiateViewControllerWithIdentifier:@"UploadView"];
+//    [(UINavigationController *)self pushViewController:uploadProgressViewController animated:YES];
 
+}
 
 
 @end

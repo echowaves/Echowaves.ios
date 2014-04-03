@@ -17,9 +17,12 @@
 @implementation UploadProgressViewController
 
 
-- (void)viewDidLoad
-{
+-(void) viewDidLoad {
     [super viewDidLoad];
+    
+    self.title = @"Posting Pictures";
+    self.navigationItem.hidesBackButton = YES;
+    
     // Do any additional setup after loading the view.
     self.delegate = self;
     [self cleanupCurrentUploadView];
@@ -27,8 +30,14 @@
     [self currentlyUploadingImage].contentMode = UIViewContentModeScaleAspectFit;
     self.uploadProgressBar.progress = 0.0;
     
-    [self checkForNewImages];
+}
 
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [self checkForNewImages];
 }
 
 - (void)didReceiveMemoryWarning
@@ -64,7 +73,8 @@
                                                                                                NSInteger totalBytesExpectedToWrite) {
                                                                if(!self.currentlyUploadingImage.image) { // beginning new upload operation here
                                                                    self.cancelUpload.hidden = FALSE;
-                                                                   
+                                                                   self.uploadProgressBar.hidden = FALSE;
+
                                                                    self.currentUploadOperation = operation;
                                                                    self.currentlyUploadingImage.image = image;
                                                                    self.currentlyUploadingImage.hidden = FALSE;
@@ -79,6 +89,9 @@
                                                            }];
                                                            [operation setCompletionBlock:^{
                                                                [self cleanupCurrentUploadView];
+                                                               if(APP_DELEGATE.networkQueue.operationCount == 0) { // this is the last operation in the queue -- time to come back
+                                                                   [self.navigationController popViewControllerAnimated:YES];
+                                                               }
                                                            }];
                                                            
                                                            NSLog(@"@@@@@@@@@@@@@ image found %@", imageDate.description);
@@ -97,12 +110,21 @@
                                                          
                                                          //                                  [self appStatus].text = @"uploading now";
                                                          //                                  [self imagesToUpload].hidden = TRUE;
-                                                         [EWImage postAllNewImages:imagesToPostOperations];
                                                          
+                                                         NSLog(@"************* images to post %lu", (unsigned long)imagesToPostOperations.count);
+                                                         if(imagesToPostOperations.count == 0) { // this means nothing is found to be posted
+                                                             [NSThread sleepForTimeInterval:2.0f];
+                                                             [self.navigationController popViewControllerAnimated:YES];
+                                                         } else {
+                                                             [EWImage postAllNewImages:imagesToPostOperations];
+                                                         }
+//                                                         [EWImage postAllNewImages:imagesToPostOperations];
                                                          
                                                      }
                                                             whenError:^(NSError *error) {
                                                                 NSLog(@"this error should never happen %@", error.description);
+                                                                [EWWave showErrorAlertWithMessage:[error description] FromSender:self];
+                                                                [self.navigationController popViewControllerAnimated:YES];
                                                             }];
                                
                            }
@@ -110,6 +132,7 @@
                        }
                        failure:^(NSString *errorMessage) {
                            [EWWave showErrorAlertWithMessage:errorMessage FromSender:self];
+                           [self.navigationController popViewControllerAnimated:YES];
                        }];
         
         
@@ -134,6 +157,7 @@
     //    self.imagesToUpload.hidden = TRUE;
     [self imagesToUpload].text = [NSString stringWithFormat:@"%lu", (unsigned long)APP_DELEGATE.networkQueue.operationCount];
     self.uploadProgressBar.progress = 0.0;
+    self.uploadProgressBar.hidden = TRUE;
     self.cancelUpload.hidden = TRUE;
 }
 

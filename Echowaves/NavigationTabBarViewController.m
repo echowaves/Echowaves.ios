@@ -16,18 +16,24 @@
 
 - (IBAction)takePicture:(id)sender {
     
-    EchowavesAppDelegate *appDelegate = (EchowavesAppDelegate *)[[UIApplication sharedApplication] delegate];
-    
-    
+//    EchowavesAppDelegate *appDelegate = (EchowavesAppDelegate *)[[UIApplication sharedApplication] delegate];
+//    
+//    
 //    UploadProgressViewController *uploadProgressViewController = appDelegate.uploadProgressViewController;
     
     
     NSLog(@"taking picture");
-//    [uploadProgressViewController takepicture];
+    UploadProgressViewController *uploadProgressViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil] instantiateViewControllerWithIdentifier:@"UploadView"];
+    [uploadProgressViewController takepicture];
+
+//    [(UINavigationController *)self pushViewController:uploadProgressViewController animated:YES];
 }
 
 -(void) viewDidLoad {
+    [super viewDidLoad];
     self.waveName.title = APP_DELEGATE.waveName;
 }
+
+
 
 @end

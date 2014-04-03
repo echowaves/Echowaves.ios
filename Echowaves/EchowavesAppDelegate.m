@@ -124,12 +124,15 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-    UploadProgressViewController *uploadProgressViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil] instantiateViewControllerWithIdentifier:@"UploadView"];
-    [(UINavigationController *)self.window.rootViewController pushViewController:uploadProgressViewController animated:NO];
-    // [pvc release]; if not using ARC
-
+    [self checkForUpload];
 }
 
+
+-(void)checkForUpload {
+    UploadProgressViewController *uploadProgressViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil] instantiateViewControllerWithIdentifier:@"UploadView"];
+    [(UINavigationController *)self.window.rootViewController pushViewController:uploadProgressViewController animated:YES];
+    // [pvc release]; if not using ARC
+}
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
@@ -158,6 +161,9 @@
 //            [self.uploadProgressViewController checkForNewImages];
 //        });
 //    }
+    
+    
+//    [self checkForUpload];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
