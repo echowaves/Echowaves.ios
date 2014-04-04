@@ -23,10 +23,9 @@
     
     
     NSLog(@"taking picture");
-    UploadProgressViewController *uploadProgressViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil] instantiateViewControllerWithIdentifier:@"UploadView"];
-    [uploadProgressViewController takepicture];
-
-//    [(UINavigationController *)self pushViewController:uploadProgressViewController animated:YES];
+    APP_DELEGATE.wavingViewController.waving.on = true;
+    
+    [APP_DELEGATE.wavingViewController takepicture];
 }
 
 -(void) viewDidLoad {

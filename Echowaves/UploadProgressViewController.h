@@ -10,8 +10,7 @@
 #import "EchowavesAppDelegate.h"
 #import "EchowavesImagePickerController.h"
 
-@interface UploadProgressViewController : EchowavesImagePickerController<EchowavesImagePickerControllerProtocol>
-
+@interface UploadProgressViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UIButton *cancelUpload;
 
 @property (strong, nonatomic) IBOutlet UIProgressView *uploadProgressBar;
@@ -20,7 +19,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *imagesToUpload;
 
 @property (strong, nonatomic) IBOutlet UIImageView *currentlyUploadingImage;
-
 
 
 @property (weak, nonatomic) AFHTTPRequestOperation *currentUploadOperation;

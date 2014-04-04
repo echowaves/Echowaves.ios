@@ -39,6 +39,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     APP_DELEGATE.wavingViewController = self;
+    self.delegate = self;
     NSLog(@"=======waving initializing was %d changed to: %d", self.waving.on, [USER_DEFAULTS boolForKey:@"waving"]);
     self.waving.on = [USER_DEFAULTS boolForKey:@"waving"];
 }
@@ -50,6 +51,13 @@
         [APP_DELEGATE checkForUpload];
     }
 }
+
+-(void) pictureSaved
+{
+//    [self checkForNewImages];
+    [APP_DELEGATE checkForUpload];
+}
+
 
 
 @end

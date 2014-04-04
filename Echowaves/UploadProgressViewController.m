@@ -24,7 +24,6 @@
     self.navigationItem.hidesBackButton = YES;
     
     // Do any additional setup after loading the view.
-    self.delegate = self;
     [self cleanupCurrentUploadView];
     NSLog(@"#### WavingViewController viewDidLoad ");
     [self currentlyUploadingImage].contentMode = UIViewContentModeScaleAspectFit;
@@ -159,11 +158,6 @@
     self.uploadProgressBar.progress = 0.0;
     self.uploadProgressBar.hidden = TRUE;
     self.cancelUpload.hidden = TRUE;
-}
-
--(void) pictureSaved
-{
-    [self checkForNewImages];
 }
 
 
