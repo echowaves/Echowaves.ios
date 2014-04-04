@@ -26,6 +26,10 @@
                    success:(void (^)(NSString *waveName))success
                    failure:(void (^)(NSString *errorMessage))failure;
 
++(void) createChildWaveWithName:(NSString *)waveName
+                   success:(void (^)(NSString *waveName))success
+                   failure:(void (^)(NSString *errorMessage))failure;
+
 +(void) storeIosTokenForWave:(NSString *)waveName
                   token:(NSString*)token
                    success:(void (^)(NSString *waveName))success
