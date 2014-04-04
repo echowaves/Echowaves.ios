@@ -20,7 +20,7 @@
 -(void) viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"Posting Pictures";
+    self.title = @"sending photos to wave";
     self.navigationItem.hidesBackButton = YES;
     
     // Do any additional setup after loading the view.
