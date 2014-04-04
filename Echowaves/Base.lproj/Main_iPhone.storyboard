@@ -601,14 +601,6 @@
             </objects>
             <point key="canvasLocation" x="1703" y="-674"/>
         </scene>
-        <!--Add Child Wave View Controller-->
-        <scene sceneID="oyo-o5-znC">
-            <objects>
-                <viewController id="zip-H5-Qqk" customClass="AddChildWaveViewController" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Nrg-Gd-Rks" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1106" y="-674"/>
-        </scene>
         <!--Upload Progress View Controller-->
         <scene sceneID="Fhg-ub-qXd">
             <objects>
