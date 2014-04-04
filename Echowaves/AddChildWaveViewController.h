@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface AddChildWaveViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UITextField *childWaveName;
 
 @end
