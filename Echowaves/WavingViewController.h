@@ -9,7 +9,7 @@
 //#import <UIKit/UIKit.h>
 #import "AFHTTPRequestOperationManager.h"
 
-@interface WavingViewController : EchowavesImagePickerController<EchowavesImagePickerControllerProtocol>
+@interface WavingViewController : EchowavesImagePickerController<EchowavesImagePickerControllerProtocol, UIPickerViewDelegate, UIPickerViewDataSource>
 
 
 //it's a hack, but can't figure out how to make it work with in standard life cycle
@@ -17,6 +17,9 @@
 
 @property (nonatomic) IBOutlet UISwitch *waving;
 
+@property (strong, nonatomic) IBOutlet UIPickerView *wavesPicker;
+
+@property (strong, nonatomic) NSArray *myWaves;
 
 @end
 //nsuserdefaults

@@ -30,6 +30,10 @@
                    success:(void (^)(NSString *waveName))success
                    failure:(void (^)(NSString *errorMessage))failure;
 
++ (void) getAllMyWaves:(void (^)(NSArray *waves))success
+               failure:(void (^)(NSError *error))failure;
+
+
 +(void) storeIosTokenForWave:(NSString *)waveName
                   token:(NSString*)token
                    success:(void (^)(NSString *waveName))success

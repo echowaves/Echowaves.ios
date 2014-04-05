@@ -49,14 +49,12 @@
 -(IBAction)takepicture
 {
     
-    EchowavesAppDelegate *appDelegate = (EchowavesAppDelegate *)[[UIApplication sharedApplication] delegate];
-    
     //adjust waving to on
-    [appDelegate.wavingViewController.waving setOn:TRUE];
+    [APP_DELEGATE.wavingViewController.waving setOn:TRUE];
     [USER_DEFAULTS setObject:[NSDate date] forKey:@"lastCheckTime"];
 //    [appDelegate.wavingViewController appStatus].text = @"Use iPhone cam, then come back to EW...";
 
-    [USER_DEFAULTS setBool:appDelegate.wavingViewController.waving.on forKey:@"waving"];
+    [USER_DEFAULTS setBool:APP_DELEGATE.wavingViewController.waving.on forKey:@"waving"];
     [USER_DEFAULTS synchronize];
 
     //if(!mDidFinishWCamera)

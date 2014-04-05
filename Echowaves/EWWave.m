@@ -120,6 +120,29 @@
           }];    
 }
 
++ (void) getAllMyWaves:(void (^)(NSArray *waves))success
+               failure:(void (^)(NSError *error))failure {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    //ideally not going to need the following line, if making a request to json service
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    
+    [manager GET:[NSString stringWithFormat:@"%@/all-my-waves.json", EWHost]
+      parameters:nil
+         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+             success((NSArray*)responseObject);
+             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+         }
+         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             NSLog(@"Error: %@", error);
+             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+             failure(error);
+         }];
+}
+
 
 +(void) storeIosTokenForWave:(NSString *)waveName
                        token:(NSString*)token
