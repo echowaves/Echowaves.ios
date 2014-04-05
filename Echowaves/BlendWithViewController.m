@@ -75,13 +75,13 @@
     [EWBlend requestBlendingWith:waveNameSelected
                          success:^{
                              [EWBlend hideLoadingIndicator:self];
-                             [self.navigationController popViewControllerAnimated:true];
+                             [self.navigationController popViewControllerAnimated:YES];
                          }
                          failure:^(NSError *error) {
 //                             [EWBlend showErrorAlertWithMessage:[error description]
 //                                                     FromSender:self];
                              NSLog(@"error %@", error.description );
-                             [self.navigationController popViewControllerAnimated:true];
+                             [self.navigationController popViewControllerAnimated:YES];
 //                             [EWBlend hideLoadingIndicator:self];
                          }];
 }

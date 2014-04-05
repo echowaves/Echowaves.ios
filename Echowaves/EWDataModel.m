@@ -50,7 +50,11 @@ static BOOL alertShowing;
 };
 
 + (void)showErrorAlertWithMessage:(NSString *)message FromSender:(id)sender{
-    UIAlertView *errorMessage = [[UIAlertView alloc] initWithTitle:@"Error" message:message delegate:sender cancelButtonTitle:@"Cancel" otherButtonTitles: nil];
+    UIAlertView *errorMessage = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                           message:message
+                                                          delegate:sender
+                                                 cancelButtonTitle:@"Cancel"
+                                                 otherButtonTitles: nil];
     errorMessage.tag = 10001;
     
     [errorMessage show];

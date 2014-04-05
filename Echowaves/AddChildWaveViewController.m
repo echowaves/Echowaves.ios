@@ -27,8 +27,16 @@
 }
 
 - (IBAction)createChildWave:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
-}
+    [EWWave createChildWaveWithName:[self childWaveName].text
+                            success:^(NSString *waveName) {
+                                [self.navigationController popViewControllerAnimated:YES];
+                            }
+                            failure:^(NSString *errorMessage) {
+                                [EWWave showErrorAlertWithMessage:errorMessage
+                                                  FromSender:nil];
+                                [self.navigationController popViewControllerAnimated:YES];
 
+                            }];
+}
 
 @end

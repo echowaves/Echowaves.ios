@@ -99,13 +99,6 @@
                         success:(void (^)(NSString *waveName))success
                         failure:(void (^)(NSString *errorMessage))failure
 {
-    //wipe out cookies first
-    NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-    NSArray* cookies = [ cookieStorage cookiesForURL:[NSURL URLWithString:EWHost]];
-    for (NSHTTPCookie* cookie in cookies) {
-        [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
-    }
-    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
     // perform authentication, wave/password non blank and exist in the server side, and enter a sending loop
@@ -116,18 +109,15 @@
     
     NSDictionary *parameters = @{@"name": waveName};
     
-    [manager POST:[NSString stringWithFormat:@"%@/create-child-wave.json", EWHost] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        NSLog(@"+++child wave created");
-        NSLog(@"wave name %@ ", waveName);
-        
-        success(waveName);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
-        NSLog(@"Response: %@", [operation.responseObject objectForKey:@"error"]);
-        failure([NSString stringWithFormat:@"Unable to createChildWave: %@", [operation.responseObject objectForKey:@"error"]]);
-    }];
-    
+    [manager POST:[NSString stringWithFormat:@"%@/create-child-wave.json", EWHost]
+       parameters:parameters
+          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+              success(waveName);
+          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              NSLog(@"Error: %@", error);
+              NSLog(@"Response: %@", [operation.responseObject objectForKey:@"error"]);
+              failure([NSString stringWithFormat:@"Unable to createChildWave: %@", [operation.responseObject objectForKey:@"error"]]);
+          }];    
 }
 
 
