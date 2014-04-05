@@ -42,22 +42,21 @@ UIRefreshControl *refreshControl;
 - (void) startRefresh:(UIRefreshControl *)sender {
     NSLog(@"starting the refresh");
     
-    NavigationTabBarViewController* navigationTabBarViewController = (NavigationTabBarViewController*)self.tabBarController;
-    NSString* waveName = navigationTabBarViewController.waveName.title;
-    
-    [EWImage getAllImagesForWave:waveName
+    [EWImage getAllImagesForWave:[APP_DELEGATE waveName]
                          success:^(NSArray *waveImages) {
                              self.waveImages = waveImages;
                              NSLog(@"@total images %lu", (unsigned long)[self.waveImages count]);
-                             
-                             dispatch_async(dispatch_get_global_queue(0, 0), ^{
-                                 // Instead of sleeping, I do a webrequest here.
-                                 dispatch_async(dispatch_get_main_queue(), ^{
-                                     [self.imagesCollectionView reloadData];
-                                     [self.imagesCollectionView reloadInputViews];
-                                     [sender endRefreshing];
-                                 });
-                             });
+                             [self.imagesCollectionView reloadData];
+                             [self.imagesCollectionView reloadInputViews];
+                             [sender endRefreshing];
+//                             dispatch_async(dispatch_get_global_queue(0, 0), ^{
+//                                 // Instead of sleeping, I do a webrequest here.
+//                                 dispatch_async(dispatch_get_main_queue(), ^{
+//                                     [self.imagesCollectionView reloadData];
+////                                     [self.imagesCollectionView reloadInputViews];
+////                                     [sender endRefreshing];
+//                                 });
+//                             });
                          }
                          failure:^(NSError *error) {
                              NSLog(@"error %@", error.description);
