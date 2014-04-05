@@ -48,7 +48,7 @@
                    }
                    failure:^(NSString *errorMessage) {
                        [EWWave hideLoadingIndicator:self];
-                       [EWWave showErrorAlertWithMessage:errorMessage FromSender:self];
+                       [EWWave showErrorAlertWithMessage:errorMessage FromSender:nil];
                    }];
 }
 

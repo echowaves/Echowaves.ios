@@ -42,7 +42,7 @@
                        }
                        failure:^(NSString *errorMessage) {
                            [EWWave hideLoadingIndicator:self];
-                           [EWWave showErrorAlertWithMessage:errorMessage FromSender:self];
+                           [EWWave showErrorAlertWithMessage:errorMessage FromSender:nil];
                        }];
         
     } else { // credentials are not set, can't really ever happen, something is really wrong here

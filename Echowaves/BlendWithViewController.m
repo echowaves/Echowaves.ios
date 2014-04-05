@@ -37,7 +37,7 @@
                              [self.wavesNamesTableView reloadData];
                          }
                          failure:^(NSError *error) {
-                             [EWWave showErrorAlertWithMessage:[error description] FromSender:self];
+                             [EWWave showErrorAlertWithMessage:[error description] FromSender:nil];
                          }];
     } else {
         self.searchResults = [[NSArray alloc] init];

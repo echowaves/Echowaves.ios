@@ -122,7 +122,7 @@
                                                      }
                                                             whenError:^(NSError *error) {
                                                                 NSLog(@"this error should never happen %@", error.description);
-                                                                [EWWave showErrorAlertWithMessage:[error description] FromSender:self];
+                                                                [EWWave showErrorAlertWithMessage:[error description] FromSender:nil];
                                                                 [self.navigationController popViewControllerAnimated:YES];
                                                             }];
                                
@@ -130,7 +130,7 @@
                            
                        }
                        failure:^(NSString *errorMessage) {
-                           [EWWave showErrorAlertWithMessage:errorMessage FromSender:self];
+                           [EWWave showErrorAlertWithMessage:errorMessage FromSender:nil];
                            [self.navigationController popViewControllerAnimated:YES];
                        }];
         

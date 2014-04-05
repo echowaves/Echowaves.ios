@@ -64,7 +64,7 @@
                           [self.progressView setHidden:TRUE];
                       }
                       failure:^(NSError *error) {
-                          [EWDataModel showErrorAlertWithMessage:@"Error Loading image" FromSender:self];
+                          [EWDataModel showErrorAlertWithMessage:@"Error Loading image" FromSender:nil];
 
                           NSLog(@"error: %@", error.description);
                       }
@@ -90,7 +90,7 @@
                  }
                   failure:^(NSError *error) {
                       [EWImage hideLoadingIndicator:self];
-                      [EWImage showErrorAlertWithMessage:@"Unable to delete image" FromSender:self];
+                      [EWImage showErrorAlertWithMessage:@"Unable to delete image" FromSender:nil];
                       [self.navigationController popViewControllerAnimated:FALSE];
                   }];
 }
@@ -99,10 +99,10 @@
     [EWImage saveImageToAssetLibrary:[self image]
                              success:^{
                                  [EWDataModel showAlertWithMessage:@"Photo Saved to iPhone"
-                                                        FromSender:self];
+                                                        FromSender:nil];
                              }
                              failure:^(NSError *error) {
-                                 [EWDataModel showErrorAlertWithMessage:@"Error saving" FromSender:self];
+                                 [EWDataModel showErrorAlertWithMessage:@"Error saving" FromSender:nil];
                              }]
     ;
 }
