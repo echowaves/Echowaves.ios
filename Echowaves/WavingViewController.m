@@ -9,6 +9,7 @@
 #import "WavingViewController.h"
 #import "EWWave.h"
 #import "EWImage.h"
+#import "NavigationTabBarViewController.h"
 
 @interface WavingViewController ()
 
@@ -125,15 +126,11 @@ numberOfRowsInComponent:(NSInteger)component
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row
       inComponent:(NSInteger)component
 {
-    NSLog(@"wave picked %@", [((NSDictionary*)[self.myWaves objectAtIndex:row]) objectForKey:@"name"]);
-//    float rate = [_exchangeRates[row] floatValue];
-//    float dollars = [_dollarText.text floatValue];
-//    float result = dollars * rate;
-//    
-//    NSString *resultString = [[NSString alloc] initWithFormat:
-//                              @"%.2f USD = %.2f %@", dollars, result,
-//                              _countryNames[row]];
-//    _resultLabel.text = resultString;
+    APP_DELEGATE.waveName = [((NSDictionary*)[self.myWaves objectAtIndex:row]) objectForKey:@"name"];
+    NSLog(@"setting title: %@", APP_DELEGATE.waveName);
+
+    self.navigationController.navigationBar.topItem.title = APP_DELEGATE.waveName;
+    [self selectedWave].titleLabel.text = APP_DELEGATE.waveName;
 }
 
 -(void) pictureSaved

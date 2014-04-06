@@ -85,13 +85,13 @@
     [EWImage showLoadingIndicator:self];
     [EWImage deleteImage:imageName
                  success:^{
-                     [self.navigationController popViewControllerAnimated:FALSE];
+                     [self.navigationController popViewControllerAnimated:YES];
                      [EWImage hideLoadingIndicator:self];
                  }
                   failure:^(NSError *error) {
                       [EWImage hideLoadingIndicator:self];
                       [EWImage showErrorAlertWithMessage:@"Unable to delete image" FromSender:nil];
-                      [self.navigationController popViewControllerAnimated:FALSE];
+                      [self.navigationController popViewControllerAnimated:YES];
                   }];
 }
 

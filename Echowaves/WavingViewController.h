@@ -17,6 +17,7 @@
 
 @property (nonatomic) IBOutlet UISwitch *waving;
 
+@property (strong, nonatomic) IBOutlet UIButton *selectedWave;
 @property (strong, nonatomic) IBOutlet UIPickerView *wavesPicker;
 
 @property (strong, nonatomic) NSArray *myWaves;

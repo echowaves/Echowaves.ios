@@ -16,12 +16,6 @@
 
 - (IBAction)takePicture:(id)sender {
     
-//    EchowavesAppDelegate *appDelegate = (EchowavesAppDelegate *)[[UIApplication sharedApplication] delegate];
-//    
-//    
-//    UploadProgressViewController *uploadProgressViewController = appDelegate.uploadProgressViewController;
-    
-    
     NSLog(@"taking picture");
     APP_DELEGATE.wavingViewController.waving.on = true;
     
@@ -33,9 +27,8 @@
     self.waveName.title = APP_DELEGATE.waveName;
 }
 
--(void) viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-
-}
+//-(void) viewDidAppear:(BOOL)animated {
+//    [super viewDidAppear:animated];
+//}
 
 @end
