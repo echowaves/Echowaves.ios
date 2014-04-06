@@ -92,26 +92,30 @@ numberOfRowsInComponent:(NSInteger)component
            viewForRow:(NSInteger)row
          forComponent:(NSInteger)component
           reusingView:(UIView *)view {
+
     UIView *subView=[[UIView alloc] init];
-
-    UIPickerView* picker = [[UIPickerView alloc] init];
-//    picker.showsSelectionIndicator = YES;
     subView.backgroundColor=[UIColor orangeColor];
-
+    
+    UISwitch* waveOn = [[UISwitch alloc] init];
+    waveOn.Frame = CGRectMake(250, 0, 300, 30);
+    NSNumber* isActive = [((NSDictionary*)[self.myWaves objectAtIndex:row]) objectForKey:@"active"];
+    NSLog(@"is active %@", isActive);
+    if (isActive.intValue == 1) {
+        waveOn.on = YES;
+    } else {
+        waveOn.on = NO;
+    }
+    
     UILabel *name = [[UILabel alloc] init];
-//    [name setTextColor:[UIColor clearColor]];
-//    [name setBackgroundColor:[UIColor blackColor]];
+    [name setTextColor:[UIColor darkTextColor]];
     [name setFont:[UIFont fontWithName: @"Trebuchet MS" size: 14.0f]];
     [name setText:[((NSDictionary*)[self.myWaves objectAtIndex:row]) objectForKey:@"name"]];
-    
-    NSLog(@"label text: %@", [name text]);
+    name.textAlignment = NSTextAlignmentRight;
+    name.Frame = CGRectMake(10, 0, 230, 30);
 
-    
-    
+    [subView addSubview:waveOn];
     [subView addSubview:name];
-//    [subView  addSubview:picker];
     
-//    [picker release];
 
 //    [((NSDictionary*)[self.myWaves objectAtIndex:row]) objectForKey:@"active"] == 0? @"on":@"off";
     return subView;
