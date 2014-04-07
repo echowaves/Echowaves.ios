@@ -9,7 +9,7 @@
 //#import <UIKit/UIKit.h>
 #import "AFHTTPRequestOperationManager.h"
 
-@interface WavingViewController : EchowavesImagePickerController<EchowavesImagePickerControllerProtocol, UIPickerViewDelegate, UIPickerViewDataSource>
+@interface WavingViewController : EchowavesImagePickerController<EchowavesImagePickerControllerProtocol, UIPickerViewDelegate, UIPickerViewDataSource, UIGestureRecognizerDelegate>
 
 
 //it's a hack, but can't figure out how to make it work with in standard life cycle
