@@ -52,6 +52,10 @@
         [EWWave showErrorAlertWithMessage:error.description
                                FromSender:nil];
     }];
+    
+    UITapGestureRecognizer* pickerViewGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedPickerView:)];
+    pickerViewGR.delegate = self;
+    [self.wavesPicker addGestureRecognizer:pickerViewGR];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -98,6 +102,7 @@ numberOfRowsInComponent:(NSInteger)component
     subView.backgroundColor=[UIColor orangeColor];
     
     UISwitch* waveOn = [[UISwitch alloc] init];
+    waveOn.tag = 1000;
     waveOn.Frame = CGRectMake(250, 0, 300, 30);
     NSNumber* isActive = [((NSDictionary*)[self.myWaves objectAtIndex:row]) objectForKey:@"active"];
     NSLog(@"is active %@", isActive);
@@ -139,6 +144,36 @@ numberOfRowsInComponent:(NSInteger)component
     [APP_DELEGATE checkForUpload];
 }
 
+#pragma mark - Gesture Recogniser Delegate and Action for wavesPicker
 
+-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    // We need this as it enables multiple gestures to be detected.
+    return YES;
+}
+
+-(void)tappedPickerView:(id)sender  {
+    // A tap has been made, find location and make sure it's on the row, otherwise any tap anywhere will be significant.
+    
+    UITapGestureRecognizer* gn = (UITapGestureRecognizer*)sender;
+    CGPoint tapLocation = [gn locationInView:self.view];
+    
+    // Get exact frame of row.
+    CGRect pickerFrame = self.wavesPicker.frame;
+    CGSize rowSize = [self.wavesPicker rowSizeForComponent:0];
+    CGRect rowFrame = CGRectMake(0, (pickerFrame.origin.y + ((pickerFrame.size.height - rowSize.height)/2.0)), pickerFrame.size.width, rowSize.height);
+    
+    if (CGRectContainsPoint(rowFrame, tapLocation)) {// Tap is on selected Row so update data model;
+        NSLog(@"Tapped on Row");
+        
+        int row = [self.wavesPicker selectedRowInComponent:0];
+        NSDictionary* myWave = [self.myWaves objectAtIndex:row];
+        BOOL active = [[myWave valueForKeyPath:@"active"] boolValue];
+        
+        // From here you should update the values correctly. Below is an example of you could update the UISwitch, but remember you must update the values in the original data source, so that "pickerView:viewForRow:forComponent:reusingView:" updates the rows correctly from then on, else once you scroll the changes will be reveresed, as happens here.
+        
+        UISwitch* activeSwitch = (UISwitch *)[[self.wavesPicker viewForRow:row forComponent:0] viewWithTag:1000];
+        [activeSwitch setOn:!active animated:YES];
+    }
+}
 
 @end
