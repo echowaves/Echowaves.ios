@@ -133,9 +133,11 @@
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
+    NSDictionary *parameters = @{@"wave_name": waveName};
+
     
     [manager GET:[NSString stringWithFormat:@"%@/wave.json", EWHost]
-      parameters:nil
+      parameters:parameters
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
              success((NSArray*)responseObject);
              [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
