@@ -78,7 +78,7 @@
     }
     self.navigationController.navigationBar.topItem.title = APP_DELEGATE.waveName;
     [self selectedWave].titleLabel.text = APP_DELEGATE.waveName;
-
+    [self reloadWaves];
 }
 
 - (NSInteger)numberOfComponentsInPickerView:
@@ -145,6 +145,7 @@ numberOfRowsInComponent:(NSInteger)component
 
     self.navigationController.navigationBar.topItem.title = APP_DELEGATE.waveName;
     [self selectedWave].titleLabel.text = APP_DELEGATE.waveName;
+    [self reloadWaves];
 }
 
 -(void) pictureSaved
