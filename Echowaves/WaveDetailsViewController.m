@@ -26,7 +26,9 @@
                        if([waveDetails objectForKey:@"parent_wave_id"] != [NSNull null]) {
                            [self navigationItem].rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash
                                                                                                                     target:self
-                                                                                                                    action:@selector(deleteWave)];
+                                                                                                                    action:@selector(deleteWave:)];
+                       } else {
+                           [self deleteWaveButton].hidden=YES;
                        }
                    } failure:^(NSString *errorMessage) {
                        [EWWave showErrorAlertWithMessage:errorMessage FromSender:nil];
@@ -34,9 +36,19 @@
     
 }
 
-- (void) deleteWave {
-    
+- (IBAction)deleteWave:(id)sender {
+    [EWWave showAlertWithMessageAndCancelButton:@"Will remove wave and all it's photos. Sure?" FromSender:self];
+
 }
 
+
+- (void)alertView:(UIAlertView *)alertView
+clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if(buttonIndex == 1) {
+//        [EWWave deleteChildWave];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    
+}
 
 @end

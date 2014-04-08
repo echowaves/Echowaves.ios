@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WaveDetailsViewController : UIViewController
+@interface WaveDetailsViewController : UIViewController <UIAlertViewDelegate>
 @property (strong, nonatomic) IBOutlet UILabel *waveName;
+@property (strong, nonatomic) IBOutlet UIButton *deleteWaveButton;
 
 @end
