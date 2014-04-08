@@ -40,7 +40,7 @@
 - (void) reloadWaves {
     [EWWave getAllMyWaves:^(NSArray *waves) {
         NSLog(@"zzzzzzzzz loaded %lu waves", (unsigned long)waves.count);
-        self.myWaves = waves;
+        self.myWaves = [waves mutableCopy];
         [self.wavesPicker reloadAllComponents];
     } failure:^(NSError *error) {
         [EWWave showErrorAlertWithMessage:error.description
@@ -62,6 +62,7 @@
     UITapGestureRecognizer* pickerViewGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedPickerView:)];
     pickerViewGR.delegate = self;
     [self.wavesPicker addGestureRecognizer:pickerViewGR];
+
 }
 
 //- (void) viewWillAppear:(BOOL)animated {
@@ -74,7 +75,10 @@
     if([self checkedAtload] == false) {
         self.checkedAtload = true;
         [APP_DELEGATE checkForUpload]; // only call it once, when the view loads for the first time
-    }    
+    }
+    self.navigationController.navigationBar.topItem.title = APP_DELEGATE.waveName;
+    [self selectedWave].titleLabel.text = APP_DELEGATE.waveName;
+
 }
 
 - (NSInteger)numberOfComponentsInPickerView:
@@ -170,7 +174,7 @@ numberOfRowsInComponent:(NSInteger)component
     if (CGRectContainsPoint(rowFrame, tapLocation)) {// Tap is on selected Row so update data model;
         
         long row = [self.wavesPicker selectedRowInComponent:0];
-        NSDictionary* myWave = [self.myWaves objectAtIndex:row];
+        NSMutableDictionary* myWave = [[self.myWaves objectAtIndex:row]mutableCopy];
         NSLog(@",,,,,,,,,,,,,,,,,,, did tap on a row: %ld", (long)row);
 
         BOOL active = [[myWave valueForKeyPath:@"active"] boolValue];
@@ -180,16 +184,17 @@ numberOfRowsInComponent:(NSInteger)component
                        success:^(NSString *waveName) {
                            UISwitch* activeSwitch = (UISwitch *)[[self.wavesPicker viewForRow:row forComponent:0] viewWithTag:1000];
                            [activeSwitch setOn:!active animated:YES];
-
-                           [self reloadWaves];
+                           [myWave setValue:[NSNumber numberWithLong:active?0:1] forKey:@"active"];
+                           [self.myWaves replaceObjectAtIndex:row withObject:myWave];
+//                           [self reloadWaves];
                        }
                        failure:^(NSString *errorMessage) {
                            [EWWave showErrorAlertWithMessage:errorMessage FromSender:nil];
                        }];
         
         // From here you should update the values correctly. Below is an example of you could update the UISwitch, but remember you must update the values in the original data source, so that "pickerView:viewForRow:forComponent:reusingView:" updates the rows correctly from then on, else once you scroll the changes will be reveresed, as happens here.
-        
     }
+
 }
 
 @end

@@ -20,7 +20,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *selectedWave;
 @property (strong, nonatomic) IBOutlet UIPickerView *wavesPicker;
 
-@property (strong, nonatomic) NSArray *myWaves;
+@property (strong, nonatomic) NSMutableArray *myWaves;
 
 @end
 //nsuserdefaults
