@@ -62,7 +62,8 @@
     UITapGestureRecognizer* pickerViewGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedPickerView:)];
     pickerViewGR.delegate = self;
     [self.wavesPicker addGestureRecognizer:pickerViewGR];
-
+    [[self selectedWave] setTitle:APP_DELEGATE.waveName forState:UIControlStateNormal];
+    self.navigationController.navigationBar.topItem.title = APP_DELEGATE.waveName;
 }
 
 //- (void) viewWillAppear:(BOOL)animated {
@@ -76,8 +77,7 @@
         self.checkedAtload = true;
         [APP_DELEGATE checkForUpload]; // only call it once, when the view loads for the first time
     }
-    self.navigationController.navigationBar.topItem.title = APP_DELEGATE.waveName;
-    [self selectedWave].titleLabel.text = APP_DELEGATE.waveName;
+
     [self reloadWaves];
 }
 
@@ -144,7 +144,7 @@ numberOfRowsInComponent:(NSInteger)component
 //    NSLog(@"setting title: %@", APP_DELEGATE.waveName);
 
     self.navigationController.navigationBar.topItem.title = APP_DELEGATE.waveName;
-    [self selectedWave].titleLabel.text = APP_DELEGATE.waveName;
+    [[self selectedWave] setTitle:APP_DELEGATE.waveName forState:UIControlStateNormal];
     [self reloadWaves];
 }
 

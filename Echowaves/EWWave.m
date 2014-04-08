@@ -147,6 +147,31 @@
           }];
 }
 
++(void) getWaveDetails:(NSString *)waveName
+               success:(void (^)(NSDictionary *waveDetails))success
+               failure:(void (^)(NSString *errorMessage))failure {
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    // perform authentication, wave/password non blank and exist in the server side, and enter a sending loop
+    
+    //ideally not going to need the following line, if making a request to json service
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    NSDictionary *parameters = @{@"wave_name": waveName};
+    
+    [manager GET:[NSString stringWithFormat:@"%@/wave-details.json", EWHost]
+       parameters:parameters
+          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+              success((NSDictionary*)responseObject);
+          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              NSLog(@"Error: %@", error);
+              NSLog(@"Response: %@", [operation.responseObject objectForKey:@"error"]);
+              failure([NSString stringWithFormat:@"Unable to get wave details: %@", [operation.responseObject objectForKey:@"error"]]);
+          }];
+    
+}
+
 
 + (void) getAllMyWaves:(void (^)(NSArray *waves))success
                failure:(void (^)(NSError *error))failure {
