@@ -120,6 +120,34 @@
           }];    
 }
 
+
++(void) makeWaveActive:(NSString *)waveName
+                active:(BOOL)active
+               success:(void (^)(NSString *waveName))success
+               failure:(void (^)(NSString *errorMessage))failure {
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    // perform authentication, wave/password non blank and exist in the server side, and enter a sending loop
+    
+    //ideally not going to need the following line, if making a request to json service
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    NSDictionary *parameters = @{@"wave_name": waveName,
+                                 @"active": active?@YES:@NO};
+    
+    [manager POST:[NSString stringWithFormat:@"%@/make-wave-active.json", EWHost]
+       parameters:parameters
+          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+              success(waveName);
+          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              NSLog(@"Error: %@", error);
+              NSLog(@"Response: %@", [operation.responseObject objectForKey:@"error"]);
+              failure([NSString stringWithFormat:@"Unable to make wave active/inactive: %@", [operation.responseObject objectForKey:@"error"]]);
+          }];
+}
+
+
 + (void) getAllMyWaves:(void (^)(NSArray *waves))success
                failure:(void (^)(NSError *error))failure {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;

@@ -30,6 +30,12 @@
                    success:(void (^)(NSString *waveName))success
                    failure:(void (^)(NSString *errorMessage))failure;
 
++(void) makeWaveActive:(NSString *)waveName
+                active:(BOOL)active
+               success:(void (^)(NSString *waveName))success
+               failure:(void (^)(NSString *errorMessage))failure;
+
+
 + (void) getAllMyWaves:(void (^)(NSArray *waves))success
                failure:(void (^)(NSError *error))failure;
 
