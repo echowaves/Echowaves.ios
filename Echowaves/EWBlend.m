@@ -43,7 +43,8 @@
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
-    NSDictionary *parameters = @{@"wave_name": waveName};
+    NSDictionary *parameters = @{@"wave_name": waveName,
+                                 @"from_wave": [APP_DELEGATE waveName]};
     
     [manager POST:[NSString stringWithFormat:@"%@/request-blending.json", EWHost] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         success();
@@ -65,7 +66,8 @@
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
-    NSDictionary *parameters = @{@"wave_name": waveName};
+    NSDictionary *parameters = @{@"wave_name": waveName,
+                                 @"from_wave": [APP_DELEGATE waveName]};
     
     NSLog(@")))))))))))))))))wave_name:%@", waveName);
     
@@ -91,7 +93,8 @@
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
-    NSDictionary *parameters = @{@"wave_name": waveName};
+    NSDictionary *parameters = @{@"wave_name": waveName,
+                                 @"from_wave": [APP_DELEGATE waveName]};
     
     [manager POST:[NSString stringWithFormat:@"%@/unblend.json", EWHost] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         success();
@@ -109,10 +112,12 @@
     //ideally not going to need the following line, if making a request to json service
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
+
+    NSDictionary *parameters = @{@"wave_name": [APP_DELEGATE waveName]};
     
     
     [manager GET:[NSString stringWithFormat:@"%@/requested-blends.json", EWHost]
-      parameters:nil
+      parameters:parameters
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
              success((NSArray*)responseObject);
          }
@@ -129,9 +134,10 @@
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
-    
+    NSDictionary *parameters = @{@"wave_name": [APP_DELEGATE waveName]};
+
     [manager GET:[NSString stringWithFormat:@"%@/unconfirmed-blends.json", EWHost]
-      parameters:nil
+      parameters:parameters
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
              success((NSArray*)responseObject);
          }
@@ -147,10 +153,12 @@
     //ideally not going to need the following line, if making a request to json service
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    
+
+    NSDictionary *parameters = @{@"wave_name":[APP_DELEGATE waveName]};
+
     
     [manager GET:[NSString stringWithFormat:@"%@/blended-with.json", EWHost]
-      parameters:nil
+      parameters:parameters
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
              success((NSArray*)responseObject);
          }
