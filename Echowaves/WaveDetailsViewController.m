@@ -25,6 +25,7 @@
                        //show delete button only for child waves
                        if([waveDetails objectForKey:@"parent_wave_id"] != [NSNull null]) {
                            [self navigationItem].rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash
+
                                                                                                                     target:self
                                                                                                                     action:@selector(deleteWave:)];
                        } else {
@@ -44,9 +45,16 @@
 
 - (void)alertView:(UIAlertView *)alertView
 clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if(buttonIndex == 1) {
-//        [EWWave deleteChildWave];
-        [self.navigationController popViewControllerAnimated:YES];
+    if(buttonIndex == 1) {//OK button clicked, let's delete the wave
+        [EWWave deleteChildWave:[self.waveName text]
+                        success:^(NSString *waveName) {
+                            [self.navigationController popViewControllerAnimated:YES];
+                        }
+                        failure:^(NSString *errorMessage) {
+                            [EWWave showErrorAlertWithMessage:errorMessage FromSender:nil];
+                            [self.navigationController popViewControllerAnimated:YES];
+                        }];
+
     }
     
 }

@@ -35,6 +35,10 @@
                success:(void (^)(NSString *waveName))success
                failure:(void (^)(NSString *errorMessage))failure;
 
++(void) deleteChildWave:(NSString *)waveName
+               success:(void (^)(NSString *waveName))success
+               failure:(void (^)(NSString *errorMessage))failure;
+
 +(void) getWaveDetails:(NSString *)waveName
                success:(void (^)(NSDictionary *waveDetails))success
                failure:(void (^)(NSString *errorMessage))failure;
