@@ -746,6 +746,7 @@
                     <navigationItem key="navigationItem" id="RYV-BI-uCM"/>
                     <connections>
                         <outlet property="childWaveName" destination="RIB-4R-ftF" id="QDf-dW-b9m"/>
+                        <outlet property="createChildWave" destination="E01-EN-L88" id="Oh0-2d-LkS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O83-S9-zqH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -853,6 +854,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="AnV-QM-P86"/>
+        <segue reference="lU3-tf-NsI"/>
     </inferredMetricsTieBreakers>
 </document>

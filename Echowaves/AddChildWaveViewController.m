@@ -17,13 +17,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self createChildWave].layer.cornerRadius = 4.0f;
+    [self createChildWave].layer.borderWidth = 1.0f;
+    [self createChildWave].layer.borderColor = UIColorFromRGB(0xFFA500).CGColor;
+    
+    [self childWaveName].layer.cornerRadius = 4.0f;
+    [self childWaveName].layer.borderWidth = 1.0f;
+    [self childWaveName].layer.borderColor = UIColorFromRGB(0xFFA500).CGColor;
 }
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self.childWaveName becomeFirstResponder];
-    self.childWaveName.text = [NSString stringWithFormat:@"%@.", APP_DELEGATE.waveName];
+    self.childWaveName.text = [NSString stringWithFormat:@"%@.", APP_DELEGATE.currentWaveName];
 }
 
 - (IBAction)createChildWave:(id)sender {

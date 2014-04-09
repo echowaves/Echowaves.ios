@@ -44,7 +44,7 @@
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
     NSDictionary *parameters = @{@"wave_name": waveName,
-                                 @"from_wave": [APP_DELEGATE waveName]};
+                                 @"from_wave": [APP_DELEGATE currentWaveName]};
     
     [manager POST:[NSString stringWithFormat:@"%@/request-blending.json", EWHost] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         success();
@@ -67,7 +67,7 @@
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
     NSDictionary *parameters = @{@"wave_name": waveName,
-                                 @"from_wave": [APP_DELEGATE waveName]};
+                                 @"from_wave": [APP_DELEGATE currentWaveName]};
     
     NSLog(@")))))))))))))))))wave_name:%@", waveName);
     
@@ -94,7 +94,7 @@
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
     NSDictionary *parameters = @{@"wave_name": waveName,
-                                 @"from_wave": [APP_DELEGATE waveName]};
+                                 @"from_wave": [APP_DELEGATE currentWaveName]};
     
     [manager POST:[NSString stringWithFormat:@"%@/unblend.json", EWHost] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         success();
@@ -113,7 +113,7 @@
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
 
-    NSDictionary *parameters = @{@"wave_name": [APP_DELEGATE waveName]};
+    NSDictionary *parameters = @{@"wave_name": [APP_DELEGATE currentWaveName]};
     
     
     [manager GET:[NSString stringWithFormat:@"%@/requested-blends.json", EWHost]
@@ -134,7 +134,7 @@
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
-    NSDictionary *parameters = @{@"wave_name": [APP_DELEGATE waveName]};
+    NSDictionary *parameters = @{@"wave_name": [APP_DELEGATE currentWaveName]};
 
     [manager GET:[NSString stringWithFormat:@"%@/unconfirmed-blends.json", EWHost]
       parameters:parameters
@@ -154,7 +154,7 @@
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
 
-    NSDictionary *parameters = @{@"wave_name":[APP_DELEGATE waveName]};
+    NSDictionary *parameters = @{@"wave_name":[APP_DELEGATE currentWaveName]};
 
     
     [manager GET:[NSString stringWithFormat:@"%@/blended-with.json", EWHost]

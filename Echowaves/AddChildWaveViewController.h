@@ -10,5 +10,6 @@
 
 @interface AddChildWaveViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UITextField *childWaveName;
+@property (strong, nonatomic) IBOutlet UIButton *createChildWave;
 
 @end

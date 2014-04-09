@@ -39,9 +39,22 @@
 
 - (void) reloadWaves {
     [EWWave getAllMyWaves:^(NSArray *waves) {
-        NSLog(@"zzzzzzzzz loaded %lu waves", (unsigned long)waves.count);
+//        NSLog(@"zzzzzzzzz loaded %lu waves", (unsigned long)waves.count);
         self.myWaves = [waves mutableCopy];
         [self.wavesPicker reloadAllComponents];
+        
+        NSLog(@"11111111111 currentWaveName: %@", [APP_DELEGATE currentWaveName]);
+        
+        if( [APP_DELEGATE currentWaveName] == NULL) {
+            NSURLCredential *credential = [EWWave getStoredCredential];
+            APP_DELEGATE.currentWaveName = [credential user];
+            
+            [self.wavesPicker reloadAllComponents];
+            [self.wavesPicker selectRow:0 inComponent:0 animated:YES];
+            [[self selectedWave] setTitle:APP_DELEGATE.currentWaveName forState:UIControlStateNormal];
+            self.navigationController.navigationBar.topItem.title = APP_DELEGATE.currentWaveName;
+        }
+
     } failure:^(NSError *error) {
         [EWWave showErrorAlertWithMessage:error.description
                                FromSender:nil];
@@ -62,8 +75,8 @@
     UITapGestureRecognizer* pickerViewGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedPickerView:)];
     pickerViewGR.delegate = self;
     [self.wavesPicker addGestureRecognizer:pickerViewGR];
-    [[self selectedWave] setTitle:APP_DELEGATE.waveName forState:UIControlStateNormal];
-    self.navigationController.navigationBar.topItem.title = APP_DELEGATE.waveName;
+    [[self selectedWave] setTitle:APP_DELEGATE.currentWaveName forState:UIControlStateNormal];
+    self.navigationController.navigationBar.topItem.title = APP_DELEGATE.currentWaveName;
 }
 
 //- (void) viewWillAppear:(BOOL)animated {
@@ -77,7 +90,6 @@
         self.checkedAtload = true;
         [APP_DELEGATE checkForUpload]; // only call it once, when the view loads for the first time
     }
-
     [self reloadWaves];
 }
 
@@ -90,7 +102,7 @@
 - (NSInteger)pickerView:(UIPickerView *)pickerView
 numberOfRowsInComponent:(NSInteger)component
 {
-    NSLog(@"^^^^^^^^^^^^number of child waves: %lu", (unsigned long)[self myWaves].count);
+//    NSLog(@"^^^^^^^^^^^^number of child waves: %lu", (unsigned long)[self myWaves].count);
     return [self myWaves].count;
 }
 
@@ -107,7 +119,7 @@ numberOfRowsInComponent:(NSInteger)component
            viewForRow:(NSInteger)row
          forComponent:(NSInteger)component
           reusingView:(UIView *)view {
-    NSLog(@"redrawing row: %ld", (long)row);
+//    NSLog(@"redrawing row: %ld", (long)row);
     UIView *subView=[[UIView alloc] init];
     subView.backgroundColor=[UIColor orangeColor];
     
@@ -140,11 +152,11 @@ numberOfRowsInComponent:(NSInteger)component
       inComponent:(NSInteger)component
 {
     NSLog(@",,,,,,,,,,,,,,,,,,, did select row: %ld", (long)row);
-    APP_DELEGATE.waveName = [((NSDictionary*)[self.myWaves objectAtIndex:row]) objectForKey:@"name"];
+    APP_DELEGATE.currentWaveName = [((NSDictionary*)[self.myWaves objectAtIndex:row]) objectForKey:@"name"];
 //    NSLog(@"setting title: %@", APP_DELEGATE.waveName);
 
-    self.navigationController.navigationBar.topItem.title = APP_DELEGATE.waveName;
-    [[self selectedWave] setTitle:APP_DELEGATE.waveName forState:UIControlStateNormal];
+    self.navigationController.navigationBar.topItem.title = APP_DELEGATE.currentWaveName;
+    [[self selectedWave] setTitle:APP_DELEGATE.currentWaveName forState:UIControlStateNormal];
     [self reloadWaves];
 }
 
@@ -195,7 +207,10 @@ numberOfRowsInComponent:(NSInteger)component
         
         // From here you should update the values correctly. Below is an example of you could update the UISwitch, but remember you must update the values in the original data source, so that "pickerView:viewForRow:forComponent:reusingView:" updates the rows correctly from then on, else once you scroll the changes will be reveresed, as happens here.
     }
-
 }
 
+-(void) resetWaves {
+    NSLog(@"##################reseting waves");
+    
+}
 @end

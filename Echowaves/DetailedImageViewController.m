@@ -39,7 +39,7 @@
     
 //    [[self navigationItem].backBarButtonItem setTitle:@" "];
     
-    if ([waveName isEqualToString:[APP_DELEGATE waveName]]) {
+    if ([waveName isEqualToString:[APP_DELEGATE currentWaveName]]) {
         [self navigationItem].rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash
                                                                                                  target:self
                                                                                                  action:@selector(deleteImage)];

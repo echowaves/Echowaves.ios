@@ -68,17 +68,17 @@
     switch(section){
         case 0:
             return [NSString stringWithFormat:@"To %@: %lu",
-                    APP_DELEGATE.waveName,
+                    APP_DELEGATE.currentWaveName,
                     (unsigned long)[self.requestedBlends count]];
             break;
         case 1:
             return [NSString stringWithFormat:@"From %@: %lu",
-                    APP_DELEGATE.waveName,
+                    APP_DELEGATE.currentWaveName,
                     (unsigned long)[self.unconfirmedBlends count]];
             break;
         case 2:
             return [NSString stringWithFormat:@"%@ blends in with: %lu",
-                    APP_DELEGATE.waveName,
+                    APP_DELEGATE.currentWaveName,
                     (unsigned long)[self.blendedWith count]];
             break;
     }

@@ -18,7 +18,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) NSString *waveName;
+@property (strong, nonatomic) NSString *currentWaveName;
 
 //@property (weak, nonatomic) UploadProgressViewController *uploadProgressViewController;
 @property (weak, nonatomic) WavingViewController *wavingViewController;

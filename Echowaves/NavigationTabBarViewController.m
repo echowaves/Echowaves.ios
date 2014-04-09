@@ -24,7 +24,7 @@
 
 -(void) viewDidLoad {
     [super viewDidLoad];
-    self.waveName.title = APP_DELEGATE.waveName;
+    self.waveName.title = APP_DELEGATE.currentWaveName;
 }
 
 //-(void) viewDidAppear:(BOOL)animated {

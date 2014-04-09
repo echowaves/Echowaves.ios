@@ -18,7 +18,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self waveName].text = [APP_DELEGATE waveName];
+    [self waveName].text = [APP_DELEGATE currentWaveName];
 
     [EWWave getWaveDetails:[self waveName].text
                    success:^(NSDictionary *waveDetails) {
@@ -48,6 +48,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
     if(buttonIndex == 1) {//OK button clicked, let's delete the wave
         [EWWave deleteChildWave:[self.waveName text]
                         success:^(NSString *waveName) {
+                            APP_DELEGATE.currentWaveName = nil;// this will be an indicator for the wavingViewController to reload and reinitialize the proper waveName
                             [self.navigationController popViewControllerAnimated:YES];
                         }
                         failure:^(NSString *errorMessage) {

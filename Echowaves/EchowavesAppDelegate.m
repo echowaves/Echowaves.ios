@@ -82,7 +82,7 @@
             
             NSLog(@"!!!!!!!!!!!!!!!images to post operations: %lu", (unsigned long)[self.networkQueue.operations count]);
             
-                [EWWave sendPushNotifyForWave:APP_DELEGATE.waveName
+                [EWWave sendPushNotifyForWave:APP_DELEGATE.currentWaveName
                                         badge:1
                                       success:^{
                                           NSLog(@"!!!!!!!!!!!!!!!pushed notify successfully");
