@@ -66,6 +66,13 @@
     [super viewDidLoad];
     APP_DELEGATE.wavingViewController = self;
     self.delegate = self;
+
+    //initialize waving switch to yes initially
+    if(![USER_DEFAULTS objectForKey:@"lastCheckTime"]) {
+        [USER_DEFAULTS setBool:YES forKey:@"waving"];
+        [USER_DEFAULTS synchronize];
+    }
+    
     NSLog(@"=======waving initializing was %d changed to: %d", self.waving.on, [USER_DEFAULTS boolForKey:@"waving"]);
     self.waving.on = [USER_DEFAULTS boolForKey:@"waving"];
     
