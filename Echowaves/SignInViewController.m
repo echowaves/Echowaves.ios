@@ -45,7 +45,7 @@
                                             }];
                         
                        }
-                       APP_DELEGATE.currentWaveName = wave;
+//                       APP_DELEGATE.currentWaveName = wave;
                        [self performSegueWithIdentifier: @"TuneIn" sender: self];
                    }
                    failure:^(NSString *errorMessage) {

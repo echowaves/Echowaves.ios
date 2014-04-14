@@ -38,7 +38,7 @@
     [[NSURLCredentialStorage sharedCredentialStorage] setCredential:credential forProtectionSpace:EWWave.echowavesProtectionSpace];
     
     
-    APP_DELEGATE.currentWaveName = waveName;
+//    APP_DELEGATE.currentWaveName = waveName;
 
 }
 
