@@ -33,6 +33,7 @@
                  progress:(void (^)(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead))progress;
 
 +(void) deleteImage:(NSString *)imageName
+             inWave:(NSString *)waveName
             success:(void (^)(void))success
             failure:(void (^)(NSError *error))failure;
 

@@ -84,6 +84,7 @@
     NSString* imageName = [self.imageFromJson objectForKey:@"name"];
     [EWImage showLoadingIndicator:self];
     [EWImage deleteImage:imageName
+                  inWave:[APP_DELEGATE currentWaveName]
                  success:^{
                      [self.navigationController popViewControllerAnimated:YES];
                      [EWImage hideLoadingIndicator:self];

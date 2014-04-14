@@ -176,6 +176,7 @@
 }
 
 +(void) deleteImage:(NSString *)imageName
+             inWave:(NSString *)waveName
             success:(void (^)(void))success
             failure:(void (^)(NSError *error))failure {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -186,7 +187,8 @@
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
-    NSDictionary *parameters = @{@"name": imageName};
+    NSDictionary *parameters = @{@"image_name": imageName,
+                                 @"wave_name": waveName};
     
     [manager POST:[NSString stringWithFormat:@"%@/delete-image.json", EWHost] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         success();
