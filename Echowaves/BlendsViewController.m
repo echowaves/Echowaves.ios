@@ -10,8 +10,10 @@
 #import "NavigationTabBarViewController.h"
 #import "EWBlend.h"
 
-@interface BlendsViewController ()
-
+@interface UnblendAlertView : UIAlertView
+@property (nonatomic) NSString *waveName;
+@end
+@implementation UnblendAlertView
 @end
 
 @implementation BlendsViewController
@@ -180,13 +182,15 @@
             UITableViewCell *cell = (UITableViewCell *) parent;
             NSIndexPath *path = [self.tableView indexPathForCell: cell];
             waveName = [((NSDictionary*)[self.requestedBlends objectAtIndex:path.row]) objectForKey:@"name"];
-            [EWBlend unblendFrom:waveName
-                         success:^{
-                             [self reloadView];
-                         }
-                         failure:^(NSError *error) {
-                             NSLog(@"error: %@", error.debugDescription);
-                         }];
+            
+            UnblendAlertView *alertMessage = [[UnblendAlertView alloc] initWithTitle:@"Alert"
+                                                                   message:@"Unblend?"
+                                                                  delegate:self
+                                                         cancelButtonTitle:@"Cancel"
+                                                         otherButtonTitles:@"OK", nil];
+            alertMessage.waveName = waveName;
+            alertMessage.tag = 20001;
+            [alertMessage show];
             
             break; // for
         }
@@ -203,13 +207,17 @@
             UITableViewCell *cell = (UITableViewCell *) parent;
             NSIndexPath *path = [self.tableView indexPathForCell: cell];
             waveName = [((NSDictionary*)[self.unconfirmedBlends objectAtIndex:path.row]) objectForKey:@"name"];
-            [EWBlend unblendFrom:waveName
-                         success:^{
-                             [self reloadView];
-                         }
-                         failure:^(NSError *error) {
-                             NSLog(@"error: %@", error.debugDescription);
-                         }];
+
+            UnblendAlertView *alertMessage = [[UnblendAlertView alloc] initWithTitle:@"Alert"
+                                                                             message:@"Unblend?"
+                                                                            delegate:self
+                                                                   cancelButtonTitle:@"Cancel"
+                                                                   otherButtonTitles:@"OK", nil];
+            alertMessage.waveName = waveName;
+            alertMessage.tag = 20002;
+            [alertMessage show];
+
+            
             break; // for
         }
     }
@@ -218,10 +226,6 @@
 }
 
 - (IBAction)unblendBlendedButtonClicked:(id)sender {
-//    
-//    [EWWave showAlertWithMessageAndCancelButton:@"Will Unblend. Sure?" FromSender:self];
-
-    
     UIView *button = sender;
     NSString *waveName;
     
@@ -230,17 +234,35 @@
             UITableViewCell *cell = (UITableViewCell *) parent;
             NSIndexPath *path = [self.tableView indexPathForCell: cell];
             waveName = [((NSDictionary*)[self.blendedWith objectAtIndex:path.row]) objectForKey:@"name"];
-            [EWBlend unblendFrom:waveName
-                         success:^{
-                             [self reloadView];
-                         }
-                         failure:^(NSError *error) {
-                             NSLog(@"error: %@", error.debugDescription);
-                         }];
+
+            UnblendAlertView *alertMessage = [[UnblendAlertView alloc] initWithTitle:@"Alert"
+                                                                             message:@"Unblend?"
+                                                                            delegate:self
+                                                                   cancelButtonTitle:@"Cancel"
+                                                                   otherButtonTitles:@"OK", nil];
+            alertMessage.waveName = waveName;
+            alertMessage.tag = 20003;
+            [alertMessage show];
+
+            
             break; // for
         }
     }
     NSLog(@"unblending blended wave %@",waveName);
+}
+
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if(buttonIndex == 1) {//OK button clicked, let's delete the wave
+   
+    [EWBlend unblendFrom:[(UnblendAlertView *)alertView waveName]
+                 success:^{
+                     [self reloadView];
+                 }
+                 failure:^(NSError *error) {
+                     NSLog(@"error: %@", error.debugDescription);
+                 }];
+    }
 }
 
 

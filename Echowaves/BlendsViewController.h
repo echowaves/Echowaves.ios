@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BlendsViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
+@interface BlendsViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, atomic) NSArray *requestedBlends;
 @property (strong, atomic) NSArray *unconfirmedBlends;
 @property (strong, atomic) NSArray *blendedWith;
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
 
 @end

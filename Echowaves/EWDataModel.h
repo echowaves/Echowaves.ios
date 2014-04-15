@@ -14,7 +14,8 @@
 + (void)hideLoadingIndicator:(id)sender;
 + (BOOL)isLoadingIndicatorShowing;
 + (void)showAlertWithMessage:(NSString *)message FromSender:(id)sender;
-+ (void)showAlertWithMessageAndCancelButton:(NSString *)message FromSender:(id)sender;
++ (void)showAlertWithMessageAndCancelButton:(NSString *)message
+                                 FromSender:(id)sender;
 + (void)showErrorAlertWithMessage:(NSString *)message FromSender:(id)sender;
 
 @end
