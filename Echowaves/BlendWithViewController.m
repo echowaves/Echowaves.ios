@@ -78,11 +78,9 @@
                              [self.navigationController popViewControllerAnimated:YES];
                          }
                          failure:^(NSError *error) {
-//                             [EWBlend showErrorAlertWithMessage:[error description]
-//                                                     FromSender:self];
-                             NSLog(@"error %@", error.description );
+                             [EWBlend hideLoadingIndicator:self];
+                             [EWWave showErrorAlertWithMessage:@"error unblending" FromSender:nil];
                              [self.navigationController popViewControllerAnimated:YES];
-//                             [EWBlend hideLoadingIndicator:self];
                          }];
 }
 

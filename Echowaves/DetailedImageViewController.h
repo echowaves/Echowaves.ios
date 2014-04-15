@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DetailedImageViewController : UIViewController
+@interface DetailedImageViewController : UIViewController <UIAlertViewDelegate>
 
 @property (weak, nonatomic) NSDictionary *imageFromJson;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
@@ -16,5 +16,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *waveName;
 
 @property (strong, nonatomic) IBOutlet UIProgressView *progressView;
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
 
 @end

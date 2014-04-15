@@ -9,6 +9,14 @@
 #import "DetailedImageViewController.h"
 #import "EWImage.h"
 
+@interface DeleteImageAlertView : UIAlertView
+@property (nonatomic) NSString *waveName;
+@property (nonatomic) NSString *imageName;
+@end
+@implementation DeleteImageAlertView
+@end
+
+
 @implementation DetailedImageViewController
 
 - (void)viewDidLoad
@@ -82,19 +90,40 @@
 -(void)deleteImage {
     NSLog(@"deleting image");
     NSString* imageName = [self.imageFromJson objectForKey:@"name"];
-    [EWImage showLoadingIndicator:self];
-    [EWImage deleteImage:imageName
-                  inWave:[APP_DELEGATE currentWaveName]
-                 success:^{
-                     [self.navigationController popViewControllerAnimated:YES];
-                     [EWImage hideLoadingIndicator:self];
-                 }
-                  failure:^(NSError *error) {
-                      [EWImage hideLoadingIndicator:self];
-                      [EWImage showErrorAlertWithMessage:@"Unable to delete image" FromSender:nil];
-                      [self.navigationController popViewControllerAnimated:YES];
-                  }];
+    NSString* waveName = [APP_DELEGATE currentWaveName];
+    
+    DeleteImageAlertView *alertMessage = [[DeleteImageAlertView alloc] initWithTitle:@"Alert"
+                                                                             message:@"Delete?"
+                                                                            delegate:self
+                                                                   cancelButtonTitle:@"Cancel"
+                                                                   otherButtonTitles:@"OK", nil];
+    alertMessage.waveName = waveName;
+    alertMessage.imageName = imageName;
+    alertMessage.tag = 20002;
+    [alertMessage show];
+
+    
+    
 }
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if(buttonIndex == 1) {//OK button clicked, let's delete the wave
+        [EWImage showLoadingIndicator:self];
+        [EWImage deleteImage:[(DeleteImageAlertView*)alertView imageName]
+                      inWave:[(DeleteImageAlertView*)alertView waveName]
+                     success:^{
+                         [self.navigationController popViewControllerAnimated:YES];
+                         [EWImage hideLoadingIndicator:self];
+                     }
+                     failure:^(NSError *error) {
+                         [EWImage hideLoadingIndicator:self];
+                         [EWImage showErrorAlertWithMessage:@"Unable to delete image" FromSender:nil];
+                         [self.navigationController popViewControllerAnimated:YES];
+                     }];
+        
+    }
+}
+
 
 -(void)saveImage {
     [EWImage saveImageToAssetLibrary:[self image]
