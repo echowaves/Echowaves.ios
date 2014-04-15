@@ -39,7 +39,6 @@
 
 - (IBAction)deleteWave:(id)sender {
     [EWWave showAlertWithMessageAndCancelButton:@"Will remove wave and all it's photos. Sure?" FromSender:self];
-
 }
 
 

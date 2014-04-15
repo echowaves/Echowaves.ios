@@ -218,6 +218,10 @@
 }
 
 - (IBAction)unblendBlendedButtonClicked:(id)sender {
+//    
+//    [EWWave showAlertWithMessageAndCancelButton:@"Will Unblend. Sure?" FromSender:self];
+
+    
     UIView *button = sender;
     NSString *waveName;
     
