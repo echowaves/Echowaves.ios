@@ -112,7 +112,7 @@
                                                          
                                                          NSLog(@"************* images to post %lu", (unsigned long)imagesToPostOperations.count);
                                                          if(imagesToPostOperations.count == 0) { // this means nothing is found to be posted
-                                                             [NSThread sleepForTimeInterval:2.0f];
+//                                                             [NSThread sleepForTimeInterval:2.0f];
                                                              [self.navigationController popViewControllerAnimated:YES];
                                                          } else {
                                                              [EWImage postAllNewImages:imagesToPostOperations];
