@@ -46,6 +46,7 @@
 }
 
 - (void) checkForNewImages {
+    APP_DELEGATE.currentlyCheckingForUpload = YES;
     
     //try to sign in to see if connection is awailable
     NSURLCredential *credential = [EWWave getStoredCredential];
@@ -56,90 +57,88 @@
                    andPassword:credential.password
                        success:^(NSString *waveName) {
                            NSLog(@"successsfully signed in");
-                           NSMutableArray *imagesToPostOperations = [NSMutableArray array];
+                           NSMutableArray *assetsToPostOperations = [NSMutableArray array];
                            
                            if (APP_DELEGATE.wavingViewController.waving.on) {
-                               [EWImage checkForNewImagesToPostToWave:waveName
-                                                       whenImageFound:^(UIImage *image, NSDate *imageDate) {
-                                                           
-                                                           AFHTTPRequestOperation* _operation = [EWImage createPostOperationFromImage:image
-                                                                                                                            imageDate:imageDate
-                                                                                                                          forWaveName:waveName];
-                                                           __weak AFHTTPRequestOperation *operation = _operation;
-                                                           
-                                                           [operation setUploadProgressBlock:^(NSUInteger bytesWritten,
-                                                                                               NSInteger totalBytesWritten,
-                                                                                               NSInteger totalBytesExpectedToWrite) {
-                                                               if(!self.currentlyUploadingImage.image) { // beginning new upload operation here
-                                                                   self.cancelUpload.hidden = FALSE;
-                                                                   self.uploadProgressBar.hidden = FALSE;
 
-                                                                   self.currentUploadOperation = operation;
-                                                                   self.currentlyUploadingImage.image = image;
-                                                                   self.currentlyUploadingImage.hidden = FALSE;
-                                                                   [self imagesToUpload].text = [NSString stringWithFormat:@"%lu", (unsigned long)APP_DELEGATE.networkQueue.operationCount];
-                                                                   //                                            [self imagesToUpload].hidden = FALSE;
-                                                               }
-                                                               
-                                                               self.uploadProgressBar.progress = (float)totalBytesWritten / totalBytesExpectedToWrite;
-                                                               //                                        NSLog(@"Wrote %lld/%lld", totalBytesWritten, totalBytesExpectedToWrite);
-                                                               //                                        NSLog(@"progress %@", [[NSNumber numberWithDouble:((float)totalBytesWritten/totalBytesExpectedToWrite)] stringValue]);
-                                                               
-                                                           }];
-                                                           [operation setCompletionBlock:^{
-                                                               [self cleanupCurrentUploadView];
-                                                               if(APP_DELEGATE.networkQueue.operationCount == 0) { // this is the last operation in the queue -- time to come back
-                                                                   [self.navigationController popViewControllerAnimated:YES];
-                                                               }
-                                                           }];
-                                                           
-                                                           NSLog(@"@@@@@@@@@@@@@ image found %@", imageDate.description);
-                                                           
-                                                           [imagesToPostOperations addObject:operation];
-                                                           
-                                                           [self imagesToUpload].text = [NSString stringWithFormat:@"%lu", (unsigned long)imagesToPostOperations.count];
+                               
+                               [EWImage checkForNewAssetsToPostToWave:waveName
+                                                       whenAssetFound:^(ALAsset *alAsset) {
+                                                           [self imagesToUpload].text = [NSString stringWithFormat:@"%lu", (unsigned long)assetsToPostOperations.count];
                                                            //the following like is needed to force update the label
                                                            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantPast]];
-                                                           
-                                                           
-                                                           NSLog(@"@@@@@@@@@@@@@@@@ images to post %lu", (unsigned long)imagesToPostOperations.count);
-                                                           
+                                                           [assetsToPostOperations addObject:alAsset];
                                                        }
                                                      whenCheckingDone:^{
-                                                         
-                                                         //                                  [self appStatus].text = @"uploading now";
-                                                         //                                  [self imagesToUpload].hidden = TRUE;
-                                                         
-                                                         NSLog(@"************* images to post %lu", (unsigned long)imagesToPostOperations.count);
-                                                         if(imagesToPostOperations.count == 0) { // this means nothing is found to be posted
+                                                         NSLog(@"************* images to post %lu", (unsigned long)assetsToPostOperations.count);
+                                                         if(assetsToPostOperations.count == 0) { // this means nothing is found to be posted
 //                                                             [NSThread sleepForTimeInterval:2.0f];
                                                              [self.navigationController popViewControllerAnimated:YES];
                                                          } else {
-                                                             [EWImage postAllNewImages:imagesToPostOperations];
-                                                         }
-//                                                         [EWImage postAllNewImages:imagesToPostOperations];
-                                                         
-                                                     }
+                                                             [EWImage postAllNewAssets:assetsToPostOperations
+                                                                           forWaveName:waveName
+                                                                          postingAsset:^(AFHTTPRequestOperation *_operation, UIImage *image, NSDate *currentAssetDateTime) {
+                                                                              __weak AFHTTPRequestOperation *operation = _operation;
+                                                                              [APP_DELEGATE.networkQueue addOperation:operation];
+                                                                              
+                                                                              [operation setUploadProgressBlock:^(NSUInteger bytesWritten,
+                                                                                                                  NSInteger totalBytesWritten,
+                                                                                                                  NSInteger totalBytesExpectedToWrite) {
+                                                                                  if(!self.currentlyUploadingImage.image) { // beginning new upload operation here
+                                                                                      self.cancelUpload.hidden = FALSE;
+                                                                                      self.uploadProgressBar.hidden = FALSE;
+                                                                                      
+                                                                                      self.currentUploadOperation = operation;
+                                                                                      self.currentlyUploadingImage.image = image;
+                                                                                      self.currentlyUploadingImage.hidden = FALSE;
+                                                                                      [self imagesToUpload].text = [NSString stringWithFormat:@"%lu", (unsigned long)APP_DELEGATE.networkQueue.operationCount];
+                                                                                      //                                            [self imagesToUpload].hidden = FALSE;
+                                                                                  }
+                                                                                  
+                                                                                  self.uploadProgressBar.progress = (float)totalBytesWritten / totalBytesExpectedToWrite;
+                                                                                  //                                        NSLog(@"Wrote %lld/%lld", totalBytesWritten, totalBytesExpectedToWrite);
+                                                                                  //                                        NSLog(@"progress %@", [[NSNumber numberWithDouble:((float)totalBytesWritten/totalBytesExpectedToWrite)] stringValue]);
+                                                                                  
+                                                                              }];
+                                                                              [operation setCompletionBlock:^{
+                                                                                  [self cleanupCurrentUploadView];
+                                                                                  if(APP_DELEGATE.networkQueue.operationCount == 0) { // this is the last operation in the queue -- time to come back
+                                                                                      [self.navigationController popViewControllerAnimated:YES];
+                                                                                  }
+                                                                                  
+                                                                                  [USER_DEFAULTS setObject:currentAssetDateTime forKey:@"lastCheckTime"];
+                                                                                  [USER_DEFAULTS synchronize];
+                                                                                  
+                                                                              }];
+
+                                                                              
+                                                                          } postingComplete:^{
+                                                                              NSLog(@"completed posting all new images");
+                                                                          }
+                                                                             whenError:^(NSError *error) {
+                                                                                 NSLog(@"error posting all new images: %@", error.debugDescription);
+                                                                             }
+                                                              ];
+                                                         } //else
+                                                     } // when checking done
                                                             whenError:^(NSError *error) {
                                                                 NSLog(@"this error should never happen %@", error.description);
                                                                 [EWWave showErrorAlertWithMessage:[error description] FromSender:nil];
                                                                 [self.navigationController popViewControllerAnimated:YES];
+
                                                             }];
-                               
-                           }
-                           
-                       }
+                                
+                           } // waving on
+                       } // tune in with name
                        failure:^(NSString *errorMessage) {
                            [EWWave showErrorAlertWithMessage:errorMessage FromSender:nil];
                            [self.navigationController popViewControllerAnimated:YES];
-                       }];
-        
-        
+                       }];// tune in with name
         
     } else { // credentials are not set, can't really ever happen, something is really wrong here
         NSLog(@"this error should never happen credentials are not set, can't really ever happen, something is really wrong here");
     }
-    
+   
 }
 
 - (IBAction)cancelingCurrentUploadOperation:(id)sender {
