@@ -24,6 +24,6 @@
 @property (weak, nonatomic) AFHTTPRequestOperation *currentUploadOperation;
 
 
-- (void) checkForNewImages;
+- (void) checkForNewAssets: (long) assetsCount;
 
 @end

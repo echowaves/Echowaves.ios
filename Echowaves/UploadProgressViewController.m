@@ -35,7 +35,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self checkForNewImages];
+    [self checkForNewAssets:-1];
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,7 +44,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void) checkForNewImages {
+- (void) checkForNewAssets:(long) assetsCount {
     //try to sign in to see if connection is awailable
     NSURLCredential *credential = [EWWave getStoredCredential];
     if(credential) {
@@ -69,6 +69,17 @@
                                                          if(assets.count == 0) { // this means nothing is found to be posted
 //                                                             [NSThread sleepForTimeInterval:2.0f];
                                                              [self.navigationController popViewControllerAnimated:YES];
+                                                             
+                                                             if (assetsCount > 0) {
+                                                                 [EWWave sendPushNotifyForWave:APP_DELEGATE.currentWaveName
+                                                                                         badge:assetsCount
+                                                                                       success:^{
+                                                                                           NSLog(@"!!!!!!!!!!!!!!!pushed notify successfully %ld", assetsCount);
+                                                                                       }
+                                                                                       failure:^(NSError *error) {
+                                                                                           NSLog(@"this error should never happen %@", error.description);
+                                                                                       }];
+                                                             }
                                                          } else {
 //                                                             for(ALAsset *asset in assets) {
                                                              ALAsset* asset = assets[0];
@@ -97,7 +108,11 @@
                                                                                [self cleanupCurrentUploadView];
                                                                                [USER_DEFAULTS setObject:currentAssetDateTime forKey:@"lastCheckTime"];
                                                                                [USER_DEFAULTS synchronize];
-                                                                               [self checkForNewImages];
+                                                                               if(assetsCount > 0) {
+                                                                                   [self checkForNewAssets:assetsCount];
+                                                                               } else {
+                                                                                   [self checkForNewAssets:assets.count];
+                                                                               };
                                                                            }];
                                                                            [APP_DELEGATE.networkQueue addOperation:weakOperation];
 //                                                                           [APP_DELEGATE.networkQueue setSuspended:NO];
