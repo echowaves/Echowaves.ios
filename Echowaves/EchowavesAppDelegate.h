@@ -20,7 +20,7 @@
 
 @property (strong, nonatomic) NSString *currentWaveName;
 
-@property (nonatomic) BOOL currentlyCheckingForUpload;
+//@property (nonatomic) BOOL currentlyCheckingForUpload;
 
 //@property (weak, nonatomic) UploadProgressViewController *uploadProgressViewController;
 @property (weak, nonatomic) WavingViewController *wavingViewController;

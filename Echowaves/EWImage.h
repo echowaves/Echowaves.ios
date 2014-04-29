@@ -15,17 +15,13 @@
 @interface EWImage : EWDataModel
 
 + (void) checkForNewAssetsToPostToWave:(NSString*) waveName
-                        whenAssetFound:(void (^)(ALAsset* alAsset))assetFoundBlock
-                      whenCheckingDone:(void (^)(void)) checkCompleteBlock
+                      whenCheckingDone:(void (^)(NSArray* assets)) checkCompleteBlock
                              whenError:(void (^)(NSError *error)) failureBlock;
 
 
-+ (void) postAllNewAssets:(NSMutableArray *)assetsToPostOperations
-              forWaveName:(NSString *) waveName
-           postingAsset:(void (^)(AFHTTPRequestOperation* operation, UIImage* image, NSDate* currentAssetDateTime))postingAssetBlock
-          postingComplete:(void (^)(void)) postingCompleteBlock
-                whenError:(void (^)(NSError *error)) failureBlock;
-
++ (void) operationFromAsset:(ALAsset *)asset
+       forWaveName:(NSString *) waveName
+      success:(void (^)(AFHTTPRequestOperation* operation, UIImage* image, NSDate* currentAssetDateTime))success;
 
 + (void) getAllImagesForWave:(NSString*) waveName
                      success:(void (^)(NSArray *waveImages))success

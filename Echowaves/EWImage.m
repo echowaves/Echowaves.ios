@@ -11,10 +11,10 @@
 @implementation EWImage
 
 + (void) checkForNewAssetsToPostToWave:(NSString*) waveName
-                        whenAssetFound:(void (^)(ALAsset* alAsset))assetFoundBlock
-                      whenCheckingDone:(void (^)(void)) checkCompleteBlock
+                      whenCheckingDone:(void (^)(NSArray* assets)) checkCompleteBlock
                              whenError:(void (^)(NSError *error)) failureBlock
 {
+    NSMutableArray* assets = [NSMutableArray array];
     NSLog(@"----------------- Checking images");
     //find if there are any new images to post
     //http://iphonedevsdk.com/forum/iphone-sdk-development/94700-directly-access-latest-photo-from-saved-photos-camera-roll.html
@@ -37,16 +37,16 @@
                 if(timeSinceLastPost > 0.0) {//this means, found an image that was not posted
                     //first lets add the image to a collection, we will process this collection later.
                     
-                    NSLog(@"found image that was posted %f seconds since last check", timeSinceLastPost);
+//                    NSLog(@"found image that was posted %f seconds since last check", timeSinceLastPost);
                     
-                    assetFoundBlock(alAsset);
+                    [assets addObject:alAsset];
                     
                 } // if timeSinceLastPost
                 
             } else { // here is at the end of the iterating over assets
 //                [USER_DEFAULTS setObject:[NSDate date] forKey:@"lastCheckTime"];
 //                [USER_DEFAULTS synchronize];
-                checkCompleteBlock();
+                checkCompleteBlock(assets);
             }
         }];
     } failureBlock: ^(NSError *error) {
@@ -58,18 +58,12 @@
 
 
 
-+ (void) postAllNewAssets:(NSMutableArray *)assetsToPostOperations
++ (void) operationFromAsset:(ALAsset *)asset
               forWaveName:(NSString *) waveName
-             postingAsset:(void (^)(AFHTTPRequestOperation* operation, UIImage* image, NSDate* currentAssetDateTime))postingAssetBlock
-          postingComplete:(void (^)(void)) postingCompleteBlock
-                whenError:(void (^)(NSError *error)) failureBlock;
+             success:(void (^)(AFHTTPRequestOperation* operation, UIImage* image, NSDate* currentAssetDateTime))success
 {
-    NSLog(@"----------------- Posting images");
+    NSLog(@"----------------- Posting asset");
     
-    for(ALAsset *asset in assetsToPostOperations) {
-
-        
-        
         NSDate *currentAssetDateTime = [asset valueForProperty:ALAssetPropertyDate];
         
         ALAssetRepresentation *representation = [asset defaultRepresentation];
@@ -119,9 +113,7 @@
         
         AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
         
-        postingAssetBlock(operation, resizedImage, currentAssetDateTime);
-        
-    }
+        success(operation, resizedImage, currentAssetDateTime);
     
 }
 

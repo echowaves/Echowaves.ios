@@ -23,6 +23,7 @@
 
 @property (weak, nonatomic) AFHTTPRequestOperation *currentUploadOperation;
 
+
 - (void) checkForNewImages;
 
 @end
