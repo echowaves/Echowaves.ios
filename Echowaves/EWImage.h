@@ -6,22 +6,22 @@
 //  Copyright (c) 2014 Echowaves. All rights reserved.
 //
 
+@import AssetsLibrary;
+
 #import <Foundation/Foundation.h>
 #import "EWDataModel.h"
 
 //#import "EWWave.h"
 @interface EWImage : EWDataModel
 
-+ (void) checkForNewImagesToPostToWave:(NSString*) waveName
-                        whenImageFound:(void (^)(UIImage* image, NSDate* imageDate))imageFoundBlock
-                      whenCheckingDone:(void (^)(void)) checkCompleteBlock
++ (void) checkForNewAssetsToPostToWave:(NSString*) waveName
+                      whenCheckingDone:(void (^)(NSArray* assets)) checkCompleteBlock
                              whenError:(void (^)(NSError *error)) failureBlock;
 
-+ (AFHTTPRequestOperation*) createPostOperationFromImage:(UIImage *) image
-                                               imageDate:(NSDate *) imageDate
-                                             forWaveName:(NSString *) waveName;
 
-+ (void) postAllNewImages:(NSMutableArray *)imagesToPostOperations;
++ (void) operationFromAsset:(ALAsset *)asset
+       forWaveName:(NSString *) waveName
+      success:(void (^)(AFHTTPRequestOperation* operation, UIImage* image, NSDate* currentAssetDateTime))success;
 
 + (void) getAllImagesForWave:(NSString*) waveName
                      success:(void (^)(NSArray *waveImages))success
