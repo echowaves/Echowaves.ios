@@ -7,12 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HorizontalPickerView.h"
 
-@interface EchoWaveViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface EchoWaveViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, HPickerViewDelegate, HPickerViewDataSource>
 
 @property (strong, nonatomic) IBOutlet UICollectionView *imagesCollectionView;
 
 @property (strong, atomic) NSArray *waveImages;
+@property (strong, nonatomic) IBOutlet HorizontalPickerView *wavesPicker;
+
+@property (strong, nonatomic) NSMutableArray *myWaves;
 
 
 @end

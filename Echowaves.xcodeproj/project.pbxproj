@@ -34,6 +34,11 @@
 		0A4621891888E29C005CC161 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4621761888E29C005CC161 /* UIImageView+AFNetworking.m */; };
 		0A46218A1888E29C005CC161 /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4621791888E29C005CC161 /* UIProgressView+AFNetworking.m */; };
 		0A46218B1888E29C005CC161 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A46217B1888E29C005CC161 /* UIWebView+AFNetworking.m */; };
+		0A5BF76919103661005C2742 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A5BF76819103661005C2742 /* QuartzCore.framework */; };
+		0A5BF7761910378D005C2742 /* HorizontalPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5BF76E1910378D005C2742 /* HorizontalPickerView.m */; };
+		0A5BF7771910378D005C2742 /* HPCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5BF7701910378D005C2742 /* HPCollectionVC.m */; };
+		0A5BF7781910378D005C2742 /* HPCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5BF7721910378D005C2742 /* HPCollectionViewCell.m */; };
+		0A5BF7791910378D005C2742 /* HPCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5BF7741910378D005C2742 /* HPCollectionViewFlowLayout.m */; };
 		0A7C733C18948E9300292622 /* NavigationTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7C733B18948E9300292622 /* NavigationTabBarViewController.m */; };
 		0AB1CF511890C1380056A94A /* EWDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB1CF501890C1380056A94A /* EWDataModel.m */; };
 		0AC91E66186BF50300D61381 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AC91E65186BF50300D61381 /* Security.framework */; };
@@ -126,6 +131,18 @@
 		0A4621791888E29C005CC161 /* UIProgressView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIProgressView+AFNetworking.m"; sourceTree = "<group>"; };
 		0A46217A1888E29C005CC161 /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		0A46217B1888E29C005CC161 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
+		0A5BF76819103661005C2742 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		0A5BF76B1910378D005C2742 /* HorizontalPickerGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HorizontalPickerGlobal.h; path = Resources/HorizontalPicker/HorizontalPickerGlobal.h; sourceTree = "<group>"; };
+		0A5BF76C1910378D005C2742 /* HorizontalPickerView-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "HorizontalPickerView-Prefix.pch"; path = "Resources/HorizontalPicker/HorizontalPickerView-Prefix.pch"; sourceTree = "<group>"; };
+		0A5BF76D1910378D005C2742 /* HorizontalPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HorizontalPickerView.h; path = Resources/HorizontalPicker/HorizontalPickerView.h; sourceTree = "<group>"; };
+		0A5BF76E1910378D005C2742 /* HorizontalPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HorizontalPickerView.m; path = Resources/HorizontalPicker/HorizontalPickerView.m; sourceTree = "<group>"; };
+		0A5BF76F1910378D005C2742 /* HPCollectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HPCollectionVC.h; path = Resources/HorizontalPicker/HPCollectionVC.h; sourceTree = "<group>"; };
+		0A5BF7701910378D005C2742 /* HPCollectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HPCollectionVC.m; path = Resources/HorizontalPicker/HPCollectionVC.m; sourceTree = "<group>"; };
+		0A5BF7711910378D005C2742 /* HPCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HPCollectionViewCell.h; path = Resources/HorizontalPicker/HPCollectionViewCell.h; sourceTree = "<group>"; };
+		0A5BF7721910378D005C2742 /* HPCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HPCollectionViewCell.m; path = Resources/HorizontalPicker/HPCollectionViewCell.m; sourceTree = "<group>"; };
+		0A5BF7731910378D005C2742 /* HPCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HPCollectionViewFlowLayout.h; path = Resources/HorizontalPicker/HPCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		0A5BF7741910378D005C2742 /* HPCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HPCollectionViewFlowLayout.m; path = Resources/HorizontalPicker/HPCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		0A5BF7751910378D005C2742 /* HPickerDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HPickerDefinitions.h; path = Resources/HorizontalPicker/HPickerDefinitions.h; sourceTree = "<group>"; };
 		0A7C733A18948E9300292622 /* NavigationTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationTabBarViewController.h; sourceTree = "<group>"; };
 		0A7C733B18948E9300292622 /* NavigationTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationTabBarViewController.m; sourceTree = "<group>"; };
 		0AB1CF4F1890C1380056A94A /* EWDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWDataModel.h; sourceTree = "<group>"; };
@@ -169,6 +186,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A5BF76919103661005C2742 /* QuartzCore.framework in Frameworks */,
 				0AC91E68186BF52F00D61381 /* SystemConfiguration.framework in Frameworks */,
 				0AC91E66186BF50300D61381 /* Security.framework in Frameworks */,
 				0AD6E24B18011F59008303E0 /* CoreGraphics.framework in Frameworks */,
@@ -219,6 +237,7 @@
 		0A34C00F18556B4800E085BC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0A5BF76A19103685005C2742 /* HorizontalPickerView */,
 				0A4621571888E29C005CC161 /* AFNetworking */,
 				0A34C00B18556B4100E085BC /* Flurry */,
 			);
@@ -290,6 +309,24 @@
 			name = iPad;
 			sourceTree = "<group>";
 		};
+		0A5BF76A19103685005C2742 /* HorizontalPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				0A5BF76B1910378D005C2742 /* HorizontalPickerGlobal.h */,
+				0A5BF76C1910378D005C2742 /* HorizontalPickerView-Prefix.pch */,
+				0A5BF76D1910378D005C2742 /* HorizontalPickerView.h */,
+				0A5BF76E1910378D005C2742 /* HorizontalPickerView.m */,
+				0A5BF76F1910378D005C2742 /* HPCollectionVC.h */,
+				0A5BF7701910378D005C2742 /* HPCollectionVC.m */,
+				0A5BF7711910378D005C2742 /* HPCollectionViewCell.h */,
+				0A5BF7721910378D005C2742 /* HPCollectionViewCell.m */,
+				0A5BF7731910378D005C2742 /* HPCollectionViewFlowLayout.h */,
+				0A5BF7741910378D005C2742 /* HPCollectionViewFlowLayout.m */,
+				0A5BF7751910378D005C2742 /* HPickerDefinitions.h */,
+			);
+			name = HorizontalPickerView;
+			sourceTree = "<group>";
+		};
 		0AD6E23C18011F59008303E0 = {
 			isa = PBXGroup;
 			children = (
@@ -315,6 +352,7 @@
 		0AD6E24718011F59008303E0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0A5BF76819103661005C2742 /* QuartzCore.framework */,
 				0AC91E67186BF52F00D61381 /* SystemConfiguration.framework */,
 				0AC91E65186BF50300D61381 /* Security.framework */,
 				0AD6E24818011F59008303E0 /* Foundation.framework */,
@@ -516,11 +554,14 @@
 				0AD6E26218011F59008303E0 /* WavingViewController.m in Sources */,
 				0A28E5EA188F36C200B7BDDB /* SignInViewController.m in Sources */,
 				0A46217D1888E29C005CC161 /* AFHTTPRequestOperationManager.m in Sources */,
+				0A5BF7781910378D005C2742 /* HPCollectionViewCell.m in Sources */,
 				0A46218A1888E29C005CC161 /* UIProgressView+AFNetworking.m in Sources */,
 				0AB1CF511890C1380056A94A /* EWDataModel.m in Sources */,
+				0A5BF7761910378D005C2742 /* HorizontalPickerView.m in Sources */,
 				0A46217F1888E29C005CC161 /* AFNetworkReachabilityManager.m in Sources */,
 				0A28E5DA1889B8B300B7BDDB /* EchoWaveViewController.m in Sources */,
 				0AFD9A6D18ECD457007F5749 /* UploadProgressViewController.m in Sources */,
+				0A5BF7791910378D005C2742 /* HPCollectionViewFlowLayout.m in Sources */,
 				0A34FEFD18F4A1F600B5AF34 /* WaveDetailsViewController.m in Sources */,
 				7A65E0D618CB19B800204530 /* EchowavesImagePickerController.m in Sources */,
 				0A28E5D71889B87B00B7BDDB /* SignUpViewController.m in Sources */,
@@ -539,6 +580,7 @@
 				0A28E5E41889C60400B7BDDB /* EWImage.m in Sources */,
 				0A46218B1888E29C005CC161 /* UIWebView+AFNetworking.m in Sources */,
 				0A28E5E71889C61500B7BDDB /* EWBlend.m in Sources */,
+				0A5BF7771910378D005C2742 /* HPCollectionVC.m in Sources */,
 				0A28E5ED188F36D300B7BDDB /* HomeViewController.m in Sources */,
 				0A163DC418AAD72900148595 /* DetailedImageViewController.m in Sources */,
 				0AEB92BF18A6F3FC00DE51DC /* BlendWithViewController.m in Sources */,
