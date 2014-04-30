@@ -48,11 +48,16 @@
         if( [APP_DELEGATE currentWaveName] == NULL) {
             NSURLCredential *credential = [EWWave getStoredCredential];
             APP_DELEGATE.currentWaveName = [credential user];
+            APP_DELEGATE.currentWaveIndex = 0;
             
             [self.wavesPicker reloadAllComponents];
             [self.wavesPicker selectRow:0 inComponent:0 animated:YES];
-            [[self selectedWave] setTitle:APP_DELEGATE.currentWaveName forState:UIControlStateNormal];
-            self.navigationController.navigationBar.topItem.title = APP_DELEGATE.currentWaveName;
+            [[self selectedWave] setTitle:[APP_DELEGATE currentWaveName] forState:UIControlStateNormal];
+            self.navigationController.navigationBar.topItem.title = [APP_DELEGATE currentWaveName];
+        } else {
+            [self.wavesPicker selectRow:[APP_DELEGATE currentWaveIndex] inComponent:0 animated:YES];
+            [[self selectedWave] setTitle:[APP_DELEGATE currentWaveName] forState:UIControlStateNormal];
+            self.navigationController.navigationBar.topItem.title = [APP_DELEGATE currentWaveName];
         }
 
     } failure:^(NSError *error) {
@@ -82,8 +87,8 @@
     UITapGestureRecognizer* pickerViewGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedPickerView:)];
     pickerViewGR.delegate = self;
     [self.wavesPicker addGestureRecognizer:pickerViewGR];
-    [[self selectedWave] setTitle:APP_DELEGATE.currentWaveName forState:UIControlStateNormal];
-    self.navigationController.navigationBar.topItem.title = APP_DELEGATE.currentWaveName;
+    [[self selectedWave] setTitle:[APP_DELEGATE currentWaveName] forState:UIControlStateNormal];
+    self.navigationController.navigationBar.topItem.title = [APP_DELEGATE currentWaveName];
 }
 
 //- (void) viewWillAppear:(BOOL)animated {
@@ -160,10 +165,11 @@ numberOfRowsInComponent:(NSInteger)component
 {
     NSLog(@",,,,,,,,,,,,,,,,,,, did select row: %ld", (long)row);
     APP_DELEGATE.currentWaveName = [((NSDictionary*)[self.myWaves objectAtIndex:row]) objectForKey:@"name"];
+    APP_DELEGATE.currentWaveIndex = (long)row;
 //    NSLog(@"setting title: %@", APP_DELEGATE.waveName);
 
-    self.navigationController.navigationBar.topItem.title = APP_DELEGATE.currentWaveName;
-    [[self selectedWave] setTitle:APP_DELEGATE.currentWaveName forState:UIControlStateNormal];
+    self.navigationController.navigationBar.topItem.title = [APP_DELEGATE currentWaveName];
+    [[self selectedWave] setTitle:[APP_DELEGATE currentWaveName] forState:UIControlStateNormal];
     [self reloadWaves];
 }
 
@@ -203,10 +209,10 @@ numberOfRowsInComponent:(NSInteger)component
                         active:!active
                        success:^(NSString *waveName) {
                            UISwitch* activeSwitch = (UISwitch *)[[self.wavesPicker viewForRow:row forComponent:0] viewWithTag:1000];
-                           [activeSwitch setOn:!active animated:YES];
+                           [activeSwitch setOn:!active animated:NO];
                            [myWave setValue:[NSNumber numberWithLong:active?0:1] forKey:@"active"];
                            [self.myWaves replaceObjectAtIndex:row withObject:myWave];
-//                           [self reloadWaves];
+                           [self reloadWaves];
                        }
                        failure:^(NSString *errorMessage) {
                            [EWWave showErrorAlertWithMessage:errorMessage FromSender:nil];

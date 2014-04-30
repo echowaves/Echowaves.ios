@@ -66,7 +66,7 @@
                                                              [self comeBack];
                                                              
                                                              if (assetsCount > 0) {
-                                                                 [EWWave sendPushNotifyForWave:APP_DELEGATE.currentWaveName
+                                                                 [EWWave sendPushNotifyForWave:[APP_DELEGATE currentWaveName]
                                                                                          badge:assetsCount
                                                                                        success:^{
                                                                                            NSLog(@"!!!!!!!!!!!!!!!pushed notify successfully %ld", assetsCount);

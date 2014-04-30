@@ -19,6 +19,7 @@
 @property (strong, nonatomic) UIWindow *window;
 
 @property (strong, nonatomic) NSString *currentWaveName;
+@property (nonatomic)             long  currentWaveIndex;
 
 //@property (nonatomic) BOOL currentlyCheckingForUpload;
 

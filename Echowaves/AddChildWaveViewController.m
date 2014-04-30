@@ -29,7 +29,7 @@
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self.childWaveName becomeFirstResponder];
-    self.childWaveName.text = [NSString stringWithFormat:@"%@.", APP_DELEGATE.currentWaveName];
+    self.childWaveName.text = [NSString stringWithFormat:@"%@.", [APP_DELEGATE currentWaveName]];
 }
 
 - (IBAction)createChildWave:(id)sender {

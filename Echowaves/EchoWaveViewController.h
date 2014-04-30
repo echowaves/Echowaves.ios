@@ -18,5 +18,7 @@
 
 @property (strong, nonatomic) NSMutableArray *myWaves;
 
+@property (strong, atomic) UIRefreshControl *refreshControl;
+
 
 @end

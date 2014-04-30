@@ -11,16 +11,11 @@
 #import "EWImage.h"
 #import "DetailedImageViewController.h"
 
-@interface EchoWaveViewController ()
-
-@end
 
 @implementation EchoWaveViewController
-UIRefreshControl *refreshControl;
 
-- (void) reloadWaves {
+- (void) reloadWavesPicker {
     [EWWave getAllMyWaves:^(NSArray *waves) {
-        //        NSLog(@"zzzzzzzzz loaded %lu waves", (unsigned long)waves.count);
         self.myWaves = [waves mutableCopy];
         [self.wavesPicker reloadAllComponents];
         
@@ -29,12 +24,15 @@ UIRefreshControl *refreshControl;
         if( [APP_DELEGATE currentWaveName] == NULL) {
             NSURLCredential *credential = [EWWave getStoredCredential];
             APP_DELEGATE.currentWaveName = [credential user];
+            APP_DELEGATE.currentWaveIndex = 0;
             
-            [self.wavesPicker reloadAllComponents];
-//            [self.wavesPicker selectRow:0 inComponent:0 animated:YES];
-//            [[self selectedWave] setTitle:APP_DELEGATE.currentWaveName forState:UIControlStateNormal];
-            self.navigationController.navigationBar.topItem.title = APP_DELEGATE.currentWaveName;
+//            [self.wavesPicker reloadAllComponents];
+            [self.wavesPicker selectRow:0 animated:YES];
         }
+        
+        NSLog(@"setting wave index: %ld", [APP_DELEGATE currentWaveIndex]);
+        self.navigationController.navigationBar.topItem.title = [APP_DELEGATE currentWaveName];
+        [self.wavesPicker selectRow:[APP_DELEGATE currentWaveIndex] animated:NO];
         
     } failure:^(NSError *error) {
         [EWWave showErrorAlertWithMessage:error.description
@@ -48,24 +46,22 @@ UIRefreshControl *refreshControl;
     [super viewDidLoad];
     NSLog(@"$$$$$$$$$$$$$$$$calling viewDidLoad for EchoWaveViewController");
     
-    [self reloadWaves];
     self.wavesPicker.style = HPStyleNormal;
     self.wavesPicker.font = [UIFont fontWithName: @"Trebuchet MS" size: 14.0f];
 
     self.imagesCollectionView.alwaysBounceVertical = YES;
     
-    refreshControl = [[UIRefreshControl alloc] init];
-    [refreshControl addTarget:self action:@selector(startRefresh:)
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(startRefresh:)
              forControlEvents:UIControlEventValueChanged];
-    [self.imagesCollectionView addSubview:refreshControl];
-    
-
-    //    [self startRefresh:refreshControl];
+    [self.imagesCollectionView addSubview:self.refreshControl];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self startRefresh:refreshControl];    
+    [self reloadWavesPicker];
+    
+//    [self startRefresh:self.refreshControl];
 }
 
 - (void) startRefresh:(UIRefreshControl *)sender {
@@ -134,26 +130,12 @@ UIRefreshControl *refreshControl;
 }
 
 
-- (NSInteger)numberOfComponentsInPickerView:
-(UIPickerView *)pickerView
-{
-    return 1;
-}
-
 #pragma mark -  HPickerViewDataSource
 - (NSInteger)numberOfRowsInPickerView:pickerView
 {
-    //    NSLog(@"^^^^^^^^^^^^number of child waves: %lu", (unsigned long)[self myWaves].count);
     return [self myWaves].count;
 }
 
-//- (NSString *)pickerView:(UIPickerView *)pickerView
-//             titleForRow:(NSInteger)row
-//            forComponent:(NSInteger)component
-//{
-//    NSLog(@"object for key: %@", [((NSDictionary*)[self.myWaves objectAtIndex:row]) objectForKey:@"active"]);
-//    return [((NSDictionary*)[self.myWaves objectAtIndex:row]) objectForKey:@"active"] == 0? @"on":@"off";
-//}
 
 
 #pragma mark -  HPickerViewDelegate
@@ -169,13 +151,13 @@ UIRefreshControl *refreshControl;
 -(void)pickerView:(HorizontalPickerView *)pickerView
      didSelectRow:(NSInteger)row
 {
-    NSLog(@",,,,,,,,,,,,,,,,,,, did select row: %ld", (long)row);
+    NSLog(@",,,,,,,,,,,,,,,,,,, did select row: %@", @(row));
     APP_DELEGATE.currentWaveName = [((NSDictionary*)[self.myWaves objectAtIndex:row]) objectForKey:@"name"];
+    APP_DELEGATE.currentWaveIndex = (long)row;
     //    NSLog(@"setting title: %@", APP_DELEGATE.waveName);
     
-    self.navigationController.navigationBar.topItem.title = APP_DELEGATE.currentWaveName;
-//    [[self selectedWave] setTitle:APP_DELEGATE.currentWaveName forState:UIControlStateNormal];
-    [self reloadWaves];
+    self.navigationController.navigationBar.topItem.title = [APP_DELEGATE currentWaveName];
+    [self startRefresh:self.refreshControl];
 }
 
 
