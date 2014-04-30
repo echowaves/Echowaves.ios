@@ -11,19 +11,24 @@
 #import "EchowavesImagePickerController.h"
 
 @interface UploadProgressViewController : UIViewController
-@property (strong, nonatomic) IBOutlet UIButton *cancelUpload;
 
-@property (strong, nonatomic) IBOutlet UIProgressView *uploadProgressBar;
+@property (nonatomic) BOOL deactivated;
+
+@property (weak, nonatomic) IBOutlet UIButton *cancelUpload;
+
+@property (weak, nonatomic) IBOutlet UIProgressView *uploadProgressBar;
 
 
-@property (strong, nonatomic) IBOutlet UILabel *imagesToUpload;
+@property (weak, nonatomic) IBOutlet UILabel *imagesToUpload;
 
-@property (strong, nonatomic) IBOutlet UIImageView *currentlyUploadingImage;
+@property (weak, nonatomic) IBOutlet UIImageView *currentlyUploadingImage;
 
 
 @property (weak, nonatomic) AFHTTPRequestOperation *currentUploadOperation;
 
 
 - (void) checkForNewAssets: (long) assetsCount;
+
+- (void) comeBack;
 
 @end

@@ -10,10 +10,6 @@
 #import "EWWave.h"
 #import "EWImage.h"
 
-@interface UploadProgressViewController ()
-
-@end
-
 @implementation UploadProgressViewController
 
 
@@ -47,7 +43,7 @@
 - (void) checkForNewAssets:(long) assetsCount {
     //try to sign in to see if connection is awailable
     NSURLCredential *credential = [EWWave getStoredCredential];
-    if(credential) {
+    if(credential && !self.deactivated) {
         NSLog(@"User %@ already connected with password.", credential.user);
         
         [EWWave tuneInWithName:credential.user
@@ -67,11 +63,10 @@
                                                          
                                                          NSLog(@"************* images to post %lu", (unsigned long)assets.count);
                                                          if(assets.count == 0) { // this means nothing is found to be posted
-//                                                             [NSThread sleepForTimeInterval:2.0f];
-                                                             [self.navigationController popViewControllerAnimated:YES];
+                                                             [self comeBack];
                                                              
                                                              if (assetsCount > 0) {
-                                                                 [EWWave sendPushNotifyForWave:APP_DELEGATE.currentWaveName
+                                                                 [EWWave sendPushNotifyForWave:[APP_DELEGATE currentWaveName]
                                                                                          badge:assetsCount
                                                                                        success:^{
                                                                                            NSLog(@"!!!!!!!!!!!!!!!pushed notify successfully %ld", assetsCount);
@@ -124,7 +119,7 @@
                                                             whenError:^(NSError *error) {
                                                                 NSLog(@"this error should never happen %@", error.description);
                                                                 [EWWave showErrorAlertWithMessage:[error description] FromSender:nil];
-                                                                [self.navigationController popViewControllerAnimated:YES];
+                                                                [self comeBack];
 
                                                             }];
                                 
@@ -132,7 +127,7 @@
                        } // tune in with name
                        failure:^(NSString *errorMessage) {
                            [EWWave showErrorAlertWithMessage:errorMessage FromSender:nil];
-                           [self.navigationController popViewControllerAnimated:YES];
+                           [self comeBack];
                        }];// tune in with name
         
     } else { // credentials are not set, can't really ever happen, something is really wrong here
@@ -158,5 +153,16 @@
     self.cancelUpload.hidden = TRUE;
 }
 
+- (void) comeBack {
+    NSLog(@"........comeBack");
+    APP_DELEGATE.uploadProgressViewController = nil;
+    [self.navigationController popViewControllerAnimated:YES];
+    self.deactivated = YES;
+//    [(UINavigationController *)APP_DELEGATE.window.rootViewController popViewControllerAnimated:YES];
+}
+
+//- (void)dealloc {
+//    NSLog(@"...................dealllocating uploadprogressviewcontroller");
+//}
 
 @end
