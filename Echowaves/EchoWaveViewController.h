@@ -14,8 +14,8 @@
 @property (strong, nonatomic) IBOutlet UICollectionView *imagesCollectionView;
 
 @property (strong, atomic) NSArray *waveImages;
-@property (strong, nonatomic) IBOutlet HorizontalPickerView *wavesPicker;
 
+@property (strong, nonatomic) IBOutlet HorizontalPickerView *wavesPicker;
 @property (strong, nonatomic) NSMutableArray *myWaves;
 
 @property (strong, atomic) UIRefreshControl *refreshControl;
