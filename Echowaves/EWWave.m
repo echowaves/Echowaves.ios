@@ -306,7 +306,11 @@
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
-        failure([NSString stringWithFormat:@"Unable to tuneIn: %@", [operation.responseObject objectForKey:@"error"]]);
+		id err =[operation.responseObject objectForKey:@"error"];
+		if(!err) {
+			err = [error localizedDescription];
+		}
+        failure([NSString stringWithFormat:@"Unable to tuneIn: %@", err]);
     }];
 
 }
