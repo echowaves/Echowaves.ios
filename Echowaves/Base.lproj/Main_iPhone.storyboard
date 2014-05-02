@@ -312,15 +312,29 @@
                                 <segue destination="Ua8-6L-qdg" kind="unwind" unwindAction="backToHomeViewController:" id="qKP-6b-qsN"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" id="jHx-uP-DRb">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jWI-KZ-fzE">
-                                <rect key="frame" x="272" y="6" width="32" height="32"/>
+                        <barButtonItem key="rightBarButtonItem" id="H7D-Rp-e4i">
+                            <view key="customView" clipsSubviews="YES" contentMode="scaleToFill" id="KB6-4U-b7v">
+                                <rect key="frame" x="233" y="5" width="71" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="Camera_i"/>
-                                <connections>
-                                    <action selector="takePicture:" destination="4Wa-qa-6Wy" eventType="touchUpInside" id="Hfd-Zh-FXF"/>
-                                </connections>
-                            </button>
+                                <subviews>
+                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lnL-pv-2IO">
+                                        <rect key="frame" x="0.0" y="-5" width="84" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                        <items>
+                                            <barButtonItem systemItem="action" id="ZfK-ef-Ihj">
+                                                <connections>
+                                                    <action selector="pushUpload:" destination="4Wa-qa-6Wy" id="hQY-vf-hTI"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem systemItem="camera" id="AwZ-u4-fbO">
+                                                <connections>
+                                                    <action selector="takePicture:" destination="4Wa-qa-6Wy" id="Vbt-0a-wLN"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </items>
+                                    </toolbar>
+                                </subviews>
+                            </view>
                         </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -888,7 +902,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Camera_i" width="32" height="32"/>
         <image name="blends" width="32" height="32"/>
         <image name="echowave" width="32" height="32"/>
         <image name="waving" width="32" height="32"/>

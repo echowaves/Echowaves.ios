@@ -16,17 +16,34 @@
 -(void) viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"sending photos to wave";
-    self.navigationItem.hidesBackButton = YES;
     
     // Do any additional setup after loading the view.
     [self cleanupCurrentUploadView];
     NSLog(@"#### WavingViewController viewDidLoad ");
     [self currentlyUploadingImage].contentMode = UIViewContentModeScaleAspectFit;
     self.uploadProgressBar.progress = 0.0;
+
     
+    UIBarButtonItem *btnPause = [[UIBarButtonItem alloc]
+                                initWithBarButtonSystemItem:UIBarButtonSystemItemPause
+                                target:self
+                                action:@selector(OnClick_btnPause:)];
+    self.navigationItem.hidesBackButton = YES;
+    self.navigationItem.rightBarButtonItem = btnPause;
+    self.navigationItem.titleView = [UIView new];//we want to disable title -- too much info on the screen
 }
 
+-(IBAction)OnClick_btnPause:(id)sender  {
+    [self cancelingCurrentUploadOperation:self];
+    self.deactivated = YES;
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+//    self.navigationController.title = @"streaming wave";
+    //    self.navigationItem.hidesBackButton = YES;
+}
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -101,13 +118,15 @@
                                                                            }];
                                                                            [weakOperation setCompletionBlock:^{
                                                                                [self cleanupCurrentUploadView];
-                                                                               [USER_DEFAULTS setObject:currentAssetDateTime forKey:@"lastCheckTime"];
-                                                                               [USER_DEFAULTS synchronize];
-                                                                               if(assetsCount > 0) {
-                                                                                   [self checkForNewAssets:assetsCount];
-                                                                               } else {
-                                                                                   [self checkForNewAssets:assets.count];
-                                                                               };
+                                                                               if( self.deactivated == NO) {
+                                                                                   [USER_DEFAULTS setObject:currentAssetDateTime forKey:@"lastCheckTime"];
+                                                                                   [USER_DEFAULTS synchronize];
+                                                                                   if(assetsCount > 0) {
+                                                                                       [self checkForNewAssets:assetsCount];
+                                                                                   } else {
+                                                                                       [self checkForNewAssets:assets.count];
+                                                                                   };
+                                                                               }
                                                                            }];
                                                                            [APP_DELEGATE.networkQueue addOperation:weakOperation];
 //                                                                           [APP_DELEGATE.networkQueue setSuspended:NO];
@@ -123,7 +142,10 @@
 
                                                             }];
                                 
-                           } // waving on
+                           } else {// waving on (if waving was off, reset the last check time to now.
+                               [USER_DEFAULTS setObject:[NSDate date] forKey:@"lastCheckTime"];
+                               [USER_DEFAULTS synchronize];
+                           }
                        } // tune in with name
                        failure:^(NSString *errorMessage) {
                            [EWWave showErrorAlertWithMessage:errorMessage FromSender:nil];
