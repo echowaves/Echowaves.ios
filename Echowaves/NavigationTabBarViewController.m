@@ -22,6 +22,11 @@
     [APP_DELEGATE.wavingViewController takepicture];
 }
 
+- (IBAction)pushUpload:(id)sender {
+    NSLog(@"pushing upload");
+    [APP_DELEGATE checkForUpload];
+}
+
 -(void) viewDidLoad {
     [super viewDidLoad];
     self.waveName.title = [APP_DELEGATE currentWaveName];
