@@ -81,8 +81,8 @@
                                                      scale:1.0 orientation:orientation];
         
         CGSize newSize = orientedImage.size;
-        newSize.height = newSize.height / 2.0;
-        newSize.width = newSize.width / 2.0;
+        newSize.height = newSize.height / 1.0;
+        newSize.width = newSize.width / 1.0;
         
         UIGraphicsBeginImageContext( newSize );// a CGSize that has the size you want
         [orientedImage drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
