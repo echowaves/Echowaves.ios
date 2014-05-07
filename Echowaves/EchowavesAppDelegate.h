@@ -18,7 +18,9 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
+//currently selected wave name
 @property (strong, nonatomic) NSString *currentWaveName;
+//currently selected wave index in the waves picker
 @property (nonatomic)             long  currentWaveIndex;
 
 //@property (nonatomic) BOOL currentlyCheckingForUpload;

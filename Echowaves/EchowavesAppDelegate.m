@@ -208,4 +208,9 @@
 {
 	NSLog(@"Failed to get token, error^^^^^^^^^^^^^^^^^^^^^^^: %@", error);
 }
+
+//- (BOOL) application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+//    
+//}
+
 @end

@@ -31,6 +31,11 @@
             {
                 NSDate *currentAssetDateTime = [alAsset valueForProperty:ALAssetPropertyDate];
                 
+                if([USER_DEFAULTS objectForKey:@"lastCheckTime"] == nil) {
+                    [USER_DEFAULTS setObject:[NSDate date] forKey:@"lastCheckTime"];
+                    [USER_DEFAULTS synchronize];
+                }
+                
                 NSTimeInterval timeSinceLastPost =
                 [currentAssetDateTime timeIntervalSinceDate:(NSDate*)[USER_DEFAULTS objectForKey:@"lastCheckTime"]]; // diff
                 
