@@ -19,7 +19,7 @@
         self.myWaves = [waves mutableCopy];
         [self.wavesPicker reloadAllComponents];
         
-        NSLog(@"11111111111 currentWaveName: %@", [APP_DELEGATE currentWaveName]);
+//        NSLog(@"11111111111 currentWaveName: %@", [APP_DELEGATE currentWaveName]);
         
         if( [APP_DELEGATE currentWaveName] == NULL) {
             NSURLCredential *credential = [EWWave getStoredCredential];
@@ -49,9 +49,7 @@
     self.wavesPicker.style = HPStyleNormal;
     self.wavesPicker.font = [UIFont fontWithName: @"Trebuchet MS" size: 14.0f];
 
-    self.imagesCollectionView.alwaysBounceVertical = YES;
-    
-    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.refreshControl = [UIRefreshControl new];
     [self.refreshControl addTarget:self action:@selector(startRefresh:)
              forControlEvents:UIControlEventValueChanged];
     [self.imagesCollectionView addSubview:self.refreshControl];
