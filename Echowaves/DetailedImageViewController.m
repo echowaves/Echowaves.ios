@@ -180,6 +180,18 @@
                                              NSString *phoneNumber = (__bridge NSString *) phoneNumberRef;
                                              CFRelease(phoneNumberRef);
                                              NSLog(@"...........phone number %@", phoneNumber);
+                                             
+                                             
+                                             MFMessageComposeViewController *smscontroller = [MFMessageComposeViewController new];
+                                             if([MFMessageComposeViewController canSendText])
+                                             {
+                                                 smscontroller.body = @"Hello from Echowaves";
+                                                 smscontroller.recipients = [NSArray arrayWithObjects: phoneNumber, nil];
+                                                 smscontroller.messageComposeDelegate = self;
+                                                 [self presentViewController:smscontroller animated:YES completion:^{
+                                                     NSLog(@"sms controller presented");
+                                                 }];
+                                             }
                                          }
                                      }
                                  }
@@ -198,5 +210,27 @@
 
 }
 
+
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result
+{
+	switch (result) {
+		case MessageComposeResultCancelled:
+			NSLog(@"Cancelled");
+			break;
+		case MessageComposeResultFailed:
+			[EWImage showAlertWithMessage:@"Failed SMS" FromSender:nil];
+			break;
+		case MessageComposeResultSent:
+            
+			break;
+		default:
+			break;
+	}
+    
+	
+    [self dismissViewControllerAnimated:YES completion:^{
+        NSLog(@"dismissed sms controller");
+    }];
+}
 
 @end
