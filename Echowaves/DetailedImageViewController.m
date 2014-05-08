@@ -171,7 +171,19 @@
 {
     [self dismissViewControllerAnimated:YES
                              completion:^{
-                                 NSLog(@"person %@", person);
+                                 if (property == kABPersonPhoneProperty) {
+                                     ABMultiValueRef multiPhones = ABRecordCopyValue(person, kABPersonPhoneProperty);
+                                     for(CFIndex i = 0; i < ABMultiValueGetCount(multiPhones); i++) {
+                                         if(identifier == ABMultiValueGetIdentifierAtIndex (multiPhones, i)) {
+                                             CFStringRef phoneNumberRef = ABMultiValueCopyValueAtIndex(multiPhones, i);
+                                             CFRelease(multiPhones);
+                                             NSString *phoneNumber = (__bridge NSString *) phoneNumberRef;
+                                             CFRelease(phoneNumberRef);
+                                             NSLog(@"...........phone number %@", phoneNumber);
+                                         }
+                                     }
+                                 }
+                             
                              }];
     return NO;
 }
