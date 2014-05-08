@@ -113,9 +113,9 @@
 -(void)shareImage {
     NSLog(@"sharing image");
     
-    ABPeoplePickerNavigationController *peoplePicker =
-    [[ABPeoplePickerNavigationController alloc] init];
+    ABPeoplePickerNavigationController *peoplePicker = [ABPeoplePickerNavigationController new];
     peoplePicker.peoplePickerDelegate = self;
+//    peoplePicker.modalPresentationStyle = 
     [self presentViewController:peoplePicker animated:YES completion:^{
         NSLog(@"done presenting");
     }];
@@ -155,6 +155,36 @@
 }
 
 
+- (BOOL)peoplePickerNavigationController:
+(ABPeoplePickerNavigationController *)picker
+      shouldContinueAfterSelectingPerson:(ABRecordRef)person
+{
+//    [self dismissModalViewControllerAnimated:YES];
+    return YES;
+}
+
+- (BOOL)peoplePickerNavigationController:
+(ABPeoplePickerNavigationController *)picker
+      shouldContinueAfterSelectingPerson:(ABRecordRef)person
+                                property:(ABPropertyID)property
+                              identifier:(ABMultiValueIdentifier)identifier
+{
+    [self dismissViewControllerAnimated:YES
+                             completion:^{
+                                 NSLog(@"person %@", person);
+                             }];
+    return NO;
+}
+
+- (void)peoplePickerNavigationControllerDidCancel:
+(ABPeoplePickerNavigationController *)picker
+{
+    [self dismissViewControllerAnimated:YES
+                             completion:^{
+                                 NSLog(@"dismissing people picker");
+                             }];
+
+}
 
 
 @end
