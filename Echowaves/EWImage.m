@@ -31,6 +31,11 @@
             {
                 NSDate *currentAssetDateTime = [alAsset valueForProperty:ALAssetPropertyDate];
                 
+                if([USER_DEFAULTS objectForKey:@"lastCheckTime"] == nil) {
+                    [USER_DEFAULTS setObject:[NSDate date] forKey:@"lastCheckTime"];
+                    [USER_DEFAULTS synchronize];
+                }
+                
                 NSTimeInterval timeSinceLastPost =
                 [currentAssetDateTime timeIntervalSinceDate:(NSDate*)[USER_DEFAULTS objectForKey:@"lastCheckTime"]]; // diff
                 
@@ -81,8 +86,8 @@
                                                      scale:1.0 orientation:orientation];
         
         CGSize newSize = orientedImage.size;
-        newSize.height = newSize.height / 2.0;
-        newSize.width = newSize.width / 2.0;
+        newSize.height = newSize.height / 1.0;
+        newSize.width = newSize.width / 1.0;
         
         UIGraphicsBeginImageContext( newSize );// a CGSize that has the size you want
         [orientedImage drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
@@ -198,7 +203,7 @@
 
 +(void) saveImageToAssetLibrary:(UIImage*) image
                         success:(void (^)(void))success
-                        failure:(void (^)(NSError *error))failure;
+                        failure:(void (^)(NSError *error))failure
 {
     CGImageRef img = [image CGImage];
     ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
@@ -218,6 +223,14 @@
                                   failure(error);
                               }
                           }];
+    
+}
+
+
++(void) shareImage:(NSString *)imageName
+            inWave:(NSString *)waveName
+           success:(void (^)(NSString* token))success
+           failure:(void (^)(NSError *error))failure {
     
 }
 

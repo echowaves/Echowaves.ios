@@ -19,9 +19,9 @@
 
 @implementation DetailedImageViewController
 
-- (void)viewDidLoad
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidLoad];
+    [super viewWillAppear:animated];
     self.imageView.image = self.image;
     self.imageView.contentMode = UIViewContentModeScaleAspectFit;
     
@@ -34,7 +34,7 @@
 //    [self.navigationItem setPrompt:waveName];
     [[self waveName] setText:waveName];
     
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    NSDateFormatter *formatter = [NSDateFormatter new];
     [formatter setDateFormat : @"yyyyMMddHHmmssSSSS"];
     NSString *dateString = [imageName substringWithRange:NSMakeRange(0, 18)];
     NSLog(@"imageName  = %@", imageName);
@@ -48,11 +48,17 @@
 //    [[self navigationItem].backBarButtonItem setTitle:@" "];
     
     if ([waveName isEqualToString:[APP_DELEGATE currentWaveName]]) {
-        [self navigationItem].rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash
-                                                                                                 target:self
-                                                                                                 action:@selector(deleteImage)];
-
         
+        UIBarButtonItem* deleteButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash
+                                                                                      target:self
+                                                                                      action:@selector(deleteImage)];
+
+        UIBarButtonItem* shareButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
+                                                                                     target:self
+                                                                                     action:@selector(shareImage)];
+        
+//        self.navigationItem.rightBarButtonItems = @[shareButton, deleteButton];
+        self.navigationItem.rightBarButtonItems = @[deleteButton];
     } else {
         [self navigationItem].rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave
                                                                                                  target:self
@@ -60,20 +66,19 @@
         
     }
     
-//    [EWDataModel showLoadingIndicator:self];
+    
+    
     self.progressView.progress = 0.0;
     [self.progressView setHidden:FALSE];
     
     [EWImage loadImageFromUrl:imageUrl
                       success:^(UIImage *image) {
-//                          [EWDataModel hideLoadingIndicator:self];
                           self.imageView.image = image;
                           self.imageView.contentMode = UIViewContentModeScaleAspectFit;
                           [self.progressView setHidden:TRUE];
                       }
                       failure:^(NSError *error) {
                           [EWDataModel showErrorAlertWithMessage:@"Error Loading image" FromSender:nil];
-
                           NSLog(@"error: %@", error.description);
                       }
                      progress:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
@@ -82,9 +87,9 @@
     
 }
 
--(void) popBack {
-    [self.navigationController popViewControllerAnimated:YES];
-}
+//-(void) popBack {
+//    [self.navigationController popViewControllerAnimated:YES];
+//}
 
 
 -(void)deleteImage {
@@ -105,6 +110,19 @@
     
     
 }
+
+-(void)shareImage {
+    NSLog(@"sharing image");
+    
+    ABPeoplePickerNavigationController *peoplePicker = [ABPeoplePickerNavigationController new];
+    peoplePicker.peoplePickerDelegate = self;
+//    peoplePicker.modalPresentationStyle = 
+    [self presentViewController:peoplePicker animated:YES completion:^{
+        NSLog(@"done presenting");
+    }];
+    
+}
+
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if(buttonIndex == 1) {//OK button clicked, let's delete the wave
@@ -136,4 +154,87 @@
                              }]
     ;
 }
+
+
+- (BOOL)peoplePickerNavigationController:
+(ABPeoplePickerNavigationController *)picker
+      shouldContinueAfterSelectingPerson:(ABRecordRef)person
+{
+//    [self dismissModalViewControllerAnimated:YES];
+    return YES;
+}
+
+- (BOOL)peoplePickerNavigationController:
+(ABPeoplePickerNavigationController *)picker
+      shouldContinueAfterSelectingPerson:(ABRecordRef)person
+                                property:(ABPropertyID)property
+                              identifier:(ABMultiValueIdentifier)identifier
+{
+    [self dismissViewControllerAnimated:YES
+                             completion:^{
+                                 if (property == kABPersonPhoneProperty) {
+                                     ABMultiValueRef multiPhones = ABRecordCopyValue(person, kABPersonPhoneProperty);
+                                     for(CFIndex i = 0; i < ABMultiValueGetCount(multiPhones); i++) {
+                                         if(identifier == ABMultiValueGetIdentifierAtIndex (multiPhones, i)) {
+                                             CFStringRef phoneNumberRef = ABMultiValueCopyValueAtIndex(multiPhones, i);
+                                             CFRelease(multiPhones);
+                                             NSString *phoneNumber = (__bridge NSString *) phoneNumberRef;
+                                             CFRelease(phoneNumberRef);
+                                             NSLog(@"...........phone number %@", phoneNumber);
+                                             
+                                             
+                                             MFMessageComposeViewController *smscontroller = [MFMessageComposeViewController new];
+                                             if([MFMessageComposeViewController canSendText])
+                                             {
+                                                 smscontroller.body = @"Hello from Echowaves";
+                                                 
+                                                 
+                                                 
+                                                 smscontroller.recipients = [NSArray arrayWithObjects: phoneNumber, nil];
+                                                 smscontroller.messageComposeDelegate = self;
+                                                 [self presentViewController:smscontroller animated:YES completion:^{
+                                                     NSLog(@"sms controller presented");
+                                                 }];
+                                             }
+                                         }
+                                     }
+                                 }
+                             
+                             }];
+    return NO;
+}
+
+- (void)peoplePickerNavigationControllerDidCancel:
+(ABPeoplePickerNavigationController *)picker
+{
+    [self dismissViewControllerAnimated:YES
+                             completion:^{
+                                 NSLog(@"dismissing people picker");
+                             }];
+
+}
+
+
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result
+{
+	switch (result) {
+		case MessageComposeResultCancelled:
+			NSLog(@"Cancelled");
+			break;
+		case MessageComposeResultFailed:
+			[EWImage showAlertWithMessage:@"Failed SMS" FromSender:nil];
+			break;
+		case MessageComposeResultSent:
+            
+			break;
+		default:
+			break;
+	}
+    
+	
+    [self dismissViewControllerAnimated:YES completion:^{
+        NSLog(@"dismissed sms controller");
+    }];
+}
+
 @end

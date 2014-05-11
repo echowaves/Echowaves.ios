@@ -40,6 +40,11 @@
 +(void) saveImageToAssetLibrary:(UIImage*) image
                         success:(void (^)(void))success
                         failure:(void (^)(NSError *error))failure;
-;
+
++(void) shareImage:(NSString *)imageName
+             inWave:(NSString *)waveName
+            success:(void (^)(NSString* token))success
+            failure:(void (^)(NSError *error))failure;
+
 
 @end

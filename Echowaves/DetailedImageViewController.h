@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
+#import <AddressBook/AddressBook.h>
+#import <AddressBookUI/AddressBookUI.h>
 
-@interface DetailedImageViewController : UIViewController <UIAlertViewDelegate>
+@interface DetailedImageViewController : UIViewController <UIAlertViewDelegate, ABPeoplePickerNavigationControllerDelegate, MFMessageComposeViewControllerDelegate>
 
 @property (weak, nonatomic) NSDictionary *imageFromJson;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;

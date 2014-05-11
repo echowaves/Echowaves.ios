@@ -19,7 +19,7 @@
         self.myWaves = [waves mutableCopy];
         [self.wavesPicker reloadAllComponents];
         
-        NSLog(@"11111111111 currentWaveName: %@", [APP_DELEGATE currentWaveName]);
+//        NSLog(@"11111111111 currentWaveName: %@", [APP_DELEGATE currentWaveName]);
         
         if( [APP_DELEGATE currentWaveName] == NULL) {
             NSURLCredential *credential = [EWWave getStoredCredential];
@@ -27,11 +27,11 @@
             APP_DELEGATE.currentWaveIndex = 0;
             
 //            [self.wavesPicker reloadAllComponents];
-            [self.wavesPicker selectRow:0 animated:YES];
+            [self.wavesPicker selectRow:0 animated:NO];
         }
         
         NSLog(@"setting wave index: %ld", [APP_DELEGATE currentWaveIndex]);
-        self.navigationController.navigationBar.topItem.title = [APP_DELEGATE currentWaveName];
+        self.navigationController.navigationBar.topItem.title = @"";//[APP_DELEGATE currentWaveName];
         [self.wavesPicker selectRow:[APP_DELEGATE currentWaveIndex] animated:NO];
         
     } failure:^(NSError *error) {
@@ -46,21 +46,23 @@
     [super viewDidLoad];
     NSLog(@"$$$$$$$$$$$$$$$$calling viewDidLoad for EchoWaveViewController");
     
-    self.wavesPicker.style = HPStyleNormal;
+    self.wavesPicker.style = HPStyle_iOS7;
     self.wavesPicker.font = [UIFont fontWithName: @"Trebuchet MS" size: 14.0f];
 
-    self.imagesCollectionView.alwaysBounceVertical = YES;
-    
-    self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(startRefresh:)
-             forControlEvents:UIControlEventValueChanged];
-    [self.imagesCollectionView addSubview:self.refreshControl];
+    if(self.refreshControl == nil) {
+        self.refreshControl = [UIRefreshControl new];
+        [self.refreshControl addTarget:self action:@selector(startRefresh:)
+                      forControlEvents:UIControlEventValueChanged];
+        [self.imagesCollectionView addSubview:self.refreshControl];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self reloadWavesPicker];
     
+    self.imagesCollectionView.autoresizingMask = UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleWidth;
 //    [self startRefresh:self.refreshControl];
 }
 
@@ -156,7 +158,7 @@
     APP_DELEGATE.currentWaveIndex = (long)row;
     //    NSLog(@"setting title: %@", APP_DELEGATE.waveName);
     
-    self.navigationController.navigationBar.topItem.title = [APP_DELEGATE currentWaveName];
+    self.navigationController.navigationBar.topItem.title = @"";//[APP_DELEGATE currentWaveName];
     [self startRefresh:self.refreshControl];
 }
 
