@@ -57,8 +57,7 @@
                                                                                      target:self
                                                                                      action:@selector(shareImage)];
         
-//        self.navigationItem.rightBarButtonItems = @[shareButton, deleteButton];
-        self.navigationItem.rightBarButtonItems = @[deleteButton];
+        self.navigationItem.rightBarButtonItems = @[shareButton, deleteButton];
     } else {
         [self navigationItem].rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave
                                                                                                  target:self
