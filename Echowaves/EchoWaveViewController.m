@@ -27,7 +27,7 @@
             APP_DELEGATE.currentWaveIndex = 0;
             
 //            [self.wavesPicker reloadAllComponents];
-            [self.wavesPicker selectRow:0 animated:YES];
+            [self.wavesPicker selectRow:0 animated:NO];
         }
         
         NSLog(@"setting wave index: %ld", [APP_DELEGATE currentWaveIndex]);
@@ -61,6 +61,8 @@
     [super viewWillAppear:animated];
     [self reloadWavesPicker];
     
+    self.imagesCollectionView.autoresizingMask = UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleWidth;
 //    [self startRefresh:self.refreshControl];
 }
 
