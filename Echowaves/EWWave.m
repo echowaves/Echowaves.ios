@@ -11,7 +11,7 @@
 @implementation EWWave
 
 + (NSURLProtectionSpace*) echowavesProtectionSpace {
-    NSURL *url = [NSURL URLWithString:@"http://echowaves.com"];
+    NSURL *url = [NSURL URLWithString:EWHost];
     NSURLProtectionSpace *protSpace = [[NSURLProtectionSpace alloc] initWithHost:url.host
                                                                             port:[url.port integerValue]
                                                                         protocol:url.scheme

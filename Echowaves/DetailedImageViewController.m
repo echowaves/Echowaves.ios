@@ -186,6 +186,9 @@
                                              if([MFMessageComposeViewController canSendText])
                                              {
                                                  smscontroller.body = @"Hello from Echowaves";
+                                                 
+                                                 
+                                                 
                                                  smscontroller.recipients = [NSArray arrayWithObjects: phoneNumber, nil];
                                                  smscontroller.messageComposeDelegate = self;
                                                  [self presentViewController:smscontroller animated:YES completion:^{

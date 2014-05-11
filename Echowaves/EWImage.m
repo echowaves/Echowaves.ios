@@ -203,7 +203,7 @@
 
 +(void) saveImageToAssetLibrary:(UIImage*) image
                         success:(void (^)(void))success
-                        failure:(void (^)(NSError *error))failure;
+                        failure:(void (^)(NSError *error))failure
 {
     CGImageRef img = [image CGImage];
     ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
@@ -223,6 +223,14 @@
                                   failure(error);
                               }
                           }];
+    
+}
+
+
++(void) shareImage:(NSString *)imageName
+            inWave:(NSString *)waveName
+           success:(void (^)(NSString* token))success
+           failure:(void (^)(NSError *error))failure {
     
 }
 

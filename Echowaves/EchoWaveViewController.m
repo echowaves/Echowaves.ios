@@ -46,7 +46,7 @@
     [super viewDidLoad];
     NSLog(@"$$$$$$$$$$$$$$$$calling viewDidLoad for EchoWaveViewController");
     
-    self.wavesPicker.style = HPStyleNormal;
+    self.wavesPicker.style = HPStyle_iOS7;
     self.wavesPicker.font = [UIFont fontWithName: @"Trebuchet MS" size: 14.0f];
 
     self.refreshControl = [UIRefreshControl new];
@@ -154,7 +154,7 @@
     APP_DELEGATE.currentWaveIndex = (long)row;
     //    NSLog(@"setting title: %@", APP_DELEGATE.waveName);
     
-    self.navigationController.navigationBar.topItem.title = [APP_DELEGATE currentWaveName];
+    self.navigationController.navigationBar.topItem.title = @"";//[APP_DELEGATE currentWaveName];
     [self startRefresh:self.refreshControl];
 }
 
