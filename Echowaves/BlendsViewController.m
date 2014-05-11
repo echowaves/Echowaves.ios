@@ -324,7 +324,7 @@
     APP_DELEGATE.currentWaveIndex = (long)row;
     //    NSLog(@"setting title: %@", APP_DELEGATE.waveName);
     
-    self.navigationController.navigationBar.topItem.title = [APP_DELEGATE currentWaveName];
+    self.navigationController.navigationBar.topItem.title = @"";//;[APP_DELEGATE currentWaveName];
     [self reloadView];
 }
 

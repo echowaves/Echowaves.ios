@@ -31,7 +31,7 @@
         }
         
         NSLog(@"setting wave index: %ld", [APP_DELEGATE currentWaveIndex]);
-        self.navigationController.navigationBar.topItem.title = [APP_DELEGATE currentWaveName];
+        self.navigationController.navigationBar.topItem.title = @"";//[APP_DELEGATE currentWaveName];
         [self.wavesPicker selectRow:[APP_DELEGATE currentWaveIndex] animated:NO];
         
     } failure:^(NSError *error) {
@@ -49,10 +49,12 @@
     self.wavesPicker.style = HPStyle_iOS7;
     self.wavesPicker.font = [UIFont fontWithName: @"Trebuchet MS" size: 14.0f];
 
-    self.refreshControl = [UIRefreshControl new];
-    [self.refreshControl addTarget:self action:@selector(startRefresh:)
-             forControlEvents:UIControlEventValueChanged];
-    [self.imagesCollectionView addSubview:self.refreshControl];
+    if(self.refreshControl == nil) {
+        self.refreshControl = [UIRefreshControl new];
+        [self.refreshControl addTarget:self action:@selector(startRefresh:)
+                      forControlEvents:UIControlEventValueChanged];
+        [self.imagesCollectionView addSubview:self.refreshControl];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
