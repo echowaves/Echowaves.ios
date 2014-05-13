@@ -19,6 +19,38 @@
 
 
 @implementation WavingViewController
+- (void) reloadWaves {
+    [EWWave getAllMyWaves:^(NSArray *waves) {
+        self.myWaves = [waves mutableCopy];
+
+        if( [APP_DELEGATE currentWaveName] == NULL) {
+            NSURLCredential *credential = [EWWave getStoredCredential];
+            APP_DELEGATE.currentWaveName = [credential user];
+            APP_DELEGATE.currentWaveIndex = 0;
+        }
+        self.navigationController.navigationBar.topItem.title = @"";//[APP_DELEGATE currentWaveName];
+        [[self selectedWave] setTitle:[APP_DELEGATE currentWaveName] forState:UIControlStateNormal];
+
+        [self reloadWavesPicker];
+        [self reloadWavesPickerSelector];
+    
+    } failure:^(NSError *error) {
+        [EWWave showErrorAlertWithMessage:error.description
+                               FromSender:nil];
+    }];
+    
+}
+
+- (void) reloadWavesPicker {
+    [self.wavesPicker reloadAllComponents];
+    [self.wavesPicker selectRow:[APP_DELEGATE currentWaveIndex] animated:YES];
+}
+
+- (void) reloadWavesPickerSelector {
+    [self.wavesPickerSelector reloadAllComponents];
+    [self.wavesPickerSelector selectRow:[APP_DELEGATE currentWaveIndex] inComponent:0 animated:YES];
+}
+
 
 
 - (IBAction)wavingChanged:(id)sender {
@@ -26,7 +58,7 @@
     
     if(self.waving.on) {
         NSLog(@"======== reset lastCheckTime");
-        [USER_DEFAULTS setObject:[NSDate date] forKey:@"lastCheckTime"];
+            [USER_DEFAULTS setObject:[NSDate date] forKey:@"lastCheckTime"];
         [USER_DEFAULTS synchronize];
     } else {
 
@@ -37,41 +69,16 @@
 }
 
 
-- (void) reloadWaves {
-    [EWWave getAllMyWaves:^(NSArray *waves) {
-//        NSLog(@"zzzzzzzzz loaded %lu waves", (unsigned long)waves.count);
-        self.myWaves = [waves mutableCopy];
-        [self.wavesPicker reloadAllComponents];
-        
-        NSLog(@"11111111111 currentWaveName: %@", [APP_DELEGATE currentWaveName]);
-        
-        if( [APP_DELEGATE currentWaveName] == NULL) {
-            NSURLCredential *credential = [EWWave getStoredCredential];
-            APP_DELEGATE.currentWaveName = [credential user];
-            APP_DELEGATE.currentWaveIndex = 0;
-            
-            [self.wavesPicker reloadAllComponents];
-            [self.wavesPicker selectRow:0 inComponent:0 animated:YES];
-            [[self selectedWave] setTitle:[APP_DELEGATE currentWaveName] forState:UIControlStateNormal];
-            self.navigationController.navigationBar.topItem.title = [APP_DELEGATE currentWaveName];
-        } else {
-            [self.wavesPicker selectRow:[APP_DELEGATE currentWaveIndex] inComponent:0 animated:YES];
-            [[self selectedWave] setTitle:[APP_DELEGATE currentWaveName] forState:UIControlStateNormal];
-            self.navigationController.navigationBar.topItem.title = [APP_DELEGATE currentWaveName];
-        }
-
-    } failure:^(NSError *error) {
-        [EWWave showErrorAlertWithMessage:error.description
-                               FromSender:nil];
-    }];
-
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     APP_DELEGATE.wavingViewController = self;
     self.delegate = self;
 
+    self.wavesPicker.style = HPStyle_iOS7;
+    self.wavesPicker.font = [UIFont fontWithName: @"Trebuchet MS" size: 14.0f];
+
+    
     //initialize waving switch to yes initially
     if(![USER_DEFAULTS objectForKey:@"lastCheckTime"]) {
         [USER_DEFAULTS setBool:YES forKey:@"waving"];
@@ -81,19 +88,17 @@
     NSLog(@"=======waving initializing was %d changed to: %d", self.waving.on, [USER_DEFAULTS boolForKey:@"waving"]);
     self.waving.on = [USER_DEFAULTS boolForKey:@"waving"];
     
-
-    [self reloadWaves];
-    
     UITapGestureRecognizer* pickerViewGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedPickerView:)];
     pickerViewGR.delegate = self;
-    [self.wavesPicker addGestureRecognizer:pickerViewGR];
+    [self.wavesPickerSelector addGestureRecognizer:pickerViewGR];
     [[self selectedWave] setTitle:[APP_DELEGATE currentWaveName] forState:UIControlStateNormal];
-    self.navigationController.navigationBar.topItem.title = [APP_DELEGATE currentWaveName];
+    self.navigationController.navigationBar.topItem.title = @"";//[APP_DELEGATE currentWaveName];
 }
 
-//- (void) viewWillAppear:(BOOL)animated {
-//    [super viewWillAppear:animated];
-//}
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self reloadWaves];
+}
 
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -102,8 +107,8 @@
         self.checkedAtload = true;
         [APP_DELEGATE checkForUpload]; // only call it once, when the view loads for the first time
     }
-    [self reloadWaves];
 }
+
 
 - (NSInteger)numberOfComponentsInPickerView:
 (UIPickerView *)pickerView
@@ -168,9 +173,9 @@ numberOfRowsInComponent:(NSInteger)component
     APP_DELEGATE.currentWaveIndex = (long)row;
 //    NSLog(@"setting title: %@", APP_DELEGATE.waveName);
 
-    self.navigationController.navigationBar.topItem.title = [APP_DELEGATE currentWaveName];
+    self.navigationController.navigationBar.topItem.title = @"";//[APP_DELEGATE currentWaveName];
     [[self selectedWave] setTitle:[APP_DELEGATE currentWaveName] forState:UIControlStateNormal];
-    [self reloadWaves];
+    [self reloadWavesPicker];
 }
 
 -(void) pictureSaved
@@ -193,13 +198,13 @@ numberOfRowsInComponent:(NSInteger)component
     CGPoint tapLocation = [gn locationInView:self.view];
     
     // Get exact frame of row.
-    CGRect pickerFrame = self.wavesPicker.frame;
-    CGSize rowSize = [self.wavesPicker rowSizeForComponent:0];
+    CGRect pickerFrame = self.wavesPickerSelector.frame;
+    CGSize rowSize = [self.wavesPickerSelector rowSizeForComponent:0];
     CGRect rowFrame = CGRectMake(0, (pickerFrame.origin.y + ((pickerFrame.size.height - rowSize.height)/2.0)), pickerFrame.size.width, rowSize.height);
     
     if (CGRectContainsPoint(rowFrame, tapLocation)) {// Tap is on selected Row so update data model;
         
-        long row = [self.wavesPicker selectedRowInComponent:0];
+        long row = [self.wavesPickerSelector selectedRowInComponent:0];
         NSMutableDictionary* myWave = [[self.myWaves objectAtIndex:row]mutableCopy];
         NSLog(@",,,,,,,,,,,,,,,,,,, did tap on a row: %ld", (long)row);
 
@@ -208,11 +213,11 @@ numberOfRowsInComponent:(NSInteger)component
         [EWWave makeWaveActive:[myWave valueForKeyPath:@"name"]
                         active:!active
                        success:^(NSString *waveName) {
-                           UISwitch* activeSwitch = (UISwitch *)[[self.wavesPicker viewForRow:row forComponent:0] viewWithTag:1000];
+                           UISwitch* activeSwitch = (UISwitch *)[[self.wavesPickerSelector viewForRow:row forComponent:0] viewWithTag:1000];
                            [activeSwitch setOn:!active animated:NO];
                            [myWave setValue:[NSNumber numberWithLong:active?0:1] forKey:@"active"];
                            [self.myWaves replaceObjectAtIndex:row withObject:myWave];
-                           [self reloadWaves];
+                           [self reloadWavesPickerSelector];
                        }
                        failure:^(NSString *errorMessage) {
                            [EWWave showErrorAlertWithMessage:errorMessage FromSender:nil];
@@ -222,8 +227,41 @@ numberOfRowsInComponent:(NSInteger)component
     }
 }
 
--(void) resetWaves {
-    NSLog(@"##################reseting waves");
-    
+//-(void) resetWaves {
+//    NSLog(@"##################reseting waves");
+//    
+//}
+
+
+#pragma mark -  HPickerViewDataSource
+- (NSInteger)numberOfRowsInPickerView:pickerView
+{
+    return [self myWaves].count;
 }
+
+
+
+#pragma mark -  HPickerViewDelegate
+- (NSString *)pickerView:(HorizontalPickerView *)pickerView
+             titleForRow:(NSInteger)row
+{
+    NSLog(@"redrawing row: %ld", (long)row);
+    return [((NSDictionary*) [self.myWaves objectAtIndex:row]) objectForKey:@"name"];
+}
+
+
+
+-(void)pickerView:(HorizontalPickerView *)pickerView
+     didSelectRow:(NSInteger)row
+{
+//    NSLog(@",,,,,,,,,,,,,,,,,,, did select row: %@", @(row));
+    APP_DELEGATE.currentWaveName = [((NSDictionary*)[self.myWaves objectAtIndex:row]) objectForKey:@"name"];
+    APP_DELEGATE.currentWaveIndex = (long)row;
+    //    NSLog(@"setting title: %@", APP_DELEGATE.waveName);
+    [[self selectedWave] setTitle:[APP_DELEGATE currentWaveName] forState:UIControlStateNormal];
+    self.navigationController.navigationBar.topItem.title = @"";//[APP_DELEGATE currentWaveName];
+//    [self startRefresh:self.refreshControl];
+    [self reloadWavesPickerSelector];
+}
+
 @end
