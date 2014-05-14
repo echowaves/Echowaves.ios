@@ -257,5 +257,11 @@
     
 }
 
++(void) retreiveImageByToken:(NSString *) token
+                     success:(void (^)(NSString* imageName, NSString* waveName))success
+                     failure:(void (^)(NSError *error))failure {
+    
+}
+
 
 @end
