@@ -260,7 +260,28 @@
 +(void) retreiveImageByToken:(NSString *) token
                      success:(void (^)(NSString* imageName, NSString* waveName))success
                      failure:(void (^)(NSError *error))failure {
+
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
+    // perform authentication, wave/password non blank and exist in the server side, and enter a sending loop
+    
+    //ideally not going to need the following line, if making a request to json service
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    NSDictionary *parameters = @{@"token": token};
+    
+    [manager POST:[NSString stringWithFormat:@"%@/image-by-token.json", EWHost] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSString* imageName = [(NSDictionary*)responseObject objectForKey:@"name"];
+        NSString* waveName = [(NSDictionary*)responseObject objectForKey:@"name_2"];
+        success(imageName, waveName);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+        NSLog(@"Response: %@", [operation.responseObject objectForKey:@"error"]);
+        failure(error);
+    }];
+
 }
 
 

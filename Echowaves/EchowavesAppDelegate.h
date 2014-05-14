@@ -9,6 +9,7 @@
 @import UIKit;
 
 #import "EWWave.h"
+#import "EWImage.h"
 #import "UploadProgressViewController.h"
 #import "WavingViewController.h"
 

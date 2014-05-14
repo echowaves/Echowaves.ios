@@ -224,8 +224,13 @@
     
     NSString* token = [params valueForKey:@"token"];
 
-    
-    
+    [EWImage retreiveImageByToken:token
+                          success:^(NSString *imageName, NSString *waveName) {
+                              [EWImage showAlertWithMessage:[NSString stringWithFormat:@"%@/img/%@/%@", EWAWSBucket, waveName, imageName ] FromSender:nil];
+                          } failure:^(NSError *error) {
+//                              [EWImage showAlertWithMessage:[error description] FromSender:nil];
+                              [EWImage showAlertWithMessage:@"Token expired..." FromSender:nil];
+                          }];
     return YES;
 }
 
