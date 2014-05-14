@@ -185,15 +185,32 @@
                                              MFMessageComposeViewController *smscontroller = [MFMessageComposeViewController new];
                                              if([MFMessageComposeViewController canSendText])
                                              {
-                                                 smscontroller.body = @"Hello from Echowaves";
                                                  
+                                                 NSString* imageName = [self.imageFromJson objectForKey:@"name"];
+                                                 NSString* waveName = [self.imageFromJson objectForKey:@"name_2"];
+
                                                  
+                                                 [EWImage shareImage:imageName
+                                                              inWave:waveName
+                                                             success:^(NSString *token) {
+
+                                                                 
+                                                                 smscontroller.body =
+                                                                 [NSString
+                                                                  stringWithFormat:@"I want to share Echowaves photo with you echowaves://share?token=%@", token];
+                                                                 
+                                                                 smscontroller.recipients = [NSArray arrayWithObjects: phoneNumber, nil];
+                                                                 smscontroller.messageComposeDelegate = self;
+                                                                 [self presentViewController:smscontroller animated:YES completion:^{
+                                                                     NSLog(@"sms controller presented");
+                                                                 }];
+                    
+                                                                 
+                                                             } failure:^(NSError *error) {
+                                                                 [EWDataModel showAlertWithMessage:[error description]
+                                                                                        FromSender:nil];
+                                                             }];
                                                  
-                                                 smscontroller.recipients = [NSArray arrayWithObjects: phoneNumber, nil];
-                                                 smscontroller.messageComposeDelegate = self;
-                                                 [self presentViewController:smscontroller animated:YES completion:^{
-                                                     NSLog(@"sms controller presented");
-                                                 }];
                                              }
                                          }
                                      }

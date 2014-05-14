@@ -209,8 +209,11 @@
 	NSLog(@"Failed to get token, error^^^^^^^^^^^^^^^^^^^^^^^: %@", error);
 }
 
-//- (BOOL) application:(UIApplication *)application handleOpenURL:(NSURL *)url {
-//    
-//}
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+ 
+    NSLog(@"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< url received %@", url.description);
+    [EWDataModel showAlertWithMessage:url.description FromSender:nil];
+    return YES;
+}
 
 @end

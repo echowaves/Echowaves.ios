@@ -231,6 +231,29 @@
             inWave:(NSString *)waveName
            success:(void (^)(NSString* token))success
            failure:(void (^)(NSError *error))failure {
+
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    // perform authentication, wave/password non blank and exist in the server side, and enter a sending loop
+    
+    //ideally not going to need the following line, if making a request to json service
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    NSDictionary *parameters = @{@"image_name": imageName,
+                                 @"wave_name": waveName};
+    
+    [manager POST:[NSString stringWithFormat:@"%@/share-image.json", EWHost] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+
+        NSString* token = [(NSDictionary*)responseObject objectForKey:@"token"];
+        NSLog(@",,,,,,,,,,,,,,,,,,token %@", token);
+        success(token);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+        NSLog(@"Response: %@", [operation.responseObject objectForKey:@"error"]);
+        failure(error);
+    }];
+    
     
 }
 
