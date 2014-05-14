@@ -211,8 +211,21 @@
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
  
-    NSLog(@"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< url received %@", url.description);
-    [EWDataModel showAlertWithMessage:url.description FromSender:nil];
+//    NSLog(@"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< url: %@", url.description);
+
+    //lets parse query string params and extract token
+    NSMutableDictionary *params = [NSMutableDictionary new];
+    for (NSString *param in [[url query]componentsSeparatedByString:@"&"]) {
+        NSArray *elts = [param componentsSeparatedByString:@"="];
+        if([elts count] < 2) continue;
+        [params setObject:[elts objectAtIndex:1] forKey:[elts objectAtIndex:0]];
+    }
+    
+    
+    NSString* token = [params valueForKey:@"token"];
+
+    
+    
     return YES;
 }
 
