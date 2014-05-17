@@ -271,7 +271,7 @@
         <!--Detailed Image View Controller-->
         <scene sceneID="wXD-EU-zsb">
             <objects>
-                <viewController id="5T2-Jh-Jpt" customClass="DetailedImageViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailedImageView" id="5T2-Jh-Jpt" customClass="DetailedImageViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dlr-Rg-dwg"/>
                         <viewControllerLayoutGuide type="bottom" id="3eO-SE-xE1"/>
@@ -302,12 +302,12 @@
                     <connections>
                         <outlet property="imageView" destination="8Zy-gT-xmg" id="RpA-nO-Q3C"/>
                         <outlet property="progressView" destination="4wt-P0-OB3" id="8Wf-zc-AER"/>
-                        <outlet property="waveName" destination="cOH-bW-lzp" id="SvM-3P-VXe"/>
+                        <outlet property="waveNameLable" destination="cOH-bW-lzp" id="OK6-d5-coE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Afd-yX-Vm5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2121" y="-40"/>
+            <point key="canvasLocation" x="2225" y="-40"/>
         </scene>
         <!--Navigation Tab Bar View Controller-->
         <scene sceneID="ssY-qE-FTr">
@@ -634,7 +634,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="2121" y="610"/>
+            <point key="canvasLocation" x="2219" y="610"/>
         </scene>
         <!--Wave Details View Controller-->
         <scene sceneID="VWO-7P-PFV">
@@ -685,7 +685,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="22w-0u-DMt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1208" y="-714"/>
+            <point key="canvasLocation" x="2225" y="-1408"/>
         </scene>
         <!--Waving View Controller - Waving-->
         <scene sceneID="TFz-V2-zQT">
@@ -829,7 +829,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O83-S9-zqH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2121" y="-714"/>
+            <point key="canvasLocation" x="2225" y="-709"/>
         </scene>
         <!--Upload Progress View Controller-->
         <scene sceneID="Fhg-ub-qXd">
@@ -895,7 +895,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="baU-sn-bhO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1703" y="-1408"/>
+            <point key="canvasLocation" x="1108" y="-1408"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hpU-ju-G4S">

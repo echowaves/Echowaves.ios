@@ -126,7 +126,12 @@
         NSLog(@"))))))))))))))))))indexPath: %ld", (long)indexPath.row);
         
         DetailedImageViewController *detailedImageViewController = (DetailedImageViewController *)segue.destinationViewController;
-        detailedImageViewController.imageFromJson = [self.waveImages objectAtIndex:indexPath.row];
+        
+        NSDictionary *imageFromJson = [self.waveImages objectAtIndex:indexPath.row];
+        
+        detailedImageViewController.imageName = [imageFromJson objectForKey:@"name"];
+        detailedImageViewController.waveName = [imageFromJson objectForKey:@"name_2"];
+
         detailedImageViewController.image = ((UIImageView *)[cell viewWithTag:100]).image;
     }
 }

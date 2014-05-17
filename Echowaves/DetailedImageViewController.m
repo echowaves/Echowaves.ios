@@ -26,18 +26,16 @@
     self.imageView.contentMode = UIViewContentModeScaleAspectFit;
     
     //    NSLog(@"###########imageFromJson %@", self.imageFromJson);
-    NSString* imageName = [self.imageFromJson objectForKey:@"name"];
-    NSString* waveName = [self.imageFromJson objectForKey:@"name_2"];
     //    NSString* imageUrl = [NSString stringWithFormat:@"%@/img/%@/thumb_%@", EWHost, waveName, imageName];
-    NSString* imageUrl = [NSString stringWithFormat:@"%@/img/%@/%@", EWAWSBucket, waveName, imageName];
+    NSString* imageUrl = [NSString stringWithFormat:@"%@/img/%@/%@", EWAWSBucket, [self waveName], [self imageName]];
     
 //    [self.navigationItem setPrompt:waveName];
-    [[self waveName] setText:waveName];
+    [[self waveNameLable] setText:[self waveName]];
     
     NSDateFormatter *formatter = [NSDateFormatter new];
     [formatter setDateFormat : @"yyyyMMddHHmmssSSSS"];
-    NSString *dateString = [imageName substringWithRange:NSMakeRange(0, 18)];
-    NSLog(@"imageName  = %@", imageName);
+    NSString *dateString = [self.imageName substringWithRange:NSMakeRange(0, 18)];
+    NSLog(@"imageName  = %@", self.imageName);
     NSLog(@"dateString = %@", dateString);
     NSDate *dateTime = [formatter dateFromString:dateString];
     
@@ -47,7 +45,7 @@
     
 //    [[self navigationItem].backBarButtonItem setTitle:@" "];
     
-    if ([waveName isEqualToString:[APP_DELEGATE currentWaveName]]) {
+    if ([self.waveName isEqualToString:[APP_DELEGATE currentWaveName]]) {
         
         UIBarButtonItem* deleteButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash
                                                                                       target:self
@@ -93,16 +91,14 @@
 
 -(void)deleteImage {
     NSLog(@"deleting image");
-    NSString* imageName = [self.imageFromJson objectForKey:@"name"];
-    NSString* waveName = [APP_DELEGATE currentWaveName];
     
     DeleteImageAlertView *alertMessage = [[DeleteImageAlertView alloc] initWithTitle:@"Alert"
                                                                              message:@"Delete?"
                                                                             delegate:self
                                                                    cancelButtonTitle:@"Cancel"
                                                                    otherButtonTitles:@"OK", nil];
-    alertMessage.waveName = waveName;
-    alertMessage.imageName = imageName;
+    alertMessage.waveName = self.waveName;
+    alertMessage.imageName = self.imageName;
     alertMessage.tag = 20002;
     [alertMessage show];
 
@@ -186,12 +182,9 @@
                                              if([MFMessageComposeViewController canSendText])
                                              {
                                                  
-                                                 NSString* imageName = [self.imageFromJson objectForKey:@"name"];
-                                                 NSString* waveName = [self.imageFromJson objectForKey:@"name_2"];
-
                                                  
-                                                 [EWImage shareImage:imageName
-                                                              inWave:waveName
+                                                 [EWImage shareImage:self.imageName
+                                                              inWave:self.waveName
                                                              success:^(NSString *token) {
 
                                                                  

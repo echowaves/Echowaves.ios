@@ -34,6 +34,8 @@
 
 @property (strong, nonatomic) NSString *deviceToken;
 
+@property (strong, nonatomic) NSString *shareActionToken;
+
 - (void)checkForUpload;
 
 @end
