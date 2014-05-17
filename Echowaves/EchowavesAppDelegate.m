@@ -228,6 +228,10 @@
                           success:^(NSString *imageName, NSString *waveName) {
                               
 //                              [EWImage showAlertWithMessage:[NSString stringWithFormat:@"%@/img/%@/%@", EWAWSBucket, waveName, imageName ] FromSender:nil];
+                              
+                              
+                              
+//                              
 //                              DetailedImageViewController *detailedImageViewController = (DetailedImageViewController *)segue.destinationViewController;
 //                              detailedImageViewController.imageFromJson = [self.waveImages objectAtIndex:indexPath.row];
 //                              detailedImageViewController.image = ((UIImageView *)[cell viewWithTag:100]).image;

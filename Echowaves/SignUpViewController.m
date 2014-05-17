@@ -81,13 +81,13 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSLog(@"----------------seguiing");
-    NavigationTabBarViewController *navigationTabBarViewController = segue.destinationViewController;
+//    NavigationTabBarViewController *navigationTabBarViewController = segue.destinationViewController;
     
     // Make sure your segue name in storyboard is the same as this line
    if ([[segue identifier] isEqualToString:@"CreateWave"])
     {
         NSLog(@"----calling prepareForSegue CreateWave");
-        navigationTabBarViewController.waveName.title = self.waveName.text;
+//        navigationTabBarViewController.waveName.title = self.waveName.text;
     }
 }
 

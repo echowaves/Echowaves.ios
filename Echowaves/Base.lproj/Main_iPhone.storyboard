@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="eYa-MG-G2M">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="eYa-MG-G2M">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
@@ -113,7 +113,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="360" y="-466"/>
+            <point key="canvasLocation" x="531" y="-454"/>
         </scene>
         <!--Sign Up View Controller - Create new Wave-->
         <scene sceneID="600-qt-TBO">
@@ -266,7 +266,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bdt-PK-ACm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1703" y="5"/>
+            <point key="canvasLocation" x="1703" y="-40"/>
         </scene>
         <!--Detailed Image View Controller-->
         <scene sceneID="wXD-EU-zsb">
@@ -307,13 +307,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Afd-yX-Vm5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2121" y="5"/>
+            <point key="canvasLocation" x="2121" y="-40"/>
         </scene>
-        <!--Navigation Tab Bar View Controller - Wave-->
+        <!--Navigation Tab Bar View Controller-->
         <scene sceneID="ssY-qE-FTr">
             <objects>
                 <tabBarController definesPresentationContext="YES" id="4Wa-qa-6Wy" customClass="NavigationTabBarViewController" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" title="Wave" id="70E-4t-zqk">
+                    <navigationItem key="navigationItem" id="70E-4t-zqk">
                         <barButtonItem key="leftBarButtonItem" title="TuneOut" id="eXP-6K-HVp">
                             <connections>
                                 <segue destination="Ua8-6L-qdg" kind="unwind" unwindAction="backToHomeViewController:" id="qKP-6b-qsN"/>
@@ -352,7 +352,6 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <outlet property="waveName" destination="70E-4t-zqk" id="grw-wQ-WpR"/>
                         <segue destination="8lZ-lH-xhR" kind="relationship" relationship="viewControllers" id="OzU-Ir-F5h"/>
                         <segue destination="Wr0-jG-xAd" kind="relationship" relationship="viewControllers" id="cTz-Q0-fWs"/>
                         <segue destination="Edp-kY-vOe" kind="relationship" relationship="viewControllers" id="2TA-f1-FAK"/>
@@ -361,7 +360,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Xi-DV-OqN" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Ua8-6L-qdg" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1112" y="5"/>
+            <point key="canvasLocation" x="1108" y="-40"/>
         </scene>
         <!--Blends View Controller - test-->
         <scene sceneID="3r8-nV-WDX">
@@ -549,7 +548,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H5c-jD-Jqd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1703" y="650"/>
+            <point key="canvasLocation" x="1703" y="610"/>
         </scene>
         <!--Blend With View Controller - Blend With-->
         <scene sceneID="0Xg-XY-CfE">
@@ -635,7 +634,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="2121" y="650"/>
+            <point key="canvasLocation" x="2121" y="610"/>
         </scene>
         <!--Wave Details View Controller-->
         <scene sceneID="VWO-7P-PFV">
@@ -686,7 +685,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="22w-0u-DMt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1208" y="-674"/>
+            <point key="canvasLocation" x="1208" y="-714"/>
         </scene>
         <!--Waving View Controller - Waving-->
         <scene sceneID="TFz-V2-zQT">
@@ -788,7 +787,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vlj-IN-e4q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1703" y="-674"/>
+            <point key="canvasLocation" x="1703" y="-714"/>
         </scene>
         <!--Add Child Wave View Controller-->
         <scene sceneID="9du-UH-FKh">
@@ -830,7 +829,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O83-S9-zqH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2121" y="-674"/>
+            <point key="canvasLocation" x="2121" y="-714"/>
         </scene>
         <!--Upload Progress View Controller-->
         <scene sceneID="Fhg-ub-qXd">
@@ -896,7 +895,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="baU-sn-bhO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1703" y="-1368"/>
+            <point key="canvasLocation" x="1703" y="-1408"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hpU-ju-G4S">
@@ -929,6 +928,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="lU3-tf-NsI"/>
+        <segue reference="AnV-QM-P86"/>
     </inferredMetricsTieBreakers>
 </document>
