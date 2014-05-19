@@ -105,7 +105,7 @@
     [super viewDidAppear:animated];
     if([self checkedAtload] == false) {
         self.checkedAtload = true;
-        [APP_DELEGATE checkForUpload]; // only call it once, when the view loads for the first time
+        [APP_DELEGATE checkForInitialViewToPresent]; // only call it once, when the view loads for the first time
     }
 }
 
@@ -181,7 +181,7 @@ numberOfRowsInComponent:(NSInteger)component
 -(void) pictureSaved
 {
 //    [self checkForNewImages];
-    [APP_DELEGATE checkForUpload];
+    [APP_DELEGATE checkForInitialViewToPresent];
 }
 
 #pragma mark - Gesture Recogniser Delegate and Action for wavesPicker

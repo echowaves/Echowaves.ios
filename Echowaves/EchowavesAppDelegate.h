@@ -36,7 +36,7 @@
 
 @property (strong, nonatomic) NSString *shareActionToken;
 
-- (void)checkForUpload;
+- (void)checkForInitialViewToPresent;
 
 @end
 
