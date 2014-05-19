@@ -22,12 +22,11 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.imageView.image = self.image;
     self.imageView.contentMode = UIViewContentModeScaleAspectFit;
     
     //    NSLog(@"###########imageFromJson %@", self.imageFromJson);
-    //    NSString* imageUrl = [NSString stringWithFormat:@"%@/img/%@/thumb_%@", EWHost, waveName, imageName];
-    NSString* imageUrl = [NSString stringWithFormat:@"%@/img/%@/%@", EWAWSBucket, [self waveName], [self imageName]];
+    NSString* thumbImageUrl = [NSString stringWithFormat:@"%@/img/%@/thumb_%@", EWAWSBucket, [self waveName], [self imageName]];
+    NSString* imageUrl      = [NSString stringWithFormat:@"%@/img/%@/%@"      , EWAWSBucket, [self waveName], [self imageName]];
     
 //    [self.navigationItem setPrompt:waveName];
     [[self waveNameLable] setText:[self waveName]];
@@ -62,25 +61,38 @@
                                                                                                  action:@selector(saveImage)];
         
     }
-    
-    
-    
     self.progressView.progress = 0.0;
     [self.progressView setHidden:FALSE];
-    
-    [EWImage loadImageFromUrl:imageUrl
+
+    [EWImage loadImageFromUrl:thumbImageUrl
                       success:^(UIImage *image) {
                           self.imageView.image = image;
                           self.imageView.contentMode = UIViewContentModeScaleAspectFit;
-                          [self.progressView setHidden:TRUE];
+                          
+                          [EWImage loadImageFromUrl:imageUrl
+                                            success:^(UIImage *image) {
+                                                [self.progressView setHidden:TRUE];
+
+                                                self.imageView.image = image;
+                                                self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+                                            }
+                                            failure:^(NSError *error) {
+                                                [EWDataModel showErrorAlertWithMessage:@"Error Loading image" FromSender:nil];
+                                                NSLog(@"error: %@", error.description);
+                                            }
+                                           progress:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
+                                               self.progressView.progress = (float)totalBytesRead / totalBytesExpectedToRead;
+                                           }];
+
                       }
                       failure:^(NSError *error) {
                           [EWDataModel showErrorAlertWithMessage:@"Error Loading image" FromSender:nil];
                           NSLog(@"error: %@", error.description);
                       }
-                     progress:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
-                         self.progressView.progress = (float)totalBytesRead / totalBytesExpectedToRead;
-                     }];
+                     progress:nil];
+
+    
+    
     
 }
 
@@ -139,7 +151,7 @@
 
 
 -(void)saveImage {
-    [EWImage saveImageToAssetLibrary:[self image]
+    [EWImage saveImageToAssetLibrary:[self.imageView image]
                              success:^{
                                  [EWDataModel showAlertWithMessage:@"Photo Saved to iPhone"
                                                         FromSender:nil];

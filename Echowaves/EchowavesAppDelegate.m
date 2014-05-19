@@ -113,28 +113,18 @@
         [EWImage retreiveImageByToken:[APP_DELEGATE shareActionToken]
                               success:^(NSString *imageName, NSString *waveName) {
                                   
-                                  //                              [EWImage showAlertWithMessage:[NSString stringWithFormat:@"%@/img/%@/%@", EWAWSBucket, waveName, imageName ] FromSender:nil];
+                                  DetailedImageViewController *detailedImageViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil] instantiateViewControllerWithIdentifier:@"DetailedImageView"];
                                   
                                   
-                                  [EWImage loadImageFromUrl:[NSString stringWithFormat:@"%@/img/%@/thumb_%@", EWAWSBucket, waveName, imageName ]
-                                                    success:^(UIImage *image) {
-                                                        
-                                                        DetailedImageViewController *detailedImageViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil] instantiateViewControllerWithIdentifier:@"DetailedImageView"];
-                                                        
-                                                        detailedImageViewController.imageName = imageName;
-                                                        detailedImageViewController.waveName = waveName;
-                                                        
-                                                        detailedImageViewController.image = image;
-                                                        
-                                                        [(UINavigationController *)self.window.rootViewController pushViewController:detailedImageViewController animated:YES];
-                                                        
-                                                        APP_DELEGATE.shareActionToken = nil;//release the token
-                                                        
-                                                    }
-                                                    failure:^(NSError *error) {
-                                                        [EWImage showAlertWithMessage:error.description FromSender:nil];
-                                                    }
-                                                   progress:nil];
+                                  
+                                  detailedImageViewController.imageName = imageName;
+                                  detailedImageViewController.waveName = waveName;
+                                  
+                                  
+                                  [(UINavigationController *)self.window.rootViewController pushViewController:detailedImageViewController animated:YES];
+                                  
+                                  APP_DELEGATE.shareActionToken = nil;//release the token
+                                  
                               } failure:^(NSError *error) {
                                   //                              [EWImage showAlertWithMessage:[error description] FromSender:nil];
                                   [EWImage showAlertWithMessage:@"Token expired..." FromSender:nil];

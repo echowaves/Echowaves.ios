@@ -132,7 +132,7 @@
         detailedImageViewController.imageName = [imageFromJson objectForKey:@"name"];
         detailedImageViewController.waveName = [imageFromJson objectForKey:@"name_2"];
 
-        detailedImageViewController.image = ((UIImageView *)[cell viewWithTag:100]).image;
+//        detailedImageViewController.imageView.image = ((UIImageView *)[cell viewWithTag:100]).image;
     }
 }
 
