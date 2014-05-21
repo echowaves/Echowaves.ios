@@ -39,7 +39,7 @@
         self.navigationController.navigationBar.topItem.title = @"";//[APP_DELEGATE currentWaveName];
         
         [self reloadWavesPicker];
-        
+        [self.wavesPicker selectRow:[APP_DELEGATE currentWaveIndex] inComponent:0 animated:NO];
     } failure:^(NSError *error) {
         [EWWave showErrorAlertWithMessage:error.description
                                FromSender:nil];
@@ -96,8 +96,9 @@ numberOfRowsInComponent:(NSInteger)component
     APP_DELEGATE.currentWaveIndex = (long)row;
     //    NSLog(@"setting title: %@", APP_DELEGATE.waveName);
     
-    self.navigationController.navigationBar.topItem.title = @"";//[APP_DELEGATE currentWaveName];
-    [self reloadWavesPicker];
+//    self.navigationController.navigationBar.topItem.title = @"";//[APP_DELEGATE currentWaveName];
+    self.selectedWave = APP_DELEGATE.currentWaveName;
+//    [self reloadWavesPicker];
 }
 
 @end

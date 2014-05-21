@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface PickAWaveViewController : UIViewController<UIPickerViewDelegate, UIPickerViewDataSource>
-@property (strong, nonatomic) IBOutlet UILabel *BlendWaveLabel;
+@property (strong, nonatomic) IBOutlet UILabel *blendWaveLabel;
 @property (strong, nonatomic) IBOutlet UIPickerView *wavesPicker;
 
 @property (strong, nonatomic) NSMutableArray *myWaves;
+
+@property (strong, nonatomic) NSString *selectedWave;
 
 @end
