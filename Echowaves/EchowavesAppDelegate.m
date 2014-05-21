@@ -121,7 +121,7 @@
 
                                   
                                   PickAWaveViewController *pickAWaveViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil] instantiateViewControllerWithIdentifier:@"PickAWaveView"];
-                                  [pickAWaveViewController blendWaveLabel].text = [NSString stringWithFormat:@"Pick a wave to blend with %@", waveName];
+                                  pickAWaveViewController.blendWaveText= [NSString stringWithFormat:@"Pick a wave to blend with %@", waveName];
                                   [(UINavigationController *)self.window.rootViewController pushViewController:pickAWaveViewController animated:NO];
                                   
 

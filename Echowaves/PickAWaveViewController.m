@@ -19,6 +19,8 @@
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self reloadWaves];
+    [self blendWaveLabel].text = [self blendWaveText];
+    NSLog(@"xxxxxxxxx blend wave text %@", [self blendWaveText]);
 }
 
 - (IBAction)acceptAction:(id)sender {

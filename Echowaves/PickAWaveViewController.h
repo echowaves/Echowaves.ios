@@ -10,6 +10,8 @@
 
 @interface PickAWaveViewController : UIViewController<UIPickerViewDelegate, UIPickerViewDataSource>
 @property (strong, nonatomic) IBOutlet UILabel *blendWaveLabel;
+@property (strong, nonatomic) NSString *blendWaveText;
+
 @property (strong, nonatomic) IBOutlet UIPickerView *wavesPicker;
 
 @property (strong, nonatomic) NSMutableArray *myWaves;
