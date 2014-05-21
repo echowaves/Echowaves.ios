@@ -59,6 +59,8 @@
                        [EWWave hideLoadingIndicator:self];
                        [EWWave storeCredentialForWaveName:self.waveName.text withPassword:self.wavePassword.text];
 
+                       NSString *deviceToken=[(EchowavesAppDelegate *)[[UIApplication sharedApplication] delegate] deviceToken];
+                       if(deviceToken) {
                        [EWWave storeIosTokenForWave:self.waveName.text
                                               token:[(EchowavesAppDelegate *)[[UIApplication sharedApplication] delegate] deviceToken]
                                             success:^(NSString *waveName) {
@@ -67,7 +69,7 @@
                                             failure:^(NSString *errorMessage) {
                                                 NSLog(@"failed storing deviceToken %@", errorMessage);
                                             }];
-
+                       }
                        [self performSegueWithIdentifier: @"CreateWave" sender: self];
                        
                    }

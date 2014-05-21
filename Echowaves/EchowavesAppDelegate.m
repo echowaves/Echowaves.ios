@@ -141,7 +141,9 @@
                                   APP_DELEGATE.shareActionToken = nil;//release the token
                                   
                               } failure:^(NSError *error) {
-                                  [EWImage showAlertWithMessage:@"Token expired..." FromSender:nil];
+                                  if([APP_DELEGATE currentWaveName]) {
+                                      [EWImage showAlertWithMessage:@"Token expired..." FromSender:nil];
+                                  }
                                   NSLog(@"error retreiving token");
                               }];
 }
