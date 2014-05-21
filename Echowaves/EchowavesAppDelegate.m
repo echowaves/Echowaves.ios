@@ -9,6 +9,7 @@
 #import "EchowavesAppDelegate.h"
 #import "HomeViewController.h"
 #import "DetailedImageViewController.h"
+#import "PickAWaveViewController.h"
 #import "Flurry.h"
 
 @implementation EchowavesAppDelegate
@@ -101,33 +102,45 @@
     if([APP_DELEGATE shareActionToken]) {
         [self presentDetailedImageBasedOnShareToken];
     } else {
-        if(self.wavingViewController.waving.on) {
-            self.uploadProgressViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil] instantiateViewControllerWithIdentifier:@"UploadView"];
-            [(UINavigationController *)self.window.rootViewController pushViewController:self.uploadProgressViewController animated:YES];
-            
-        }
+        [self presentUploadView];
     }
+}
+
+- (void) presentUploadView {
+    if(self.wavingViewController.waving.on) {
+        self.uploadProgressViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil] instantiateViewControllerWithIdentifier:@"UploadView"];
+        [(UINavigationController *)self.window.rootViewController pushViewController:self.uploadProgressViewController animated:YES];
+        
+    }
+    
 }
 
 - (void) presentDetailedImageBasedOnShareToken {
         [EWImage retreiveImageByToken:[APP_DELEGATE shareActionToken]
                               success:^(NSString *imageName, NSString *waveName) {
+
                                   
+                                  PickAWaveViewController *pickAWaveViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil] instantiateViewControllerWithIdentifier:@"PickAWaveView"];
+                                  [(UINavigationController *)self.window.rootViewController pushViewController:pickAWaveViewController animated:NO];
+
                                   DetailedImageViewController *detailedImageViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil] instantiateViewControllerWithIdentifier:@"DetailedImageView"];
-                                  
-                                  
                                   
                                   detailedImageViewController.imageName = imageName;
                                   detailedImageViewController.waveName = waveName;
                                   
                                   
-                                  [(UINavigationController *)self.window.rootViewController pushViewController:detailedImageViewController animated:YES];
+                                  [pickAWaveViewController.navigationController pushViewController:detailedImageViewController animated:NO];
+
+                                  
+
+
+                                  
                                   
                                   APP_DELEGATE.shareActionToken = nil;//release the token
                                   
                               } failure:^(NSError *error) {
-                                  //                              [EWImage showAlertWithMessage:[error description] FromSender:nil];
                                   [EWImage showAlertWithMessage:@"Token expired..." FromSender:nil];
+                                  NSLog(@"error retreiving token");
                               }];
 }
 
