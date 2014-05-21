@@ -7,6 +7,7 @@
 //
 
 #import "AcceptBlendingRequestViewController.h"
+#import "EWBlend.h"
 
 @implementation AcceptBlendingRequestViewController
 
@@ -19,13 +20,34 @@
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self reloadWaves];
-    [self blendWaveLabel].text = [self blendWaveText];
-    NSLog(@"xxxxxxxxx blend wave text %@", [self blendWaveText]);
+    [self blendWaveLabel].text = [NSString stringWithFormat:@"Pick a wave to blend with %@", [self waveRequestingToBlendWith]];
+    NSLog(@"xxxxxxxxx blend wave text %@", [self waveRequestingToBlendWith]);
 }
 
 - (IBAction)acceptAction:(id)sender {
     NSLog(@"called pickAWave POP");
-    [self.navigationController popViewControllerAnimated:FALSE];
+    [EWBlend showLoadingIndicator:nil];
+    [EWBlend requestBlendingWith:[self waveRequestingToBlendWith]
+                         success:^{
+                             [EWBlend confirmBlendingWith:[self waveRequestingToBlendWith]
+                                                  success:^{
+                                                      [EWBlend hideLoadingIndicator:nil];
+                                                      [self.navigationController popViewControllerAnimated:FALSE];
+                                                  }
+                                                  failure:^(NSError *error) {
+                                                      [EWBlend showAlertWithMessage:@"Confirming Blending failed" FromSender:nil];
+                                                      NSLog(@"failed blending confirming %@", error.debugDescription);
+                                                      [EWBlend hideLoadingIndicator:nil];
+                                                      [self.navigationController popViewControllerAnimated:FALSE];
+                                                  }];
+                         } failure:^(NSError *error) {
+                             [EWBlend showAlertWithMessage:@"Blending failed" FromSender:nil];
+                             NSLog(@"failed blending %@", error.debugDescription);
+                             [EWBlend hideLoadingIndicator:nil];
+                             [self.navigationController popViewControllerAnimated:FALSE];
+                         }];
+    
+    
 }
 
 
@@ -98,9 +120,9 @@ numberOfRowsInComponent:(NSInteger)component
     APP_DELEGATE.currentWaveIndex = (long)row;
     //    NSLog(@"setting title: %@", APP_DELEGATE.waveName);
     
-//    self.navigationController.navigationBar.topItem.title = @"";//[APP_DELEGATE currentWaveName];
+    //    self.navigationController.navigationBar.topItem.title = @"";//[APP_DELEGATE currentWaveName];
     self.selectedWave = APP_DELEGATE.currentWaveName;
-//    [self reloadWavesPicker];
+    //    [self reloadWavesPicker];
 }
 
 @end
