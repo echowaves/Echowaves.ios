@@ -59,7 +59,7 @@
 		0AD6E27518011F59008303E0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0AD6E27318011F59008303E0 /* InfoPlist.strings */; };
 		0AD6E27718011F59008303E0 /* EchowavesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD6E27618011F59008303E0 /* EchowavesTests.m */; };
 		0AEB92BF18A6F3FC00DE51DC /* BlendWithViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEB92BE18A6F3FC00DE51DC /* BlendWithViewController.m */; };
-		0AF4BA77192BEB1200E11E29 /* PickAWaveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF4BA76192BEB1200E11E29 /* PickAWaveViewController.m */; };
+		0AF4BA77192BEB1200E11E29 /* AcceptBlendingRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF4BA76192BEB1200E11E29 /* AcceptBlendingRequestViewController.m */; };
 		0AFD9A6D18ECD457007F5749 /* UploadProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFD9A6C18ECD457007F5749 /* UploadProgressViewController.m */; };
 		0AFD9A7018ECEBA2007F5749 /* AddChildWaveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFD9A6F18ECEBA2007F5749 /* AddChildWaveViewController.m */; };
 		7A65E0D618CB19B800204530 /* EchowavesImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A65E0D518CB19B800204530 /* EchowavesImagePickerController.m */; };
@@ -174,8 +174,8 @@
 		0AD6E27618011F59008303E0 /* EchowavesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EchowavesTests.m; sourceTree = "<group>"; };
 		0AEB92BD18A6F3FC00DE51DC /* BlendWithViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlendWithViewController.h; sourceTree = "<group>"; };
 		0AEB92BE18A6F3FC00DE51DC /* BlendWithViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlendWithViewController.m; sourceTree = "<group>"; };
-		0AF4BA75192BEB1200E11E29 /* PickAWaveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickAWaveViewController.h; sourceTree = "<group>"; };
-		0AF4BA76192BEB1200E11E29 /* PickAWaveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickAWaveViewController.m; sourceTree = "<group>"; };
+		0AF4BA75192BEB1200E11E29 /* AcceptBlendingRequestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcceptBlendingRequestViewController.h; sourceTree = "<group>"; };
+		0AF4BA76192BEB1200E11E29 /* AcceptBlendingRequestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcceptBlendingRequestViewController.m; sourceTree = "<group>"; };
 		0AFD9A6B18ECD457007F5749 /* UploadProgressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadProgressViewController.h; sourceTree = "<group>"; };
 		0AFD9A6C18ECD457007F5749 /* UploadProgressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadProgressViewController.m; sourceTree = "<group>"; };
 		0AFD9A6E18ECEBA2007F5749 /* AddChildWaveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddChildWaveViewController.h; sourceTree = "<group>"; };
@@ -374,8 +374,8 @@
 				0A34C00F18556B4800E085BC /* Resources */,
 				0A5ADAA01888C07900D492BC /* iPad */,
 				0AD6E25A18011F59008303E0 /* Main_iPhone.storyboard */,
-				0AF4BA75192BEB1200E11E29 /* PickAWaveViewController.h */,
-				0AF4BA76192BEB1200E11E29 /* PickAWaveViewController.m */,
+				0AF4BA75192BEB1200E11E29 /* AcceptBlendingRequestViewController.h */,
+				0AF4BA76192BEB1200E11E29 /* AcceptBlendingRequestViewController.m */,
 				0A34FEFB18F4A1F600B5AF34 /* WaveDetailsViewController.h */,
 				0A34FEFC18F4A1F600B5AF34 /* WaveDetailsViewController.m */,
 				0AFD9A6E18ECEBA2007F5749 /* AddChildWaveViewController.h */,
@@ -591,7 +591,7 @@
 				0AEB92BF18A6F3FC00DE51DC /* BlendWithViewController.m in Sources */,
 				0A4621841888E29C005CC161 /* AFURLSessionManager.m in Sources */,
 				0AD6E25918011F59008303E0 /* EchowavesAppDelegate.m in Sources */,
-				0AF4BA77192BEB1200E11E29 /* PickAWaveViewController.m in Sources */,
+				0AF4BA77192BEB1200E11E29 /* AcceptBlendingRequestViewController.m in Sources */,
 				0AD6E25518011F59008303E0 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

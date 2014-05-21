@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PickAWaveViewController : UIViewController<UIPickerViewDelegate, UIPickerViewDataSource>
+@interface AcceptBlendingRequestViewController : UIViewController<UIPickerViewDelegate, UIPickerViewDataSource>
 @property (strong, nonatomic) IBOutlet UILabel *blendWaveLabel;
 @property (strong, nonatomic) NSString *blendWaveText;
 

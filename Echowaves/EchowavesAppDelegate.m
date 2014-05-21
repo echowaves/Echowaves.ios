@@ -9,7 +9,7 @@
 #import "EchowavesAppDelegate.h"
 #import "HomeViewController.h"
 #import "DetailedImageViewController.h"
-#import "PickAWaveViewController.h"
+#import "AcceptBlendingRequestViewController.h"
 #import "Flurry.h"
 
 @implementation EchowavesAppDelegate
@@ -120,7 +120,7 @@
                               success:^(NSString *imageName, NSString *waveName) {
 
                                   
-                                  PickAWaveViewController *pickAWaveViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil] instantiateViewControllerWithIdentifier:@"PickAWaveView"];
+                                  AcceptBlendingRequestViewController *pickAWaveViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil] instantiateViewControllerWithIdentifier:@"PickAWaveView"];
                                   pickAWaveViewController.blendWaveText= [NSString stringWithFormat:@"Pick a wave to blend with %@", waveName];
                                   [(UINavigationController *)self.window.rootViewController pushViewController:pickAWaveViewController animated:NO];
                                   

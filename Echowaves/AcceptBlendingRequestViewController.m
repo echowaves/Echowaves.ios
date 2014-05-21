@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Echowaves. All rights reserved.
 //
 
-#import "PickAWaveViewController.h"
+#import "AcceptBlendingRequestViewController.h"
 
-@implementation PickAWaveViewController
+@implementation AcceptBlendingRequestViewController
 
 
 - (void)viewDidLoad

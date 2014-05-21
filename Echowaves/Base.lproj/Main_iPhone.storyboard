@@ -309,10 +309,10 @@
             </objects>
             <point key="canvasLocation" x="2225" y="-40"/>
         </scene>
-        <!--PickA Wave View Controller-->
+        <!--Accept Blending Request View Controller-->
         <scene sceneID="Uwh-lV-O49">
             <objects>
-                <viewController storyboardIdentifier="PickAWaveView" id="1Fd-6Z-QUA" customClass="PickAWaveViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PickAWaveView" id="1Fd-6Z-QUA" customClass="AcceptBlendingRequestViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GAE-Pj-Qqp"/>
                         <viewControllerLayoutGuide type="bottom" id="BAT-TT-TnG"/>
