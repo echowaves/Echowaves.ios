@@ -183,6 +183,7 @@
             break;
     }
     
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
@@ -302,8 +303,29 @@
 }
 
 
-- (void) tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    qwe
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    NSLog(@"--------didDeselectRowAtIndexPath %ld for section %ld", (long)indexPath.row, (long)indexPath.section);
+    
+    
+    switch([indexPath section]){
+        case 0:
+            break;
+        case 1:
+            break;
+        case 2:
+            nil;
+            AcceptBlendingRequestViewController *pickAWaveViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil] instantiateViewControllerWithIdentifier:@"PickAWaveView"];
+            pickAWaveViewController.fromWave = [((NSDictionary*)[self.blendedWith objectAtIndex:indexPath.row]) objectForKey:@"name"];
+            pickAWaveViewController.toWave = [APP_DELEGATE currentWaveName];
+            
+            [self.navigationController pushViewController:pickAWaveViewController animated:NO];
+
+            
+            break;
+    }
+
+    
 }
 
 #pragma mark -  HPickerViewDataSource
