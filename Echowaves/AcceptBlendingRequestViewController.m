@@ -20,16 +20,34 @@
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self reloadWaves];
-    [self blendWaveLabel].text = [NSString stringWithFormat:@"Pick a wave to blend with %@", [self waveRequestingToBlendWith]];
-    NSLog(@"xxxxxxxxx blend wave text %@", [self waveRequestingToBlendWith]);
+    [self fromWaveLabel].text = [self fromWave];
+    [self blendWaveLabel].text = @"wants to blend with you, pick a wave.";
+
+    NSLog(@"xxxxxxxxx blend wave text %@", [self fromWave]);
 }
 
 - (IBAction)acceptAction:(id)sender {
     NSLog(@"called pickAWave POP");
     [EWBlend showLoadingIndicator:nil];
-    [EWBlend requestBlendingWith:[self waveRequestingToBlendWith]
+    //if toWave is present as well as fromWave -- we have to unblend first
+    if([self toWave]) {
+        NSLock *lock = [NSLock new];
+        [lock lock];
+
+        [EWBlend unblendFrom:[self fromWave]
+                currentWave:[self toWave]
+                   success:^{
+                       [lock unlock];
+                   }
+                   failure:^(NSError *error) {
+                       [lock unlock];
+                       NSLog(@"failed unblending");
+                   }];
+    }// if toWave is present
+    
+    [EWBlend requestBlendingWith:[self fromWave]
                          success:^{
-                             [EWBlend confirmBlendingWith:[self waveRequestingToBlendWith]
+                             [EWBlend confirmBlendingWith:[self fromWave]
                                                   success:^{
                                                       [EWBlend hideLoadingIndicator:nil];
                                                       [self.navigationController popViewControllerAnimated:FALSE];

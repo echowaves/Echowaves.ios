@@ -9,6 +9,7 @@
 #import "BlendsViewController.h"
 #import "NavigationTabBarViewController.h"
 #import "EWBlend.h"
+#import "AcceptBlendingRequestViewController.h"
 
 @interface UnblendAlertView : UIAlertView
 @property (nonatomic) NSString *waveName;
@@ -192,17 +193,17 @@
             UITableViewCell *cell = (UITableViewCell *) parent;
             NSIndexPath *path = [self.tableView indexPathForCell: cell];
             waveName = [((NSDictionary*)[self.requestedBlends objectAtIndex:path.row]) objectForKey:@"name"];
-            [EWBlend confirmBlendingWith:waveName
-                                 success:^{
-                                     [self reloadView];
-                                 }
-                                 failure:^(NSError *error) {
-                                     NSLog(@"error: %@", error.debugDescription);
-                                 }];
+
+            AcceptBlendingRequestViewController *pickAWaveViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil] instantiateViewControllerWithIdentifier:@"PickAWaveView"];
+
+            pickAWaveViewController.fromWave = waveName;
+            pickAWaveViewController.toWave = [APP_DELEGATE currentWaveName];
+
+            [self.navigationController pushViewController:pickAWaveViewController animated:NO];
             break; // for
         }
     }
-    NSLog(@"accepting blend request from %@",waveName);
+//    NSLog(@"accepting blend request from %@",waveName);
 }
 
 - (IBAction)rejectButtonClicked:(id)sender {
@@ -288,6 +289,7 @@
     if(buttonIndex == 1) {//OK button clicked, let's delete the wave
    
     [EWBlend unblendFrom:[(UnblendAlertView *)alertView waveName]
+              currentWave:[APP_DELEGATE currentWaveName]
                  success:^{
                      [self reloadView];
                  }

@@ -22,6 +22,7 @@
                     success:(void (^)(void))success
                     failure:(void (^)(NSError *error))failure;
 +(void) unblendFrom:(NSString *)waveName
+        currentWave:(NSString *)currentWave
             success:(void (^)(void))success
             failure:(void (^)(NSError *error))failure;
 

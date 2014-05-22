@@ -121,7 +121,7 @@
 
                                   
                                   AcceptBlendingRequestViewController *pickAWaveViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil] instantiateViewControllerWithIdentifier:@"PickAWaveView"];
-                                  pickAWaveViewController.waveRequestingToBlendWith = waveName;
+                                  pickAWaveViewController.fromWave = waveName;
                                   [(UINavigationController *)self.window.rootViewController pushViewController:pickAWaveViewController animated:NO];
                                   
 
