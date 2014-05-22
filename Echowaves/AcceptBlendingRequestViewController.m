@@ -22,7 +22,7 @@
     [self reloadWaves];
     [self fromWaveLabel].text = [self fromWave];
     [self blendWaveLabel].text = @"wants to blend with you, pick a wave.";
-
+    
     NSLog(@"xxxxxxxxx blend wave text %@", [self fromWave]);
 }
 
@@ -33,16 +33,15 @@
     if([self toWave]) {
         NSLock *lock = [NSLock new];
         [lock lock];
-
         [EWBlend unblendFrom:[self fromWave]
-                currentWave:[self toWave]
-                   success:^{
-                       [lock unlock];
-                   }
-                   failure:^(NSError *error) {
-                       [lock unlock];
-                       NSLog(@"failed unblending");
-                   }];
+                 currentWave:[self toWave]
+                     success:^{
+                         [lock unlock];
+                     }
+                     failure:^(NSError *error) {
+                         [lock unlock];
+                         NSLog(@"failed unblending");
+                     }];
     }// if toWave is present
     
     [EWBlend requestBlendingWith:[self fromWave]
@@ -64,8 +63,6 @@
                              [EWBlend hideLoadingIndicator:nil];
                              [self.navigationController popViewControllerAnimated:FALSE];
                          }];
-    
-    
 }
 
 

@@ -143,6 +143,8 @@
 
 
 
+
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"--------cellForRowAtIndexPath %ld for section %ld", (long)indexPath.row, (long)indexPath.section);
@@ -299,6 +301,10 @@
     }
 }
 
+
+- (void) tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+//    qwe
+}
 
 #pragma mark -  HPickerViewDataSource
 - (NSInteger)numberOfRowsInPickerView:pickerView
