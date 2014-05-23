@@ -45,6 +45,25 @@
 {
     [super viewDidLoad];
     NSLog(@"$$$$$$$$$$$$$$$$calling viewDidLoad for EchoWaveViewController");
+
+    
+    
+    // Add swipeGestures
+    UISwipeGestureRecognizer *oneFingerSwipeLeft = [[UISwipeGestureRecognizer alloc]
+                                                     initWithTarget:self
+                                                     action:@selector(swipeLeftGestureAction:)];
+    [oneFingerSwipeLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
+    [[self view] addGestureRecognizer:oneFingerSwipeLeft];
+    
+    UISwipeGestureRecognizer *oneFingerSwipeRight = [[UISwipeGestureRecognizer alloc]
+                                                      initWithTarget:self
+                                                      action:@selector(swipeRightGestureAction:)];
+    [oneFingerSwipeRight setDirection:UISwipeGestureRecognizerDirectionRight];
+    [[self view] addGestureRecognizer:oneFingerSwipeRight];
+    
+    
+    
+    
     
     self.wavesPicker.style = HPStyle_iOS7;
     self.wavesPicker.font = [UIFont fontWithName: @"Trebuchet MS" size: 14.0f];
@@ -56,6 +75,27 @@
         [self.imagesCollectionView addSubview:self.refreshControl];
     }
 }
+
+
+- (IBAction)swipeRightGestureAction:(id)sender {
+    NSLog(@"swipeRight called");
+    if( APP_DELEGATE.currentWaveIndex > 0) {
+        APP_DELEGATE.currentWaveIndex--;
+        APP_DELEGATE.currentWaveName = [((NSDictionary*)[self.myWaves objectAtIndex:APP_DELEGATE.currentWaveIndex]) objectForKey:@"name"];
+        [self reloadWavesPicker];
+//        [self startRefresh:self.refreshControl];
+    }
+}
+- (IBAction)swipeLeftGestureAction:(id)sender {
+    NSLog(@"swipeLeft called");
+    if( APP_DELEGATE.currentWaveIndex < [self.myWaves count]) {
+        APP_DELEGATE.currentWaveIndex++;
+        APP_DELEGATE.currentWaveName = [((NSDictionary*)[self.myWaves objectAtIndex:APP_DELEGATE.currentWaveIndex]) objectForKey:@"name"];
+        [self reloadWavesPicker];
+//        [self startRefresh:self.refreshControl];
+    }
+}
+
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
