@@ -21,7 +21,7 @@
     [super viewWillAppear:animated];
     [self reloadWaves];
     [self fromWaveLabel].text = [self fromWave];
-    [self blendWaveLabel].text = @"wants to blend with you, pick a wave.";
+    [self blendWaveLabel].text = [NSString stringWithFormat:@"wants to blend with you -- pick a wave. %@ will be able to see all photos in the wave you choose.", [self fromWave]];
     
     NSLog(@"xxxxxxxxx blend wave text %@", [self fromWave]);
 }
