@@ -176,6 +176,43 @@
     [imgOperation start];
 }
 
+
++ (void) loadFullImage:(NSString*) imageName
+               forWave:(NSString*) waveName
+               success:(void (^)(UIImage *image))success
+               failure:(void (^)(NSError *error))failure
+              progress:(void (^)(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead))progress {
+    NSString* imageUrl = [NSString stringWithFormat:@"%@/img/%@/%@", EWAWSBucket, waveName, imageName];
+    [EWImage loadImageFromUrl:imageUrl
+                      success:^(UIImage *image) {
+                          success(image);
+                      }
+                      failure:^(NSError *error) {
+                          failure(error);
+                      }
+                     progress:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
+                         progress(bytesRead, totalBytesRead, totalBytesExpectedToRead);
+                     }];
+    
+};
+
++ (void) loadThumbImage:(NSString*) imageName
+                forWave:(NSString*) waveName
+                success:(void (^)(UIImage *image))success
+                failure:(void (^)(NSError *error))failure {
+//               progress:(void (^)(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead))progress {
+    NSString* thumbImageUrl = [NSString stringWithFormat:@"%@/img/%@/thumb_%@", EWAWSBucket, waveName, imageName];
+    [EWImage loadImageFromUrl:thumbImageUrl
+                      success:^(UIImage *image) {
+                          success(image);
+                      }
+                      failure:^(NSError *error) {
+                          failure(error);
+                      }
+                     progress:nil];
+};
+
+
 +(void) deleteImage:(NSString *)imageName
              inWave:(NSString *)waveName
             success:(void (^)(void))success
@@ -284,5 +321,20 @@
 
 }
 
++(long)imageIndexFromImageName:(NSString *) imageName
+                      waveName:(NSString *) waveName
+                    waveImages:(NSArray *) waveImages {
+    
+    for (long i = 0; i < [waveImages count]; i++) {
+        NSDictionary *image = [waveImages objectAtIndex:i];
+        NSString* imageNameFromArray = [image objectForKey:@"name"];
+        NSString* waveNameFromArray = [image objectForKey:@"name_2"];
+        if([imageName isEqual:imageNameFromArray] && [waveName isEqual:waveNameFromArray]){
+            return i;
+        }        
+    }
+    
+    return -1;
+}
 
 @end

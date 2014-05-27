@@ -136,20 +136,20 @@
     
     NSString* imageName = [((NSDictionary*)[self.waveImages objectAtIndex:indexPath.row]) objectForKey:@"name"];
     NSString* waveName = [((NSDictionary*)[self.waveImages objectAtIndex:indexPath.row]) objectForKey:@"name_2"];
-    NSString* imageUrl = [NSString stringWithFormat:@"%@/img/%@/thumb_%@", EWAWSBucket, waveName, imageName];
+//    NSString* imageUrl = [NSString stringWithFormat:@"%@/img/%@/thumb_%@", EWAWSBucket, waveName, imageName];
     
     
     ((UIImageView *)[cell viewWithTag:100]).image = [UIImage imageNamed:@"echowave.png"];
 
-    [EWImage loadImageFromUrl:imageUrl
-                      success:^(UIImage *image) {
-                          ((UIImageView *)[cell viewWithTag:100]).image = image;
-                          waveImageView.contentMode = UIViewContentModeScaleAspectFit;
-                      }
-                      failure:^(NSError *error) {
-                          NSLog(@"error: %@", error.description);
-                      }
-                     progress:nil];
+    [EWImage loadThumbImage:imageName
+                    forWave:waveName
+                    success:^(UIImage *image) {
+                        ((UIImageView *)[cell viewWithTag:100]).image = image;
+                        waveImageView.contentMode = UIViewContentModeScaleAspectFit;
+                    } failure:^(NSError *error) {
+                        NSLog(@"error: %@", error.description);
+                    }];
+     
     
     return cell;
 }
@@ -171,6 +171,7 @@
         
         detailedImageViewController.imageName = [imageFromJson objectForKey:@"name"];
         detailedImageViewController.waveName = [imageFromJson objectForKey:@"name_2"];
+        detailedImageViewController.waveImages = [self waveImages];
 
 //        detailedImageViewController.imageView.image = ((UIImageView *)[cell viewWithTag:100]).image;
     }

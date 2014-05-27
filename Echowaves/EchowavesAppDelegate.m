@@ -132,10 +132,6 @@
                                   
                                   
                                   [pickAWaveViewController.navigationController pushViewController:detailedImageViewController animated:NO];
-
-                                  
-
-
                                   
                                   
                                   APP_DELEGATE.shareActionToken = nil;//release the token

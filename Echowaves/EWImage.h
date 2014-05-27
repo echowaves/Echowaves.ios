@@ -27,10 +27,23 @@
                      success:(void (^)(NSArray *waveImages))success
                      failure:(void (^)(NSError *error))failure;
 
-+ (void) loadImageFromUrl:(NSString*) url
+//+ (void) loadImageFromUrl:(NSString*) url
+//                  success:(void (^)(UIImage *image))success
+//                  failure:(void (^)(NSError *error))failure
+//                 progress:(void (^)(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead))progress;
+
++ (void) loadFullImage:(NSString*) imageName
+               forWave:(NSString*) waveName
                   success:(void (^)(UIImage *image))success
                   failure:(void (^)(NSError *error))failure
                  progress:(void (^)(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead))progress;
+
++ (void) loadThumbImage:(NSString*) imageName
+                forWave:(NSString*) waveName
+                success:(void (^)(UIImage *image))success
+                failure:(void (^)(NSError *error))failure;
+//               progress:(void (^)(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead))progress;
+
 
 +(void) deleteImage:(NSString *)imageName
              inWave:(NSString *)waveName
@@ -49,6 +62,11 @@
 +(void) retreiveImageByToken:(NSString *) token
            success:(void (^)(NSString* imageName, NSString* waveName))success
            failure:(void (^)(NSError *error))failure;
+
+//find index of an image in the all images array by image name and wave name
++(long)imageIndexFromImageName:(NSString *) imageName
+                      waveName:(NSString *) waveName
+                    waveImages:(NSArray *) waveImages;
 
 
 @end

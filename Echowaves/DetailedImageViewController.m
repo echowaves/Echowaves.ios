@@ -22,11 +22,11 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.imageView.contentMode = UIViewContentModeScaleAspectFit;
     
-    //    NSLog(@"###########imageFromJson %@", self.imageFromJson);
-    NSString* thumbImageUrl = [NSString stringWithFormat:@"%@/img/%@/thumb_%@", EWAWSBucket, [self waveName], [self imageName]];
-    NSString* imageUrl      = [NSString stringWithFormat:@"%@/img/%@/%@"      , EWAWSBucket, [self waveName], [self imageName]];
+    [self.view addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)]];
+
+    self.currImageView.contentMode = UIViewContentModeScaleAspectFit;
+    
     
 //    [self.navigationItem setPrompt:waveName];
     [[self waveNameLable] setText:[self waveName]];
@@ -63,37 +63,180 @@
     }
     self.progressView.progress = 0.0;
     [self.progressView setHidden:FALSE];
-
-    [EWImage loadImageFromUrl:thumbImageUrl
-                      success:^(UIImage *image) {
-                          self.imageView.image = image;
-                          self.imageView.contentMode = UIViewContentModeScaleAspectFit;
-                          
-                          [EWImage loadImageFromUrl:imageUrl
-                                            success:^(UIImage *image) {
-                                                [self.progressView setHidden:TRUE];
-
-                                                self.imageView.image = image;
-                                                self.imageView.contentMode = UIViewContentModeScaleAspectFit;
-                                            }
-                                            failure:^(NSError *error) {
-                                                [EWDataModel showErrorAlertWithMessage:@"Error Loading image" FromSender:nil];
-                                                NSLog(@"error: %@", error.description);
-                                            }
-                                           progress:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
-                                               self.progressView.progress = (float)totalBytesRead / totalBytesExpectedToRead;
-                                           }];
-
-                      }
-                      failure:^(NSError *error) {
-                          [EWDataModel showErrorAlertWithMessage:@"Error Loading image" FromSender:nil];
-                          NSLog(@"error: %@", error.description);
-                      }
-                     progress:nil];
-
     
     
+    if( [self waveImages]) {
+        self.imageIndex = [EWImage imageIndexFromImageName:[self imageName] waveName:[self waveName] waveImages:[self waveImages]];
+        
+        if( [self imageIndex] != -1) {
+            if([self imageIndex] < [self.waveImages count]) {
+                NSDictionary *nextImage = [[self waveImages] objectAtIndex:[self imageIndex] +1];
+                NSString *nextImageName = [nextImage objectForKey:@"name"];
+                NSString *nextWaveName = [nextImage objectForKey:@"name_2"];
+                
+                [EWImage loadThumbImage:nextImageName
+                                forWave:nextWaveName
+                                success:^(UIImage *image) {
+                                    self.nextImageView.image = image;
+                                    NSLog(@"loaded next image");
+                                } failure:^(NSError *error) {
+                                    self.nextImageView = nil;
+                                    NSLog(@"failed loading next image");
+                                }];
+            }
+            if([self imageIndex] > 0) {
+                NSDictionary *prevImage = [[self waveImages] objectAtIndex:[self imageIndex] -1];
+                NSString *prevImageName = [prevImage objectForKey:@"name"];
+                NSString *prevWaveName = [prevImage objectForKey:@"name_2"];
+                
+                [EWImage loadThumbImage:prevImageName
+                                forWave:prevWaveName
+                                success:^(UIImage *image) {
+                                    self.prevImageView.image = image;
+                                    NSLog(@"loaded prev image");
+                                } failure:^(NSError *error) {
+                                    self.prevImageView = nil;
+                                    NSLog(@"failed loading prev image");
+                                }];
+            }
+        }
+        
+    }
     
+    [EWImage loadThumbImage:[self imageName]
+                    forWave:[self waveName]
+                    success:^(UIImage *image) {
+                        self.currImageView.image = image;
+                        self.currImageView.contentMode = UIViewContentModeScaleAspectFit;
+                        
+                        [EWImage loadFullImage:[self imageName]
+                                       forWave:[self waveName]
+                                       success:^(UIImage *image) {
+                                           [self.progressView setHidden:TRUE];
+                                           
+                                           self.currImageView.image = image;
+                                           self.currImageView.contentMode = UIViewContentModeScaleAspectFit;
+                                       }
+                                       failure:^(NSError *error) {
+                                           [EWDataModel showErrorAlertWithMessage:@"Error Loading image" FromSender:nil];
+                                           NSLog(@"error: %@", error.description);
+                                       }
+                                      progress:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
+                                          self.progressView.progress = (float)totalBytesRead / totalBytesExpectedToRead;
+                                      }];
+                        
+                    }
+                    failure:^(NSError *error) {
+                        [EWDataModel showErrorAlertWithMessage:@"Error Loading image" FromSender:nil];
+                        NSLog(@"error: %@", error.description);
+                    }];
+    
+
+}
+
+- (CGRect)frameForPreviousViewWithTranslate:(CGPoint)translate
+{
+    return CGRectMake(-self.view.bounds.size.width + translate.x, translate.y, self.view.bounds.size.width, self.view.bounds.size.height);
+}
+
+- (CGRect)frameForCurrentViewWithTranslate:(CGPoint)translate
+{
+    return CGRectMake(translate.x, translate.y, self.view.bounds.size.width, self.view.bounds.size.height);
+}
+
+- (CGRect)frameForNextViewWithTranslate:(CGPoint)translate
+{
+    return CGRectMake(self.view.bounds.size.width + translate.x, translate.y, self.view.bounds.size.width, self.view.bounds.size.height);
+}
+
+
+- (void)handlePan:(UIPanGestureRecognizer *)gesture
+{
+    // transform the three views by the amount of the x translation
+    
+    CGPoint translate = [gesture translationInView:gesture.view];
+    translate.y = 0.0; // I'm just doing horizontal scrolling
+    
+    [self prevImageView].frame = [self frameForPreviousViewWithTranslate:translate];
+    [self currImageView].frame = [self frameForCurrentViewWithTranslate:translate];
+    [self nextImageView].frame = [self frameForNextViewWithTranslate:translate];
+    
+    // if we're done with gesture, animate frames to new locations
+    
+    if (gesture.state == UIGestureRecognizerStateCancelled ||
+        gesture.state == UIGestureRecognizerStateEnded ||
+        gesture.state == UIGestureRecognizerStateFailed)
+    {
+        // figure out if we've moved (or flicked) more than 50% the way across
+        
+        CGPoint velocity = [gesture velocityInView:gesture.view];
+        if (translate.x > 0.0 && (translate.x + velocity.x * 0.25) > (gesture.view.bounds.size.width / 2.0) && [self prevImageView])
+        {
+            // moving right (and/or flicked right)
+            
+            [UIView animateWithDuration:0.25
+                                  delay:0.0
+                                options:UIViewAnimationOptionCurveEaseOut
+                             animations:^{
+                                 [self prevImageView].frame = [self frameForCurrentViewWithTranslate:CGPointZero];
+                                 [self currImageView].frame = [self frameForNextViewWithTranslate:CGPointZero];
+                             }
+                             completion:^(BOOL finished) {
+                                 // do whatever you want upon completion to reflect that everything has slid to the right
+                                 
+                                 // this redefines "next" to be the old "current",
+                                 // "current" to be the old "previous", and recycles
+                                 // the old "next" to be the new "previous" (you'd presumably.
+                                 // want to update the content for the new "previous" to reflect whatever should be there
+                                 
+                                 UIImageView *tempView = [self nextImageView];
+                                 self.nextImageView = [self currImageView];
+                                 self.currImageView = [self prevImageView];
+                                 self.prevImageView = tempView;
+                                 [self prevImageView].frame = [self frameForPreviousViewWithTranslate:CGPointZero];
+                             }];
+        }
+        else if (translate.x < 0.0 && (translate.x + velocity.x * 0.25) < -(gesture.view.frame.size.width / 2.0) && [self nextImageView])
+        {
+            // moving left (and/or flicked left)
+            
+            [UIView animateWithDuration:0.25
+                                  delay:0.0
+                                options:UIViewAnimationOptionCurveEaseOut
+                             animations:^{
+                                 [self nextImageView].frame = [self frameForCurrentViewWithTranslate:CGPointZero];
+                                 [self currImageView].frame = [self frameForPreviousViewWithTranslate:CGPointZero];
+                             }
+                             completion:^(BOOL finished) {
+                                 // do whatever you want upon completion to reflect that everything has slid to the left
+                                 
+                                 // this redefines "previous" to be the old "current",
+                                 // "current" to be the old "next", and recycles
+                                 // the old "previous" to be the new "next". (You'd presumably.
+                                 // want to update the content for the new "next" to reflect whatever should be there
+                                 
+                                 UIImageView *tempView = [self prevImageView];
+                                 self.prevImageView = [self currImageView];
+                                 self.currImageView = [self nextImageView];
+                                 self.nextImageView = tempView;
+                                 [self nextImageView].frame = [self frameForNextViewWithTranslate:CGPointZero];
+                             }];
+        }
+        else
+        {
+            // return to original location
+            
+            [UIView animateWithDuration:0.25
+                                  delay:0.0
+                                options:UIViewAnimationOptionCurveEaseOut
+                             animations:^{
+                                 [self prevImageView].frame = [self frameForPreviousViewWithTranslate:CGPointZero];
+                                 [self currImageView].frame = [self frameForCurrentViewWithTranslate:CGPointZero];
+                                 [self nextImageView].frame = [self frameForNextViewWithTranslate:CGPointZero];
+                             }
+                             completion:NULL];
+        }
+    }
 }
 
 //-(void) popBack {
@@ -151,7 +294,7 @@
 
 
 -(void)saveImage {
-    [EWImage saveImageToAssetLibrary:[self.imageView image]
+    [EWImage saveImageToAssetLibrary:[self.currImageView image]
                              success:^{
                                  [EWDataModel showAlertWithMessage:@"Photo Saved to iPhone"
                                                         FromSender:nil];
@@ -256,6 +399,14 @@
     [self dismissViewControllerAnimated:YES completion:^{
         NSLog(@"dismissed sms controller");
     }];
+}
+
+
++(long)imageIndexFromName:(NSString *) imageName
+               waveImages:(NSArray *) waveImages {
+    
+    
+    return -1;
 }
 
 @end

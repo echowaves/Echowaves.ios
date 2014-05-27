@@ -300,7 +300,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="feT-eO-NXM"/>
                     <connections>
-                        <outlet property="imageView" destination="8Zy-gT-xmg" id="RpA-nO-Q3C"/>
+                        <outlet property="currImageView" destination="8Zy-gT-xmg" id="XuU-pj-IVe"/>
                         <outlet property="progressView" destination="4wt-P0-OB3" id="8Wf-zc-AER"/>
                         <outlet property="waveNameLable" destination="cOH-bW-lzp" id="OK6-d5-coE"/>
                     </connections>
