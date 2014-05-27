@@ -16,14 +16,7 @@
 @property (strong, nonatomic) NSString *waveName;
 @property (strong, nonatomic) NSString *imageName;
 
-//following 2 properties must be always set for the view to work correctly (flipping through images)
-@property (strong, atomic) NSArray *waveImages;
-@property long imageIndex;
-
-
-@property (weak, nonatomic) IBOutlet UIImageView *prevImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *currImageView;
-@property (weak, nonatomic) IBOutlet UIImageView *nextImageView;
 
 @property (strong, nonatomic) IBOutlet UILabel *waveNameLable;
 

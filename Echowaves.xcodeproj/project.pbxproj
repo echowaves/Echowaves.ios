@@ -39,6 +39,7 @@
 		0A5BF7771910378D005C2742 /* HPCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5BF7701910378D005C2742 /* HPCollectionVC.m */; };
 		0A5BF7781910378D005C2742 /* HPCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5BF7721910378D005C2742 /* HPCollectionViewCell.m */; };
 		0A5BF7791910378D005C2742 /* HPCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5BF7741910378D005C2742 /* HPCollectionViewFlowLayout.m */; };
+		0A6B326C193509EE00AE6A6E /* DetailedImagePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6B326B193509EE00AE6A6E /* DetailedImagePageViewController.m */; };
 		0A7C733C18948E9300292622 /* NavigationTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7C733B18948E9300292622 /* NavigationTabBarViewController.m */; };
 		0AB1CF511890C1380056A94A /* EWDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB1CF501890C1380056A94A /* EWDataModel.m */; };
 		0AC91E66186BF50300D61381 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AC91E65186BF50300D61381 /* Security.framework */; };
@@ -144,6 +145,8 @@
 		0A5BF7731910378D005C2742 /* HPCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HPCollectionViewFlowLayout.h; path = Resources/HorizontalPicker/HPCollectionViewFlowLayout.h; sourceTree = "<group>"; };
 		0A5BF7741910378D005C2742 /* HPCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HPCollectionViewFlowLayout.m; path = Resources/HorizontalPicker/HPCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		0A5BF7751910378D005C2742 /* HPickerDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HPickerDefinitions.h; path = Resources/HorizontalPicker/HPickerDefinitions.h; sourceTree = "<group>"; };
+		0A6B326A193509EE00AE6A6E /* DetailedImagePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailedImagePageViewController.h; sourceTree = "<group>"; };
+		0A6B326B193509EE00AE6A6E /* DetailedImagePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailedImagePageViewController.m; sourceTree = "<group>"; };
 		0A7C733A18948E9300292622 /* NavigationTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationTabBarViewController.h; sourceTree = "<group>"; };
 		0A7C733B18948E9300292622 /* NavigationTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationTabBarViewController.m; sourceTree = "<group>"; };
 		0AB1CF4F1890C1380056A94A /* EWDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWDataModel.h; sourceTree = "<group>"; };
@@ -374,6 +377,8 @@
 				0A34C00F18556B4800E085BC /* Resources */,
 				0A5ADAA01888C07900D492BC /* iPad */,
 				0AD6E25A18011F59008303E0 /* Main_iPhone.storyboard */,
+				0A6B326A193509EE00AE6A6E /* DetailedImagePageViewController.h */,
+				0A6B326B193509EE00AE6A6E /* DetailedImagePageViewController.m */,
 				0AF4BA75192BEB1200E11E29 /* AcceptBlendingRequestViewController.h */,
 				0AF4BA76192BEB1200E11E29 /* AcceptBlendingRequestViewController.m */,
 				0A34FEFB18F4A1F600B5AF34 /* WaveDetailsViewController.h */,
@@ -588,6 +593,7 @@
 				0A5BF7771910378D005C2742 /* HPCollectionVC.m in Sources */,
 				0A28E5ED188F36D300B7BDDB /* HomeViewController.m in Sources */,
 				0A163DC418AAD72900148595 /* DetailedImageViewController.m in Sources */,
+				0A6B326C193509EE00AE6A6E /* DetailedImagePageViewController.m in Sources */,
 				0AEB92BF18A6F3FC00DE51DC /* BlendWithViewController.m in Sources */,
 				0A4621841888E29C005CC161 /* AFURLSessionManager.m in Sources */,
 				0AD6E25918011F59008303E0 /* EchowavesAppDelegate.m in Sources */,

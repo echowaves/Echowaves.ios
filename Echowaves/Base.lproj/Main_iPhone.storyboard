@@ -234,9 +234,6 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <connections>
-                                            <segue destination="5T2-Jh-Jpt" kind="push" identifier="DetailedImageSegue" id="4D3-9N-Avj"/>
-                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
@@ -267,6 +264,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bdt-PK-ACm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1703" y="-40"/>
+        </scene>
+        <!--Detailed Image Page View Controller-->
+        <scene sceneID="P3J-2s-K85">
+            <objects>
+                <viewController storyboardIdentifier="DetailedImagePageView" id="uGD-Jv-xSJ" customClass="DetailedImagePageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4q5-CP-tkr"/>
+                        <viewControllerLayoutGuide type="bottom" id="b6a-pA-whb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="M2s-vx-3LR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MqI-sX-th4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2225" y="-40"/>
         </scene>
         <!--Detailed Image View Controller-->
         <scene sceneID="wXD-EU-zsb">
@@ -307,7 +322,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Afd-yX-Vm5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2225" y="-40"/>
+            <point key="canvasLocation" x="2624" y="-40"/>
         </scene>
         <!--Accept Blending Request View Controller-->
         <scene sceneID="Uwh-lV-O49">
@@ -362,7 +377,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i61-c9-BMA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2665" y="-40"/>
+            <point key="canvasLocation" x="3002" y="-40"/>
         </scene>
         <!--Navigation Tab Bar View Controller-->
         <scene sceneID="ssY-qE-FTr">

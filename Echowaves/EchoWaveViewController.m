@@ -9,7 +9,7 @@
 #import "EchoWaveViewController.h"
 #import "NavigationTabBarViewController.h"
 #import "EWImage.h"
-#import "DetailedImageViewController.h"
+#import "DetailedImagePageViewController.h"
 
 
 @implementation EchoWaveViewController
@@ -154,28 +154,18 @@
     return cell;
 }
 
+- (void)collectionView:(UICollectionView *)imagesCollectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-
-    if ([segue.identifier isEqualToString:@"DetailedImageSegue"]) {
-        
-        UICollectionViewCell *cell = (UICollectionViewCell *)sender;
-        NSIndexPath *indexPath = [self.imagesCollectionView indexPathForCell:cell];
-        
-        NSLog(@"))))))))))))))))))indexPath: %ld", (long)indexPath.row);
-        
-        DetailedImageViewController *detailedImageViewController = (DetailedImageViewController *)segue.destinationViewController;
-        
-        NSDictionary *imageFromJson = [self.waveImages objectAtIndex:indexPath.row];
-        
-        detailedImageViewController.imageName = [imageFromJson objectForKey:@"name"];
-        detailedImageViewController.waveName = [imageFromJson objectForKey:@"name_2"];
-        detailedImageViewController.waveImages = [self waveImages];
-
-//        detailedImageViewController.imageView.image = ((UIImageView *)[cell viewWithTag:100]).image;
-    }
+    DetailedImagePageViewController *detailedImagePageViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil] instantiateViewControllerWithIdentifier:@"DetailedImagePageView"];
+    
+    detailedImagePageViewController.imageIndex = indexPath.row;
+    detailedImagePageViewController.waveImages = [self waveImages];
+    
+    [self.navigationController pushViewController:detailedImagePageViewController animated:YES];
+    
 }
+
+
 
 
 #pragma mark -  HPickerViewDataSource
