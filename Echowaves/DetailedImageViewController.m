@@ -19,25 +19,27 @@
 
 @implementation DetailedImageViewController
 
-//- (void)viewDidLoad {
-//    [super viewDidLoad];
-//    [[self view] addSubview:[self prevImageView]];
-//    [[self view] addSubview:[self nextImageView]];
-//}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    [self updateView];
-
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self initView];
 }
 
-- (void) updateView {
-    self.currImageView.contentMode = UIViewContentModeScaleAspectFit;
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    //    [self updateView];
+}
+
+//- (void) viewWillDisappear:(BOOL)animated {
+//    self.navItem = nil;
+//}
+
+- (void) initView {
+//    self.currImageView.contentMode = UIViewContentModeScaleAspectFit;
+    NSLog(@",,,,,,,,,,,,,,,,,,,,,,,%@/%@", [self waveName], [self imageName]);
     
+    [self navItem].rightBarButtonItems = nil;
     
-    //    [self.navigationItem setPrompt:waveName];
     [[self waveNameLable] setText:[self waveName]];
     
     NSDateFormatter *formatter = [NSDateFormatter new];
@@ -49,7 +51,7 @@
     
     //    [formatter release];
     [formatter setDateFormat:@"MM/dd/yyyy HH:mm:ss"];
-    [self setTitle:[formatter stringFromDate:dateTime]];
+    [self.navItem setTitle:[formatter stringFromDate:dateTime]];
     
     //    [[self navigationItem].backBarButtonItem setTitle:@" "];
     
@@ -63,13 +65,13 @@
                                                                                      target:self
                                                                                      action:@selector(shareImage)];
         
-        self.navigationItem.rightBarButtonItems = @[shareButton, deleteButton];
+        [self navItem].rightBarButtonItems = @[shareButton, deleteButton];
     } else {
-        [self navigationItem].rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave
+        [self navItem].rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave
                                                                                                  target:self
                                                                                                  action:@selector(saveImage)];
-        
     }
+
     self.progressView.progress = 0.0;
     [self.progressView setHidden:FALSE];
     
@@ -79,30 +81,29 @@
                     success:^(UIImage *image) {
                         self.currImageView.image = image;
                         self.currImageView.contentMode = UIViewContentModeScaleAspectFit;
-                        
-                        [EWImage loadFullImage:[self imageName]
-                                       forWave:[self waveName]
-                                       success:^(UIImage *image) {
-                                           [self.progressView setHidden:TRUE];
-                                           
-                                           self.currImageView.image = image;
-                                           self.currImageView.contentMode = UIViewContentModeScaleAspectFit;
-                                       }
-                                       failure:^(NSError *error) {
-                                           [EWDataModel showErrorAlertWithMessage:@"Error Loading image" FromSender:nil];
-                                           NSLog(@"error: %@", error.description);
-                                       }
-                                      progress:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
-                                          self.progressView.progress = (float)totalBytesRead / totalBytesExpectedToRead;
-                                      }];
-                        
                     }
                     failure:^(NSError *error) {
-                        [EWDataModel showErrorAlertWithMessage:@"Error Loading image" FromSender:nil];
+                        [EWDataModel showErrorAlertWithMessage:@"Error Loading thumb image" FromSender:nil];
                         NSLog(@"error: %@", error.description);
                     }];
     
-
+}
+- (void) updateView {
+//    [EWImage loadFullImage:[self imageName]
+//                   forWave:[self waveName]
+//                   success:^(UIImage *image) {
+//                       [self.progressView setHidden:TRUE];
+//                       
+//                       self.currImageView.image = image;
+//                       self.currImageView.contentMode = UIViewContentModeScaleAspectFit;
+//                   }
+//                   failure:^(NSError *error) {
+//                       [EWDataModel showErrorAlertWithMessage:@"Error Loading full image" FromSender:nil];
+//                       NSLog(@"error: %@", error.description);
+//                   }
+//                  progress:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
+//                      self.progressView.progress = (float)totalBytesRead / totalBytesExpectedToRead;
+//                  }];
 }
 
 
@@ -261,14 +262,6 @@
     [self dismissViewControllerAnimated:YES completion:^{
         NSLog(@"dismissed sms controller");
     }];
-}
-
-
-+(long)imageIndexFromName:(NSString *) imageName
-               waveImages:(NSArray *) waveImages {
-    
-    
-    return -1;
 }
 
 @end

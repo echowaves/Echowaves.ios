@@ -37,13 +37,7 @@
     self.pageController.dataSource = self;
     [[self.pageController view] setFrame:[[self view] bounds]];
     
-    DetailedImageViewController *detailedImageViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil] instantiateViewControllerWithIdentifier:@"DetailedImageView"];
-    
-    NSDictionary *imageFromJson = [self.waveImages objectAtIndex:[self imageIndex]];
-    
-    detailedImageViewController.imageName = [imageFromJson objectForKey:@"name"];
-    detailedImageViewController.waveName = [imageFromJson objectForKey:@"name_2"];
-
+    DetailedImageViewController *detailedImageViewController = [self viewControllerAtIndex:[self initialViewIndex]];
     
     NSArray *viewControllers =
     [NSArray arrayWithObject:detailedImageViewController];
@@ -56,7 +50,7 @@
     [self addChildViewController:self.pageController];
     [[self view] addSubview:[self.pageController view]];
     [self.pageController didMoveToParentViewController:self];
-    
+    [self viewControllerAtIndex:[self initialViewIndex]];
     
 }
 - (DetailedImageViewController *)viewControllerAtIndex:(NSUInteger)index
@@ -67,58 +61,61 @@
         return nil;
     }
     
-    // Create a new view controller and pass suitable data.
-    /*
-     ContentViewController *dataViewController =
-     [[ContentViewController alloc] init];
-     */
-    
-//    UIStoryboard *storyboard =
-//    [UIStoryboard storyboardWithName:@"Main"
-//                              bundle:[NSBundle mainBundle]];
-//    
-//    ContentViewController *dataViewController =
-//    [storyboard
-//     instantiateViewControllerWithIdentifier:@"contentView"];
-//    
-//    dataViewController.dataObject = _pageContent[index];
-
     DetailedImageViewController *detailedImageViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil] instantiateViewControllerWithIdentifier:@"DetailedImageView"];
     
     NSDictionary *imageFromJson = [self.waveImages objectAtIndex:index];
     
     detailedImageViewController.imageName = [imageFromJson objectForKey:@"name"];
     detailedImageViewController.waveName = [imageFromJson objectForKey:@"name_2"];
-//    detailedImageViewController.waveImages = [self waveImages];
-
+    detailedImageViewController.imageIndex = index;
     
+    detailedImageViewController.navItem = self.navigationItem;
+
     return detailedImageViewController;
 }
 
-- (NSUInteger)indexOfViewController:(DetailedImageViewController *)viewController
-{
-    return [self imageIndex];
-}
+//- (NSUInteger)indexOfViewController:(DetailedImageViewController *)viewController
+//{
+//    return [self imageIndex];
+//}
 
 - (DetailedImageViewController *)pageViewController:
 (UIPageViewController *)pageViewController viewControllerBeforeViewController:
 (UIViewController *)viewController
 {
-    if (([self imageIndex] == 0)) {
+    NSUInteger index = ((DetailedImageViewController*) viewController).imageIndex;
+
+    if ((index == 0) || (index == NSNotFound)) {
         return nil;
     }
-    self.imageIndex--;
-    return [self viewControllerAtIndex:[self imageIndex]];
+    index--;
+    return [self viewControllerAtIndex:index];
 }
 
 - (UIViewController *)pageViewController:
 (UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
 {
-    if ([self imageIndex] == [self.waveImages count]) {
+    NSUInteger index = ((DetailedImageViewController*) viewController).imageIndex;
+
+    if (index == NSNotFound) {
         return nil;
     }
-    self.imageIndex++;
-    return [self viewControllerAtIndex:[self imageIndex]];
+    index++;
+    if(index == [self.waveImages count]) {
+        return nil;
+    }
+    return [self viewControllerAtIndex:index];
 }
+
+//- (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray *)pendingViewControllers {
+//    
+//}
+
+//- (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed {
+//    if(completed == YES) {
+//        self.imageIndex = [self transitionIndex];
+//    }
+//}
+
 
 @end

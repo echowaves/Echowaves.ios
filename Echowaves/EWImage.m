@@ -321,20 +321,20 @@
 
 }
 
-+(long)imageIndexFromImageName:(NSString *) imageName
-                      waveName:(NSString *) waveName
-                    waveImages:(NSArray *) waveImages {
-    
-    for (long i = 0; i < [waveImages count]; i++) {
-        NSDictionary *image = [waveImages objectAtIndex:i];
-        NSString* imageNameFromArray = [image objectForKey:@"name"];
-        NSString* waveNameFromArray = [image objectForKey:@"name_2"];
-        if([imageName isEqual:imageNameFromArray] && [waveName isEqual:waveNameFromArray]){
-            return i;
-        }        
-    }
-    
-    return -1;
-}
+//+(long)imageIndexFromImageName:(NSString *) imageName
+//                      waveName:(NSString *) waveName
+//                    waveImages:(NSArray *) waveImages {
+//    
+//    for (long i = 0; i < [waveImages count]; i++) {
+//        NSDictionary *image = [waveImages objectAtIndex:i];
+//        NSString* imageNameFromArray = [image objectForKey:@"name"];
+//        NSString* waveNameFromArray = [image objectForKey:@"name_2"];
+//        if([imageName isEqual:imageNameFromArray] && [waveName isEqual:waveNameFromArray]){
+//            return i;
+//        }        
+//    }
+//    
+//    return -1;
+//}
 
 @end

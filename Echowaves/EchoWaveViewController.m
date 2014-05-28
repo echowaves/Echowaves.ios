@@ -158,10 +158,10 @@
 
     DetailedImagePageViewController *detailedImagePageViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil] instantiateViewControllerWithIdentifier:@"DetailedImagePageView"];
     
-    detailedImagePageViewController.imageIndex = indexPath.row;
+    detailedImagePageViewController.initialViewIndex = indexPath.row;
     detailedImagePageViewController.waveImages = [self waveImages];
     
-    [self.navigationController pushViewController:detailedImagePageViewController animated:YES];
+    [self.navigationController pushViewController:detailedImagePageViewController animated:NO];
     
 }
 

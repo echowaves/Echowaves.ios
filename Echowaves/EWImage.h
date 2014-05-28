@@ -64,9 +64,9 @@
            failure:(void (^)(NSError *error))failure;
 
 //find index of an image in the all images array by image name and wave name
-+(long)imageIndexFromImageName:(NSString *) imageName
-                      waveName:(NSString *) waveName
-                    waveImages:(NSArray *) waveImages;
+//+(long)imageIndexFromImageName:(NSString *) imageName
+//                      waveName:(NSString *) waveName
+//                    waveImages:(NSArray *) waveImages;
 
 
 @end

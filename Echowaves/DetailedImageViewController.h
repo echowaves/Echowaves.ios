@@ -12,6 +12,7 @@
 #import <AddressBookUI/AddressBookUI.h>
 
 @interface DetailedImageViewController : UIViewController <UIAlertViewDelegate, ABPeoplePickerNavigationControllerDelegate, MFMessageComposeViewControllerDelegate>
+@property (atomic) NSUInteger imageIndex;
 
 @property (strong, nonatomic) NSString *waveName;
 @property (strong, nonatomic) NSString *imageName;
@@ -24,5 +25,6 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
 
+@property (strong, nonatomic) UINavigationItem *navItem;
 
 @end

@@ -129,6 +129,7 @@
                                   
                                   detailedImageViewController.imageName = imageName;
                                   detailedImageViewController.waveName = waveName;
+                                  detailedImageViewController.imageIndex = 0;
                                   
                                   
                                   [pickAWaveViewController.navigationController pushViewController:detailedImageViewController animated:NO];
