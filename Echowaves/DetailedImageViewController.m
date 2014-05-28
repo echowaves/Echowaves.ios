@@ -22,12 +22,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initView];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    //    [self updateView];
+    [self updateView];
 }
 
 //- (void) viewWillDisappear:(BOOL)animated {
@@ -37,7 +38,19 @@
 - (void) initView {
 //    self.currImageView.contentMode = UIViewContentModeScaleAspectFit;
     NSLog(@",,,,,,,,,,,,,,,,,,,,,,,%@/%@", [self waveName], [self imageName]);
+    [EWImage loadThumbImage:[self imageName]
+                    forWave:[self waveName]
+                    success:^(UIImage *image) {
+                        self.currImageView.image = image;
+                        self.currImageView.contentMode = UIViewContentModeScaleAspectFit;
+                    }
+                    failure:^(NSError *error) {
+                        [EWDataModel showErrorAlertWithMessage:@"Error Loading thumb image" FromSender:nil];
+                        NSLog(@"error: %@", error.description);
+                    }];
     
+}
+- (void) updateView {
     [self navItem].rightBarButtonItems = nil;
     
     [[self waveNameLable] setText:[self waveName]];
@@ -68,27 +81,15 @@
         [self navItem].rightBarButtonItems = @[shareButton, deleteButton];
     } else {
         [self navItem].rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave
-                                                                                                 target:self
-                                                                                                 action:@selector(saveImage)];
+                                                                                          target:self
+                                                                                          action:@selector(saveImage)];
     }
-
+    
     self.progressView.progress = 0.0;
     [self.progressView setHidden:FALSE];
     
+
     
-    [EWImage loadThumbImage:[self imageName]
-                    forWave:[self waveName]
-                    success:^(UIImage *image) {
-                        self.currImageView.image = image;
-                        self.currImageView.contentMode = UIViewContentModeScaleAspectFit;
-                    }
-                    failure:^(NSError *error) {
-                        [EWDataModel showErrorAlertWithMessage:@"Error Loading thumb image" FromSender:nil];
-                        NSLog(@"error: %@", error.description);
-                    }];
-    
-}
-- (void) updateView {
 //    [EWImage loadFullImage:[self imageName]
 //                   forWave:[self waveName]
 //                   success:^(UIImage *image) {

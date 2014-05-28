@@ -30,7 +30,7 @@
                                                         forKey: UIPageViewControllerOptionSpineLocationKey];
     
     self.pageController = [[UIPageViewController alloc]
-                       initWithTransitionStyle:UIPageViewControllerTransitionStylePageCurl
+                       initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
                        navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
                        options: options];
     
