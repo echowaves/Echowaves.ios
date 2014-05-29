@@ -7,10 +7,7 @@
 //
 
 #import "NavigationTabBarViewController.h"
-
-@interface NavigationTabBarViewController ()
-
-@end
+#import "DetailedImageViewController.h"
 
 @implementation NavigationTabBarViewController
 
@@ -24,16 +21,11 @@
 
 - (IBAction)pushUpload:(id)sender {
     NSLog(@"pushing upload");
-    [APP_DELEGATE checkForUpload];
+    [APP_DELEGATE checkForInitialViewToPresent];
 }
 
 -(void) viewDidLoad {
     [super viewDidLoad];
-    self.waveName.title = [APP_DELEGATE currentWaveName];
 }
-
-//-(void) viewDidAppear:(BOOL)animated {
-//    [super viewDidAppear:animated];
-//}
 
 @end

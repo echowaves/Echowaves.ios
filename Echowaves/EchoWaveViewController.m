@@ -9,7 +9,7 @@
 #import "EchoWaveViewController.h"
 #import "NavigationTabBarViewController.h"
 #import "EWImage.h"
-#import "DetailedImageViewController.h"
+#import "DetailedImagePageViewController.h"
 
 
 @implementation EchoWaveViewController
@@ -45,6 +45,25 @@
 {
     [super viewDidLoad];
     NSLog(@"$$$$$$$$$$$$$$$$calling viewDidLoad for EchoWaveViewController");
+
+    
+    
+    // Add swipeGestures
+    UISwipeGestureRecognizer *oneFingerSwipeLeft = [[UISwipeGestureRecognizer alloc]
+                                                     initWithTarget:self
+                                                     action:@selector(swipeLeftGestureAction:)];
+    [oneFingerSwipeLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
+    [[self view] addGestureRecognizer:oneFingerSwipeLeft];
+    
+    UISwipeGestureRecognizer *oneFingerSwipeRight = [[UISwipeGestureRecognizer alloc]
+                                                      initWithTarget:self
+                                                      action:@selector(swipeRightGestureAction:)];
+    [oneFingerSwipeRight setDirection:UISwipeGestureRecognizerDirectionRight];
+    [[self view] addGestureRecognizer:oneFingerSwipeRight];
+    
+    
+    
+    
     
     self.wavesPicker.style = HPStyle_iOS7;
     self.wavesPicker.font = [UIFont fontWithName: @"Trebuchet MS" size: 14.0f];
@@ -56,6 +75,27 @@
         [self.imagesCollectionView addSubview:self.refreshControl];
     }
 }
+
+
+- (IBAction)swipeRightGestureAction:(id)sender {
+    NSLog(@"swipeRight called");
+    if( APP_DELEGATE.currentWaveIndex > 0) {
+        APP_DELEGATE.currentWaveIndex--;
+        APP_DELEGATE.currentWaveName = [((NSDictionary*)[self.myWaves objectAtIndex:APP_DELEGATE.currentWaveIndex]) objectForKey:@"name"];
+        [self reloadWavesPicker];
+//        [self startRefresh:self.refreshControl];
+    }
+}
+- (IBAction)swipeLeftGestureAction:(id)sender {
+    NSLog(@"swipeLeft called");
+    if( APP_DELEGATE.currentWaveIndex < [self.myWaves count]) {
+        APP_DELEGATE.currentWaveIndex++;
+        APP_DELEGATE.currentWaveName = [((NSDictionary*)[self.myWaves objectAtIndex:APP_DELEGATE.currentWaveIndex]) objectForKey:@"name"];
+        [self reloadWavesPicker];
+//        [self startRefresh:self.refreshControl];
+    }
+}
+
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -96,40 +136,36 @@
     
     NSString* imageName = [((NSDictionary*)[self.waveImages objectAtIndex:indexPath.row]) objectForKey:@"name"];
     NSString* waveName = [((NSDictionary*)[self.waveImages objectAtIndex:indexPath.row]) objectForKey:@"name_2"];
-    NSString* imageUrl = [NSString stringWithFormat:@"%@/img/%@/thumb_%@", EWAWSBucket, waveName, imageName];
+//    NSString* imageUrl = [NSString stringWithFormat:@"%@/img/%@/thumb_%@", EWAWSBucket, waveName, imageName];
     
     
     ((UIImageView *)[cell viewWithTag:100]).image = [UIImage imageNamed:@"echowave.png"];
 
-    [EWImage loadImageFromUrl:imageUrl
-                      success:^(UIImage *image) {
-                          ((UIImageView *)[cell viewWithTag:100]).image = image;
-                          waveImageView.contentMode = UIViewContentModeScaleAspectFit;
-                      }
-                      failure:^(NSError *error) {
-                          NSLog(@"error: %@", error.description);
-                      }
-                     progress:nil];
+    [EWImage loadThumbImage:imageName
+                    forWave:waveName
+                    success:^(UIImage *image) {
+                        ((UIImageView *)[cell viewWithTag:100]).image = image;
+                        waveImageView.contentMode = UIViewContentModeScaleAspectFit;
+                    } failure:^(NSError *error) {
+                        NSLog(@"error: %@", error.description);
+                    }];
+     
     
     return cell;
 }
 
+- (void)collectionView:(UICollectionView *)imagesCollectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-
-    if ([segue.identifier isEqualToString:@"DetailedImageSegue"]) {
-        
-        UICollectionViewCell *cell = (UICollectionViewCell *)sender;
-        NSIndexPath *indexPath = [self.imagesCollectionView indexPathForCell:cell];
-        
-        NSLog(@"))))))))))))))))))indexPath: %ld", (long)indexPath.row);
-        
-        DetailedImageViewController *detailedImageViewController = (DetailedImageViewController *)segue.destinationViewController;
-        detailedImageViewController.imageFromJson = [self.waveImages objectAtIndex:indexPath.row];
-        detailedImageViewController.image = ((UIImageView *)[cell viewWithTag:100]).image;
-    }
+    DetailedImagePageViewController *detailedImagePageViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil] instantiateViewControllerWithIdentifier:@"DetailedImagePageView"];
+    
+    detailedImagePageViewController.initialViewIndex = indexPath.row;
+    detailedImagePageViewController.waveImages = [self waveImages];
+    
+    [self.navigationController pushViewController:detailedImagePageViewController animated:NO];
+    
 }
+
+
 
 
 #pragma mark -  HPickerViewDataSource

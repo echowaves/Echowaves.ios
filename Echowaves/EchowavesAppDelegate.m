@@ -8,6 +8,8 @@
 
 #import "EchowavesAppDelegate.h"
 #import "HomeViewController.h"
+#import "DetailedImageViewController.h"
+#import "AcceptBlendingRequestViewController.h"
 #import "Flurry.h"
 
 @implementation EchowavesAppDelegate
@@ -72,43 +74,6 @@
     return YES;
 }
 
-//- (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
-//                         change:(NSDictionary *)change context:(void *)context
-//{
-//    if (object == self.networkQueue && [keyPath isEqualToString:@"operations"]) {
-//        if ([self.networkQueue.operations count] == 0) {
-//            // Do something here when your queue has completed
-//            NSLog(@"queue has completed");
-//            
-//            NSLog(@"!!!!!!!!!!!!!!!images to post operations: %lu", (unsigned long)[self.networkQueue.operations count]);
-//            
-//                [EWWave sendPushNotifyForWave:APP_DELEGATE.currentWaveName
-//                                        badge:1
-//                                      success:^{
-//                                          NSLog(@"!!!!!!!!!!!!!!!pushed notify successfully");
-//                                      }
-//                                      failure:^(NSError *error) {
-//                                          NSLog(@"this error should never happen %@", error.description);
-//                                      }];
-//            
-//        }
-//    }
-//    else {
-//        [super observeValueForKeyPath:keyPath ofObject:object
-//                               change:change context:context];
-//    }
-//    
-//}
-
-//-(void)timerFired:(NSTimer *) theTimer
-//{
-//    if(self.networkQueue.operationCount == 0) {
-//        [self.wavingViewController.imagesToUpload setText:@"0"];
-//    } else {
-//        [self.wavingViewController.imagesToUpload setText:[NSString stringWithFormat:@"%d", self.networkQueue.operationCount]];
-//    }
-//}
-
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     NSLog(@",,,,,,,,,,,,,,,,,applicationWillResignActive");
@@ -127,60 +92,72 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
+    NSLog(@">>>>>>>>>>>>>>>>>>>>>>>> applicationWillEnterForeground");
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-    [self checkForUpload];
+    
 }
 
 
-- (void)checkForUpload {
-//    if([self currentlyCheckingForUpload] == NO) {
-        if(self.wavingViewController.waving.on) {
-            self.uploadProgressViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil] instantiateViewControllerWithIdentifier:@"UploadView"];
-            [(UINavigationController *)self.window.rootViewController pushViewController:self.uploadProgressViewController animated:YES];
-            
-        }
-//    }
-    // [pvc release]; if not using ARC
+- (void)checkForInitialViewToPresent {
+    if([APP_DELEGATE shareActionToken]) {
+        [self presentDetailedImageBasedOnShareToken];
+    } else {
+        [self presentUploadView];
+    }
+}
+
+- (void) presentUploadView {
+    if(self.wavingViewController.waving.on) {
+        self.uploadProgressViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil] instantiateViewControllerWithIdentifier:@"UploadView"];
+        [(UINavigationController *)self.window.rootViewController pushViewController:self.uploadProgressViewController animated:YES];
+        
+    }
+    
+}
+
+- (void) presentDetailedImageBasedOnShareToken {
+        [EWImage retreiveImageByToken:[APP_DELEGATE shareActionToken]
+                              success:^(NSString *imageName, NSString *waveName) {
+
+                                  
+                                  AcceptBlendingRequestViewController *pickAWaveViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil] instantiateViewControllerWithIdentifier:@"PickAWaveView"];
+                                  pickAWaveViewController.fromWave = waveName;
+                                  [(UINavigationController *)self.window.rootViewController pushViewController:pickAWaveViewController animated:NO];
+                                  
+
+                                  DetailedImageViewController *detailedImageViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil] instantiateViewControllerWithIdentifier:@"DetailedImageView"];
+                                  
+                                  detailedImageViewController.imageName = imageName;
+                                  detailedImageViewController.waveName = waveName;
+                                  detailedImageViewController.imageIndex = 0;
+                                  
+                                  
+                                  [pickAWaveViewController.navigationController pushViewController:detailedImageViewController animated:NO];
+                                  
+                                  
+                                  APP_DELEGATE.shareActionToken = nil;//release the token
+                                  
+                              } failure:^(NSError *error) {
+                                  if([APP_DELEGATE currentWaveName]) {
+                                      [EWImage showAlertWithMessage:@"Token expired..." FromSender:nil];
+                                  }
+                                  NSLog(@"error retreiving token");
+                              }];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     NSLog(@"++++++++++++++++++called applicationDidBecomeActive");
     
-    
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
-
     
-//    self.aTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
-//                                                   target:self
-//                                                 selector:@selector(timerFired:)
-//                                                 userInfo:nil
-//                                                  repeats:YES];
-//    [self.aTimer fire];
-
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-
-
-    
-//    if (self.wavingViewController.waving.on) {
-//        //this prevents from loosing session in case the server was bounced
-////        [echowavesViewController tuneIn];
-//
-//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//            [self.uploadProgressViewController checkForNewImages];
-//        });
-//    }
-    
-    
-//    [self checkForUpload];
+    [self checkForInitialViewToPresent];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
-
-
 
 
 - (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
@@ -209,8 +186,21 @@
 	NSLog(@"Failed to get token, error^^^^^^^^^^^^^^^^^^^^^^^: %@", error);
 }
 
-//- (BOOL) application:(UIApplication *)application handleOpenURL:(NSURL *)url {
-//    
-//}
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+ 
+    NSLog(@"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< url: %@", url.description);
+
+    //lets parse query string params and extract token
+    NSMutableDictionary *params = [NSMutableDictionary new];
+    for (NSString *param in [[url query]componentsSeparatedByString:@"&"]) {
+        NSArray *elts = [param componentsSeparatedByString:@"="];
+        if([elts count] < 2) continue;
+        [params setObject:[elts objectAtIndex:1] forKey:[elts objectAtIndex:0]];
+    }
+    
+    self.shareActionToken = [params valueForKey:@"token"];
+
+    return YES;
+}
 
 @end

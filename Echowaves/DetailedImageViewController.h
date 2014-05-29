@@ -11,15 +11,23 @@
 #import <AddressBook/AddressBook.h>
 #import <AddressBookUI/AddressBookUI.h>
 
-@interface DetailedImageViewController : UIViewController <UIAlertViewDelegate, ABPeoplePickerNavigationControllerDelegate, MFMessageComposeViewControllerDelegate>
-
-@property (weak, nonatomic) NSDictionary *imageFromJson;
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) UIImage *image;
-@property (strong, nonatomic) IBOutlet UILabel *waveName;
+@interface DetailedImageViewController : UIViewController <UIAlertViewDelegate, ABPeoplePickerNavigationControllerDelegate, MFMessageComposeViewControllerDelegate, UIScrollViewDelegate>
+@property (atomic) NSUInteger imageIndex;
+@property (atomic) bool fullSizeImageLoaded;
 
 @property (strong, nonatomic) IBOutlet UIProgressView *progressView;
 
+@property (strong, nonatomic) NSString *waveName;
+@property (strong, nonatomic) NSString *imageName;
+
+@property (strong, nonatomic) IBOutlet UIScrollView *imageScrollView;
+
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+
+@property (strong, nonatomic) IBOutlet UILabel *waveNameLable;
+
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
+
+@property (strong, nonatomic) UINavigationItem *navItem;
 
 @end

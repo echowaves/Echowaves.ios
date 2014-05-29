@@ -10,6 +10,4 @@
 
 @interface NavigationTabBarViewController : UITabBarController
 
-@property (strong, nonatomic) IBOutlet UINavigationItem *waveName;
-
 @end

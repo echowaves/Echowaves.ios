@@ -59,6 +59,8 @@
                        [EWWave hideLoadingIndicator:self];
                        [EWWave storeCredentialForWaveName:self.waveName.text withPassword:self.wavePassword.text];
 
+                       NSString *deviceToken=[(EchowavesAppDelegate *)[[UIApplication sharedApplication] delegate] deviceToken];
+                       if(deviceToken) {
                        [EWWave storeIosTokenForWave:self.waveName.text
                                               token:[(EchowavesAppDelegate *)[[UIApplication sharedApplication] delegate] deviceToken]
                                             success:^(NSString *waveName) {
@@ -67,7 +69,7 @@
                                             failure:^(NSString *errorMessage) {
                                                 NSLog(@"failed storing deviceToken %@", errorMessage);
                                             }];
-
+                       }
                        [self performSegueWithIdentifier: @"CreateWave" sender: self];
                        
                    }
@@ -81,13 +83,13 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSLog(@"----------------seguiing");
-    NavigationTabBarViewController *navigationTabBarViewController = segue.destinationViewController;
+//    NavigationTabBarViewController *navigationTabBarViewController = segue.destinationViewController;
     
     // Make sure your segue name in storyboard is the same as this line
    if ([[segue identifier] isEqualToString:@"CreateWave"])
     {
         NSLog(@"----calling prepareForSegue CreateWave");
-        navigationTabBarViewController.waveName.title = self.waveName.text;
+//        navigationTabBarViewController.waveName.title = self.waveName.text;
     }
 }
 

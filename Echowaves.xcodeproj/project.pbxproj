@@ -39,6 +39,7 @@
 		0A5BF7771910378D005C2742 /* HPCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5BF7701910378D005C2742 /* HPCollectionVC.m */; };
 		0A5BF7781910378D005C2742 /* HPCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5BF7721910378D005C2742 /* HPCollectionViewCell.m */; };
 		0A5BF7791910378D005C2742 /* HPCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5BF7741910378D005C2742 /* HPCollectionViewFlowLayout.m */; };
+		0A6B326C193509EE00AE6A6E /* DetailedImagePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6B326B193509EE00AE6A6E /* DetailedImagePageViewController.m */; };
 		0A7C733C18948E9300292622 /* NavigationTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7C733B18948E9300292622 /* NavigationTabBarViewController.m */; };
 		0AB1CF511890C1380056A94A /* EWDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB1CF501890C1380056A94A /* EWDataModel.m */; };
 		0AC91E66186BF50300D61381 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AC91E65186BF50300D61381 /* Security.framework */; };
@@ -59,6 +60,7 @@
 		0AD6E27518011F59008303E0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0AD6E27318011F59008303E0 /* InfoPlist.strings */; };
 		0AD6E27718011F59008303E0 /* EchowavesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD6E27618011F59008303E0 /* EchowavesTests.m */; };
 		0AEB92BF18A6F3FC00DE51DC /* BlendWithViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEB92BE18A6F3FC00DE51DC /* BlendWithViewController.m */; };
+		0AF4BA77192BEB1200E11E29 /* AcceptBlendingRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF4BA76192BEB1200E11E29 /* AcceptBlendingRequestViewController.m */; };
 		0AFD9A6D18ECD457007F5749 /* UploadProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFD9A6C18ECD457007F5749 /* UploadProgressViewController.m */; };
 		0AFD9A7018ECEBA2007F5749 /* AddChildWaveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFD9A6F18ECEBA2007F5749 /* AddChildWaveViewController.m */; };
 		7A65E0D618CB19B800204530 /* EchowavesImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A65E0D518CB19B800204530 /* EchowavesImagePickerController.m */; };
@@ -143,6 +145,8 @@
 		0A5BF7731910378D005C2742 /* HPCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HPCollectionViewFlowLayout.h; path = Resources/HorizontalPicker/HPCollectionViewFlowLayout.h; sourceTree = "<group>"; };
 		0A5BF7741910378D005C2742 /* HPCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HPCollectionViewFlowLayout.m; path = Resources/HorizontalPicker/HPCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		0A5BF7751910378D005C2742 /* HPickerDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HPickerDefinitions.h; path = Resources/HorizontalPicker/HPickerDefinitions.h; sourceTree = "<group>"; };
+		0A6B326A193509EE00AE6A6E /* DetailedImagePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailedImagePageViewController.h; sourceTree = "<group>"; };
+		0A6B326B193509EE00AE6A6E /* DetailedImagePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailedImagePageViewController.m; sourceTree = "<group>"; };
 		0A7C733A18948E9300292622 /* NavigationTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationTabBarViewController.h; sourceTree = "<group>"; };
 		0A7C733B18948E9300292622 /* NavigationTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationTabBarViewController.m; sourceTree = "<group>"; };
 		0AB1CF4F1890C1380056A94A /* EWDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWDataModel.h; sourceTree = "<group>"; };
@@ -173,6 +177,8 @@
 		0AD6E27618011F59008303E0 /* EchowavesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EchowavesTests.m; sourceTree = "<group>"; };
 		0AEB92BD18A6F3FC00DE51DC /* BlendWithViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlendWithViewController.h; sourceTree = "<group>"; };
 		0AEB92BE18A6F3FC00DE51DC /* BlendWithViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlendWithViewController.m; sourceTree = "<group>"; };
+		0AF4BA75192BEB1200E11E29 /* AcceptBlendingRequestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcceptBlendingRequestViewController.h; sourceTree = "<group>"; };
+		0AF4BA76192BEB1200E11E29 /* AcceptBlendingRequestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcceptBlendingRequestViewController.m; sourceTree = "<group>"; };
 		0AFD9A6B18ECD457007F5749 /* UploadProgressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadProgressViewController.h; sourceTree = "<group>"; };
 		0AFD9A6C18ECD457007F5749 /* UploadProgressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadProgressViewController.m; sourceTree = "<group>"; };
 		0AFD9A6E18ECEBA2007F5749 /* AddChildWaveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddChildWaveViewController.h; sourceTree = "<group>"; };
@@ -371,6 +377,10 @@
 				0A34C00F18556B4800E085BC /* Resources */,
 				0A5ADAA01888C07900D492BC /* iPad */,
 				0AD6E25A18011F59008303E0 /* Main_iPhone.storyboard */,
+				0A6B326A193509EE00AE6A6E /* DetailedImagePageViewController.h */,
+				0A6B326B193509EE00AE6A6E /* DetailedImagePageViewController.m */,
+				0AF4BA75192BEB1200E11E29 /* AcceptBlendingRequestViewController.h */,
+				0AF4BA76192BEB1200E11E29 /* AcceptBlendingRequestViewController.m */,
 				0A34FEFB18F4A1F600B5AF34 /* WaveDetailsViewController.h */,
 				0A34FEFC18F4A1F600B5AF34 /* WaveDetailsViewController.m */,
 				0AFD9A6E18ECEBA2007F5749 /* AddChildWaveViewController.h */,
@@ -583,9 +593,11 @@
 				0A5BF7771910378D005C2742 /* HPCollectionVC.m in Sources */,
 				0A28E5ED188F36D300B7BDDB /* HomeViewController.m in Sources */,
 				0A163DC418AAD72900148595 /* DetailedImageViewController.m in Sources */,
+				0A6B326C193509EE00AE6A6E /* DetailedImagePageViewController.m in Sources */,
 				0AEB92BF18A6F3FC00DE51DC /* BlendWithViewController.m in Sources */,
 				0A4621841888E29C005CC161 /* AFURLSessionManager.m in Sources */,
 				0AD6E25918011F59008303E0 /* EchowavesAppDelegate.m in Sources */,
+				0AF4BA77192BEB1200E11E29 /* AcceptBlendingRequestViewController.m in Sources */,
 				0AD6E25518011F59008303E0 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -19,90 +19,163 @@
 
 @implementation DetailedImageViewController
 
-- (void)viewWillAppear:(BOOL)animated
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.imageScrollView.delegate = self;
+    self.imageScrollView.minimumZoomScale = 1.0;
+    self.imageScrollView.maximumZoomScale = 100.0;
+    self.progressView.progress = 0.0;
+    self.progressView.hidden = TRUE;
+
+    [self initView];
+    
+    UITapGestureRecognizer *tapOnce =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(tapOnce:)];
+    UITapGestureRecognizer *tapTwice =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(tapTwice:)];
+    
+    tapOnce.numberOfTapsRequired = 1;
+    tapTwice.numberOfTapsRequired = 2;
+    
+    //stops tapOnce from overriding tapTwice
+    [tapOnce requireGestureRecognizerToFail:tapTwice];
+    
+    // then need to add the gesture recogniser to a view
+    // - this will be the view that recognises the gesture
+    [self.view addGestureRecognizer:tapOnce];
+    [self.view addGestureRecognizer:tapTwice];
+
+}
+- (void)loadFullImage {
+    self.progressView.hidden = FALSE;
+    self.fullSizeImageLoaded=YES;
+    [EWImage loadFullImage:[self imageName]
+                   forWave:[self waveName]
+                   success:^(UIImage *image) {
+                       self.imageView.image = image;
+                       self.progressView.hidden = TRUE;
+                   }
+                   failure:^(NSError *error) {
+                       self.progressView.hidden = TRUE;
+                       [EWDataModel showErrorAlertWithMessage:@"Error Loading full image" FromSender:nil];
+                       NSLog(@"error: %@", error.description);
+                       self.fullSizeImageLoaded=NO;
+                   }
+                  progress:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
+                      self.progressView.progress = (float)totalBytesRead / totalBytesExpectedToRead;
+                  }];
+}
+
+- (void)tapOnce:(UIGestureRecognizer *)gesture
+{
+    if(self.navigationController.navigationBarHidden) {
+        if(![self fullSizeImageLoaded]) {
+            [self loadFullImage];
+        } else {
+            [[self navigationController] setNavigationBarHidden:NO animated:YES];
+        }
+    } else {
+        [[self navigationController] setNavigationBarHidden:YES animated:YES];
+        if(![self fullSizeImageLoaded]) {
+            [self loadFullImage];
+        }
+    }
+}
+
+- (void)tapTwice:(UIGestureRecognizer *)gesture
+{
+    CGPoint point = [(UITapGestureRecognizer *)gesture locationInView:[self imageView]];
+    CGRect rectToZoomOutTo = CGRectMake(point.x/2, point.y/2, self.imageView.frame.size.width/2, self.imageView.frame.size.height/2);
+    [self.imageScrollView zoomToRect:rectToZoomOutTo animated:YES];
+}
+
+//-(BOOL) shouldAutorotate {
+//    return YES;
+//}
+
+- (void)viewDidAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.imageView.image = self.image;
-    self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [self updateView];
+}
+
+//- (void) viewWillDisappear:(BOOL)animated {
+//    self.navItem = nil;
+//}
+
+- (void) initView {
+//    self.currImageView.contentMode = UIViewContentModeScaleAspectFit;
+    NSLog(@",,,,,,,,,,,,,,,,,,,,,,,%@/%@", [self waveName], [self imageName]);
+    [EWImage loadThumbImage:[self imageName]
+                    forWave:[self waveName]
+                    success:^(UIImage *image) {
+                        self.imageView.image = image;
+                        self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+                        
+                        [self.imageView sizeToFit];
+                        self.imageScrollView.contentSize = image.size;
+                    }
+                    failure:^(NSError *error) {
+                        [EWDataModel showErrorAlertWithMessage:@"Error Loading thumb image" FromSender:nil];
+                        NSLog(@"error: %@", error.description);
+                    }];
     
-    //    NSLog(@"###########imageFromJson %@", self.imageFromJson);
-    NSString* imageName = [self.imageFromJson objectForKey:@"name"];
-    NSString* waveName = [self.imageFromJson objectForKey:@"name_2"];
-    //    NSString* imageUrl = [NSString stringWithFormat:@"%@/img/%@/thumb_%@", EWHost, waveName, imageName];
-    NSString* imageUrl = [NSString stringWithFormat:@"%@/img/%@/%@", EWAWSBucket, waveName, imageName];
+}
+- (void) updateView {
+    [self navItem].rightBarButtonItems = nil;
     
-//    [self.navigationItem setPrompt:waveName];
-    [[self waveName] setText:waveName];
+    [[self waveNameLable] setText:[self waveName]];
     
     NSDateFormatter *formatter = [NSDateFormatter new];
     [formatter setDateFormat : @"yyyyMMddHHmmssSSSS"];
-    NSString *dateString = [imageName substringWithRange:NSMakeRange(0, 18)];
-    NSLog(@"imageName  = %@", imageName);
+    NSString *dateString = [self.imageName substringWithRange:NSMakeRange(0, 18)];
+    NSLog(@"imageName  = %@", self.imageName);
     NSLog(@"dateString = %@", dateString);
     NSDate *dateTime = [formatter dateFromString:dateString];
     
-//    [formatter release];
+    //    [formatter release];
     [formatter setDateFormat:@"MM/dd/yyyy HH:mm:ss"];
-    [self setTitle:[formatter stringFromDate:dateTime]];
+    [self.navItem setTitle:[formatter stringFromDate:dateTime]];
     
-//    [[self navigationItem].backBarButtonItem setTitle:@" "];
+    //    [[self navigationItem].backBarButtonItem setTitle:@" "];
     
-    if ([waveName isEqualToString:[APP_DELEGATE currentWaveName]]) {
+    if ([self.waveName isEqualToString:[APP_DELEGATE currentWaveName]]) {
         
         UIBarButtonItem* deleteButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash
                                                                                       target:self
                                                                                       action:@selector(deleteImage)];
-
+        
         UIBarButtonItem* shareButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
                                                                                      target:self
                                                                                      action:@selector(shareImage)];
         
-        self.navigationItem.rightBarButtonItems = @[shareButton, deleteButton];
+        [self navItem].rightBarButtonItems = @[shareButton, deleteButton];
     } else {
-        [self navigationItem].rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave
-                                                                                                 target:self
-                                                                                                 action:@selector(saveImage)];
-        
+        [self navItem].rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave
+                                                                                          target:self
+                                                                                          action:@selector(saveImage)];
     }
-    
-    
-    
-    self.progressView.progress = 0.0;
-    [self.progressView setHidden:FALSE];
-    
-    [EWImage loadImageFromUrl:imageUrl
-                      success:^(UIImage *image) {
-                          self.imageView.image = image;
-                          self.imageView.contentMode = UIViewContentModeScaleAspectFit;
-                          [self.progressView setHidden:TRUE];
-                      }
-                      failure:^(NSError *error) {
-                          [EWDataModel showErrorAlertWithMessage:@"Error Loading image" FromSender:nil];
-                          NSLog(@"error: %@", error.description);
-                      }
-                     progress:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
-                         self.progressView.progress = (float)totalBytesRead / totalBytesExpectedToRead;
-                     }];
-    
 }
 
-//-(void) popBack {
-//    [self.navigationController popViewControllerAnimated:YES];
-//}
+- (UIView*)viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
+    return self.imageView;
+}
 
 
 -(void)deleteImage {
     NSLog(@"deleting image");
-    NSString* imageName = [self.imageFromJson objectForKey:@"name"];
-    NSString* waveName = [APP_DELEGATE currentWaveName];
     
     DeleteImageAlertView *alertMessage = [[DeleteImageAlertView alloc] initWithTitle:@"Alert"
                                                                              message:@"Delete?"
                                                                             delegate:self
                                                                    cancelButtonTitle:@"Cancel"
                                                                    otherButtonTitles:@"OK", nil];
-    alertMessage.waveName = waveName;
-    alertMessage.imageName = imageName;
+    alertMessage.waveName = self.waveName;
+    alertMessage.imageName = self.imageName;
     alertMessage.tag = 20002;
     [alertMessage show];
 
@@ -143,7 +216,7 @@
 
 
 -(void)saveImage {
-    [EWImage saveImageToAssetLibrary:[self image]
+    [EWImage saveImageToAssetLibrary:[self.imageView image]
                              success:^{
                                  [EWDataModel showAlertWithMessage:@"Photo Saved to iPhone"
                                                         FromSender:nil];
@@ -185,15 +258,29 @@
                                              MFMessageComposeViewController *smscontroller = [MFMessageComposeViewController new];
                                              if([MFMessageComposeViewController canSendText])
                                              {
-                                                 smscontroller.body = @"Hello from Echowaves";
                                                  
                                                  
+                                                 [EWImage shareImage:self.imageName
+                                                              inWave:self.waveName
+                                                             success:^(NSString *token) {
+
+                                                                 
+                                                                 smscontroller.body =
+                                                                 [NSString
+                                                                  stringWithFormat:@"I want to share Echowaves photo with you echowaves://share?token=%@", token];
+                                                                 
+                                                                 smscontroller.recipients = [NSArray arrayWithObjects: phoneNumber, nil];
+                                                                 smscontroller.messageComposeDelegate = self;
+                                                                 [self presentViewController:smscontroller animated:YES completion:^{
+                                                                     NSLog(@"sms controller presented");
+                                                                 }];
+                    
+                                                                 
+                                                             } failure:^(NSError *error) {
+                                                                 [EWDataModel showAlertWithMessage:[error description]
+                                                                                        FromSender:nil];
+                                                             }];
                                                  
-                                                 smscontroller.recipients = [NSArray arrayWithObjects: phoneNumber, nil];
-                                                 smscontroller.messageComposeDelegate = self;
-                                                 [self presentViewController:smscontroller animated:YES completion:^{
-                                                     NSLog(@"sms controller presented");
-                                                 }];
                                              }
                                          }
                                      }

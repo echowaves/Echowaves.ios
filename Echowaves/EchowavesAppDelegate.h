@@ -9,6 +9,7 @@
 @import UIKit;
 
 #import "EWWave.h"
+#import "EWImage.h"
 #import "UploadProgressViewController.h"
 #import "WavingViewController.h"
 
@@ -33,7 +34,9 @@
 
 @property (strong, nonatomic) NSString *deviceToken;
 
-- (void)checkForUpload;
+@property (strong, nonatomic) NSString *shareActionToken;
+
+- (void)checkForInitialViewToPresent;
 
 @end
 

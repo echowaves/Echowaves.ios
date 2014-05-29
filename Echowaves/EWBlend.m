@@ -83,6 +83,7 @@
     
 }
 +(void) unblendFrom:(NSString *)waveName
+         currentWave:(NSString *)currentWave
             success:(void (^)(void))success
             failure:(void (^)(NSError *error))failure {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -94,7 +95,7 @@
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
     NSDictionary *parameters = @{@"wave_name": waveName,
-                                 @"from_wave": [APP_DELEGATE currentWaveName]};
+                                 @"from_wave": currentWave};
     
     [manager POST:[NSString stringWithFormat:@"%@/unblend.json", EWHost] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         success();
