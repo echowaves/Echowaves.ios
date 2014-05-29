@@ -21,8 +21,72 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self initView];
+    
+    self.imageScrollView.delegate = self;
+    self.imageScrollView.minimumZoomScale = 1.0;
+    self.imageScrollView.maximumZoomScale = 100.0;
+    self.progressView.progress = 0.0;
+    self.progressView.hidden = TRUE;
 
+    [self initView];
+    
+    UITapGestureRecognizer *tapOnce =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(tapOnce:)];
+    UITapGestureRecognizer *tapTwice =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(tapTwice:)];
+    
+    tapOnce.numberOfTapsRequired = 1;
+    tapTwice.numberOfTapsRequired = 2;
+    
+    //stops tapOnce from overriding tapTwice
+    [tapOnce requireGestureRecognizerToFail:tapTwice];
+    
+    // then need to add the gesture recogniser to a view
+    // - this will be the view that recognises the gesture
+    [self.view addGestureRecognizer:tapOnce];
+    [self.view addGestureRecognizer:tapTwice];
+
+}
+- (void)loadFullImage {
+    self.progressView.hidden = FALSE;
+    self.fullSizeImageLoaded=YES;
+    [EWImage loadFullImage:[self imageName]
+                   forWave:[self waveName]
+                   success:^(UIImage *image) {
+                       self.imageView.image = image;
+                       self.progressView.hidden = TRUE;
+                   }
+                   failure:^(NSError *error) {
+                       self.progressView.hidden = TRUE;
+                       [EWDataModel showErrorAlertWithMessage:@"Error Loading full image" FromSender:nil];
+                       NSLog(@"error: %@", error.description);
+                       self.fullSizeImageLoaded=NO;
+                   }
+                  progress:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
+                      self.progressView.progress = (float)totalBytesRead / totalBytesExpectedToRead;
+                  }];
+}
+
+- (void)tapOnce:(UIGestureRecognizer *)gesture
+{
+    if(self.navigationController.navigationBarHidden) {
+        if(![self fullSizeImageLoaded]) {
+            [self loadFullImage];
+        } else {
+            [[self navigationController] setNavigationBarHidden:NO animated:YES];
+        }
+    } else {
+        [[self navigationController] setNavigationBarHidden:YES animated:YES];
+        if(![self fullSizeImageLoaded]) {
+            [self loadFullImage];
+        }
+    }
+}
+
+- (void)tapTwice:(UIGestureRecognizer *)gesture
+{
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -41,8 +105,11 @@
     [EWImage loadThumbImage:[self imageName]
                     forWave:[self waveName]
                     success:^(UIImage *image) {
-                        self.currImageView.image = image;
-                        self.currImageView.contentMode = UIViewContentModeScaleAspectFit;
+                        self.imageView.image = image;
+                        self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+                        
+                        [self.imageView sizeToFit];
+                        self.imageScrollView.contentSize = image.size;
                     }
                     failure:^(NSError *error) {
                         [EWDataModel showErrorAlertWithMessage:@"Error Loading thumb image" FromSender:nil];
@@ -85,26 +152,21 @@
                                                                                           action:@selector(saveImage)];
     }
     
-    self.progressView.progress = 0.0;
-    [self.progressView setHidden:FALSE];
+//    self.progressView.progress = 0.0;
+//    [self.progressView setHidden:FALSE];
     
 
     
-//    [EWImage loadFullImage:[self imageName]
-//                   forWave:[self waveName]
-//                   success:^(UIImage *image) {
-//                       [self.progressView setHidden:TRUE];
-//                       
-//                       self.currImageView.image = image;
-//                       self.currImageView.contentMode = UIViewContentModeScaleAspectFit;
-//                   }
-//                   failure:^(NSError *error) {
-//                       [EWDataModel showErrorAlertWithMessage:@"Error Loading full image" FromSender:nil];
-//                       NSLog(@"error: %@", error.description);
-//                   }
-//                  progress:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
-//                      self.progressView.progress = (float)totalBytesRead / totalBytesExpectedToRead;
-//                  }];
+    
+    
+//    [self.imageView sizeToFit];
+//    self.imageScrollView.contentSize = self.imageView.image.size;
+
+}
+
+- (UIView*)viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
+    return self.imageView;
 }
 
 
@@ -158,7 +220,7 @@
 
 
 -(void)saveImage {
-    [EWImage saveImageToAssetLibrary:[self.currImageView image]
+    [EWImage saveImageToAssetLibrary:[self.imageView image]
                              success:^{
                                  [EWDataModel showAlertWithMessage:@"Photo Saved to iPhone"
                                                         FromSender:nil];

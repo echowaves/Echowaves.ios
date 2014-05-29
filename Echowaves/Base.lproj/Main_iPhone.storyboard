@@ -295,16 +295,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="echowave" translatesAutoresizingMaskIntoConstraints="NO" id="8Zy-gT-xmg">
-                                <rect key="frame" x="0.0" y="71" width="320" height="422"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="4wt-P0-OB3">
-                                <rect key="frame" x="0.0" y="65" width="320" height="2"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rix-Hx-RKl">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="echowave" translatesAutoresizingMaskIntoConstraints="NO" id="8Zy-gT-xmg">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </imageView>
+                                </subviews>
+                            </scrollView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="mgh-zC-eoo">
+                                <rect key="frame" x="0.0" y="21" width="320" height="2"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </progressView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="waveName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOH-bW-lzp">
-                                <rect key="frame" x="0.0" y="498" width="320" height="21"/>
+                                <rect key="frame" x="0.0" y="527" width="320" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -315,8 +321,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="feT-eO-NXM"/>
                     <connections>
-                        <outlet property="currImageView" destination="8Zy-gT-xmg" id="XuU-pj-IVe"/>
-                        <outlet property="progressView" destination="4wt-P0-OB3" id="8Wf-zc-AER"/>
+                        <outlet property="imageScrollView" destination="Rix-Hx-RKl" id="bU7-o8-TDh"/>
+                        <outlet property="imageView" destination="8Zy-gT-xmg" id="fxP-U4-drh"/>
+                        <outlet property="progressView" destination="mgh-zC-eoo" id="dJe-IP-Xcc"/>
                         <outlet property="waveNameLable" destination="cOH-bW-lzp" id="OK6-d5-coE"/>
                     </connections>
                 </viewController>
