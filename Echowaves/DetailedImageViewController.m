@@ -87,6 +87,9 @@
 
 - (void)tapTwice:(UIGestureRecognizer *)gesture
 {
+    CGPoint point = [(UITapGestureRecognizer *)gesture locationInView:[self imageView]];
+    CGRect rectToZoomOutTo = CGRectMake(point.x, point.y, self.imageView.frame.size.width/2, self.imageView.frame.size.height/2);
+    [self.imageScrollView zoomToRect:rectToZoomOutTo animated:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -151,17 +154,6 @@
                                                                                           target:self
                                                                                           action:@selector(saveImage)];
     }
-    
-//    self.progressView.progress = 0.0;
-//    [self.progressView setHidden:FALSE];
-    
-
-    
-    
-    
-//    [self.imageView sizeToFit];
-//    self.imageScrollView.contentSize = self.imageView.image.size;
-
 }
 
 - (UIView*)viewForZoomingInScrollView:(UIScrollView *)scrollView
