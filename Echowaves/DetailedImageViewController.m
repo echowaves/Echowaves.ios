@@ -88,9 +88,13 @@
 - (void)tapTwice:(UIGestureRecognizer *)gesture
 {
     CGPoint point = [(UITapGestureRecognizer *)gesture locationInView:[self imageView]];
-    CGRect rectToZoomOutTo = CGRectMake(point.x, point.y, self.imageView.frame.size.width/2, self.imageView.frame.size.height/2);
+    CGRect rectToZoomOutTo = CGRectMake(point.x/2, point.y/2, self.imageView.frame.size.width/2, self.imageView.frame.size.height/2);
     [self.imageScrollView zoomToRect:rectToZoomOutTo animated:YES];
 }
+
+//-(BOOL) shouldAutorotate {
+//    return YES;
+//}
 
 - (void)viewDidAppear:(BOOL)animated
 {
