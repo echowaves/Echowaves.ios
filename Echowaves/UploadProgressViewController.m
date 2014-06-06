@@ -16,7 +16,6 @@
 -(void) viewDidLoad {
     [super viewDidLoad];
     
-    
     // Do any additional setup after loading the view.
     [self cleanupCurrentUploadView];
     NSLog(@"#### WavingViewController viewDidLoad ");
@@ -100,9 +99,7 @@
                                                                        success:^(AFHTTPRequestOperation *operation, UIImage *image, NSDate *currentAssetDateTime) {
                                                                            __weak  AFHTTPRequestOperation* weakOperation = operation;
 //                                                                           NSLog(@"1");
-                                                                           [weakOperation setUploadProgressBlock:^(NSUInteger bytesWritten,
-                                                                                                               NSInteger totalBytesWritten,
-                                                                                                               NSInteger totalBytesExpectedToWrite) {
+                                                                           [weakOperation setUploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {                                                                          
                                                                                if(!self.currentlyUploadingImage.image) { // beginning new upload operation here
                                                                                    self.cancelUpload.hidden = FALSE;
                                                                                    self.uploadProgressBar.hidden = FALSE;
