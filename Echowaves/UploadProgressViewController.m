@@ -168,7 +168,7 @@
 
 - (void) comeBack {
     NSLog(@"........comeBack");
-    APP_DELEGATE.uploadProgressViewController = nil;
+//    APP_DELEGATE.uploadProgressViewController = nil;
     [self.navigationController popViewControllerAnimated:YES];
     self.deactivated = YES;
 //    [(UINavigationController *)APP_DELEGATE.window.rootViewController popViewControllerAnimated:YES];

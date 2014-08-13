@@ -9,6 +9,7 @@
 //#import <UIKit/UIKit.h>
 #import "AFHTTPRequestOperationManager.h"
 #import "HorizontalPickerView.h"
+#import "EchowavesImagePickerController.h"
 
 
 @interface WavingViewController : EchowavesImagePickerController<EchowavesImagePickerControllerProtocol, UIGestureRecognizerDelegate, HPickerViewDelegate, HPickerViewDataSource>
