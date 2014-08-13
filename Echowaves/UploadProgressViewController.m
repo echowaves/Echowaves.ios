@@ -169,7 +169,11 @@
 - (void) comeBack {
     NSLog(@"........comeBack");
 //    APP_DELEGATE.uploadProgressViewController = nil;
-    [self.navigationController popViewControllerAnimated:YES];
+
+    //    [self.navigationController popViewControllerAnimated:YES];
+    // here need to pop 2 levels out
+    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:YES];
+
     self.deactivated = YES;
 //    [(UINavigationController *)APP_DELEGATE.window.rootViewController popViewControllerAnimated:YES];
 }
