@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.17" systemVersion="14A238x" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="eYa-MG-G2M">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6185.11" systemVersion="14A299l" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="eYa-MG-G2M">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.11"/>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6190.4"/>
     </dependencies>
     <scenes>
         <!--Home View Controller-->
@@ -55,7 +56,7 @@
             </objects>
             <point key="canvasLocation" x="-49" y="-40"/>
         </scene>
-        <!--Sign In View Controller - TuneIn-->
+        <!--TuneIn-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="SignInViewController" sceneMemberID="viewController">
@@ -109,7 +110,7 @@
             </objects>
             <point key="canvasLocation" x="531" y="-454"/>
         </scene>
-        <!--Sign Up View Controller - Create new Wave-->
+        <!--Create new Wave-->
         <scene sceneID="600-qt-TBO">
             <objects>
                 <viewController id="wWl-ta-JWX" customClass="SignUpViewController" sceneMemberID="viewController">
@@ -179,7 +180,7 @@
             </objects>
             <point key="canvasLocation" x="531" y="333"/>
         </scene>
-        <!--Echo Wave View Controller - EchoWave-->
+        <!--EchoWave-->
         <scene sceneID="A9T-JU-6fP">
             <objects>
                 <viewController id="Wr0-jG-xAd" customClass="EchoWaveViewController" sceneMemberID="viewController">
@@ -292,7 +293,7 @@
                                 <rect key="frame" x="0.0" y="21" width="320" height="2"/>
                             </progressView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="waveName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOH-bW-lzp">
-                                <rect key="frame" x="0.0" y="527" width="320" height="21"/>
+                                <rect key="frame" x="0.0" y="527" width="320" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -346,7 +347,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="fromWave" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GBg-21-aIs">
-                                <rect key="frame" x="20" y="72" width="280" height="21"/>
+                                <rect key="frame" x="20" y="72" width="280" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -415,7 +416,7 @@
             </objects>
             <point key="canvasLocation" x="1108" y="-40"/>
         </scene>
-        <!--Blends View Controller - test-->
+        <!--test-->
         <scene sceneID="3r8-nV-WDX">
             <objects>
                 <viewController title="test" id="Edp-kY-vOe" customClass="BlendsViewController" sceneMemberID="viewController">
@@ -449,7 +450,7 @@
                                 <rect key="frame" x="0.0" y="170" width="320" height="382"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RequestedBlend" id="YKf-JQ-gZE">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RequestedBlend" id="YKf-JQ-gZE">
                                         <rect key="frame" x="0.0" y="55" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YKf-JQ-gZE" id="Mqw-SJ-3kp">
@@ -496,7 +497,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UnconfirmedBlend" id="Z0E-WU-iDM">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UnconfirmedBlend" id="Z0E-WU-iDM">
                                         <rect key="frame" x="0.0" y="99" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Z0E-WU-iDM" id="84U-4u-YZ3">
@@ -527,7 +528,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BlendedWith" id="7c9-Kr-HvD">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BlendedWith" id="7c9-Kr-HvD">
                                         <rect key="frame" x="0.0" y="143" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7c9-Kr-HvD" id="O7q-1g-cWP">
@@ -571,7 +572,7 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add Blending:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fws-Gf-Zg3">
-                                <rect key="frame" x="4" y="121" width="118" height="21"/>
+                                <rect key="frame" x="4" y="121" width="118" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -596,9 +597,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H5c-jD-Jqd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1703" y="610"/>
+            <point key="canvasLocation" x="1703" y="692"/>
         </scene>
-        <!--Blend With View Controller - Blend With-->
+        <!--Blend With-->
         <scene sceneID="0Xg-XY-CfE">
             <objects>
                 <viewController id="O8i-2k-w70" customClass="BlendWithViewController" sceneMemberID="viewController">
@@ -614,7 +615,7 @@
                                 <rect key="frame" x="0.0" y="63" width="320" height="415"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WaveCompletionTableCell" id="hcH-fI-HEW">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WaveCompletionTableCell" id="hcH-fI-HEW">
                                         <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hcH-fI-HEW" id="as4-C9-jU0">
@@ -679,7 +680,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="2219" y="610"/>
+            <point key="canvasLocation" x="2225" y="692"/>
         </scene>
         <!--Wave Details View Controller-->
         <scene sceneID="VWO-7P-PFV">
@@ -694,7 +695,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="waveName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zA6-4O-sdL">
-                                <rect key="frame" x="20" y="90" width="280" height="21"/>
+                                <rect key="frame" x="20" y="90" width="280" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -730,7 +731,7 @@
             </objects>
             <point key="canvasLocation" x="2225" y="-1408"/>
         </scene>
-        <!--Waving View Controller - Waving-->
+        <!--Waving-->
         <scene sceneID="TFz-V2-zQT">
             <objects>
                 <viewController id="8lZ-lH-xhR" customClass="WavingViewController" sceneMemberID="viewController">
@@ -753,7 +754,7 @@
                                 </connections>
                             </switch>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Waving:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xe0-XU-TeL">
-                                <rect key="frame" x="253" y="102" width="61" height="21"/>
+                                <rect key="frame" x="253" y="102" width="61" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -765,7 +766,7 @@
                                 </connections>
                             </pickerView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Wave Selected:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ww6-mH-oiw">
-                                <rect key="frame" x="100" y="182" width="120" height="18"/>
+                                <rect key="frame" x="100" y="182" width="119.5" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -778,7 +779,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add new wave:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfp-DJ-Pdn">
-                                <rect key="frame" x="10" y="121" width="118" height="21"/>
+                                <rect key="frame" x="10" y="121" width="117.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -954,9 +955,12 @@
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
+        <simulatedScreenMetrics key="destination" type="retina4">
+            <size key="portraitSize" width="320" height="568"/>
+            <size key="landscapeSize" width="568" height="320"/>
+        </simulatedScreenMetrics>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="AnV-QM-P86"/>
+        <segue reference="lU3-tf-NsI"/>
     </inferredMetricsTieBreakers>
 </document>

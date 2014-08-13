@@ -28,7 +28,8 @@
 #import <CoreServices/CoreServices.h>
 #endif
 
-extern NSString * const AFNetworkingErrorDomain;
+NSString * const AFURLRequestSerializationErrorDomain = @"com.alamofire.error.serialization.request";
+NSString * const AFNetworkingOperationFailingURLRequestErrorKey = @"com.alamofire.serialization.request.error.response";
 
 typedef NSString * (^AFQueryStringSerializationBlock)(NSURLRequest *request, NSDictionary *parameters, NSError *__autoreleasing *error);
 
@@ -600,16 +601,16 @@ NSTimeInterval const kAFUploadStream3GSuggestedDelay = 0.2;
     NSParameterAssert(mimeType);
 
     if (![fileURL isFileURL]) {
-        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:NSLocalizedStringFromTable(@"Expected URL to be a file URL", @"AFNetworking", nil) forKey:NSLocalizedFailureReasonErrorKey];
+        NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(@"Expected URL to be a file URL", @"AFNetworking", nil)};
         if (error) {
-            *error = [[NSError alloc] initWithDomain:AFNetworkingErrorDomain code:NSURLErrorBadURL userInfo:userInfo];
+            *error = [[NSError alloc] initWithDomain:AFURLRequestSerializationErrorDomain code:NSURLErrorBadURL userInfo:userInfo];
         }
 
         return NO;
     } else if ([fileURL checkResourceIsReachableAndReturnError:error] == NO) {
-        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:NSLocalizedStringFromTable(@"File URL not reachable.", @"AFNetworking", nil) forKey:NSLocalizedFailureReasonErrorKey];
+        NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(@"File URL not reachable.", @"AFNetworking", nil)};
         if (error) {
-            *error = [[NSError alloc] initWithDomain:AFNetworkingErrorDomain code:NSURLErrorBadURL userInfo:userInfo];
+            *error = [[NSError alloc] initWithDomain:AFURLRequestSerializationErrorDomain code:NSURLErrorBadURL userInfo:userInfo];
         }
 
         return NO;
@@ -729,9 +730,12 @@ NSTimeInterval const kAFUploadStream3GSuggestedDelay = 0.2;
 
 #pragma mark -
 
+@interface NSStream ()
+@property (readwrite) NSStreamStatus streamStatus;
+@property (readwrite, copy) NSError *streamError;
+@end
+
 @interface AFMultipartBodyStream () <NSCopying>
-@property (readwrite, nonatomic, assign) NSStreamStatus myStreamStatus;
-@property (readwrite, nonatomic, strong) NSError *myStreamError;
 @property (readwrite, nonatomic, assign) NSStringEncoding stringEncoding;
 @property (readwrite, nonatomic, strong) NSMutableArray *HTTPBodyParts;
 @property (readwrite, nonatomic, strong) NSEnumerator *HTTPBodyPartEnumerator;
@@ -741,6 +745,11 @@ NSTimeInterval const kAFUploadStream3GSuggestedDelay = 0.2;
 @end
 
 @implementation AFMultipartBodyStream
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wimplicit-atomic-properties"
+@synthesize streamStatus;
+@synthesize streamError;
+#pragma clang diagnostic pop
 
 - (id)initWithStringEncoding:(NSStringEncoding)encoding {
     self = [super init];
@@ -780,7 +789,7 @@ NSTimeInterval const kAFUploadStream3GSuggestedDelay = 0.2;
 - (NSInteger)read:(uint8_t *)buffer
         maxLength:(NSUInteger)length
 {
-    if ([self myStreamStatus] == NSStreamStatusClosed) {
+    if ([self streamStatus] == NSStreamStatusClosed) {
         return 0;
     }
 
@@ -797,7 +806,7 @@ NSTimeInterval const kAFUploadStream3GSuggestedDelay = 0.2;
             NSUInteger maxLength = length - (NSUInteger)totalNumberOfBytesRead;
             NSInteger numberOfBytesRead = [self.currentHTTPBodyPart read:&buffer[totalNumberOfBytesRead] maxLength:maxLength];
             if (numberOfBytesRead == -1) {
-                self.myStreamError = self.currentHTTPBodyPart.inputStream.streamError;
+                self.streamError = self.currentHTTPBodyPart.inputStream.streamError;
                 break;
             } else {
                 totalNumberOfBytesRead += numberOfBytesRead;
@@ -820,24 +829,24 @@ NSTimeInterval const kAFUploadStream3GSuggestedDelay = 0.2;
 }
 
 - (BOOL)hasBytesAvailable {
-    return [self myStreamStatus] == NSStreamStatusOpen;
+    return [self streamStatus] == NSStreamStatusOpen;
 }
 
 #pragma mark - NSStream
 
 - (void)open {
-    if (self.myStreamStatus == NSStreamStatusOpen) {
+    if (self.streamStatus == NSStreamStatusOpen) {
         return;
     }
 
-    self.myStreamStatus = NSStreamStatusOpen;
+    self.streamStatus = NSStreamStatusOpen;
 
     [self setInitialAndFinalBoundaries];
     self.HTTPBodyPartEnumerator = [self.HTTPBodyParts objectEnumerator];
 }
 
 - (void)close {
-    self.myStreamStatus = NSStreamStatusClosed;
+    self.streamStatus = NSStreamStatusClosed;
 }
 
 - (id)propertyForKey:(__unused NSString *)key {
