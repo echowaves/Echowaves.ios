@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6205" systemVersion="14A299l" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="eYa-MG-G2M">
     <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6198"/>
     </dependencies>
     <scenes>
@@ -742,13 +743,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aFF-Ly-k7r">
-                                <rect key="frame" x="0.0" y="208" width="320" height="162"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="8lZ-lH-xhR" id="i3Q-b1-uSL"/>
-                                    <outlet property="delegate" destination="8lZ-lH-xhR" id="Are-1P-jRe"/>
-                                </connections>
-                            </pickerView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Wave Selected:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ww6-mH-oiw">
                                 <rect key="frame" x="100" y="182" width="119.5" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -801,7 +795,6 @@
                     <connections>
                         <outlet property="selectedWave" destination="IpX-s3-W6O" id="UAi-zt-EFj"/>
                         <outlet property="wavesPicker" destination="9Mg-c0-XBA" id="erZ-1q-Tud"/>
-                        <outlet property="wavesPickerSelector" destination="aFF-Ly-k7r" id="Vpi-bB-5uP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vlj-IN-e4q" userLabel="First Responder" sceneMemberID="firstResponder"/>

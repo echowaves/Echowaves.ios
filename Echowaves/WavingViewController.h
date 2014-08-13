@@ -11,7 +11,7 @@
 #import "HorizontalPickerView.h"
 
 
-@interface WavingViewController : EchowavesImagePickerController<EchowavesImagePickerControllerProtocol, UIPickerViewDelegate, UIPickerViewDataSource, UIGestureRecognizerDelegate, HPickerViewDelegate, HPickerViewDataSource>
+@interface WavingViewController : EchowavesImagePickerController<EchowavesImagePickerControllerProtocol, UIGestureRecognizerDelegate, HPickerViewDelegate, HPickerViewDataSource>
 
 //-(void) resetWaves;
 
@@ -21,7 +21,6 @@
 
 
 @property (strong, nonatomic) IBOutlet UIButton *selectedWave;
-@property (strong, nonatomic) IBOutlet UIPickerView *wavesPickerSelector;
 
 @property (strong, nonatomic) NSMutableArray *myWaves;
 
