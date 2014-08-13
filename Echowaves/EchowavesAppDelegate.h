@@ -10,7 +10,6 @@
 
 #import "EWWave.h"
 #import "EWImage.h"
-//#import "UploadProgressViewController.h"
 #import "WavingViewController.h"
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
@@ -24,9 +23,6 @@
 //currently selected wave index in the waves picker
 @property (nonatomic)             long  currentWaveIndex;
 
-//@property (nonatomic) BOOL currentlyCheckingForUpload;
-
-//@property (weak, nonatomic) UploadProgressViewController *uploadProgressViewController;
 @property (weak, nonatomic) WavingViewController *wavingViewController;
 
 @property (atomic, strong) NSOperationQueue *networkQueue;

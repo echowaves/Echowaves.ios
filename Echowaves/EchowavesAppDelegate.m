@@ -102,15 +102,8 @@
     if([APP_DELEGATE shareActionToken]) {
         [self presentDetailedImageBasedOnShareToken];
     }
-//    else {
-//        [self presentUploadView];
-//    }
 }
 
-//- (void) presentUploadView {
-//        self.uploadProgressViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil] instantiateViewControllerWithIdentifier:@"UploadView"];
-//        [(UINavigationController *)self.window.rootViewController pushViewController:self.uploadProgressViewController animated:YES];
-//}
 
 - (void) presentDetailedImageBasedOnShareToken {
         [EWImage retreiveImageByToken:[APP_DELEGATE shareActionToken]

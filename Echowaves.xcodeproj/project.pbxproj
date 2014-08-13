@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A1415B5199B12D50095D6E7 /* PickWavesForUploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A1415B4199B12D50095D6E7 /* PickWavesForUploadViewController.m */; };
 		0A163DC418AAD72900148595 /* DetailedImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A163DC318AAD72900148595 /* DetailedImageViewController.m */; };
 		0A28E5D71889B87B00B7BDDB /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A28E5D61889B87B00B7BDDB /* SignUpViewController.m */; };
 		0A28E5DA1889B8B300B7BDDB /* EchoWaveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A28E5D91889B8B300B7BDDB /* EchoWaveViewController.m */; };
@@ -79,6 +80,8 @@
 
 /* Begin PBXFileReference section */
 		0A13C8D119416C30004BD744 /* Echowaves-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Echowaves-Bridging-Header.h"; sourceTree = "<group>"; };
+		0A1415B3199B12D50095D6E7 /* PickWavesForUploadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickWavesForUploadViewController.h; sourceTree = "<group>"; };
+		0A1415B4199B12D50095D6E7 /* PickWavesForUploadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickWavesForUploadViewController.m; sourceTree = "<group>"; };
 		0A163DC218AAD72900148595 /* DetailedImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailedImageViewController.h; sourceTree = "<group>"; };
 		0A163DC318AAD72900148595 /* DetailedImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailedImageViewController.m; sourceTree = "<group>"; };
 		0A28E5D51889B87B00B7BDDB /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
@@ -333,6 +336,8 @@
 				0A34C00F18556B4800E085BC /* Resources */,
 				0A5ADAA01888C07900D492BC /* iPad */,
 				0AD6E25A18011F59008303E0 /* Main_iPhone.storyboard */,
+				0A1415B3199B12D50095D6E7 /* PickWavesForUploadViewController.h */,
+				0A1415B4199B12D50095D6E7 /* PickWavesForUploadViewController.m */,
 				0A6B326A193509EE00AE6A6E /* DetailedImagePageViewController.h */,
 				0A6B326B193509EE00AE6A6E /* DetailedImagePageViewController.m */,
 				0AF4BA75192BEB1200E11E29 /* AcceptBlendingRequestViewController.h */,
@@ -597,6 +602,7 @@
 				0AF15B6E1940FF6D00625F34 /* AFHTTPSessionManager.m in Sources */,
 				0AF15B721940FF6D00625F34 /* AFURLRequestSerialization.m in Sources */,
 				0A5BF7771910378D005C2742 /* HPCollectionVC.m in Sources */,
+				0A1415B5199B12D50095D6E7 /* PickWavesForUploadViewController.m in Sources */,
 				0AF15B891940FF8300625F34 /* UIAlertView+AFNetworking.m in Sources */,
 				0A28E5ED188F36D300B7BDDB /* HomeViewController.m in Sources */,
 				0A163DC418AAD72900148595 /* DetailedImageViewController.m in Sources */,
