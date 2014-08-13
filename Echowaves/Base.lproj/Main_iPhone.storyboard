@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6185.11" systemVersion="14A299l" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="eYa-MG-G2M">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6205" systemVersion="14A299l" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="eYa-MG-G2M">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6190.4"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6198"/>
     </dependencies>
     <scenes>
         <!--Home View Controller-->
@@ -743,21 +742,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" offImage="echowave" translatesAutoresizingMaskIntoConstraints="NO" id="uDr-ak-c3B">
-                                <rect key="frame" x="265" y="131" width="51" height="31"/>
-                                <accessibility key="accessibilityConfiguration" label="Wave is currently">
-                                    <accessibilityTraits key="traits" none="YES" button="YES" playsSound="YES"/>
-                                    <bool key="isElement" value="NO"/>
-                                </accessibility>
-                                <connections>
-                                    <action selector="wavingChanged:" destination="8lZ-lH-xhR" eventType="valueChanged" id="BqN-yw-vGN"/>
-                                </connections>
-                            </switch>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Waving:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xe0-XU-TeL">
-                                <rect key="frame" x="253" y="102" width="61" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aFF-Ly-k7r">
                                 <rect key="frame" x="0.0" y="208" width="320" height="162"/>
                                 <connections>
@@ -818,7 +802,6 @@
                         <outlet property="selectedWave" destination="IpX-s3-W6O" id="UAi-zt-EFj"/>
                         <outlet property="wavesPicker" destination="9Mg-c0-XBA" id="erZ-1q-Tud"/>
                         <outlet property="wavesPickerSelector" destination="aFF-Ly-k7r" id="Vpi-bB-5uP"/>
-                        <outlet property="waving" destination="uDr-ak-c3B" id="4Da-Qj-kYH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vlj-IN-e4q" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -67,8 +67,6 @@
                        success:^(NSString *waveName) {
                            NSLog(@"successsfully signed in");
                            
-                           if (APP_DELEGATE.wavingViewController.waving.on) {
-                               
                                [EWImage checkForNewAssetsToPostToWave:waveName
                                                      whenCheckingDone:^(NSArray* assets){
                                                          
@@ -139,10 +137,6 @@
 
                                                             }];
                                 
-                           } else {// waving on (if waving was off, reset the last check time to now.
-                               [USER_DEFAULTS setObject:[NSDate date] forKey:@"lastCheckTime"];
-                               [USER_DEFAULTS synchronize];
-                           }
                        } // tune in with name
                        failure:^(NSString *errorMessage) {
                            [EWWave showErrorAlertWithMessage:errorMessage FromSender:nil];

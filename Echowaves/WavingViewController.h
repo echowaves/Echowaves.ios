@@ -19,7 +19,6 @@
 @property (strong, nonatomic) IBOutlet HorizontalPickerView *wavesPicker;
 @property (nonatomic) bool checkedAtload;
 
-@property (nonatomic) IBOutlet UISwitch *waving;
 
 @property (strong, nonatomic) IBOutlet UIButton *selectedWave;
 @property (strong, nonatomic) IBOutlet UIPickerView *wavesPickerSelector;

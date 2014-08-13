@@ -14,7 +14,6 @@
 - (IBAction)takePicture:(id)sender {
     
     NSLog(@"taking picture");
-    APP_DELEGATE.wavingViewController.waving.on = true;
     
     [APP_DELEGATE.wavingViewController takepicture];
 }

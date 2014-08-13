@@ -107,12 +107,8 @@
 }
 
 - (void) presentUploadView {
-    if(self.wavingViewController.waving.on) {
         self.uploadProgressViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil] instantiateViewControllerWithIdentifier:@"UploadView"];
         [(UINavigationController *)self.window.rootViewController pushViewController:self.uploadProgressViewController animated:YES];
-        
-    }
-    
 }
 
 - (void) presentDetailedImageBasedOnShareToken {

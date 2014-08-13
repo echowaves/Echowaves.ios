@@ -53,23 +53,6 @@
 
 
 
-- (IBAction)wavingChanged:(id)sender {
-    NSLog(@"=======waving changed to: %d", self.waving.on);
-    
-    if(self.waving.on) {
-        NSLog(@"======== reset lastCheckTime");
-            [USER_DEFAULTS setObject:[NSDate date] forKey:@"lastCheckTime"];
-        [USER_DEFAULTS synchronize];
-    } else {
-
-    }
-    
-    [USER_DEFAULTS setBool:self.waving.on forKey:@"waving"];
-    [USER_DEFAULTS synchronize];
-}
-
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     APP_DELEGATE.wavingViewController = self;
@@ -84,10 +67,7 @@
         [USER_DEFAULTS setBool:YES forKey:@"waving"];
         [USER_DEFAULTS synchronize];
     }
-    
-    NSLog(@"=======waving initializing was %d changed to: %d", self.waving.on, [USER_DEFAULTS boolForKey:@"waving"]);
-    self.waving.on = [USER_DEFAULTS boolForKey:@"waving"];
-    
+        
     UITapGestureRecognizer* pickerViewGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedPickerView:)];
     pickerViewGR.delegate = self;
     [self.wavesPickerSelector addGestureRecognizer:pickerViewGR];
