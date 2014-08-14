@@ -15,7 +15,7 @@
 @implementation DateTimePickerViewController
 
 - (IBAction)resetToNow:(id)sender {
-    NSDate* dateTime = [NSDate new];
+    NSDate* dateTime = [NSDate date];
     self.datePicker.date = dateTime;
     self.timePicker.date = dateTime;
     

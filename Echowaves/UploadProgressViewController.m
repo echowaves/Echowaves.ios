@@ -23,12 +23,12 @@
     self.uploadProgressBar.progress = 0.0;
 
     
-    UIBarButtonItem *btnPause = [[UIBarButtonItem alloc]
-                                initWithBarButtonSystemItem:UIBarButtonSystemItemPause
-                                target:self
-                                action:@selector(OnClick_btnPause:)];
+//    UIBarButtonItem *btnPause = [[UIBarButtonItem alloc]
+//                                initWithBarButtonSystemItem:UIBarButtonSystemItemPause
+//                                target:self
+//                                action:@selector(OnClick_btnPause:)];
     self.navigationItem.hidesBackButton = YES;
-    self.navigationItem.rightBarButtonItem = btnPause;
+//    self.navigationItem.rightBarButtonItem = btnPause;
     self.navigationItem.titleView = [UIView new];//we want to disable title -- too much info on the screen
 }
 
