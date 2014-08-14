@@ -10,8 +10,8 @@
             <objects>
                 <viewController id="1U9-q6-r7W" customClass="HomeViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="c1W-jS-LY4"/>
-                        <viewControllerLayoutGuide type="bottom" id="aEC-oU-YNP"/>
+                        <viewControllerLayoutGuide type="top" id="0wL-3G-ic6"/>
+                        <viewControllerLayoutGuide type="bottom" id="2Oq-BC-GLw"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="nap-mG-wuf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -61,8 +61,8 @@
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="SignInViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="MOQ-Qm-GUA"/>
-                        <viewControllerLayoutGuide type="bottom" id="t14-yQ-4As"/>
+                        <viewControllerLayoutGuide type="top" id="oGS-jw-O3b"/>
+                        <viewControllerLayoutGuide type="bottom" id="YPN-LF-gf3"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -115,8 +115,8 @@
             <objects>
                 <viewController id="wWl-ta-JWX" customClass="SignUpViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="PST-IL-zpd"/>
-                        <viewControllerLayoutGuide type="bottom" id="5eC-Y9-Yf9"/>
+                        <viewControllerLayoutGuide type="top" id="AtD-bJ-C1h"/>
+                        <viewControllerLayoutGuide type="bottom" id="jTd-3q-RYS"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bDT-KT-jzL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -185,8 +185,8 @@
             <objects>
                 <viewController id="Wr0-jG-xAd" customClass="EchoWaveViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="kDE-PA-74H"/>
-                        <viewControllerLayoutGuide type="bottom" id="7C2-FQ-ze7"/>
+                        <viewControllerLayoutGuide type="top" id="8ff-oR-hBX"/>
+                        <viewControllerLayoutGuide type="bottom" id="RQx-aQ-EPz"/>
                     </layoutGuides>
                     <view key="view" autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="kEP-Gj-Dyc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -256,8 +256,8 @@
             <objects>
                 <viewController storyboardIdentifier="DetailedImagePageView" id="uGD-Jv-xSJ" customClass="DetailedImagePageViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="4q5-CP-tkr"/>
-                        <viewControllerLayoutGuide type="bottom" id="b6a-pA-whb"/>
+                        <viewControllerLayoutGuide type="top" id="JAw-do-ipk"/>
+                        <viewControllerLayoutGuide type="bottom" id="yTL-6i-YCI"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="M2s-vx-3LR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -274,8 +274,8 @@
             <objects>
                 <viewController storyboardIdentifier="DetailedImageView" id="5T2-Jh-Jpt" customClass="DetailedImageViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="dlr-Rg-dwg"/>
-                        <viewControllerLayoutGuide type="bottom" id="3eO-SE-xE1"/>
+                        <viewControllerLayoutGuide type="top" id="fSe-De-Aqb"/>
+                        <viewControllerLayoutGuide type="bottom" id="8Ee-JC-pO7"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="mgL-Zp-i44">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -318,8 +318,8 @@
             <objects>
                 <viewController storyboardIdentifier="PickAWaveView" id="1Fd-6Z-QUA" customClass="AcceptBlendingRequestViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="GAE-Pj-Qqp"/>
-                        <viewControllerLayoutGuide type="bottom" id="BAT-TT-TnG"/>
+                        <viewControllerLayoutGuide type="top" id="RMe-tP-7Ol"/>
+                        <viewControllerLayoutGuide type="bottom" id="x70-e8-0n2"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="pNf-9X-PYb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -403,8 +403,8 @@
             <objects>
                 <viewController title="test" id="Edp-kY-vOe" customClass="BlendsViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="vIZ-Rm-Ajv"/>
-                        <viewControllerLayoutGuide type="bottom" id="0SE-EL-7dk"/>
+                        <viewControllerLayoutGuide type="top" id="9pN-2c-tnF"/>
+                        <viewControllerLayoutGuide type="bottom" id="1Gd-zN-Uha"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="I0r-uO-f4u">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -586,8 +586,8 @@
             <objects>
                 <viewController id="O8i-2k-w70" customClass="BlendWithViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Pwp-nY-Bgo"/>
-                        <viewControllerLayoutGuide type="bottom" id="gr9-OE-7mv"/>
+                        <viewControllerLayoutGuide type="top" id="aXC-oJ-Hmr"/>
+                        <viewControllerLayoutGuide type="bottom" id="foQ-oM-6Rx"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Try-U7-Mre">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -669,8 +669,8 @@
             <objects>
                 <viewController id="J1T-Ig-Tiv" customClass="PickWavesForUploadController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Tnq-0a-4JM"/>
-                        <viewControllerLayoutGuide type="bottom" id="xjz-0m-Gle"/>
+                        <viewControllerLayoutGuide type="top" id="eDr-8Z-Hd6"/>
+                        <viewControllerLayoutGuide type="bottom" id="VwF-JR-IAD"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Dq2-y9-moh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -711,8 +711,8 @@
             <objects>
                 <viewController id="KBd-Kt-O7J" customClass="WaveDetailsViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="r5i-R6-dXM"/>
-                        <viewControllerLayoutGuide type="bottom" id="ZKw-57-dgF"/>
+                        <viewControllerLayoutGuide type="top" id="quQ-Dp-HLT"/>
+                        <viewControllerLayoutGuide type="bottom" id="p9R-cY-w6k"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="20D-KH-t6s">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -760,8 +760,8 @@
             <objects>
                 <viewController id="8lZ-lH-xhR" customClass="WavingViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="iT2-OB-zqc"/>
-                        <viewControllerLayoutGuide type="bottom" id="Mnu-oL-acQ"/>
+                        <viewControllerLayoutGuide type="top" id="JLS-v2-L1J"/>
+                        <viewControllerLayoutGuide type="bottom" id="1Hb-eb-cNk"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="1aL-EV-5qi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -820,6 +820,9 @@
                                 <state key="normal" title="Date and time.................">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="KYg-hl-Zsa" kind="push" id="jc2-y4-b81"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XgI-b1-elt">
                                 <rect key="frame" x="129" y="341" width="132" height="70"/>
@@ -866,15 +869,72 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vlj-IN-e4q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1703" y="-714"/>
+            <point key="canvasLocation" x="1703" y="-1408"/>
+        </scene>
+        <!--Date Time Picker View Controller-->
+        <scene sceneID="L4f-Nq-Wdu">
+            <objects>
+                <viewController id="KYg-hl-Zsa" customClass="DateTimePickerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZbO-YD-kVz"/>
+                        <viewControllerLayoutGuide type="bottom" id="1RV-EG-Zss"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6VZ-Ud-EPE">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oD4-LX-PAz">
+                                <rect key="frame" x="16" y="481" width="288" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Set Date and Time">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="setDateTime:" destination="KYg-hl-Zsa" eventType="touchUpInside" id="JBP-lb-tA9"/>
+                                </connections>
+                            </button>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Vrh-fR-sfd">
+                                <rect key="frame" x="0.0" y="64" width="320" height="180"/>
+                                <date key="date" timeIntervalSinceReferenceDate="429673494.54573798">
+                                    <!--2014-08-14 01:44:54 +0000-->
+                                </date>
+                                <date key="minimumDate" timeIntervalSinceReferenceDate="-978267600">
+                                    <!--1970-01-01 11:00:00 +0000-->
+                                </date>
+                            </datePicker>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="GHg-2Z-lEY">
+                                <rect key="frame" x="0.0" y="261" width="320" height="180"/>
+                                <date key="date" timeIntervalSinceReferenceDate="429675036.18554199">
+                                    <!--2014-08-14 02:10:36 +0000-->
+                                </date>
+                            </datePicker>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="reV-FJ-fBp"/>
+                    <connections>
+                        <outlet property="datePicker" destination="Vrh-fR-sfd" id="Z4F-r4-N4T"/>
+                        <outlet property="timePicker" destination="GHg-2Z-lEY" id="hnq-et-fMD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VHu-F4-UBV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1703" y="-762"/>
         </scene>
         <!--Add Child Wave View Controller-->
         <scene sceneID="9du-UH-FKh">
             <objects>
                 <viewController id="Stm-tM-xah" customClass="AddChildWaveViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="IK7-xf-DWZ"/>
-                        <viewControllerLayoutGuide type="bottom" id="4G5-6h-GmP"/>
+                        <viewControllerLayoutGuide type="top" id="gbU-uZ-6Jq"/>
+                        <viewControllerLayoutGuide type="bottom" id="POF-fp-34E"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="hhj-ud-Ene">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -913,8 +973,8 @@
             <objects>
                 <viewController storyboardIdentifier="UploadView" id="9z9-Kg-9sc" customClass="UploadProgressViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="qPV-Ut-meA"/>
-                        <viewControllerLayoutGuide type="bottom" id="iBZ-Fp-Uzx"/>
+                        <viewControllerLayoutGuide type="top" id="RVD-2C-faT"/>
+                        <viewControllerLayoutGuide type="bottom" id="bYd-Hg-izp"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="tWt-pg-bXe">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>

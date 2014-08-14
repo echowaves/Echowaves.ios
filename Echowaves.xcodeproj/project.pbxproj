@@ -27,6 +27,7 @@
 		0A6B326C193509EE00AE6A6E /* DetailedImagePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6B326B193509EE00AE6A6E /* DetailedImagePageViewController.m */; };
 		0A7C733C18948E9300292622 /* NavigationTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7C733B18948E9300292622 /* NavigationTabBarViewController.m */; };
 		0AB1CF511890C1380056A94A /* EWDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB1CF501890C1380056A94A /* EWDataModel.m */; };
+		0ABC9315199C4A680011F502 /* DateTimePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ABC9314199C4A680011F502 /* DateTimePickerViewController.m */; };
 		0AC91E66186BF50300D61381 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AC91E65186BF50300D61381 /* Security.framework */; };
 		0AC91E68186BF52F00D61381 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AC91E67186BF52F00D61381 /* SystemConfiguration.framework */; };
 		0AD529DF18C7A46C0047951D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AD529DE18C7A4470047951D /* Default-568h@2x.png */; };
@@ -122,6 +123,8 @@
 		0A7C733B18948E9300292622 /* NavigationTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationTabBarViewController.m; sourceTree = "<group>"; };
 		0AB1CF4F1890C1380056A94A /* EWDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWDataModel.h; sourceTree = "<group>"; };
 		0AB1CF501890C1380056A94A /* EWDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWDataModel.m; sourceTree = "<group>"; };
+		0ABC9313199C4A680011F502 /* DateTimePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateTimePickerViewController.h; sourceTree = "<group>"; };
+		0ABC9314199C4A680011F502 /* DateTimePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateTimePickerViewController.m; sourceTree = "<group>"; };
 		0AC91E65186BF50300D61381 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		0AC91E67186BF52F00D61381 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0AD529DC18C7A4200047951D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -336,6 +339,8 @@
 				0A34C00F18556B4800E085BC /* Resources */,
 				0A5ADAA01888C07900D492BC /* iPad */,
 				0AD6E25A18011F59008303E0 /* Main_iPhone.storyboard */,
+				0ABC9313199C4A680011F502 /* DateTimePickerViewController.h */,
+				0ABC9314199C4A680011F502 /* DateTimePickerViewController.m */,
 				0A1415B3199B12D50095D6E7 /* PickWavesForUploadViewController.h */,
 				0A1415B4199B12D50095D6E7 /* PickWavesForUploadViewController.m */,
 				0A6B326A193509EE00AE6A6E /* DetailedImagePageViewController.h */,
@@ -605,6 +610,7 @@
 				0A1415B5199B12D50095D6E7 /* PickWavesForUploadViewController.m in Sources */,
 				0AF15B891940FF8300625F34 /* UIAlertView+AFNetworking.m in Sources */,
 				0A28E5ED188F36D300B7BDDB /* HomeViewController.m in Sources */,
+				0ABC9315199C4A680011F502 /* DateTimePickerViewController.m in Sources */,
 				0A163DC418AAD72900148595 /* DetailedImageViewController.m in Sources */,
 				0A6B326C193509EE00AE6A6E /* DetailedImagePageViewController.m in Sources */,
 				0AEB92BF18A6F3FC00DE51DC /* BlendWithViewController.m in Sources */,
