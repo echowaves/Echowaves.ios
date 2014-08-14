@@ -32,6 +32,8 @@
     
 }
 
+
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [self.myWaves count];
@@ -42,11 +44,36 @@
     static NSString *cellIdentifier = @"wavesPickerCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
-    UILabel *label = (UILabel *)[cell.contentView viewWithTag:500];
-    [label setText:[NSString stringWithFormat:@"Row %li in Section %li", (long)[indexPath row], (long)[indexPath section]]];
+    UILabel* label = (UILabel *)[cell.contentView viewWithTag:500];
+    UISwitch* waveOn = (UISwitch *)[cell.contentView viewWithTag:501];
+    [label setText:[((NSDictionary*)[self.myWaves objectAtIndex:indexPath.row]) objectForKey:@"name"]];
+    NSNumber* isActive = [((NSDictionary*)[self.myWaves objectAtIndex:indexPath.row]) objectForKey:@"active"];
+    if (isActive.intValue == 1) {
+        waveOn.on = YES;
+    } else {
+        waveOn.on = NO;
+    }
     
     return cell;
 }
+
+- (IBAction)waveOnClicked:(id)sender {
+    UISwitch *waveOn = sender;
+
+    UITableViewCell *cell = (UITableViewCell *)[waveOn superview].superview;
+    UILabel* label = (UILabel *)[cell.contentView viewWithTag:500];
+    NSString *waveName = label.text;
+    
+    [EWWave showLoadingIndicator:self];
+    [EWWave makeWaveActive:waveName active:waveOn.isOn
+                   success:^(NSString *waveName) {
+                       [EWWave hideLoadingIndicator:self];
+                   } failure:^(NSString *errorMessage) {
+                       [EWWave hideLoadingIndicator:self];
+                       [EWWave showAlertWithMessage:errorMessage FromSender:self];
+                   }];
+}
+
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     return NO;

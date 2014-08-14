@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6205" systemVersion="14A299l" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="eYa-MG-G2M">
     <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6198"/>
     </dependencies>
     <scenes>
@@ -696,21 +697,24 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="409"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="wavesPickerCell" rowHeight="40" id="0Zc-mO-7Vs">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="wavesPickerCell" rowHeight="40" id="0Zc-mO-7Vs">
                                         <rect key="frame" x="0.0" y="0.0" width="288" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0Zc-mO-7Vs" id="Thz-c5-5AJ">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <switch opaque="NO" tag="501" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dWe-AI-bfd">
+                                                    <rect key="frame" x="263" y="4" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="waveOnClicked:" destination="J1T-Ig-Tiv" eventType="valueChanged" id="J2K-A3-cAe"/>
+                                                    </connections>
+                                                </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="500" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="waveName" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xHG-fV-Lc3">
-                                                    <rect key="frame" x="8" y="11" width="215" height="21"/>
+                                                    <rect key="frame" x="8" y="9" width="247" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" tag="501" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dWe-AI-bfd">
-                                                    <rect key="frame" x="231" y="6" width="51" height="31"/>
-                                                </switch>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
