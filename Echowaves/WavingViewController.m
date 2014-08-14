@@ -63,24 +63,50 @@
 
     
     //initialize waving switch to yes initially
-    if(![USER_DEFAULTS objectForKey:@"lastCheckTime"]) {
-        [USER_DEFAULTS setBool:YES forKey:@"waving"];
-        [USER_DEFAULTS synchronize];
-    }
-        
+//    if(![USER_DEFAULTS objectForKey:@"lastCheckTime"]) {
+//        [USER_DEFAULTS setBool:YES forKey:@"waving"];
+//        [USER_DEFAULTS synchronize];
+//    }
+    
     [[self selectedWave] setTitle:[APP_DELEGATE currentWaveName] forState:UIControlStateNormal];
     self.navigationController.navigationBar.topItem.title = @"";//[APP_DELEGATE currentWaveName];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self reloadWavesPicker];
 
+    NSLog(@"!!!!!!!!!!!!!!!!!!!!!!!!! viewWillApear");
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"MMM dd, yyyy hh:mm a"];
+    NSLocale *usLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+    [dateFormat setLocale: usLocale];
+    
+    [EWImage checkForNewAssetsToPostToWave:^(NSArray *assets) {
+        [self photosCount].text =  [NSString stringWithFormat: @"%lu", (unsigned long)[assets count]];
+    } whenError:^(NSError *error) {
+        NSLog(@"Error updating photos count");
+    }];
+    
+    
+    NSString *theDateTime = [dateFormat stringFromDate:[USER_DEFAULTS objectForKey:@"lastCheckTime"]];
+    NSLog(@"Date %@", theDateTime);
+    
+//    [[self sinceDateTime] titleLabel].text = theDateTime;
+    
+    [[self sinceDateTime] setTitle:theDateTime forState:UIControlStateNormal];
+
+
+//    [[self sinceDateTime] performSelectorOnMainThread:@selector(setText:) withObject:theDateTime waitUntilDone:NO];
+
+    
+    [self reloadWavesPicker];
 }
 
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    
     if([self checkedAtload] == false) {
         self.checkedAtload = true;
         [APP_DELEGATE checkForInitialViewToPresent]; // only call it once, when the view loads for the first time

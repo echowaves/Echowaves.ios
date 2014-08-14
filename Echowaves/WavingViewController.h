@@ -22,7 +22,9 @@
 
 
 @property (strong, nonatomic) IBOutlet UIButton *selectedWave;
+@property (strong, nonatomic) IBOutlet UIButton *sinceDateTime;
 
+@property (strong, nonatomic) IBOutlet UILabel *photosCount;
 @property (strong, nonatomic) NSMutableArray *myWaves;
 
 @end

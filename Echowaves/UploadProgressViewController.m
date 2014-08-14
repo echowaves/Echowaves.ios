@@ -67,8 +67,7 @@
                        success:^(NSString *waveName) {
                            NSLog(@"successsfully signed in");
                            
-                               [EWImage checkForNewAssetsToPostToWave:waveName
-                                                     whenCheckingDone:^(NSArray* assets){
+                               [EWImage checkForNewAssetsToPostToWave:^(NSArray* assets){
                                                          
 //                                                         [self imagesToUpload].text = [NSString stringWithFormat:@"%lu", (unsigned long)assets.count];
                                                          //the following like is needed to force update the label

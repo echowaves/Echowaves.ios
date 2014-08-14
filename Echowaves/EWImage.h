@@ -14,8 +14,7 @@
 //#import "EWWave.h"
 @interface EWImage : EWDataModel
 
-+ (void) checkForNewAssetsToPostToWave:(NSString*) waveName
-                      whenCheckingDone:(void (^)(NSArray* assets)) checkCompleteBlock
++ (void) checkForNewAssetsToPostToWave:(void (^)(NSArray* assets)) checkCompleteBlock
                              whenError:(void (^)(NSError *error)) failureBlock;
 
 
