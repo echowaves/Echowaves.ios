@@ -664,10 +664,10 @@
             </objects>
             <point key="canvasLocation" x="2225" y="692"/>
         </scene>
-        <!--Pick Waves For Upload Controller-->
+        <!--Pick Waves For Upload View Controller-->
         <scene sceneID="PDe-H7-1iw">
             <objects>
-                <viewController id="J1T-Ig-Tiv" customClass="PickWavesForUploadController" sceneMemberID="viewController">
+                <viewController id="J1T-Ig-Tiv" customClass="PickWavesForUploadViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eDr-8Z-Hd6"/>
                         <viewControllerLayoutGuide type="bottom" id="VwF-JR-IAD"/>
@@ -693,14 +693,41 @@
                                     <segue destination="9z9-Kg-9sc" kind="push" id="q2B-am-fps"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Rvn-ds-Ina">
-                                <rect key="frame" x="16" y="64" width="288" height="409"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Rvn-ds-Ina">
+                                <rect key="frame" x="0.0" y="64" width="320" height="409"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="wavesPickerCell" rowHeight="40" id="0Zc-mO-7Vs">
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0Zc-mO-7Vs" id="Thz-c5-5AJ">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="500" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="waveName" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xHG-fV-Lc3">
+                                                    <rect key="frame" x="8" y="11" width="215" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" tag="501" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dWe-AI-bfd">
+                                                    <rect key="frame" x="231" y="6" width="51" height="31"/>
+                                                </switch>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="J1T-Ig-Tiv" id="Qoa-1R-NGh"/>
+                                    <outlet property="delegate" destination="J1T-Ig-Tiv" id="TFd-w1-Pc0"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Gvq-U6-bzY"/>
+                    <connections>
+                        <outlet property="myWavesTableView" destination="Rvn-ds-Ina" id="8Kq-bK-YJQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gN9-2D-91m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

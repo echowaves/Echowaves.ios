@@ -85,6 +85,8 @@
     [EWImage checkForNewAssetsToPostToWave:^(NSArray *assets) {
         [self photosCount].text =  [NSString stringWithFormat: @"%lu", (unsigned long)[assets count]];
     } whenError:^(NSError *error) {
+        [EWWave showErrorAlertWithMessage:error.description
+                               FromSender:nil];
         NSLog(@"Error updating photos count");
     }];
     

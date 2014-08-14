@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PickWavesForUploadViewController : UIViewController
+@interface PickWavesForUploadViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+
+@property (strong, nonatomic) IBOutlet UITableView *myWavesTableView;
+
+@property (strong, nonatomic) NSArray *myWaves;
 
 @end
