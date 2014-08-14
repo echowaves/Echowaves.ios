@@ -82,13 +82,14 @@
     NSLocale *usLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
     [dateFormat setLocale: usLocale];
     
-    [EWImage checkForNewAssetsToPostToWave:^(NSArray *assets) {
-        [self photosCount].text =  [NSString stringWithFormat: @"%lu", (unsigned long)[assets count]];
-    } whenError:^(NSError *error) {
-        [EWWave showErrorAlertWithMessage:error.description
-                               FromSender:nil];
-        NSLog(@"Error updating photos count");
-    }];
+    [EWImage checkForNewAssetsToPostToWaveSinceDate:(NSDate*)[USER_DEFAULTS objectForKey:@"lastCheckTime"]
+                                            success:^(NSArray *assets) {
+                                                [self photosCount].text =  [NSString stringWithFormat: @"%lu", (unsigned long)[assets count]];
+                                            } whenError:^(NSError *error) {
+                                                [EWWave showErrorAlertWithMessage:error.description
+                                                                       FromSender:nil];
+                                                NSLog(@"Error updating photos count");
+                                            }];
     
     
     NSString *theDateTime = [dateFormat stringFromDate:[USER_DEFAULTS objectForKey:@"lastCheckTime"]];

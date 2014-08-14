@@ -12,4 +12,5 @@
 @property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (strong, nonatomic) IBOutlet UIDatePicker *timePicker;
 
+@property (strong, nonatomic) IBOutlet UILabel *photosCount;
 @end

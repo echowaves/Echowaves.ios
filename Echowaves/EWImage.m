@@ -10,7 +10,8 @@
 
 @implementation EWImage
 
-+ (void) checkForNewAssetsToPostToWave:(void (^)(NSArray* assets)) checkCompleteBlock
++ (void) checkForNewAssetsToPostToWaveSinceDate:(NSDate*) date
+                                        success:(void (^)(NSArray* assets)) checkCompleteBlock
                              whenError:(void (^)(NSError *error)) failureBlock
 {
     NSMutableArray* assets = [NSMutableArray array];
@@ -36,7 +37,7 @@
                 }
                 
                 NSTimeInterval timeSinceLastPost =
-                [currentAssetDateTime timeIntervalSinceDate:(NSDate*)[USER_DEFAULTS objectForKey:@"lastCheckTime"]]; // diff
+                [currentAssetDateTime timeIntervalSinceDate:date]; // diff
                 
                 if(timeSinceLastPost > 0.0) {//this means, found an image that was not posted
                     //first lets add the image to a collection, we will process this collection later.

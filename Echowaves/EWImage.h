@@ -14,8 +14,9 @@
 //#import "EWWave.h"
 @interface EWImage : EWDataModel
 
-+ (void) checkForNewAssetsToPostToWave:(void (^)(NSArray* assets)) checkCompleteBlock
-                             whenError:(void (^)(NSError *error)) failureBlock;
++ (void) checkForNewAssetsToPostToWaveSinceDate:(NSDate*) date
+                                        success:(void (^)(NSArray* assets)) checkCompleteBlock
+                                      whenError:(void (^)(NSError *error)) failureBlock;
 
 
 + (void) operationFromAsset:(ALAsset *)asset
