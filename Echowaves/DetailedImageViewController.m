@@ -98,7 +98,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
+    [super viewDidAppear:animated];
     [self updateView];
 }
 
@@ -252,7 +252,7 @@
                                              CFRelease(multiPhones);
                                              NSString *phoneNumber = (__bridge NSString *) phoneNumberRef;
                                              CFRelease(phoneNumberRef);
-                                             NSLog(@"...........phone number %@", phoneNumber);
+//                                             NSLog(@"...........phone number %@", phoneNumber);
                                              
                                              
                                              MFMessageComposeViewController *smscontroller = [MFMessageComposeViewController new];

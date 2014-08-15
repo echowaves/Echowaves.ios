@@ -23,7 +23,7 @@
 
 
 - (void) viewDidLoad {
-    
+    [super viewDidLoad];
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@" " style:UIBarButtonItemStyleDone target:nil action:nil];
     [[self navigationItem] setBackBarButtonItem:backButton];
 

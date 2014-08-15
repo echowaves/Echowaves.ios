@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6205" systemVersion="14A299l" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="eYa-MG-G2M">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="14A299l" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="eYa-MG-G2M">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6198"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--Home View Controller-->
@@ -56,7 +56,7 @@
             </objects>
             <point key="canvasLocation" x="-49" y="-40"/>
         </scene>
-        <!--TuneIn-->
+        <!--Sign In View Controller - TuneIn-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="SignInViewController" sceneMemberID="viewController">
@@ -110,7 +110,7 @@
             </objects>
             <point key="canvasLocation" x="531" y="-454"/>
         </scene>
-        <!--Create new Wave-->
+        <!--Sign Up View Controller - Create new Wave-->
         <scene sceneID="600-qt-TBO">
             <objects>
                 <viewController id="wWl-ta-JWX" customClass="SignUpViewController" sceneMemberID="viewController">
@@ -180,7 +180,7 @@
             </objects>
             <point key="canvasLocation" x="531" y="333"/>
         </scene>
-        <!--EchoWave-->
+        <!--Echo Wave View Controller - EchoWave-->
         <scene sceneID="A9T-JU-6fP">
             <objects>
                 <viewController id="Wr0-jG-xAd" customClass="EchoWaveViewController" sceneMemberID="viewController">
@@ -398,7 +398,7 @@
             </objects>
             <point key="canvasLocation" x="1108" y="-40"/>
         </scene>
-        <!--test-->
+        <!--Blends View Controller - test-->
         <scene sceneID="3r8-nV-WDX">
             <objects>
                 <viewController title="test" id="Edp-kY-vOe" customClass="BlendsViewController" sceneMemberID="viewController">
@@ -584,7 +584,7 @@
             </objects>
             <point key="canvasLocation" x="1703" y="692"/>
         </scene>
-        <!--Blend With-->
+        <!--Blend With View Controller - Blend With-->
         <scene sceneID="0Xg-XY-CfE">
             <objects>
                 <viewController id="O8i-2k-w70" customClass="BlendWithViewController" sceneMemberID="viewController">
@@ -701,19 +701,20 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="wavesPickerCell" rowHeight="40" id="0Zc-mO-7Vs">
-                                        <rect key="frame" x="0.0" y="0.0" width="288" height="44"/>
+                                        <rect key="frame" x="0.0" y="22" width="320" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0Zc-mO-7Vs" id="Thz-c5-5AJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="39"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <switch opaque="NO" tag="501" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dWe-AI-bfd">
-                                                    <rect key="frame" x="263" y="4" width="51" height="31"/>
+                                                    <rect key="frame" x="263" y="0.0" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="waveOnClicked:" destination="J1T-Ig-Tiv" eventType="valueChanged" id="J2K-A3-cAe"/>
                                                     </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="500" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="waveName" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xHG-fV-Lc3">
-                                                    <rect key="frame" x="8" y="9" width="247" height="21"/>
+                                                    <rect key="frame" x="8" y="0.0" width="247" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -788,7 +789,7 @@
             </objects>
             <point key="canvasLocation" x="2225" y="-1408"/>
         </scene>
-        <!--Waving-->
+        <!--Waving View Controller - Waving-->
         <scene sceneID="TFz-V2-zQT">
             <objects>
                 <viewController id="8lZ-lH-xhR" customClass="WavingViewController" sceneMemberID="viewController">
@@ -917,7 +918,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oD4-LX-PAz">
-                                <rect key="frame" x="87" y="481" width="217" height="30"/>
+                                <rect key="frame" x="83" y="518" width="217" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Set Date and Time">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -967,7 +968,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q1n-ec-qqg">
-                                <rect key="frame" x="9" y="481" width="70" height="30"/>
+                                <rect key="frame" x="5" y="518" width="70" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <state key="normal" title="reset to now">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1123,10 +1124,7 @@
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4">
-            <size key="portraitSize" width="320" height="568"/>
-            <size key="landscapeSize" width="568" height="320"/>
-        </simulatedScreenMetrics>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="lU3-tf-NsI"/>
