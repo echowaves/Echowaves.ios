@@ -184,7 +184,13 @@
     }
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.clipsToBounds = YES;
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    CGFloat height = 44;   
+    return height;
 }
 
 - (IBAction)acceptButtonClicked:(id)sender {
