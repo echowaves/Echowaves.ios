@@ -72,11 +72,7 @@
     self.navigationController.navigationBar.topItem.title = @"";//[APP_DELEGATE currentWaveName];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-
-    NSLog(@"!!!!!!!!!!!!!!!!!!!!!!!!! viewWillApear");
-    
+- (void)updatePhotosCount {
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"MMM dd, yyyy hh:mm a"];
     NSLocale *usLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
@@ -95,9 +91,17 @@
     NSString *theDateTime = [dateFormat stringFromDate:[USER_DEFAULTS objectForKey:@"lastCheckTime"]];
     NSLog(@"Date %@", theDateTime);
     
-//    [[self sinceDateTime] titleLabel].text = theDateTime;
+    //    [[self sinceDateTime] titleLabel].text = theDateTime;
     
     [[self sinceDateTime] setTitle:theDateTime forState:UIControlStateNormal];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
+    NSLog(@"!!!!!!!!!!!!!!!!!!!!!!!!! viewWillApear");
+    
+    [self updatePhotosCount];
 
 
 //    [[self sinceDateTime] performSelectorOnMainThread:@selector(setText:) withObject:theDateTime waitUntilDone:NO];

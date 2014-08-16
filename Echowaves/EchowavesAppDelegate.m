@@ -139,6 +139,8 @@
 {
     NSLog(@"++++++++++++++++++called applicationDidBecomeActive");
     
+    [self.wavingViewController updatePhotosCount];
+    
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     
     [self checkForInitialViewToPresent];

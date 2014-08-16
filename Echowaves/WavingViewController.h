@@ -15,6 +15,7 @@
 @interface WavingViewController : EchowavesImagePickerController<EchowavesImagePickerControllerProtocol, UIGestureRecognizerDelegate, HPickerViewDelegate, HPickerViewDataSource>
 
 //-(void) resetWaves;
+- (void)updatePhotosCount;
 
 //it's a hack, but can't figure out how to make it work with in standard life cycle
 @property (strong, nonatomic) IBOutlet HorizontalPickerView *wavesPicker;

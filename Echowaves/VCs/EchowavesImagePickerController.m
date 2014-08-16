@@ -63,6 +63,7 @@
 			[self showImagePicker:UIImagePickerControllerSourceTypePhotoLibrary backfacing:NO];
 		}
 	}
+
 }
 
 #pragma mark -
@@ -78,6 +79,7 @@
     else{
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.delegate pictureSaved];
+                    [APP_DELEGATE.wavingViewController updatePhotosCount];
         });
     }
     [self.imagePickerController.view removeFromSuperview];
@@ -95,6 +97,7 @@
     }else{
         [picker.view removeFromSuperview];
     }
+    
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
