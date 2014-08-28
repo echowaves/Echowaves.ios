@@ -144,7 +144,7 @@
                        }];// tune in with name
         
     } else { // credentials are not set, can't really ever happen, something is really wrong here
-        NSLog(@"this error should never happen credentials are not set, can't really ever happen, something is really wrong here");
+        NSLog(@"this error should never happen credentials are not set, can't really ever happen, something is really wrong here 1");
     }
 }
 

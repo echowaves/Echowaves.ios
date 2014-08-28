@@ -26,7 +26,8 @@
         imagePickerController.delegate = self;
         imagePickerController.sourceType = sourceType;
         imagePickerController.allowsEditing = YES;
-        imagePickerController.wantsFullScreenLayout = YES;
+//        imagePickerController.wantsFullScreenLayout = YES;
+        imagePickerController.edgesForExtendedLayout = UIRectEdgeAll;
         if(backfacing) {
             imagePickerController.cameraDevice = UIImagePickerControllerCameraDeviceFront;
         }

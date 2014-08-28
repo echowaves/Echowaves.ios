@@ -139,7 +139,7 @@
 //    NSString* imageUrl = [NSString stringWithFormat:@"%@/img/%@/thumb_%@", EWAWSBucket, waveName, imageName];
     
     
-    ((UIImageView *)[cell viewWithTag:100]).image = [UIImage imageNamed:@"echowave.png"];
+//    ((UIImageView *)[cell viewWithTag:100]).image = [UIImage imageNamed:@"echowave.png"]; // no need to show the background image
 
     [EWImage loadThumbImage:imageName
                     forWave:waveName
