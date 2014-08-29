@@ -18,11 +18,11 @@
 //  HorizontalPicker
 //
 
-#import <UIKit/UIKit.h>
-#import "HorizontalPickerGlobal.h"
+@import UIKit;
+#import "HPickerDefinitions.h"
 
 @interface HPCollectionViewFlowLayout : UICollectionViewFlowLayout
 
-@property (nonatomic, assign) HPStyle style;
+@property (nonatomic) HPStyle style;
 
 @end

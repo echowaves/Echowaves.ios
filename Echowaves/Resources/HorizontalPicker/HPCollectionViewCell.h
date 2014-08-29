@@ -21,7 +21,6 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 #import "HPickerDefinitions.h"
-#import "HorizontalPickerGlobal.h"
 
 @protocol HPCollectionViewCellDelegate;
 

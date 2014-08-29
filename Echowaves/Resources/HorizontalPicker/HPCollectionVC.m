@@ -19,7 +19,6 @@
 //
 
 #import "HPCollectionVC.h"
-#import "HPickerDefinitions.h"
 #import "HPCollectionViewCell.h"
 
 @interface HPCollectionVC() <HPCollectionViewCellDelegate>
@@ -80,7 +79,7 @@
         frame                       = [text boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : self.font} context:ctx];
     }
     else {
-                      frame.size = [text sizeWithFont:self.font constrainedToSize:maxSize];
+        frame.size = [text sizeWithFont:self.font constrainedToSize:maxSize];
     }
     frame                       = CGRectIntegral(frame);
     frame.size.height           = maxSize.height;
