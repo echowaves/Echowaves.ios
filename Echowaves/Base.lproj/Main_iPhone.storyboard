@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="14A329r" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="eYa-MG-G2M">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6206.8" systemVersion="14A329r" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eYa-MG-G2M">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7026.1"/>
     </dependencies>
     <scenes>
         <!--Home View Controller-->
@@ -14,7 +14,7 @@
                         <viewControllerLayoutGuide type="bottom" id="2Oq-BC-GLw"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="nap-mG-wuf">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RoO-Mo-w82">
@@ -26,7 +26,7 @@
                                 </state>
                                 <connections>
                                     <action selector="createWave:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Ire-Qp-XdT"/>
-                                    <segue destination="wWl-ta-JWX" kind="push" id="5VY-SQ-8an"/>
+                                    <segue destination="wWl-ta-JWX" kind="show" id="5VY-SQ-8an"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="chx-9d-bpa">
@@ -38,7 +38,7 @@
                                 </state>
                                 <connections>
                                     <action selector="tuneIn:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Sif-va-Af1"/>
-                                    <segue destination="vXZ-lx-hvc" kind="push" id="9al-2z-wCV"/>
+                                    <segue destination="vXZ-lx-hvc" kind="show" id="9al-2z-wCV"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -49,14 +49,14 @@
                     <connections>
                         <outlet property="createNewWaveButton" destination="RoO-Mo-w82" id="c1Q-VV-uGp"/>
                         <outlet property="tuneInButton" destination="chx-9d-bpa" id="xG1-HD-Xw9"/>
-                        <segue destination="4Wa-qa-6Wy" kind="push" identifier="AutoSignIn" id="lU3-tf-NsI"/>
+                        <segue destination="4Wa-qa-6Wy" kind="show" identifier="AutoSignIn" id="lU3-tf-NsI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OBA-5A-V4k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-49" y="-40"/>
+            <point key="canvasLocation" x="-91.875" y="-42.25352112676056"/>
         </scene>
-        <!--Sign In View Controller - TuneIn-->
+        <!--TuneIn-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="SignInViewController" sceneMemberID="viewController">
@@ -65,7 +65,7 @@
                         <viewControllerLayoutGuide type="bottom" id="YPN-LF-gf3"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y5P-lL-Ivo">
@@ -76,7 +76,7 @@
                                 </state>
                                 <connections>
                                     <action selector="tuneIn:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="7EW-xM-Vo9"/>
-                                    <segue destination="4Wa-qa-6Wy" kind="push" identifier="TuneIn" id="AnV-QM-P86"/>
+                                    <segue destination="4Wa-qa-6Wy" kind="show" identifier="TuneIn" id="AnV-QM-P86"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="wave password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LhM-EG-VTk">
@@ -108,9 +108,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="531" y="-454"/>
+            <point key="canvasLocation" x="995.625" y="-479.57746478873236"/>
         </scene>
-        <!--Sign Up View Controller - Create new Wave-->
+        <!--Create new Wave-->
         <scene sceneID="600-qt-TBO">
             <objects>
                 <viewController id="wWl-ta-JWX" customClass="SignUpViewController" sceneMemberID="viewController">
@@ -119,7 +119,7 @@
                         <viewControllerLayoutGuide type="bottom" id="jTd-3q-RYS"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bDT-KT-jzL">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WIa-AO-6hA">
@@ -137,7 +137,7 @@
                                 <connections>
                                     <action selector="createWave:" destination="wWl-ta-JWX" eventType="touchUpInside" id="oyq-Rp-OKj"/>
                                     <action selector="createWave:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="rMZ-Jj-VTV"/>
-                                    <segue destination="4Wa-qa-6Wy" kind="push" identifier="CreateWave" id="h0z-up-Au7"/>
+                                    <segue destination="4Wa-qa-6Wy" kind="show" identifier="CreateWave" id="h0z-up-Au7"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="new wave name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VSM-hW-9JI">
@@ -178,9 +178,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jFf-um-F7X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="531" y="333"/>
+            <point key="canvasLocation" x="995.625" y="351.76056338028167"/>
         </scene>
-        <!--Echo Wave View Controller - EchoWave-->
+        <!--EchoWave-->
         <scene sceneID="A9T-JU-6fP">
             <objects>
                 <viewController id="Wr0-jG-xAd" customClass="EchoWaveViewController" sceneMemberID="viewController">
@@ -189,7 +189,7 @@
                         <viewControllerLayoutGuide type="bottom" id="RQx-aQ-EPz"/>
                     </layoutGuides>
                     <view key="view" autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="kEP-Gj-Dyc">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2PX-CN-5FM">
@@ -249,7 +249,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bdt-PK-ACm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1703" y="-40"/>
+            <point key="canvasLocation" x="3193.125" y="-42.25352112676056"/>
         </scene>
         <!--Detailed Image Page View Controller-->
         <scene sceneID="P3J-2s-K85">
@@ -260,14 +260,14 @@
                         <viewControllerLayoutGuide type="bottom" id="yTL-6i-YCI"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="M2s-vx-3LR">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MqI-sX-th4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2225" y="-40"/>
+            <point key="canvasLocation" x="4171.875" y="-42.25352112676056"/>
         </scene>
         <!--Detailed Image View Controller-->
         <scene sceneID="wXD-EU-zsb">
@@ -278,7 +278,7 @@
                         <viewControllerLayoutGuide type="bottom" id="8Ee-JC-pO7"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="mgL-Zp-i44">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rix-Hx-RKl">
@@ -311,7 +311,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Afd-yX-Vm5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2624" y="-40"/>
+            <point key="canvasLocation" x="4920" y="-42.25352112676056"/>
         </scene>
         <!--Accept Blending Request View Controller-->
         <scene sceneID="Uwh-lV-O49">
@@ -322,7 +322,7 @@
                         <viewControllerLayoutGuide type="bottom" id="x70-e8-0n2"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="pNf-9X-PYb">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1JF-pj-g3O">
@@ -362,7 +362,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i61-c9-BMA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3002" y="-40"/>
+            <point key="canvasLocation" x="5628.75" y="-42.25352112676056"/>
         </scene>
         <!--Navigation Tab Bar View Controller-->
         <scene sceneID="ssY-qE-FTr">
@@ -396,9 +396,9 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Xi-DV-OqN" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Ua8-6L-qdg" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1108" y="-40"/>
+            <point key="canvasLocation" x="2077.5" y="-42.25352112676056"/>
         </scene>
-        <!--Blends View Controller - test-->
+        <!--test-->
         <scene sceneID="3r8-nV-WDX">
             <objects>
                 <viewController title="test" id="Edp-kY-vOe" customClass="BlendsViewController" sceneMemberID="viewController">
@@ -407,7 +407,7 @@
                         <viewControllerLayoutGuide type="bottom" id="1Gd-zN-Uha"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="I0r-uO-f4u">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g3r-DE-K1a" customClass="HorizontalPickerView">
@@ -439,7 +439,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="O8i-2k-w70" kind="push" id="f5h-vu-B12"/>
+                                    <segue destination="O8i-2k-w70" kind="show" id="f5h-vu-B12"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="redraw" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" allowsSelectionDuringEditing="YES" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="b5t-JB-wWW">
@@ -582,9 +582,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H5c-jD-Jqd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1703" y="692"/>
+            <point key="canvasLocation" x="3193.125" y="730.9859154929577"/>
         </scene>
-        <!--Blend With View Controller - Blend With-->
+        <!--Blend With-->
         <scene sceneID="0Xg-XY-CfE">
             <objects>
                 <viewController id="O8i-2k-w70" customClass="BlendWithViewController" sceneMemberID="viewController">
@@ -593,7 +593,7 @@
                         <viewControllerLayoutGuide type="bottom" id="foQ-oM-6Rx"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Try-U7-Mre">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="K6q-Y0-rwW">
@@ -665,7 +665,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="2225" y="692"/>
+            <point key="canvasLocation" x="4171.875" y="730.9859154929577"/>
         </scene>
         <!--Pick Waves For Upload View Controller-->
         <scene sceneID="PDe-H7-1iw">
@@ -676,7 +676,7 @@
                         <viewControllerLayoutGuide type="bottom" id="VwF-JR-IAD"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Dq2-y9-moh">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DvD-zq-4XK">
@@ -693,7 +693,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="9z9-Kg-9sc" kind="push" id="q2B-am-fps"/>
+                                    <segue destination="9z9-Kg-9sc" kind="show" id="q2B-am-fps"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Rvn-ds-Ina">
@@ -738,7 +738,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gN9-2D-91m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1703" y="-2099"/>
+            <point key="canvasLocation" x="3193.125" y="-2217.2535211267605"/>
         </scene>
         <!--Wave Details View Controller-->
         <scene sceneID="VWO-7P-PFV">
@@ -749,7 +749,7 @@
                         <viewControllerLayoutGuide type="bottom" id="p9R-cY-w6k"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="20D-KH-t6s">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="waveName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zA6-4O-sdL">
@@ -787,9 +787,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="22w-0u-DMt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2225" y="-1408"/>
+            <point key="canvasLocation" x="4171.875" y="-1487.3239436619717"/>
         </scene>
-        <!--Waving View Controller - Waving-->
+        <!--Waving-->
         <scene sceneID="TFz-V2-zQT">
             <objects>
                 <viewController id="8lZ-lH-xhR" customClass="WavingViewController" sceneMemberID="viewController">
@@ -798,7 +798,7 @@
                         <viewControllerLayoutGuide type="bottom" id="1Hb-eb-cNk"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="1aL-EV-5qi">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Wave Selected:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ww6-mH-oiw">
@@ -811,7 +811,7 @@
                                 <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="15"/>
                                 <state key="normal" title="..."/>
                                 <connections>
-                                    <segue destination="KBd-Kt-O7J" kind="push" id="Bzr-dj-HKn"/>
+                                    <segue destination="KBd-Kt-O7J" kind="show" id="Bzr-dj-HKn"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add new wave:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfp-DJ-Pdn">
@@ -834,7 +834,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="Stm-tM-xah" kind="push" id="0UQ-fV-y41"/>
+                                    <segue destination="Stm-tM-xah" kind="show" id="0UQ-fV-y41"/>
                                 </connections>
                             </button>
                             <view autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Mg-c0-XBA" customClass="HorizontalPickerView">
@@ -855,7 +855,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="KYg-hl-Zsa" kind="push" id="jc2-y4-b81"/>
+                                    <segue destination="KYg-hl-Zsa" kind="show" id="jc2-y4-b81"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XgI-b1-elt">
@@ -873,7 +873,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="J1T-Ig-Tiv" kind="push" id="qHW-KN-8cF"/>
+                                    <segue destination="J1T-Ig-Tiv" kind="show" id="qHW-KN-8cF"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JUN-Ko-O3O">
@@ -903,7 +903,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vlj-IN-e4q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1703" y="-1408"/>
+            <point key="canvasLocation" x="3193.125" y="-1487.3239436619717"/>
         </scene>
         <!--Date Time Picker View Controller-->
         <scene sceneID="L4f-Nq-Wdu">
@@ -914,7 +914,7 @@
                         <viewControllerLayoutGuide type="bottom" id="1RV-EG-Zss"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="6VZ-Ud-EPE">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oD4-LX-PAz">
@@ -989,7 +989,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VHu-F4-UBV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1703" y="-762"/>
+            <point key="canvasLocation" x="3193.125" y="-804.92957746478862"/>
         </scene>
         <!--Add Child Wave View Controller-->
         <scene sceneID="9du-UH-FKh">
@@ -1000,7 +1000,7 @@
                         <viewControllerLayoutGuide type="bottom" id="POF-fp-34E"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="hhj-ud-Ene">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E01-EN-L88">
@@ -1029,7 +1029,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O83-S9-zqH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2225" y="-709"/>
+            <point key="canvasLocation" x="4171.875" y="-748.94366197183092"/>
         </scene>
         <!--Upload Progress View Controller-->
         <scene sceneID="Fhg-ub-qXd">
@@ -1040,7 +1040,7 @@
                         <viewControllerLayoutGuide type="bottom" id="bYd-Hg-izp"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="tWt-pg-bXe">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vAW-9v-Ujx">
@@ -1094,7 +1094,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="baU-sn-bhO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2225" y="-2099"/>
+            <point key="canvasLocation" x="4171.875" y="-2217.2535211267605"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hpU-ju-G4S">
@@ -1113,7 +1113,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6QR-Gq-MF0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-557" y="-40"/>
+            <point key="canvasLocation" x="-1044.375" y="-42.25352112676056"/>
         </scene>
     </scenes>
     <resources>
@@ -1121,11 +1121,6 @@
         <image name="echowave" width="32" height="32"/>
         <image name="waving" width="32" height="32"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="lU3-tf-NsI"/>
     </inferredMetricsTieBreakers>
