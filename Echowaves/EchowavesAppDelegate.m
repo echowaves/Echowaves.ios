@@ -27,10 +27,12 @@
 
     
     // Register for push notifications
-    [application registerForRemoteNotificationTypes:
-     UIRemoteNotificationTypeBadge |
-     UIRemoteNotificationTypeAlert |
-     UIRemoteNotificationTypeSound];
+//    [application registerForRemoteNotificationTypes:
+//     UIRemoteNotificationTypeBadge |
+//     UIRemoteNotificationTypeAlert |
+//     UIRemoteNotificationTypeSound];
+    [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
+    [[UIApplication sharedApplication] registerForRemoteNotifications];
     
     // perform authentication, wave/password non blank and exist in the server side, and enter a sending loop
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];

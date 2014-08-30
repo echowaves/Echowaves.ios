@@ -74,13 +74,13 @@
 - (CGSize)sizeForText:(NSString *)text maxSize:(CGSize)maxSize
 {
     CGRect frame = CGRectZero;
-    if ([text respondsToSelector:@selector(boundingRectWithSize:options:attributes:context:)]) {
+//    if ([text respondsToSelector:@selector(boundingRectWithSize:options:attributes:context:)]) {
         NSStringDrawingContext *ctx = [[NSStringDrawingContext alloc] init];
         frame                       = [text boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : self.font} context:ctx];
-    }
-    else {
-        frame.size = [text sizeWithFont:self.font constrainedToSize:maxSize];
-    }
+//    }
+//    else {
+//        frame.size = [text sizeWithFont:self.font constrainedToSize:maxSize];
+//    }
     frame                       = CGRectIntegral(frame);
     frame.size.height           = maxSize.height;
     frame.size.width           += 16; // added layout constraints (|-(8)-..-(8)-|)

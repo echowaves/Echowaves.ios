@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6206.8" systemVersion="14A329r" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eYa-MG-G2M">
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7026.1"/>
+        <capability name="Constraints with attributes relative to the layout margin" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Home View Controller-->
@@ -198,8 +198,19 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="t2L-Tu-34G">
-                                <rect key="frame" x="0.0" y="102" width="320" height="416"/>
+                            <view autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v3I-ZD-Nje" customClass="HorizontalPickerView">
+                                <rect key="frame" x="0.0" y="64" width="600" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="5Qc-l9-UvN"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="Wr0-jG-xAd" id="LmN-IY-1gv"/>
+                                    <outlet property="delegate" destination="Wr0-jG-xAd" id="gTw-86-qh9"/>
+                                </connections>
+                            </view>
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="t2L-Tu-34G">
+                                <rect key="frame" x="0.0" y="102" width="600" height="441"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aHz-Zy-c10">
                                     <size key="itemSize" width="100" height="100"/>
@@ -215,12 +226,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y0t-IX-MAK">
+                                                <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Y0t-IX-MAK">
                                                     <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="Y0t-IX-MAK" secondAttribute="bottom" id="H5v-v3-k5y"/>
+                                            <constraint firstAttribute="trailing" secondItem="Y0t-IX-MAK" secondAttribute="trailing" id="LBK-uj-hfH"/>
+                                            <constraint firstItem="Y0t-IX-MAK" firstAttribute="leading" secondItem="H23-If-bNS" secondAttribute="leading" id="brU-Cl-eM9"/>
+                                            <constraint firstItem="Y0t-IX-MAK" firstAttribute="top" secondItem="H23-If-bNS" secondAttribute="top" id="khg-IO-x4w"/>
+                                        </constraints>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
@@ -228,16 +245,17 @@
                                     <outlet property="delegate" destination="Wr0-jG-xAd" id="WRj-Nw-JqS"/>
                                 </connections>
                             </collectionView>
-                            <view autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v3I-ZD-Nje" customClass="HorizontalPickerView">
-                                <rect key="frame" x="0.0" y="64" width="320" height="30"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="Wr0-jG-xAd" id="LmN-IY-1gv"/>
-                                    <outlet property="delegate" destination="Wr0-jG-xAd" id="gTw-86-qh9"/>
-                                </connections>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="v3I-ZD-Nje" firstAttribute="leading" secondItem="kEP-Gj-Dyc" secondAttribute="leadingMargin" constant="-16" id="26c-wV-2hu"/>
+                            <constraint firstItem="v3I-ZD-Nje" firstAttribute="top" secondItem="kEP-Gj-Dyc" secondAttribute="topMargin" constant="64" id="KhH-Xf-e4g"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="v3I-ZD-Nje" secondAttribute="trailing" constant="-16" id="P31-eI-4rt"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="t2L-Tu-34G" secondAttribute="trailing" constant="-16" id="YFK-FY-lEi"/>
+                            <constraint firstItem="t2L-Tu-34G" firstAttribute="leading" secondItem="kEP-Gj-Dyc" secondAttribute="leadingMargin" constant="-16" id="dgA-eU-5kT"/>
+                            <constraint firstItem="RQx-aQ-EPz" firstAttribute="top" secondItem="t2L-Tu-34G" secondAttribute="bottom" constant="8" id="rWV-V8-9nR"/>
+                            <constraint firstItem="t2L-Tu-34G" firstAttribute="top" secondItem="v3I-ZD-Nje" secondAttribute="bottom" constant="8" id="ws7-m1-WvJ"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="EchoWave" image="echowave" id="qTv-cn-Zs7"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
@@ -249,7 +267,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bdt-PK-ACm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3193.125" y="-42.25352112676056"/>
+            <point key="canvasLocation" x="3193" y="-51"/>
         </scene>
         <!--Detailed Image Page View Controller-->
         <scene sceneID="P3J-2s-K85">
