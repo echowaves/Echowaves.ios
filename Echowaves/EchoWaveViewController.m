@@ -139,18 +139,18 @@
 //    NSString* imageUrl = [NSString stringWithFormat:@"%@/img/%@/thumb_%@", EWAWSBucket, waveName, imageName];
     
     
-//    ((UIImageView *)[cell viewWithTag:100]).image = [UIImage imageNamed:@"echowave.png"]; // no need to show the background image
+    ((UIImageView *)[cell viewWithTag:100]).image = nil;//[UIImage imageNamed:@"echowave.png"]; // no need to show the background image
 
     [EWImage loadThumbImage:imageName
                     forWave:waveName
                     success:^(UIImage *image) {
-                        ((UIImageView *)[cell viewWithTag:100]).image = image;
-                        waveImageView.contentMode = UIViewContentModeScaleAspectFit;
+                        if([collectionView.indexPathsForVisibleItems containsObject:indexPath]) {
+                            ((UIImageView *)[cell viewWithTag:100]).image = image;
+                            waveImageView.contentMode = UIViewContentModeScaleAspectFit;
+                        }
                     } failure:^(NSError *error) {
                         NSLog(@"error: %@", error.description);
                     }];
-     
-    
     return cell;
 }
 
