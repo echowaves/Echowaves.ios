@@ -793,8 +793,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <searchBar contentMode="redraw" placeholder="wave name to blend with" translatesAutoresizingMaskIntoConstraints="NO" id="Rvl-Fo-umh">
+                                <rect key="frame" x="0.0" y="65" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="9vS-O2-147"/>
+                                    <constraint firstAttribute="height" constant="44" id="IwQ-HJ-ihM"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="IwQ-HJ-ihM"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <outlet property="delegate" destination="O8i-2k-w70" id="z11-0N-ryL"/>
+                                </connections>
+                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="K6q-Y0-rwW">
-                                <rect key="frame" x="0.0" y="63" width="600" height="488"/>
+                                <rect key="frame" x="0.0" y="109" width="600" height="442"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WaveCompletionTableCell" id="hcH-fI-HEW">
@@ -827,27 +843,29 @@
                                     <outlet property="delegate" destination="O8i-2k-w70" id="aAl-3g-sbf"/>
                                 </connections>
                             </tableView>
-                            <searchBar contentMode="redraw" placeholder="wave name to blend with" translatesAutoresizingMaskIntoConstraints="NO" id="Rvl-Fo-umh">
-                                <rect key="frame" x="0.0" y="65" width="600" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="IwQ-HJ-ihM"/>
-                                </constraints>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="O8i-2k-w70" id="z11-0N-ryL"/>
-                                </connections>
-                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="foQ-oM-6Rx" firstAttribute="top" secondItem="K6q-Y0-rwW" secondAttribute="bottom" id="3Oq-rK-EWV"/>
-                            <constraint firstItem="K6q-Y0-rwW" firstAttribute="leading" secondItem="Try-U7-Mre" secondAttribute="leadingMargin" constant="-16" id="6pE-cR-Z7O"/>
-                            <constraint firstItem="K6q-Y0-rwW" firstAttribute="top" secondItem="Try-U7-Mre" secondAttribute="topMargin" constant="63" id="FVH-Yn-JlJ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="K6q-Y0-rwW" secondAttribute="trailing" constant="-16" id="IXS-Ol-6Xd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="K6q-Y0-rwW" secondAttribute="trailing" constant="-16" id="7IM-Zq-UtA"/>
+                            <constraint firstItem="K6q-Y0-rwW" firstAttribute="top" secondItem="Rvl-Fo-umh" secondAttribute="bottom" id="7Sv-Bc-KxU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Rvl-Fo-umh" secondAttribute="trailing" constant="-16" id="FA7-ib-kkK"/>
+                            <constraint firstItem="Rvl-Fo-umh" firstAttribute="leading" secondItem="Try-U7-Mre" secondAttribute="leadingMargin" constant="-16" id="FCv-NG-lZ1"/>
                             <constraint firstItem="Rvl-Fo-umh" firstAttribute="top" secondItem="aXC-oJ-Hmr" secondAttribute="bottom" constant="1" id="QNo-4A-51t"/>
+                            <constraint firstItem="K6q-Y0-rwW" firstAttribute="leading" secondItem="Try-U7-Mre" secondAttribute="leadingMargin" constant="-16" id="SSu-FT-InT"/>
+                            <constraint firstItem="foQ-oM-6Rx" firstAttribute="top" secondItem="K6q-Y0-rwW" secondAttribute="bottom" id="WLp-d2-ZUG"/>
+                            <constraint firstItem="K6q-Y0-rwW" firstAttribute="top" secondItem="Rvl-Fo-umh" secondAttribute="bottom" id="evK-ft-n6H"/>
                             <constraint firstItem="Rvl-Fo-umh" firstAttribute="leading" secondItem="Try-U7-Mre" secondAttribute="leadingMargin" constant="-16" id="hDI-fU-nPi"/>
+                            <constraint firstItem="Rvl-Fo-umh" firstAttribute="top" secondItem="Try-U7-Mre" secondAttribute="topMargin" constant="65" id="p6X-RS-oGs"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Rvl-Fo-umh" secondAttribute="trailing" constant="-16" id="pib-RG-91u"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="QNo-4A-51t"/>
+                                <exclude reference="hDI-fU-nPi"/>
+                                <exclude reference="pib-RG-91u"/>
+                                <exclude reference="evK-ft-n6H"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Blend With" id="6lY-AR-sLH"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
@@ -883,7 +901,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="4171" y="730"/>
+            <point key="canvasLocation" x="4171" y="716"/>
         </scene>
         <!--Pick Waves For Upload View Controller-->
         <scene sceneID="PDe-H7-1iw">
