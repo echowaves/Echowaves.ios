@@ -507,7 +507,7 @@
 				ORGANIZATIONNAME = Echowaves;
 				TargetAttributes = {
 					0AD6E24418011F59008303E0 = {
-						DevelopmentTeam = 33P3Q88Y8K;
+						DevelopmentTeam = WG58VW2S68;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 0;
@@ -741,7 +741,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Echowaves/Echowaves-Prefix.pch";
 				INFOPLIST_FILE = "Echowaves/Echowaves-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -767,7 +767,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Echowaves/Echowaves-Prefix.pch";
 				INFOPLIST_FILE = "Echowaves/Echowaves-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

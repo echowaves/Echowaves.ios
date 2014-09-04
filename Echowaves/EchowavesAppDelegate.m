@@ -26,14 +26,20 @@
     [Flurry startSession:@"77TXPC3GDBGYX4NM8WNN"];
 
     
-    // Register for push notifications
-//    [application registerForRemoteNotificationTypes:
-//     UIRemoteNotificationTypeBadge |
-//     UIRemoteNotificationTypeAlert |
-//     UIRemoteNotificationTypeSound];
-    [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
-    [[UIApplication sharedApplication] registerForRemoteNotifications];
-    
+#if __IPHONE_8_0
+	CGFloat iOSVersion = [[[UIDevice currentDevice] systemVersion] floatValue];
+	if(iOSVersion>=8.0) {
+		[[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
+		[[UIApplication sharedApplication] registerForRemoteNotifications];
+	}else
+#endif
+	{
+		// Register for push notifications
+		[application registerForRemoteNotificationTypes:
+		     UIRemoteNotificationTypeBadge |
+		     UIRemoteNotificationTypeAlert |
+		     UIRemoteNotificationTypeSound];
+	}
     // perform authentication, wave/password non blank and exist in the server side, and enter a sending loop
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
 
