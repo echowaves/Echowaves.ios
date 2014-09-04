@@ -61,6 +61,10 @@
     UISwitch *waveOn = sender;
 
     UITableViewCell *cell = (UITableViewCell *)[waveOn superview].superview;
+	if(![cell isKindOfClass:[UITableViewCell class]]) { // ios >= 7.0 http://stackoverflow.com/questions/19162725/access-ios-7-hidden-uitableviewcellscrollview
+		cell = (UITableViewCell *)cell.superview;
+		assert([cell isKindOfClass:[UITableViewCell class]]);
+	}
     UILabel* label = (UILabel *)[cell.contentView viewWithTag:500];
     NSString *waveName = label.text;
     
