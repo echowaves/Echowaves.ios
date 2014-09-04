@@ -20,10 +20,6 @@
 
 @implementation WavingViewController
 
-//- (void) reloadWavesPicker {
-//    [self.wavesPicker reloadAllComponents];
-//    [self.wavesPicker selectRow:[APP_DELEGATE currentWaveIndex] animated:YES];
-//}
 
 - (void) reloadWavesPicker {
     [EWWave getAllMyWaves:^(NSArray *waves) {
@@ -167,5 +163,12 @@
     self.navigationController.navigationBar.topItem.title = @"";//[APP_DELEGATE currentWaveName];
 //    [self startRefresh:self.refreshControl];
 }
+
+//-(void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+//{
+//    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+//    NSLog(@"rotating screen");
+//    [self reloadWavesPicker];
+//}
 
 @end

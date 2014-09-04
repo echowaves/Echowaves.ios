@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6206.8" systemVersion="14A329r" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eYa-MG-G2M">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6206.9" systemVersion="14A329r" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eYa-MG-G2M">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7026.1"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
@@ -315,9 +315,15 @@
                             <constraint firstAttribute="trailingMargin" secondItem="v3I-ZD-Nje" secondAttribute="trailing" constant="-16" id="P31-eI-4rt"/>
                             <constraint firstAttribute="trailingMargin" secondItem="t2L-Tu-34G" secondAttribute="trailing" constant="-16" id="YFK-FY-lEi"/>
                             <constraint firstItem="t2L-Tu-34G" firstAttribute="leading" secondItem="kEP-Gj-Dyc" secondAttribute="leadingMargin" constant="-16" id="dgA-eU-5kT"/>
+                            <constraint firstItem="v3I-ZD-Nje" firstAttribute="top" secondItem="8ff-oR-hBX" secondAttribute="bottom" id="kK3-S6-vVr"/>
                             <constraint firstItem="RQx-aQ-EPz" firstAttribute="top" secondItem="t2L-Tu-34G" secondAttribute="bottom" constant="8" id="rWV-V8-9nR"/>
                             <constraint firstItem="t2L-Tu-34G" firstAttribute="top" secondItem="v3I-ZD-Nje" secondAttribute="bottom" constant="8" id="ws7-m1-WvJ"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="KhH-Xf-e4g"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="EchoWave" image="echowave" id="qTv-cn-Zs7"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
@@ -540,10 +546,10 @@
             </objects>
             <point key="canvasLocation" x="2077.5" y="-42.25352112676056"/>
         </scene>
-        <!--test-->
+        <!--Blends-->
         <scene sceneID="3r8-nV-WDX">
             <objects>
-                <viewController title="test" id="Edp-kY-vOe" customClass="BlendsViewController" sceneMemberID="viewController">
+                <viewController title="Blends" id="Edp-kY-vOe" customClass="BlendsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9pN-2c-tnF"/>
                         <viewControllerLayoutGuide type="bottom" id="1Gd-zN-Uha"/>
@@ -787,8 +793,14 @@
                             <constraint firstAttribute="trailingMargin" secondItem="b5t-JB-wWW" secondAttribute="trailing" constant="-16" id="cMc-iU-EL2"/>
                             <constraint firstItem="b5t-JB-wWW" firstAttribute="top" secondItem="YfS-qw-YF5" secondAttribute="bottom" constant="8" id="ivT-eA-oM7"/>
                             <constraint firstItem="g3r-DE-K1a" firstAttribute="leading" secondItem="I0r-uO-f4u" secondAttribute="leadingMargin" constant="-16" id="rpa-Sf-Gfr"/>
+                            <constraint firstItem="g3r-DE-K1a" firstAttribute="top" secondItem="9pN-2c-tnF" secondAttribute="bottom" id="sqL-Sr-PI1"/>
                             <constraint firstItem="b5t-JB-wWW" firstAttribute="top" secondItem="YfS-qw-YF5" secondAttribute="bottom" constant="8" symbolic="YES" id="u3o-rY-Jrw"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="YGA-qo-5az"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Blends" image="blends" id="ZBo-Ng-WgS"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
@@ -1243,11 +1255,13 @@
                             <constraint firstItem="JUN-Ko-O3O" firstAttribute="top" secondItem="fnD-rz-55A" secondAttribute="bottom" constant="8" id="r2A-aj-Gmi"/>
                             <constraint firstItem="XgI-b1-elt" firstAttribute="centerX" secondItem="B6Q-Pd-Z1p" secondAttribute="centerX" id="t6N-aM-7ya"/>
                             <constraint firstItem="JUN-Ko-O3O" firstAttribute="leading" secondItem="1aL-EV-5qi" secondAttribute="leadingMargin" id="tK8-jI-Mg9"/>
+                            <constraint firstItem="9Mg-c0-XBA" firstAttribute="top" secondItem="JLS-v2-L1J" secondAttribute="bottom" id="teE-Bi-fjr"/>
                             <constraint firstAttribute="trailingMargin" secondItem="9Mg-c0-XBA" secondAttribute="trailing" constant="-16" id="vhh-Fj-10Y"/>
                             <constraint firstItem="9Mg-c0-XBA" firstAttribute="leading" secondItem="1aL-EV-5qi" secondAttribute="leadingMargin" constant="-16" id="y28-Lk-8GT"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="jkA-0p-8eh"/>
                                 <exclude reference="Szw-CO-Vte"/>
                             </mask>
                         </variation>

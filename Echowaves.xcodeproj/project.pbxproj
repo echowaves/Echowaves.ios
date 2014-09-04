@@ -507,7 +507,7 @@
 				ORGANIZATIONNAME = Echowaves;
 				TargetAttributes = {
 					0AD6E24418011F59008303E0 = {
-						DevelopmentTeam = WG58VW2S68;
+						DevelopmentTeam = 33P3Q88Y8K;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 0;
