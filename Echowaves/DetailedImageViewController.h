@@ -16,6 +16,7 @@
 @property (atomic) bool fullSizeImageLoaded;
 
 @property (strong, nonatomic) IBOutlet UIProgressView *progressView;
+@property (weak, nonatomic) IBOutlet UIButton *highQualityButton;
 
 @property (strong, nonatomic) NSString *waveName;
 @property (strong, nonatomic) NSString *imageName;
