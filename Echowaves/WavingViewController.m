@@ -54,7 +54,7 @@
     APP_DELEGATE.wavingViewController = self;
     self.delegate = self;
 
-    self.wavesPicker.style = HPStyle_iOS7;
+//    self.wavesPicker.style = HPStyle_iOS7;
     self.wavesPicker.font = [UIFont fontWithName: @"Trebuchet MS" size: 14.0f];
 
     

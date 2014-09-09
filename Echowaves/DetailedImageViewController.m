@@ -146,7 +146,7 @@
     [formatter setDateFormat:@"MM/dd/yyyy HH:mm:ss"];
     [self.navItem setTitle:[formatter stringFromDate:dateTime]];
     
-    //    [[self navigationItem].backBarButtonItem setTitle:@" "];
+        [[self navigationItem].backBarButtonItem setTitle:@" qwe"];
     
     if ([self.waveName isEqualToString:[APP_DELEGATE currentWaveName]]) {
         
