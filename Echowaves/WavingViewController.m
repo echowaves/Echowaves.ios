@@ -73,8 +73,17 @@
     [dateFormat setDateFormat:@"MMM dd, yyyy hh:mm a"];
     NSLocale *usLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
     [dateFormat setLocale: usLocale];
+
+    NSDate* currentDateTime = [USER_DEFAULTS objectForKey:@"lastCheckTime"];
+
+    if(currentDateTime == nil) {
+        currentDateTime = [NSDate date];
+        [USER_DEFAULTS setObject:currentDateTime forKey:@"lastCheckTime"];
+    }
     
-    [EWImage checkForNewAssetsToPostToWaveSinceDate:(NSDate*)[USER_DEFAULTS objectForKey:@"lastCheckTime"]
+    NSString *theDateTime = [dateFormat stringFromDate:currentDateTime];
+    
+    [EWImage checkForNewAssetsToPostToWaveSinceDate:currentDateTime
                                             success:^(NSArray *assets) {
                                                 [self photosCount].text =  [NSString stringWithFormat: @"%lu", (unsigned long)[assets count]];
                                             } whenError:^(NSError *error) {
@@ -84,7 +93,6 @@
                                             }];
     
     
-    NSString *theDateTime = [dateFormat stringFromDate:[USER_DEFAULTS objectForKey:@"lastCheckTime"]];
     NSLog(@"Date %@", theDateTime);
     
     //    [[self sinceDateTime] titleLabel].text = theDateTime;
