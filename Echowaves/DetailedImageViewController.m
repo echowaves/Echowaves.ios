@@ -234,21 +234,23 @@
 }
 
 
-- (BOOL)peoplePickerNavigationController:
-(ABPeoplePickerNavigationController *)picker
-      shouldContinueAfterSelectingPerson:(ABRecordRef)person
-{
-//    [self dismissModalViewControllerAnimated:YES];
-    return YES;
-}
+//- (void)peoplePickerNavigationController:
+//(ABPeoplePickerNavigationController *)picker
+//      didSelectPerson:(ABRecordRef)person
+//{
+//    NSLog(@"did select person");
+////    [self dismissModalViewControllerAnimated:YES];
+////    return YES;
+//}
 
 
-- (BOOL)peoplePickerNavigationController:
+- (void)peoplePickerNavigationController:
 (ABPeoplePickerNavigationController *)picker
-      shouldContinueAfterSelectingPerson:(ABRecordRef)person
+      didSelectPerson:(ABRecordRef)person
                                 property:(ABPropertyID)property
                               identifier:(ABMultiValueIdentifier)identifier
 {
+    NSLog(@"did select person property");
     [self dismissViewControllerAnimated:YES
                              completion:^{
                                  if (property == kABPersonPhoneProperty) {
@@ -294,7 +296,9 @@
                                  }
                              
                              }];
-    return NO;
+    
+    NSLog(@"returning from people picker");
+//    return YES;
 }
 
 - (void)peoplePickerNavigationControllerDidCancel:
