@@ -53,27 +53,11 @@
 //    self.wavesPicker.style = HPStyle_iOS7;
     self.wavesPicker.font = [UIFont fontWithName: @"Trebuchet MS" size: 14.0f];
     
-    self.requestedBlends = [[NSArray alloc]init];
-    self.unconfirmedBlends = [[NSArray alloc]init];
     self.blendedWith = [[NSArray alloc]init];
     [self reloadView];
 }
 
 -(void)reloadView {
-    [EWBlend getRequestedBlends:^(NSArray *waveNames) {
-        self.requestedBlends = waveNames;
-        [self.tableView reloadData];
-        [self.tableView reloadInputViews];
-    } failure:^(NSError *error) {
-        NSLog(@"error %@", error.description);
-    }];
-    [EWBlend getUnconfirmedBlends:^(NSArray *waveNames) {
-        self.unconfirmedBlends = waveNames;
-        [self.tableView reloadData];
-        [self.tableView reloadInputViews];
-    } failure:^(NSError *error) {
-        NSLog(@"error %@", error.description);
-    }];
     [EWBlend getBlendedWith:^(NSArray *waveNames) {
         self.blendedWith = waveNames;
         [self.tableView reloadData];
@@ -94,7 +78,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     NSLog(@"---------------numberOfSectionsInTableView");
-    return 3;
+    return 1;
 }
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     NSLog(@"---------------titleForHeaderInSection %ld", (long)section);
@@ -102,17 +86,7 @@
     
     switch(section){
         case 0:
-            return [NSString stringWithFormat:@"To %@: %lu",
-                    [APP_DELEGATE currentWaveName],
-                    (unsigned long)[self.requestedBlends count]];
-            break;
-        case 1:
-            return [NSString stringWithFormat:@"From %@: %lu",
-                    [APP_DELEGATE currentWaveName],
-                    (unsigned long)[self.unconfirmedBlends count]];
-            break;
-        case 2:
-            return [NSString stringWithFormat:@"%@ blends in with: %lu",
+            return [NSString stringWithFormat:@"%@ blends with: %lu",
                     [APP_DELEGATE currentWaveName],
                     (unsigned long)[self.blendedWith count]];
             break;
@@ -126,14 +100,6 @@
     
     switch(section){
         case 0:
-            NSLog(@"%lu", (unsigned long)[self.requestedBlends count]);
-            return [self.requestedBlends count];
-            break;
-        case 1:
-            NSLog(@"%lu", (unsigned long)[self.unconfirmedBlends count]);
-            return [self.unconfirmedBlends count];
-            break;
-        case 2:
             NSLog(@"%lu", (unsigned long)[self.blendedWith count]);
             return [self.blendedWith count];
             break;
@@ -152,12 +118,6 @@
     NSString *cellIdentifier;
     switch([indexPath section]){
         case 0:
-            cellIdentifier = @"RequestedBlend";
-            break;
-        case 1:
-            cellIdentifier = @"UnconfirmedBlend";
-            break;
-        case 2:
             cellIdentifier = @"BlendedWith";
             break;
     }
@@ -173,12 +133,6 @@
     
     switch([indexPath section]){
         case 0:
-            waveLabel.text = [((NSDictionary*)[self.requestedBlends objectAtIndex:indexPath.row]) objectForKey:@"name"];
-            break;
-        case 1:
-            waveLabel.text = [((NSDictionary*)[self.unconfirmedBlends objectAtIndex:indexPath.row]) objectForKey:@"name"];
-            break;
-        case 2:
             waveLabel.text = [((NSDictionary*)[self.blendedWith objectAtIndex:indexPath.row]) objectForKey:@"name"];
             break;
     }
@@ -193,79 +147,79 @@
     return height;
 }
 
-- (IBAction)acceptButtonClicked:(id)sender {
-    UIView *button = sender;
-    NSString *waveName;
-    
-    for (UIView *parent = [button superview]; parent != nil; parent = [parent superview]) {
-        if ([parent isKindOfClass: [UITableViewCell class]]) {
-            UITableViewCell *cell = (UITableViewCell *) parent;
-            NSIndexPath *path = [self.tableView indexPathForCell: cell];
-            waveName = [((NSDictionary*)[self.requestedBlends objectAtIndex:path.row]) objectForKey:@"name"];
+//- (IBAction)acceptButtonClicked:(id)sender {
+//    UIView *button = sender;
+//    NSString *waveName;
+//    
+//    for (UIView *parent = [button superview]; parent != nil; parent = [parent superview]) {
+//        if ([parent isKindOfClass: [UITableViewCell class]]) {
+//            UITableViewCell *cell = (UITableViewCell *) parent;
+//            NSIndexPath *path = [self.tableView indexPathForCell: cell];
+//            waveName = [((NSDictionary*)[self.requestedBlends objectAtIndex:path.row]) objectForKey:@"name"];
+//
+//            AcceptBlendingRequestViewController *pickAWaveViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil] instantiateViewControllerWithIdentifier:@"PickAWaveView"];
+//
+//            pickAWaveViewController.fromWave = waveName;
+//            pickAWaveViewController.toWave = [APP_DELEGATE currentWaveName];
+//
+//            [self.navigationController pushViewController:pickAWaveViewController animated:NO];
+//            break; // for
+//        }
+//    }
+////    NSLog(@"accepting blend request from %@",waveName);
+//}
 
-            AcceptBlendingRequestViewController *pickAWaveViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil] instantiateViewControllerWithIdentifier:@"PickAWaveView"];
+//- (IBAction)rejectButtonClicked:(id)sender {
+//    UIView *button = sender;
+//    NSString *waveName;
+//    
+//    for (UIView *parent = [button superview]; parent != nil; parent = [parent superview]) {
+//        if ([parent isKindOfClass: [UITableViewCell class]]) {
+//            UITableViewCell *cell = (UITableViewCell *) parent;
+//            NSIndexPath *path = [self.tableView indexPathForCell: cell];
+//            waveName = [((NSDictionary*)[self.requestedBlends objectAtIndex:path.row]) objectForKey:@"name"];
+//            
+//            UnblendAlertView *alertMessage = [[UnblendAlertView alloc] initWithTitle:@"Alert"
+//                                                                   message:@"Unblend?"
+//                                                                  delegate:self
+//                                                         cancelButtonTitle:@"Cancel"
+//                                                         otherButtonTitles:@"OK", nil];
+//            alertMessage.waveName = waveName;
+//            alertMessage.tag = 20001;
+//            [alertMessage show];
+//            
+//            break; // for
+//        }
+//    }
+//    NSLog(@"rejecting blend request from %@",waveName);
+//}
 
-            pickAWaveViewController.fromWave = waveName;
-            pickAWaveViewController.toWave = [APP_DELEGATE currentWaveName];
-
-            [self.navigationController pushViewController:pickAWaveViewController animated:NO];
-            break; // for
-        }
-    }
-//    NSLog(@"accepting blend request from %@",waveName);
-}
-
-- (IBAction)rejectButtonClicked:(id)sender {
-    UIView *button = sender;
-    NSString *waveName;
-    
-    for (UIView *parent = [button superview]; parent != nil; parent = [parent superview]) {
-        if ([parent isKindOfClass: [UITableViewCell class]]) {
-            UITableViewCell *cell = (UITableViewCell *) parent;
-            NSIndexPath *path = [self.tableView indexPathForCell: cell];
-            waveName = [((NSDictionary*)[self.requestedBlends objectAtIndex:path.row]) objectForKey:@"name"];
-            
-            UnblendAlertView *alertMessage = [[UnblendAlertView alloc] initWithTitle:@"Alert"
-                                                                   message:@"Unblend?"
-                                                                  delegate:self
-                                                         cancelButtonTitle:@"Cancel"
-                                                         otherButtonTitles:@"OK", nil];
-            alertMessage.waveName = waveName;
-            alertMessage.tag = 20001;
-            [alertMessage show];
-            
-            break; // for
-        }
-    }
-    NSLog(@"rejecting blend request from %@",waveName);
-}
-
-- (IBAction)unblendButtonClicked:(id)sender {
-    UIView *button = sender;
-    NSString *waveName;
-    
-    for (UIView *parent = [button superview]; parent != nil; parent = [parent superview]) {
-        if ([parent isKindOfClass: [UITableViewCell class]]) {
-            UITableViewCell *cell = (UITableViewCell *) parent;
-            NSIndexPath *path = [self.tableView indexPathForCell: cell];
-            waveName = [((NSDictionary*)[self.unconfirmedBlends objectAtIndex:path.row]) objectForKey:@"name"];
-
-            UnblendAlertView *alertMessage = [[UnblendAlertView alloc] initWithTitle:@"Alert"
-                                                                             message:@"Unblend?"
-                                                                            delegate:self
-                                                                   cancelButtonTitle:@"Cancel"
-                                                                   otherButtonTitles:@"OK", nil];
-            alertMessage.waveName = waveName;
-            alertMessage.tag = 20002;
-            [alertMessage show];
-
-            
-            break; // for
-        }
-    }
-    
-    NSLog(@"unblending wave %@",waveName);
-}
+//- (IBAction)unblendButtonClicked:(id)sender {
+//    UIView *button = sender;
+//    NSString *waveName;
+//    
+//    for (UIView *parent = [button superview]; parent != nil; parent = [parent superview]) {
+//        if ([parent isKindOfClass: [UITableViewCell class]]) {
+//            UITableViewCell *cell = (UITableViewCell *) parent;
+//            NSIndexPath *path = [self.tableView indexPathForCell: cell];
+//            waveName = [((NSDictionary*)[self.unconfirmedBlends objectAtIndex:path.row]) objectForKey:@"name"];
+//
+//            UnblendAlertView *alertMessage = [[UnblendAlertView alloc] initWithTitle:@"Alert"
+//                                                                             message:@"Unblend?"
+//                                                                            delegate:self
+//                                                                   cancelButtonTitle:@"Cancel"
+//                                                                   otherButtonTitles:@"OK", nil];
+//            alertMessage.waveName = waveName;
+//            alertMessage.tag = 20002;
+//            [alertMessage show];
+//
+//            
+//            break; // for
+//        }
+//    }
+//    
+//    NSLog(@"unblending wave %@",waveName);
+//}
 
 - (IBAction)unblendBlendedButtonClicked:(id)sender {
     UIView *button = sender;
@@ -316,10 +270,6 @@
     
     switch([indexPath section]){
         case 0:
-            break;
-        case 1:
-            break;
-        case 2:
             nil;
             AcceptBlendingRequestViewController *pickAWaveViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil] instantiateViewControllerWithIdentifier:@"PickAWaveView"];
             pickAWaveViewController.fromWave = [((NSDictionary*)[self.blendedWith objectAtIndex:indexPath.row]) objectForKey:@"name"];
@@ -327,7 +277,6 @@
             
             [self.navigationController pushViewController:pickAWaveViewController animated:NO];
 
-            
             break;
     }
 

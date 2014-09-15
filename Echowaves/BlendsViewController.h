@@ -14,8 +14,6 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
-@property (strong, atomic) NSArray *requestedBlends;
-@property (strong, atomic) NSArray *unconfirmedBlends;
 @property (strong, atomic) NSArray *blendedWith;
 
 @property (strong, nonatomic) IBOutlet HorizontalPickerView *wavesPicker;

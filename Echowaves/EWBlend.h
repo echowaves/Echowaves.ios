@@ -28,11 +28,11 @@
 
 
 
-
-+(void) getRequestedBlends:(void (^)(NSArray *waveNames))success
-                   failure:(void (^)(NSError *error))failure;
-+(void) getUnconfirmedBlends:(void (^)(NSArray *waveNames))success
-                     failure:(void (^)(NSError *error))failure;
+//
+//+(void) getRequestedBlends:(void (^)(NSArray *waveNames))success
+//                   failure:(void (^)(NSError *error))failure;
+//+(void) getUnconfirmedBlends:(void (^)(NSArray *waveNames))success
+//                     failure:(void (^)(NSError *error))failure;
 +(void) getBlendedWith:(void (^)(NSArray *waveNames))success
                failure:(void (^)(NSError *error))failure;
 

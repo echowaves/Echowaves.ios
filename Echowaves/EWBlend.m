@@ -107,47 +107,47 @@
     
 }
 
-+(void) getRequestedBlends:(void (^)(NSArray *waveNames))success
-                   failure:(void (^)(NSError *error))failure {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    //ideally not going to need the following line, if making a request to json service
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-
-    NSDictionary *parameters = @{@"wave_name": [APP_DELEGATE currentWaveName]};
-    
-    
-    [manager GET:[NSString stringWithFormat:@"%@/requested-blends.json", EWHost]
-      parameters:parameters
-         success:^(AFHTTPRequestOperation *operation, id responseObject) {
-             success((NSArray*)responseObject);
-         }
-         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-             NSLog(@"Error: %@", error);
-             failure(error);
-         }];
-    
-}
-+(void) getUnconfirmedBlends:(void (^)(NSArray *waveNames))success
-                   failure:(void (^)(NSError *error))failure {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    //ideally not going to need the following line, if making a request to json service
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    
-    NSDictionary *parameters = @{@"wave_name": [APP_DELEGATE currentWaveName]};
-
-    [manager GET:[NSString stringWithFormat:@"%@/unconfirmed-blends.json", EWHost]
-      parameters:parameters
-         success:^(AFHTTPRequestOperation *operation, id responseObject) {
-             success((NSArray*)responseObject);
-         }
-         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-             NSLog(@"Error: %@", error);
-             failure(error);
-         }];
-    
-}
+//+(void) getRequestedBlends:(void (^)(NSArray *waveNames))success
+//                   failure:(void (^)(NSError *error))failure {
+//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+//    //ideally not going to need the following line, if making a request to json service
+//    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+//    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+//
+//    NSDictionary *parameters = @{@"wave_name": [APP_DELEGATE currentWaveName]};
+//    
+//    
+//    [manager GET:[NSString stringWithFormat:@"%@/requested-blends.json", EWHost]
+//      parameters:parameters
+//         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//             success((NSArray*)responseObject);
+//         }
+//         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//             NSLog(@"Error: %@", error);
+//             failure(error);
+//         }];
+//    
+//}
+//+(void) getUnconfirmedBlends:(void (^)(NSArray *waveNames))success
+//                   failure:(void (^)(NSError *error))failure {
+//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+//    //ideally not going to need the following line, if making a request to json service
+//    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+//    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+//    
+//    NSDictionary *parameters = @{@"wave_name": [APP_DELEGATE currentWaveName]};
+//
+//    [manager GET:[NSString stringWithFormat:@"%@/unconfirmed-blends.json", EWHost]
+//      parameters:parameters
+//         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//             success((NSArray*)responseObject);
+//         }
+//         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//             NSLog(@"Error: %@", error);
+//             failure(error);
+//         }];
+//    
+//}
 +(void) getBlendedWith:(void (^)(NSArray *waveNames))success
                    failure:(void (^)(NSError *error))failure {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
