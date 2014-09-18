@@ -11,6 +11,7 @@
 @interface AcceptBlendingRequestViewController : UIViewController<UIPickerViewDelegate, UIPickerViewDataSource>
 @property (strong, nonatomic) IBOutlet UILabel *blendWaveLabel;
 @property (strong, nonatomic) IBOutlet UILabel *fromWaveLabel;
+@property (strong, nonatomic) IBOutlet UILabel *toWaveLabel;
 
 @property (strong, nonatomic) NSString *fromWave;
 @property (strong, nonatomic) NSString *toWave;

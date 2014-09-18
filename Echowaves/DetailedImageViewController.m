@@ -272,15 +272,13 @@
                                                  [EWImage shareImage:self.imageName
                                                               inWave:self.waveName
                                                              success:^(NSString *token) {
-
-                                                                 
-                                                                 smscontroller.body =
-                                                                 [NSString
-                                                                  stringWithFormat:@"I want to share Echowaves photo with you echowaves://share?token=%@", token];
                                                                  
                                                                  smscontroller.recipients = [NSArray arrayWithObjects: phoneNumber, nil];
                                                                  smscontroller.messageComposeDelegate = self;
+                                                                 smscontroller.body = [NSString stringWithFormat:@"I want to share photo with you http://echowaves.com/mobile?token=%@", token];                                                                 
+
                                                                  [self presentViewController:smscontroller animated:YES completion:^{
+
                                                                      NSLog(@"sms controller presented");
                                                                  }];
                     

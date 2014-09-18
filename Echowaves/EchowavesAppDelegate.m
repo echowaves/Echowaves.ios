@@ -129,6 +129,16 @@
                                   detailedImageViewController.waveName = waveName;
                                   detailedImageViewController.imageIndex = 0;
                                   
+//                                  detailedImageViewController.navigationController.navigationItem.backBarButtonItem.title = @"< Accept";
+//                                  detailedImageViewController.navigationItem.backBarButtonItem.title = @"< Accept";
+//                                  detailedImageViewController.navItem.backBarButtonItem.title = @"< Accept";
+                                  
+                                  UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Accept" style:UIBarButtonItemStyleDone target:nil action:nil];
+                                  [[pickAWaveViewController navigationItem] setBackBarButtonItem:backButton];
+
+                                  
+                                  detailedImageViewController.title = @"Photo preview";
+                                  
                                   
                                   [pickAWaveViewController.navigationController pushViewController:detailedImageViewController animated:NO];
                                   
