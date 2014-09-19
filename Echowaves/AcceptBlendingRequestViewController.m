@@ -19,13 +19,18 @@
 }
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self updateLabels];
     [self reloadWaves];
+}
+
+- (void) updateLabels {
     [self fromWaveLabel].text = [self fromWave];
     [self toWaveLabel].text = [self toWave];
     [self blendWaveLabel].text = [NSString stringWithFormat:@"You will be able to see %@'s photos blended with your wave %@. Your %@'s photos will be visible to %@ as well", [self fromWave], [self toWave], [self toWave], [self fromWave]];
     
     NSLog(@"xxxxxxxxx blend wave text %@", [self fromWave]);
 }
+
 - (IBAction)cancelAction:(id)sender {
     [self.navigationController popViewControllerAnimated:FALSE];
 }
@@ -143,6 +148,8 @@ numberOfRowsInComponent:(NSInteger)component
     
     //    self.navigationController.navigationBar.topItem.title = @"";//[APP_DELEGATE currentWaveName];
     self.selectedWave = APP_DELEGATE.currentWaveName;
+    self.toWave = self.selectedWave;
+    [self updateLabels];
     //    [self reloadWavesPicker];
 }
 
