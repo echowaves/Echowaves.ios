@@ -17,6 +17,8 @@
 
 @property (strong, nonatomic) IBOutlet HorizontalPickerView *wavesPicker;
 
+@property (weak, nonatomic) IBOutlet UILabel *emptyWaveLabel;
+
 @property (strong, nonatomic) NSMutableArray *myWaves;
 
 @property (strong, atomic) UIRefreshControl *refreshControl;

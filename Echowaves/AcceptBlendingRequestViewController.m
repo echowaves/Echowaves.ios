@@ -22,7 +22,7 @@
     [self reloadWaves];
     [self fromWaveLabel].text = [self fromWave];
     [self toWaveLabel].text = [self toWave];
-    [self blendWaveLabel].text = [NSString stringWithFormat:@"You will be able to see %@'s photos. The wave you choose from the picker below will be mixed with your photos from %@", [self fromWave], [self fromWave]];
+    [self blendWaveLabel].text = [NSString stringWithFormat:@"You will be able to see %@'s photos blended with your wave %@. Your %@'s photos will be visible to %@ as well", [self fromWave], [self toWave], [self toWave], [self fromWave]];
     
     NSLog(@"xxxxxxxxx blend wave text %@", [self fromWave]);
 }

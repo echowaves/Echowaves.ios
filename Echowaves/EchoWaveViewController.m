@@ -47,7 +47,7 @@
     NSLog(@"$$$$$$$$$$$$$$$$calling viewDidLoad for EchoWaveViewController");
 
     
-    
+    [self emptyWaveLabel].hidden = YES;
     // Add swipeGestures
     UISwipeGestureRecognizer *oneFingerSwipeLeft = [[UISwipeGestureRecognizer alloc]
                                                      initWithTarget:self
@@ -115,6 +115,11 @@
                              NSLog(@"@total images %lu", (unsigned long)[self.waveImages count]);
                              [self.imagesCollectionView reloadData];
                              [self.imagesCollectionView reloadInputViews];
+                             if(waveImages.count == 0) {
+                                 [self emptyWaveLabel].hidden = NO;
+                             } else {
+                                 [self emptyWaveLabel].hidden = YES;
+                             }
                              [sender endRefreshing];
                          }
                          failure:^(NSError *error) {

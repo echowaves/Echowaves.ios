@@ -115,29 +115,26 @@
 
 - (void) presentDetailedImageBasedOnShareToken {
         [EWImage retreiveImageByToken:[APP_DELEGATE shareActionToken]
-                              success:^(NSString *imageName, NSString *waveName) {
-
+                              success:^(NSString *imageName, NSString *fromWaveName) {
                                   
                                   AcceptBlendingRequestViewController *pickAWaveViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil] instantiateViewControllerWithIdentifier:@"PickAWaveView"];
-                                  pickAWaveViewController.fromWave = waveName;
+                                  pickAWaveViewController.fromWave = fromWaveName;
+                                  pickAWaveViewController.toWave = [self currentWaveName];
                                   [(UINavigationController *)self.window.rootViewController pushViewController:pickAWaveViewController animated:NO];
                                   
 
                                   DetailedImageViewController *detailedImageViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil] instantiateViewControllerWithIdentifier:@"DetailedImageView"];
                                   
                                   detailedImageViewController.imageName = imageName;
-                                  detailedImageViewController.waveName = waveName;
+                                  detailedImageViewController.waveName = fromWaveName;
                                   detailedImageViewController.imageIndex = 0;
                                   
-//                                  detailedImageViewController.navigationController.navigationItem.backBarButtonItem.title = @"< Accept";
-//                                  detailedImageViewController.navigationItem.backBarButtonItem.title = @"< Accept";
-//                                  detailedImageViewController.navItem.backBarButtonItem.title = @"< Accept";
+                                  UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"OK" style:UIBarButtonItemStyleDone target:nil action:nil];
+//                                  pickAWaveViewController.navigationController.navigationBar.tintColor = [UIColor redColor];
                                   
-                                  UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Accept" style:UIBarButtonItemStyleDone target:nil action:nil];
                                   [[pickAWaveViewController navigationItem] setBackBarButtonItem:backButton];
-
                                   
-                                  detailedImageViewController.title = @"Photo preview";
+                                  detailedImageViewController.title = @"Preview";
                                   
                                   
                                   [pickAWaveViewController.navigationController pushViewController:detailedImageViewController animated:NO];
