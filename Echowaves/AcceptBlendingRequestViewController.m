@@ -39,40 +39,44 @@
     NSLog(@"called pickAWave POP");
     [EWBlend showLoadingIndicator:nil];
     //if toWave is present as well as fromWave -- we have to unblend first
-    if([self toWave]) {
-//        NSLock *lock = [NSLock new];
-//        [lock lock];
+    if(![self.toWave  isEqualToString:self.origToWave]) {
+        NSLock *lock = [NSLock new];
+        [lock lock];
         [EWBlend unblendFrom:[self fromWave]
-                 currentWave:[self toWave]
+                 currentWave:[self origToWave]
                      success:^{
-//                         [lock unlock];
-                         
-                         [EWBlend requestBlendingWith:[self fromWave]
-                                              success:^{
-                                                  [EWBlend confirmBlendingWith:[self fromWave]
-                                                                       success:^{
-                                                                           [EWBlend hideLoadingIndicator:nil];
-                                                                           [self.navigationController popViewControllerAnimated:FALSE];
-                                                                       }
-                                                                       failure:^(NSError *error) {
-                                                                           [EWBlend showAlertWithMessage:@"Confirming Blending failed" FromSender:nil];
-                                                                           NSLog(@"failed blending confirming %@", error.debugDescription);
-                                                                           [EWBlend hideLoadingIndicator:nil];
-                                                                           [self.navigationController popViewControllerAnimated:FALSE];
-                                                                       }];
-                                              } failure:^(NSError *error) {
-                                                  [EWBlend showAlertWithMessage:@"Blending failed" FromSender:nil];
-                                                  NSLog(@"failed blending %@", error.debugDescription);
-                                                  [EWBlend hideLoadingIndicator:nil];
-                                                  [self.navigationController popViewControllerAnimated:FALSE];
-                                              }];
-
+                         [lock unlock];
+                         NSLog(@"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~unblended from:%@ to %@", self.fromWave, self.toWave);
                      }
                      failure:^(NSError *error) {
-//                         [lock unlock];
-                         NSLog(@"failed unblending");
+                         [lock unlock];
+                         NSLog(@"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~failed unblending from:%@ to %@", self.fromWave, self.toWave);
                      }];
-    }// if toWave is present
+
+    }
+    
+    [EWBlend requestBlendingWith:[self fromWave]
+                         success:^{
+                             [EWBlend confirmBlendingWith:[self fromWave]
+                                                  success:^{
+                                                      [EWBlend hideLoadingIndicator:nil];
+                                                      [self.navigationController popViewControllerAnimated:FALSE];
+                                                  }
+                                                  failure:^(NSError *error) {
+                                                      [EWBlend showAlertWithMessage:@"Confirming Blending failed" FromSender:nil];
+                                                      NSLog(@"failed blending confirming %@", error.debugDescription);
+                                                      [EWBlend hideLoadingIndicator:nil];
+                                                      [self.navigationController popViewControllerAnimated:FALSE];
+                                                  }];
+                         } failure:^(NSError *error) {
+                             [EWBlend showAlertWithMessage:@"Blending failed" FromSender:nil];
+                             NSLog(@"failed blending %@", error.debugDescription);
+                             [EWBlend hideLoadingIndicator:nil];
+                             [self.navigationController popViewControllerAnimated:FALSE];
+                         }];
+
+    
+
     
 }
 
@@ -147,8 +151,7 @@ numberOfRowsInComponent:(NSInteger)component
     //    NSLog(@"setting title: %@", APP_DELEGATE.waveName);
     
     //    self.navigationController.navigationBar.topItem.title = @"";//[APP_DELEGATE currentWaveName];
-    self.selectedWave = APP_DELEGATE.currentWaveName;
-    self.toWave = self.selectedWave;
+    self.toWave = APP_DELEGATE.currentWaveName;
     [self updateLabels];
     //    [self reloadWavesPicker];
 }

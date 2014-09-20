@@ -323,11 +323,12 @@
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
     APP_DELEGATE.currentWaveName = nil;
-    [manager POST:[NSString stringWithFormat:@"%@/logout.json", EWHost] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"+++TunedOut");
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"+++Error tuninOut");
-    }];
+    [manager POST:[NSString stringWithFormat:@"%@/logout.json", EWHost] parameters:nil
+          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+              NSLog(@"+++TunedOut");
+          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              NSLog(@"+++Error tuninOut");
+          }];
     
 
 }

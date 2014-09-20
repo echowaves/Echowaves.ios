@@ -27,12 +27,12 @@
             APP_DELEGATE.currentWaveIndex = 0;
             
 //            [self.wavesPicker reloadAllComponents];
-            [self.wavesPicker selectRow:0 animated:NO];
+            [self.wavesPicker selectRow:0 inComponent:0 animated:YES];
         }
         
         NSLog(@"setting wave index: %ld", [APP_DELEGATE currentWaveIndex]);
         self.navigationController.navigationBar.topItem.title = @"";//[APP_DELEGATE currentWaveName];
-        [self.wavesPicker selectRow:[APP_DELEGATE currentWaveIndex] animated:NO];
+        [self.wavesPicker selectRow:[APP_DELEGATE currentWaveIndex] inComponent:0 animated:NO];
         
     } failure:^(NSError *error) {
         [EWWave showErrorAlertWithMessage:error.description
@@ -66,7 +66,7 @@
     
     
 //    self.wavesPicker.style = HPStyle_iOS7;
-    self.wavesPicker.font = [UIFont fontWithName: @"Trebuchet MS" size: 14.0f];
+//    self.wavesPicker.font = [UIFont fontWithName: @"Trebuchet MS" size: 14.0f];
 
     if(self.refreshControl == nil) {
         self.refreshControl = [UIRefreshControl new];
@@ -174,7 +174,7 @@
 
 
 
-#pragma mark -  HPickerViewDataSource
+#pragma mark -  UIPickerViewDataSource
 - (NSInteger)numberOfRowsInPickerView:pickerView
 {
     return [self myWaves].count;
@@ -182,8 +182,8 @@
 
 
 
-#pragma mark -  HPickerViewDelegate
-- (NSString *)pickerView:(HorizontalPickerView *)pickerView
+#pragma mark -  UIPickerViewDelegate
+- (NSString *)pickerView:(UIPickerView *)pickerView
              titleForRow:(NSInteger)row
 {
     NSLog(@"redrawing row: %ld", (long)row);
@@ -192,7 +192,7 @@
 
 
 
--(void)pickerView:(HorizontalPickerView *)pickerView
+-(void)pickerView:(UIPickerView *)pickerView
      didSelectRow:(NSInteger)row
 {
     NSLog(@",,,,,,,,,,,,,,,,,,, did select row: %@", @(row));

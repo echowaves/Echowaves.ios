@@ -8,17 +8,17 @@
 
 //#import <UIKit/UIKit.h>
 #import "AFHTTPRequestOperationManager.h"
-#import "HorizontalPickerView.h"
 #import "EchowavesImagePickerController.h"
 
 
-@interface WavingViewController : EchowavesImagePickerController<EchowavesImagePickerControllerProtocol, UIGestureRecognizerDelegate, HPickerViewDelegate, HPickerViewDataSource>
+@interface WavingViewController : EchowavesImagePickerController<EchowavesImagePickerControllerProtocol, UIGestureRecognizerDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 
 //-(void) resetWaves;
 - (void)updatePhotosCount;
 
-//it's a hack, but can't figure out how to make it work with in standard life cycle
-@property (strong, nonatomic) IBOutlet HorizontalPickerView *wavesPicker;
+@property (strong, nonatomic) IBOutlet UIButton *waveSelected;
+@property (strong, nonatomic) IBOutlet UIPickerView *wavesPicker;
+
 @property (nonatomic) bool checkedAtload;
 
 

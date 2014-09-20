@@ -20,6 +20,6 @@
 
 @property (strong, nonatomic) NSMutableArray *myWaves;
 
-@property (strong, nonatomic) NSString *selectedWave;
+@property (strong, nonatomic) NSString *origToWave;
 
 @end
