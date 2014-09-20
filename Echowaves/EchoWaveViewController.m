@@ -15,29 +15,29 @@
 @implementation EchoWaveViewController
 
 - (void) reloadWavesPicker {
-    [EWWave getAllMyWaves:^(NSArray *waves) {
-        self.myWaves = [waves mutableCopy];
-        [self.wavesPicker reloadAllComponents];
-        
-//        NSLog(@"11111111111 currentWaveName: %@", [APP_DELEGATE currentWaveName]);
-        
-        if( [APP_DELEGATE currentWaveName] == NULL) {
-            NSURLCredential *credential = [EWWave getStoredCredential];
-            APP_DELEGATE.currentWaveName = [credential user];
-            APP_DELEGATE.currentWaveIndex = 0;
-            
-//            [self.wavesPicker reloadAllComponents];
-            [self.wavesPicker selectRow:0 inComponent:0 animated:YES];
-        }
-        
-        NSLog(@"setting wave index: %ld", [APP_DELEGATE currentWaveIndex]);
-        self.navigationController.navigationBar.topItem.title = @"";//[APP_DELEGATE currentWaveName];
-        [self.wavesPicker selectRow:[APP_DELEGATE currentWaveIndex] inComponent:0 animated:NO];
-        
-    } failure:^(NSError *error) {
-        [EWWave showErrorAlertWithMessage:error.description
-                               FromSender:nil];
-    }];
+//    [EWWave getAllMyWaves:^(NSArray *waves) {
+//        self.myWaves = [waves mutableCopy];
+//        [self.wavesPicker reloadAllComponents];
+//        
+////        NSLog(@"11111111111 currentWaveName: %@", [APP_DELEGATE currentWaveName]);
+//        
+//        if( [APP_DELEGATE currentWaveName] == NULL) {
+//            NSURLCredential *credential = [EWWave getStoredCredential];
+//            APP_DELEGATE.currentWaveName = [credential user];
+//            APP_DELEGATE.currentWaveIndex = 0;
+//            
+////            [self.wavesPicker reloadAllComponents];
+//            [self.wavesPicker selectRow:0 inComponent:0 animated:YES];
+//        }
+//        
+//        NSLog(@"setting wave index: %ld", [APP_DELEGATE currentWaveIndex]);
+//        self.navigationController.navigationBar.topItem.title = @"";//[APP_DELEGATE currentWaveName];
+//        [self.wavesPicker selectRow:[APP_DELEGATE currentWaveIndex] inComponent:0 animated:NO];
+//        
+//    } failure:^(NSError *error) {
+//        [EWWave showErrorAlertWithMessage:error.description
+//                               FromSender:nil];
+//    }];
     
 }
 
@@ -63,17 +63,19 @@
     
     
     
-    
-    
-//    self.wavesPicker.style = HPStyle_iOS7;
-//    self.wavesPicker.font = [UIFont fontWithName: @"Trebuchet MS" size: 14.0f];
-
     if(self.refreshControl == nil) {
         self.refreshControl = [UIRefreshControl new];
         [self.refreshControl addTarget:self action:@selector(startRefresh:)
                       forControlEvents:UIControlEventValueChanged];
         [self.imagesCollectionView addSubview:self.refreshControl];
     }
+//    [self startRefresh:self.refreshControl];
+    
+    self.myWaves  = [[NSMutableArray alloc] initWithObjects:@"13-15", @"16-19", @"20-29", @"30-39", @"40-49", @"50-59", @"60-69", @"70-79", @"80-89", @"90-99", @"100-110", @"over 110", nil];
+
+    self.wavesPicker = [[UIPickerView alloc] initWithFrame:CGRectZero];
+    [self attachPickerToTextField:self.waveSelected :self.wavesPicker];
+
 }
 
 
@@ -125,7 +127,48 @@
                          failure:^(NSError *error) {
                              NSLog(@"error %@", error.description);
                          }];
+    
+ 
 }
+
+- (void)attachPickerToTextField: (UITextField*) textField :(UIPickerView*) picker{
+    picker.delegate = self;
+    picker.dataSource = self;
+    
+    textField.delegate = self;
+    textField.inputView = picker;
+}
+
+#pragma mark - Keyboard delegate stuff
+
+// let tapping on the background (off the input field) close the thing
+//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+//    [self.waveSelected resignFirstResponder];
+//}
+
+#pragma mark - Picker delegate stuff
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return self.myWaves.count;
+}
+
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row   forComponent:(NSInteger)component
+{
+    return [self.myWaves objectAtIndex:row];
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row   inComponent:(NSInteger)component
+{
+    self.waveSelected.text = [self.myWaves objectAtIndex:row];
+    [self.waveSelected resignFirstResponder];
+}
+
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     NSLog(@"total images in wave: %lu", (unsigned long)self.waveImages.count);

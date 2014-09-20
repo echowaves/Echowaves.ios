@@ -79,6 +79,10 @@
     [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIColor whiteColor], NSForegroundColorAttributeName, nil]];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
+    NSURLCredential *credential = [EWWave getStoredCredential];
+    self.currentWaveIndex = 0;
+    self.currentWaveName = credential.user;
+    
     return YES;
 }
 

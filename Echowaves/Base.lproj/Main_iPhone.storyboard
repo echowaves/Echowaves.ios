@@ -323,26 +323,29 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E1s-2q-CQy">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="currentWave" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jki-hG-rxR">
                                 <rect key="frame" x="0.0" y="64" width="600" height="30"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" none="YES"/>
+                                    <bool key="isElement" value="NO"/>
+                                </accessibility>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="KDT-x6-zF7"/>
+                                    <constraint firstAttribute="height" constant="30" id="psU-Hu-9aK"/>
                                 </constraints>
-                                <state key="normal" title="waveSelected">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
+                                <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="12"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="t2L-Tu-34G" secondAttribute="trailing" constant="-16" id="A5X-J8-Or2"/>
-                            <constraint firstItem="t2L-Tu-34G" firstAttribute="top" secondItem="E1s-2q-CQy" secondAttribute="bottom" constant="8" id="PwA-f5-vdF"/>
-                            <constraint firstItem="E1s-2q-CQy" firstAttribute="top" secondItem="8ff-oR-hBX" secondAttribute="bottom" id="ca3-Ok-zwf"/>
-                            <constraint firstItem="RQx-aQ-EPz" firstAttribute="top" secondItem="t2L-Tu-34G" secondAttribute="bottom" constant="8" id="eZK-UB-bcW"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="E1s-2q-CQy" secondAttribute="trailing" constant="-16" id="hL5-Lc-X5Y"/>
-                            <constraint firstItem="t2L-Tu-34G" firstAttribute="top" secondItem="E1s-2q-CQy" secondAttribute="bottom" constant="8" id="kQS-Hx-rrR"/>
-                            <constraint firstItem="E1s-2q-CQy" firstAttribute="leading" secondItem="kEP-Gj-Dyc" secondAttribute="leadingMargin" constant="-16" id="pSZ-kl-bS4"/>
-                            <constraint firstItem="t2L-Tu-34G" firstAttribute="leading" secondItem="kEP-Gj-Dyc" secondAttribute="leadingMargin" constant="-16" id="paf-3Q-4Vv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="t2L-Tu-34G" secondAttribute="trailing" constant="-16" id="8Yt-3x-AgD"/>
+                            <constraint firstItem="RQx-aQ-EPz" firstAttribute="top" secondItem="t2L-Tu-34G" secondAttribute="bottom" constant="8" id="ObE-ut-caT"/>
+                            <constraint firstItem="t2L-Tu-34G" firstAttribute="leading" secondItem="kEP-Gj-Dyc" secondAttribute="leadingMargin" constant="-16" id="Rxh-4z-chV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Jki-hG-rxR" secondAttribute="trailing" constant="-16" id="UA5-ad-4Lv"/>
+                            <constraint firstItem="Jki-hG-rxR" firstAttribute="top" secondItem="8ff-oR-hBX" secondAttribute="bottom" id="Xha-sR-cfb"/>
+                            <constraint firstItem="Jki-hG-rxR" firstAttribute="leading" secondItem="kEP-Gj-Dyc" secondAttribute="leadingMargin" constant="-16" id="YxW-Ca-gt0"/>
+                            <constraint firstItem="t2L-Tu-34G" firstAttribute="top" secondItem="Jki-hG-rxR" secondAttribute="bottom" constant="8" id="vqc-vs-vlz"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="EchoWave" image="echowave" id="qTv-cn-Zs7"/>
@@ -351,12 +354,12 @@
                         <outlet property="emptyWaveLabel" destination="1Yo-sd-cbN" id="VSw-rm-GL4"/>
                         <outlet property="imagesCollectionView" destination="t2L-Tu-34G" id="OTr-B9-kUp"/>
                         <outlet property="tabBarItem" destination="qTv-cn-Zs7" id="SMP-CM-eEV"/>
-                        <outlet property="waveSelected" destination="E1s-2q-CQy" id="3PS-Si-Bhy"/>
+                        <outlet property="waveSelected" destination="Jki-hG-rxR" id="GgW-UC-bgx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bdt-PK-ACm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3181" y="-867"/>
+            <point key="canvasLocation" x="3181" y="-781"/>
         </scene>
         <!--Detailed Image Page View Controller-->
         <scene sceneID="P3J-2s-K85">
