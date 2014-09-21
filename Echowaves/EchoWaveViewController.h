@@ -16,7 +16,7 @@
 
 @property (strong, nonatomic) IBOutlet UITextField *waveSelected;
 @property (strong, nonatomic) IBOutlet UIPickerView *wavesPicker;
-@property (strong, nonatomic) NSMutableArray *myWaves;
+@property (strong, nonatomic) NSArray *myWaves;
 
 @property (weak, nonatomic) IBOutlet UILabel *emptyWaveLabel;
 
