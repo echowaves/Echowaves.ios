@@ -11,13 +11,14 @@
 #import "EchowavesImagePickerController.h"
 
 
-@interface WavingViewController : EchowavesImagePickerController<EchowavesImagePickerControllerProtocol, UIGestureRecognizerDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
+@interface WavingViewController : EchowavesImagePickerController<EchowavesImagePickerControllerProtocol, UIGestureRecognizerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate>
 
 //-(void) resetWaves;
 - (void)updatePhotosCount;
 
-@property (strong, nonatomic) IBOutlet UIButton *waveSelected;
+@property (strong, nonatomic) IBOutlet UITextField *waveSelected;
 @property (strong, nonatomic) IBOutlet UIPickerView *wavesPicker;
+@property (strong, nonatomic) NSArray *myWaves;
 
 @property (nonatomic) bool checkedAtload;
 
@@ -26,7 +27,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *sinceDateTime;
 
 @property (strong, nonatomic) IBOutlet UILabel *photosCount;
-@property (strong, nonatomic) NSMutableArray *myWaves;
 
 @end
 //nsuserdefaults

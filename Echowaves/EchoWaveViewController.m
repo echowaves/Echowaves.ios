@@ -54,13 +54,26 @@
         self.navigationController.navigationBar.topItem.title = @"";//[APP_DELEGATE currentWaveName];
         
         [self waveSelected].text = [APP_DELEGATE currentWaveName];
-        [self startRefresh:self.refreshControl];
+
+        [self refreshView];
+
     } failure:^(NSError *error) {
         [EWWave showErrorAlertWithMessage:error.description
                                FromSender:nil];
     }];
 }
 
+- (void) refreshView {
+     [self startRefresh:self.refreshControl];
+}
+
+- (void)attachPickerToTextField: (UITextField*) textField :(UIPickerView*) picker{
+    picker.delegate = self;
+    picker.dataSource = self;
+    
+    textField.delegate = self;
+    textField.inputView = picker;
+}
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -96,14 +109,6 @@
                          }];
     
  
-}
-
-- (void)attachPickerToTextField: (UITextField*) textField :(UIPickerView*) picker{
-    picker.delegate = self;
-    picker.dataSource = self;
-    
-    textField.delegate = self;
-    textField.inputView = picker;
 }
 
 #pragma mark - Picker delegate stuff
@@ -146,9 +151,16 @@
     //    NSLog(@"setting title: %@", APP_DELEGATE.waveName);
     
     self.navigationController.navigationBar.topItem.title = @"";//[APP_DELEGATE currentWaveName];
-    [self startRefresh:self.refreshControl];
+    [self refreshView];
     
 }
+
+#pragma mark -  UIPickerViewDataSource
+- (NSInteger)numberOfRowsInPickerView:pickerView
+{
+    return [self myWaves].count;
+}
+
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -196,13 +208,6 @@
 }
 
 
-
-
-#pragma mark -  UIPickerViewDataSource
-- (NSInteger)numberOfRowsInPickerView:pickerView
-{
-    return [self myWaves].count;
-}
 
 
 

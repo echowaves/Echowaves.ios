@@ -33,20 +33,20 @@
     UITapGestureRecognizer *tapOnce =
     [[UITapGestureRecognizer alloc] initWithTarget:self
                                             action:@selector(tapOnce:)];
-//    UITapGestureRecognizer *tapTwice =
-//    [[UITapGestureRecognizer alloc] initWithTarget:self
-//                                            action:@selector(tapTwice:)];
+    UITapGestureRecognizer *tapTwice =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(tapTwice:)];
     
     tapOnce.numberOfTapsRequired = 1;
-//    tapTwice.numberOfTapsRequired = 2;
+    tapTwice.numberOfTapsRequired = 2;
     
     //stops tapOnce from overriding tapTwice
-//    [tapOnce requireGestureRecognizerToFail:tapTwice];
+    [tapOnce requireGestureRecognizerToFail:tapTwice];
     
     // then need to add the gesture recogniser to a view
     // - this will be the view that recognises the gesture
     [self.view addGestureRecognizer:tapOnce];
-//    [self.view addGestureRecognizer:tapTwice];
+    [self.view addGestureRecognizer:tapTwice];
 }
 
 - (IBAction)loadFullImage:(id)sender {
@@ -83,12 +83,12 @@
     }
 }
 
-//- (void)tapTwice:(UIGestureRecognizer *)gesture
-//{
-//    CGPoint point = [(UITapGestureRecognizer *)gesture locationInView:[self imageView]];
-//    CGRect rectToZoomOutTo = CGRectMake(point.x/2, point.y/2, self.imageView.frame.size.width/2, self.imageView.frame.size.height/2);
-//    [self.imageScrollView zoomToRect:rectToZoomOutTo animated:YES];
-//}
+- (void)tapTwice:(UIGestureRecognizer *)gesture
+{
+    CGPoint point = [(UITapGestureRecognizer *)gesture locationInView:[self imageView]];
+    CGRect rectToZoomOutTo = CGRectMake(point.x/2, point.y/2, self.imageView.frame.size.width/2, self.imageView.frame.size.height/2);
+    [self.imageScrollView zoomToRect:rectToZoomOutTo animated:YES];
+}
 
 //-(BOOL) shouldAutorotate {
 //    return YES;

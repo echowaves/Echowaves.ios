@@ -9,16 +9,16 @@
 #import <UIKit/UIKit.h>
 
 
-@interface BlendsViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
+@interface BlendsViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, atomic) NSArray *blendedWith;
 
-@property (strong, nonatomic) IBOutlet UIButton *waveSelected;
+@property (strong, nonatomic) IBOutlet UITextField *waveSelected;
 @property (strong, nonatomic) IBOutlet UIPickerView *wavesPicker;
+@property (strong, nonatomic) NSArray *myWaves;
 
-@property (strong, nonatomic) NSMutableArray *myWaves;
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
 

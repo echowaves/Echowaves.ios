@@ -21,33 +21,6 @@
 @implementation WavingViewController
 
 
-- (void) reloadWavesPicker {
-    [EWWave getAllMyWaves:^(NSArray *waves) {
-        self.myWaves = [waves mutableCopy];
-        [self.wavesPicker reloadAllComponents];
-        
-        //        NSLog(@"11111111111 currentWaveName: %@", [APP_DELEGATE currentWaveName]);
-        
-        if( [APP_DELEGATE currentWaveName] == NULL) {
-            NSURLCredential *credential = [EWWave getStoredCredential];
-            APP_DELEGATE.currentWaveName = [credential user];
-            APP_DELEGATE.currentWaveIndex = 0;
-            
-            //            [self.wavesPicker reloadAllComponents];
-            [self.wavesPicker selectRow:0 inComponent:0 animated:YES];
-        }
-        
-        NSLog(@"setting wave index: %ld", [APP_DELEGATE currentWaveIndex]);
-        self.navigationController.navigationBar.topItem.title = @"";//[APP_DELEGATE currentWaveName];
-        [self.wavesPicker selectRow:[APP_DELEGATE currentWaveIndex] inComponent:0 animated:YES];
-        
-    } failure:^(NSError *error) {
-        [EWWave showErrorAlertWithMessage:error.description
-                               FromSender:nil];
-    }];
-    
-}
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -67,6 +40,51 @@
     [[self selectedWave] setTitle:[APP_DELEGATE currentWaveName] forState:UIControlStateNormal];
     self.navigationController.navigationBar.topItem.title = @"";//[APP_DELEGATE currentWaveName];
 }
+
+
+- (void) reloadWavesPicker {
+    [EWWave getAllMyWaves:^(NSArray *waves) {
+        self.myWaves = waves;
+        
+        NSLog(@"11111111111 currentWaveName: %@", [APP_DELEGATE currentWaveName]);
+        
+        if( [APP_DELEGATE currentWaveName] == NULL) {
+            NSURLCredential *credential = [EWWave getStoredCredential];
+            APP_DELEGATE.currentWaveName = [credential user];
+            APP_DELEGATE.currentWaveIndex = 0;
+        }
+        NSLog(@"2222222222 currentWaveName: %@", [APP_DELEGATE currentWaveName]);
+        NSLog(@"3333333333 wavesPickerSize: %lu", (unsigned long)self.myWaves.count);
+        
+        self.wavesPicker = [[UIPickerView alloc] initWithFrame:CGRectZero];
+        [self attachPickerToTextField:self.waveSelected :self.wavesPicker];
+        
+        [self.wavesPicker selectRow:APP_DELEGATE.currentWaveIndex inComponent:0 animated:NO];
+        
+        NSLog(@"setting wave index: %ld", [APP_DELEGATE currentWaveIndex]);
+        self.navigationController.navigationBar.topItem.title = @"";//[APP_DELEGATE currentWaveName];
+        
+        [self waveSelected].text = [APP_DELEGATE currentWaveName];
+        [self refreshView];
+    } failure:^(NSError *error) {
+        [EWWave showErrorAlertWithMessage:error.description
+                               FromSender:nil];
+    }];
+}
+
+- (void) refreshView {
+    [[self selectedWave] setTitle:[APP_DELEGATE currentWaveName] forState:UIControlStateNormal];
+}
+
+
+- (void)attachPickerToTextField: (UITextField*) textField :(UIPickerView*) picker{
+    picker.delegate = self;
+    picker.dataSource = self;
+    
+    textField.delegate = self;
+    textField.inputView = picker;
+}
+
 
 - (void)updatePhotosCount {
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
@@ -142,41 +160,56 @@
 }
 
 
+
+#pragma mark - Picker delegate stuff
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    //    NSLog(@"5555555555555 numberOfRowsInComponent: %lu", (unsigned long)self.myWaves.count);
+    return self.myWaves.count;
+}
+
+#pragma mark -  UIPickerViewDelegate
+-(UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view
+{
+    UILabel *label = [[UILabel alloc] init];
+    label.backgroundColor = [UIColor orangeColor];
+    label.textColor = [UIColor whiteColor];
+    label.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
+    label.textAlignment = NSTextAlignmentCenter;
+    //WithFrame:CGRectMake(0, 0, pickerView.frame.size.width, 60)];
+    
+    NSString* waveName = [((NSDictionary*)[self.myWaves objectAtIndex:row]) objectForKey:@"name"];
+    
+    [label setText:waveName];
+    return label;
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row   inComponent:(NSInteger)component
+{
+    self.waveSelected.text = [((NSDictionary*)[self.myWaves objectAtIndex:row]) objectForKey:@"name"];
+    [self.waveSelected resignFirstResponder];
+    
+    NSLog(@",,,,,,,,,,,,,,,,,,, did select row: %@", @(row));
+    APP_DELEGATE.currentWaveName = [((NSDictionary*)[self.myWaves objectAtIndex:row]) objectForKey:@"name"];
+    APP_DELEGATE.currentWaveIndex = (long)row;
+    //    NSLog(@"setting title: %@", APP_DELEGATE.waveName);
+    
+    self.navigationController.navigationBar.topItem.title = @"";//[APP_DELEGATE currentWaveName];
+    [self refreshView];
+
+}
+
 #pragma mark -  UIPickerViewDataSource
 - (NSInteger)numberOfRowsInPickerView:pickerView
 {
     return [self myWaves].count;
 }
 
-
-
-#pragma mark -  UIPickerViewDelegate
-- (NSString *)pickerView:(UIPickerView *)pickerView
-             titleForRow:(NSInteger)row
-{
-    NSLog(@"redrawing row: %ld", (long)row);
-    return [((NSDictionary*) [self.myWaves objectAtIndex:row]) objectForKey:@"name"];
-}
-
-
-
--(void)pickerView:(UIPickerView *)pickerView
-     didSelectRow:(NSInteger)row
-{
-//    NSLog(@",,,,,,,,,,,,,,,,,,, did select row: %@", @(row));
-    APP_DELEGATE.currentWaveName = [((NSDictionary*)[self.myWaves objectAtIndex:row]) objectForKey:@"name"];
-    APP_DELEGATE.currentWaveIndex = (long)row;
-    //    NSLog(@"setting title: %@", APP_DELEGATE.waveName);
-    [[self selectedWave] setTitle:[APP_DELEGATE currentWaveName] forState:UIControlStateNormal];
-    self.navigationController.navigationBar.topItem.title = @"";//[APP_DELEGATE currentWaveName];
-//    [self startRefresh:self.refreshControl];
-}
-
-//-(void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
-//{
-//    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
-//    NSLog(@"rotating screen");
-//    [self reloadWavesPicker];
-//}
 
 @end
