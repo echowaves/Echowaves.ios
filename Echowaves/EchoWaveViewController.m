@@ -46,6 +46,7 @@
         NSLog(@"3333333333 wavesPickerSize: %lu", (unsigned long)self.myWaves.count);
         
         self.wavesPicker = [[UIPickerView alloc] initWithFrame:CGRectZero];
+        
         [self attachPickerToTextField:self.waveSelected :self.wavesPicker];
         
         [self.wavesPicker selectRow:APP_DELEGATE.currentWaveIndex inComponent:0 animated:NO];

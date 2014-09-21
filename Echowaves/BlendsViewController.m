@@ -283,8 +283,9 @@
         case 0:
             nil;
             AcceptBlendingRequestViewController *pickAWaveViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil] instantiateViewControllerWithIdentifier:@"PickAWaveView"];
-            pickAWaveViewController.fromWave = [((NSDictionary*)[self.blendedWith objectAtIndex:indexPath.row]) objectForKey:@"name"];
+            pickAWaveViewController.origToWave = [APP_DELEGATE currentWaveName];
             pickAWaveViewController.toWave = [APP_DELEGATE currentWaveName];
+            pickAWaveViewController.fromWave = [((NSDictionary*)[self.blendedWith objectAtIndex:indexPath.row]) objectForKey:@"name"];
             
             [self.navigationController pushViewController:pickAWaveViewController animated:NO];
 

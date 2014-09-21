@@ -11,16 +11,16 @@
 
 @interface EWBlend : EWDataModel
 
-+(void) autoCompleteFor:(NSString *) waveName
-                success:(void (^)(NSArray *waveNames))success
-                failure:(void (^)(NSError *error))failure;
+//+(void) autoCompleteFor:(NSString *) waveName
+//                success:(void (^)(NSArray *waveNames))success
+//                failure:(void (^)(NSError *error))failure;
 
-+(void) requestBlendingWith:(NSString *)waveName
-                    success:(void (^)(void))success
-                    failure:(void (^)(NSError *error))failure;
-+(void) confirmBlendingWith:(NSString *)waveName
-                    success:(void (^)(void))success
-                    failure:(void (^)(NSError *error))failure;
+//+(void) requestBlendingWith:(NSString *)waveName
+//                    success:(void (^)(void))success
+//                    failure:(void (^)(NSError *error))failure;
+//+(void) confirmBlendingWith:(NSString *)waveName
+//                    success:(void (^)(void))success
+//                    failure:(void (^)(NSError *error))failure;
 +(void) unblendFrom:(NSString *)waveName
         currentWave:(NSString *)currentWave
             success:(void (^)(void))success
@@ -36,6 +36,12 @@
 +(void) getBlendedWith:(void (^)(NSArray *waveNames))success
                failure:(void (^)(NSError *error))failure;
 
+
++(void) acceptBlending:(NSString *)origMyWaveName
+            myWaveName:(NSString *)myWaveName
+        friendWaveName:(NSString *)frindWaveName
+               success:(void (^)(void))success
+               failure:(void (^)(NSError *error))failure;
 
 
 @end

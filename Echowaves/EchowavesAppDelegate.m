@@ -122,8 +122,9 @@
                               success:^(NSString *imageName, NSString *fromWaveName) {
                                   
                                   AcceptBlendingRequestViewController *pickAWaveViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil] instantiateViewControllerWithIdentifier:@"PickAWaveView"];
-                                  pickAWaveViewController.fromWave = fromWaveName;
+                                  pickAWaveViewController.origToWave = [self currentWaveName];
                                   pickAWaveViewController.toWave = [self currentWaveName];
+                                  pickAWaveViewController.fromWave = fromWaveName;
                                   [(UINavigationController *)self.window.rootViewController pushViewController:pickAWaveViewController animated:NO];
                                   
 

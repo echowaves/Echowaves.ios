@@ -10,78 +10,78 @@
 
 @implementation EWBlend
 
-+(void) autoCompleteFor:(NSString *)waveName
-                success:(void (^)(NSArray *waveNames))success
-                failure:(void (^)(NSError *error))failure {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    //ideally not going to need the following line, if making a request to json service
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    
-    NSDictionary *parameters = @{@"term": waveName};
-
-    
-    [manager GET:[NSString stringWithFormat:@"%@/autocomplete-wave-name.json", EWHost]
-      parameters:parameters
-         success:^(AFHTTPRequestOperation *operation, id responseObject) {
-             success((NSArray*)responseObject);
-         }
-         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-             NSLog(@"Error: %@", error);
-             failure(error);
-         }];
-}
-
-+(void) requestBlendingWith:(NSString *)waveName
-                    success:(void (^)(void))success
-                    failure:(void (^)(NSError *error))failure {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    
-    // perform authentication, wave/password non blank and exist in the server side, and enter a sending loop
-    
-    //ideally not going to need the following line, if making a request to json service
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    
-    NSDictionary *parameters = @{@"wave_name": waveName,
-                                 @"from_wave": [APP_DELEGATE currentWaveName]};
-    
-    [manager POST:[NSString stringWithFormat:@"%@/request-blending.json", EWHost] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        success();
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
-        NSLog(@"Response: %@", [operation.responseObject objectForKey:@"error"]);
-        failure(error);        
-    }];
-}
-
-+(void) confirmBlendingWith:(NSString *)waveName
-                    success:(void (^)(void))success
-                    failure:(void (^)(NSError *error))failure {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    
-    // perform authentication, wave/password non blank and exist in the server side, and enter a sending loop
-    
-    //ideally not going to need the following line, if making a request to json service
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    
-    NSDictionary *parameters = @{@"wave_name": waveName,
-                                 @"from_wave": [APP_DELEGATE currentWaveName]};
-    
-    NSLog(@")))))))))))))))))wave_name:%@", waveName);
-    
-    [manager POST:[NSString stringWithFormat:@"%@/confirm-blending.json", EWHost]
-       parameters:parameters
-          success:^(AFHTTPRequestOperation *operation, id responseObject) {
-              success();
-          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-              NSLog(@"Error: %@", error);
-              NSLog(@"Response: %@", [operation.responseObject objectForKey:@"error"]);
-              failure(error);
-          }];
-    
-}
+//+(void) autoCompleteFor:(NSString *)waveName
+//                success:(void (^)(NSArray *waveNames))success
+//                failure:(void (^)(NSError *error))failure {
+//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+//    //ideally not going to need the following line, if making a request to json service
+//    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+//    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+//    
+//    NSDictionary *parameters = @{@"term": waveName};
+//
+//    
+//    [manager GET:[NSString stringWithFormat:@"%@/autocomplete-wave-name.json", EWHost]
+//      parameters:parameters
+//         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//             success((NSArray*)responseObject);
+//         }
+//         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//             NSLog(@"Error: %@", error);
+//             failure(error);
+//         }];
+//}
+//
+//+(void) requestBlendingWith:(NSString *)waveName
+//                    success:(void (^)(void))success
+//                    failure:(void (^)(NSError *error))failure {
+//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+//    
+//    // perform authentication, wave/password non blank and exist in the server side, and enter a sending loop
+//    
+//    //ideally not going to need the following line, if making a request to json service
+//    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+//    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+//    
+//    NSDictionary *parameters = @{@"wave_name": waveName,
+//                                 @"from_wave": [APP_DELEGATE currentWaveName]};
+//    
+//    [manager POST:[NSString stringWithFormat:@"%@/request-blending.json", EWHost] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//        success();
+//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        NSLog(@"Error: %@", error);
+//        NSLog(@"Response: %@", [operation.responseObject objectForKey:@"error"]);
+//        failure(error);        
+//    }];
+//}
+//
+//+(void) confirmBlendingWith:(NSString *)waveName
+//                    success:(void (^)(void))success
+//                    failure:(void (^)(NSError *error))failure {
+//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+//    
+//    // perform authentication, wave/password non blank and exist in the server side, and enter a sending loop
+//    
+//    //ideally not going to need the following line, if making a request to json service
+//    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+//    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+//    
+//    NSDictionary *parameters = @{@"wave_name": waveName,
+//                                 @"from_wave": [APP_DELEGATE currentWaveName]};
+//    
+//    NSLog(@")))))))))))))))))wave_name:%@", waveName);
+//    
+//    [manager POST:[NSString stringWithFormat:@"%@/confirm-blending.json", EWHost]
+//       parameters:parameters
+//          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//              success();
+//          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//              NSLog(@"Error: %@", error);
+//              NSLog(@"Response: %@", [operation.responseObject objectForKey:@"error"]);
+//              failure(error);
+//          }];
+//    
+//}
 +(void) unblendFrom:(NSString *)waveName
          currentWave:(NSString *)currentWave
             success:(void (^)(void))success
@@ -170,6 +170,33 @@
     
 }
 
++(void) acceptBlending:(NSString *)origMyWaveName
+            myWaveName:(NSString *)myWaveName
+        friendWaveName:(NSString *)frindWaveName
+               success:(void (^)(void))success
+               failure:(void (^)(NSError *error))failure {
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    // perform authentication, wave/password non blank and exist in the server side, and enter a sending loop
+    
+    //ideally not going to need the following line, if making a request to json service
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    NSDictionary *parameters = @{@"orig_my_wave_name": origMyWaveName,
+                                 @"my_wave_name": myWaveName,
+                                 @"friend_wave_name": frindWaveName};
+    
+    [manager POST:[NSString stringWithFormat:@"%@/accept_blending.json", EWHost] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        success();
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+        NSLog(@"Response: %@", [operation.responseObject objectForKey:@"error"]);
+        failure(error);
+    }];
+
+    
+}
 
 
 @end
