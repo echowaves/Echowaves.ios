@@ -280,13 +280,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Yo-sd-cbN">
-                                <rect key="frame" x="46" y="269" width="508" height="61"/>
-                                <string key="text">You don't seem to have any Photos in this wave. Take some pictures with your phone camera and go to the Waving tab to wave your photos to the cloud.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="currentWave" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jki-hG-rxR">
                                 <rect key="frame" x="0.0" y="64" width="600" height="30"/>
                                 <accessibility key="accessibilityConfiguration">
@@ -294,7 +287,7 @@
                                     <bool key="isElement" value="NO"/>
                                 </accessibility>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="psU-Hu-9aK"/>
+                                    <constraint firstAttribute="height" constant="30" id="h1R-wh-ATs"/>
                                 </constraints>
                                 <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="12"/>
@@ -330,20 +323,27 @@
                                     <outlet property="delegate" destination="Wr0-jG-xAd" id="WRj-Nw-JqS"/>
                                 </connections>
                             </collectionView>
+                            <label opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Yo-sd-cbN">
+                                <rect key="frame" x="46" y="269" width="508" height="61"/>
+                                <string key="text">You don't seem to have any Photos in this wave. Take some pictures with your phone camera and go to the Waving tab to wave your photos to the cloud.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="t2L-Tu-34G" secondAttribute="trailing" constant="-16" id="8Yt-3x-AgD"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="1Yo-sd-cbN" secondAttribute="trailing" constant="30" id="GSs-FF-RD3"/>
-                            <constraint firstItem="RQx-aQ-EPz" firstAttribute="top" secondItem="t2L-Tu-34G" secondAttribute="bottom" constant="8" id="ObE-ut-caT"/>
-                            <constraint firstItem="t2L-Tu-34G" firstAttribute="leading" secondItem="kEP-Gj-Dyc" secondAttribute="leadingMargin" constant="-16" id="Rxh-4z-chV"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Jki-hG-rxR" secondAttribute="trailing" constant="-16" id="UA5-ad-4Lv"/>
-                            <constraint firstItem="Jki-hG-rxR" firstAttribute="top" secondItem="8ff-oR-hBX" secondAttribute="bottom" id="Xha-sR-cfb"/>
-                            <constraint firstItem="Jki-hG-rxR" firstAttribute="leading" secondItem="kEP-Gj-Dyc" secondAttribute="leadingMargin" constant="-16" id="YxW-Ca-gt0"/>
-                            <constraint firstAttribute="centerX" secondItem="1Yo-sd-cbN" secondAttribute="centerX" id="eY0-NY-NPV"/>
-                            <constraint firstAttribute="centerY" secondItem="1Yo-sd-cbN" secondAttribute="centerY" id="pYV-Tn-cVo"/>
-                            <constraint firstItem="1Yo-sd-cbN" firstAttribute="leading" secondItem="kEP-Gj-Dyc" secondAttribute="leadingMargin" constant="30" id="rXM-61-S7C"/>
-                            <constraint firstItem="t2L-Tu-34G" firstAttribute="top" secondItem="Jki-hG-rxR" secondAttribute="bottom" constant="8" id="vqc-vs-vlz"/>
+                            <constraint firstAttribute="centerY" secondItem="1Yo-sd-cbN" secondAttribute="centerY" id="0WH-Lr-fWV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="t2L-Tu-34G" secondAttribute="trailing" constant="-16" id="4k9-pq-46u"/>
+                            <constraint firstItem="RQx-aQ-EPz" firstAttribute="top" secondItem="t2L-Tu-34G" secondAttribute="bottom" constant="8" id="Dz6-ec-Y7P"/>
+                            <constraint firstItem="Jki-hG-rxR" firstAttribute="top" secondItem="8ff-oR-hBX" secondAttribute="bottom" id="Tnv-lt-X8F"/>
+                            <constraint firstAttribute="centerX" secondItem="1Yo-sd-cbN" secondAttribute="centerX" id="URu-Bi-yIj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Jki-hG-rxR" secondAttribute="trailing" constant="-16" id="ZEv-Td-NFg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1Yo-sd-cbN" secondAttribute="trailing" constant="30" id="gip-CY-RhQ"/>
+                            <constraint firstItem="Jki-hG-rxR" firstAttribute="leading" secondItem="kEP-Gj-Dyc" secondAttribute="leadingMargin" constant="-16" id="jul-oh-gch"/>
+                            <constraint firstItem="t2L-Tu-34G" firstAttribute="leading" secondItem="kEP-Gj-Dyc" secondAttribute="leadingMargin" constant="-16" id="lpp-xf-EaP"/>
+                            <constraint firstItem="1Yo-sd-cbN" firstAttribute="leading" secondItem="kEP-Gj-Dyc" secondAttribute="leadingMargin" constant="30" id="oWE-SK-YK9"/>
+                            <constraint firstItem="t2L-Tu-34G" firstAttribute="top" secondItem="Jki-hG-rxR" secondAttribute="bottom" constant="8" id="tKv-NT-AG5"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="EchoWave" image="echowave" id="qTv-cn-Zs7"/>

@@ -20,10 +20,8 @@
 {
     [super viewDidLoad];
     NSLog(@"$$$$$$$$$$$$$$$$calling viewDidLoad for EchoWaveViewController");
-
     
     [self emptyWaveLabel].hidden = YES;
-    
     
     if(self.refreshControl == nil) {
         self.refreshControl = [UIRefreshControl new];
@@ -31,14 +29,6 @@
                       forControlEvents:UIControlEventValueChanged];
         [self.imagesCollectionView addSubview:self.refreshControl];
     }
-    
-    [self startRefresh:self.refreshControl];
-    
-    [self reloadWavesPicker];
-
-
-    
-
 }
 
 - (void) reloadWavesPicker {
@@ -53,20 +43,18 @@
             APP_DELEGATE.currentWaveIndex = 0;
         }
         NSLog(@"2222222222 currentWaveName: %@", [APP_DELEGATE currentWaveName]);
-        
-        
         NSLog(@"3333333333 wavesPickerSize: %lu", (unsigned long)self.myWaves.count);
-        
         
         self.wavesPicker = [[UIPickerView alloc] initWithFrame:CGRectZero];
         [self attachPickerToTextField:self.waveSelected :self.wavesPicker];
         
-//        [self.wavesPicker selectRow:APP_DELEGATE.currentWaveIndex inComponent:0 animated:NO];
+        [self.wavesPicker selectRow:APP_DELEGATE.currentWaveIndex inComponent:0 animated:NO];
         
         NSLog(@"setting wave index: %ld", [APP_DELEGATE currentWaveIndex]);
         self.navigationController.navigationBar.topItem.title = @"";//[APP_DELEGATE currentWaveName];
-        //        [self.wavesPicker selectRow:[APP_DELEGATE currentWaveIndex] inComponent:0 animated:NO];
         
+        [self waveSelected].text = [APP_DELEGATE currentWaveName];
+        [self startRefresh:self.refreshControl];
     } failure:^(NSError *error) {
         [EWWave showErrorAlertWithMessage:error.description
                                FromSender:nil];
@@ -79,6 +67,7 @@
     
     self.imagesCollectionView.autoresizingMask = UIViewAutoresizingFlexibleHeight |
     UIViewAutoresizingFlexibleWidth;
+    [self reloadWavesPicker];
 }
 
 - (void) startRefresh:(UIRefreshControl *)sender {
@@ -90,12 +79,17 @@
                              NSLog(@"@total images %lu", (unsigned long)[self.waveImages count]);
                              [self.imagesCollectionView reloadData];
                              [self.imagesCollectionView reloadInputViews];
-                             if(waveImages.count == 0) {
+
+                             if(self.waveImages.count == 0) {
+                                 NSLog(@"hiding NO");
                                  [self emptyWaveLabel].hidden = NO;
                              } else {
+                                 NSLog(@"hiding YES");
                                  [self emptyWaveLabel].hidden = YES;
                              }
+
                              [sender endRefreshing];
+                             
                          }
                          failure:^(NSError *error) {
                              NSLog(@"error %@", error.description);
@@ -121,7 +115,7 @@
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    NSLog(@"5555555555555 numberOfRowsInComponent: %lu", (unsigned long)self.myWaves.count);
+//    NSLog(@"5555555555555 numberOfRowsInComponent: %lu", (unsigned long)self.myWaves.count);
     return self.myWaves.count;
 }
 
@@ -132,11 +126,11 @@
     label.backgroundColor = [UIColor orangeColor];
     label.textColor = [UIColor whiteColor];
     label.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
-    label.textAlignment = NSTextAlignmentCenter; 
+    label.textAlignment = NSTextAlignmentCenter;
     //WithFrame:CGRectMake(0, 0, pickerView.frame.size.width, 60)];
 
     NSString* waveName = [((NSDictionary*)[self.myWaves objectAtIndex:row]) objectForKey:@"name"];
-    NSLog(@"666666666666 titleForRow: %@", waveName);
+
     [label setText:waveName];
     return label;
 }
