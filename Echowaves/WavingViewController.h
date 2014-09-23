@@ -23,7 +23,6 @@
 @property (nonatomic) bool checkedAtload;
 
 
-@property (strong, nonatomic) IBOutlet UIButton *selectedWave;
 @property (strong, nonatomic) IBOutlet UIButton *sinceDateTime;
 
 @property (strong, nonatomic) IBOutlet UILabel *photosCount;

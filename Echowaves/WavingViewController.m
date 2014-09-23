@@ -37,7 +37,7 @@
 //        [USER_DEFAULTS synchronize];
 //    }
     
-    [[self selectedWave] setTitle:[APP_DELEGATE currentWaveName] forState:UIControlStateNormal];
+//    [[self selectedWave] setTitle:[APP_DELEGATE currentWaveName] forState:UIControlStateNormal];
     self.navigationController.navigationBar.topItem.title = @"";//[APP_DELEGATE currentWaveName];
 }
 
@@ -73,7 +73,7 @@
 }
 
 - (void) refreshView {
-    [[self selectedWave] setTitle:[APP_DELEGATE currentWaveName] forState:UIControlStateNormal];
+//    [[self selectedWave] setTitle:[APP_DELEGATE currentWaveName] forState:UIControlStateNormal];
 }
 
 
