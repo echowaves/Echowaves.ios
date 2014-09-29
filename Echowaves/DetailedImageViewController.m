@@ -275,7 +275,7 @@
                                                                  
                                                                  smscontroller.recipients = [NSArray arrayWithObjects: phoneNumber, nil];
                                                                  smscontroller.messageComposeDelegate = self;
-                                                                 smscontroller.body = [NSString stringWithFormat:@"I want to share photo with you http://echowaves.com/mobile?token=%@", token];                                                                 
+                                                                 smscontroller.body = [NSString stringWithFormat:@"Look at my photo and blend with my wave http://echowaves.com/mobile?token=%@", token];                                                                 
 
                                                                  [self presentViewController:smscontroller animated:YES completion:^{
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A361p" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eYa-MG-G2M">
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
+        <deployment version="2048" defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -511,7 +511,7 @@
                                     <outlet property="delegate" destination="1Fd-6Z-QUA" id="g6M-fd-TlO"/>
                                 </connections>
                             </pickerView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BlendWaveLabel" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="HTI-ym-nyW">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BlendWaveLabel" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="HTI-ym-nyW">
                                 <rect key="frame" x="16" y="93" width="568" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="Ieo-6Z-bps"/>
@@ -673,7 +673,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GGG-tb-R7c">
-                                                    <rect key="frame" x="582" y="7" width="12" height="30"/>
+                                                    <rect key="frame" x="590" y="7" width="12" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="Hap-V7-ToY"/>
                                                         <constraint firstAttribute="width" constant="12" id="PbJ-fo-bBd"/>
@@ -704,7 +704,7 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="wave name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ii-2A-ruZ">
-                                                    <rect key="frame" x="46" y="5" width="525" height="30"/>
+                                                    <rect key="frame" x="46" y="5" width="533" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="bHP-1m-7zU"/>
                                                     </constraints>
@@ -714,7 +714,7 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="GGG-tb-R7c" secondAttribute="trailing" constant="-2" id="0jh-0v-hYX"/>
+                                                <constraint firstAttribute="trailing" secondItem="GGG-tb-R7c" secondAttribute="trailing" constant="-2" id="0jh-0v-hYX"/>
                                                 <constraint firstItem="GGG-tb-R7c" firstAttribute="leading" secondItem="5ii-2A-ruZ" secondAttribute="trailing" constant="11" id="7xz-bJ-uoJ"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="GGG-tb-R7c" secondAttribute="bottom" constant="-1" id="CbL-c1-yOw"/>
                                                 <constraint firstItem="5ii-2A-ruZ" firstAttribute="leading" secondItem="Rth-wC-0C5" secondAttribute="trailing" constant="8" id="Hk0-w1-Qlz"/>
@@ -727,6 +727,12 @@
                                                 <constraint firstItem="GGG-tb-R7c" firstAttribute="leading" secondItem="5ii-2A-ruZ" secondAttribute="trailing" constant="11" id="pvr-hN-s5Z"/>
                                                 <constraint firstItem="Rth-wC-0C5" firstAttribute="leading" secondItem="Mqw-SJ-3kp" secondAttribute="leadingMargin" id="v3j-wm-9jt"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="dY9-7R-KRS"/>
+                                                    <exclude reference="pvr-hN-s5Z"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
