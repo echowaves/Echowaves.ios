@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A379b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eYa-MG-G2M">
     <dependencies>
-        <deployment version="1792" identifier="iOS"/>
+        <deployment version="1792" defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Home View Controller-->
+        <!--Welcome to EchoWaves-->
         <scene sceneID="aeH-uz-dP4">
             <objects>
                 <viewController id="1U9-q6-r7W" customClass="HomeViewController" sceneMemberID="viewController">
@@ -86,7 +86,7 @@
                             <constraint firstItem="7NS-cw-2Zt" firstAttribute="top" secondItem="chx-9d-bpa" secondAttribute="bottom" constant="70" id="yoj-dP-M2S"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="JuL-3W-eYF"/>
+                    <navigationItem key="navigationItem" title="Welcome to EchoWaves" id="JuL-3W-eYF"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="createNewWaveButton" destination="RoO-Mo-w82" id="c1Q-VV-uGp"/>
