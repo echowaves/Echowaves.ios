@@ -96,7 +96,7 @@
         UIGraphicsEndImageContext();
         
         
-        NSDictionary *parameters = @{@"name": waveName};
+        NSDictionary *parameters = [[NSMutableDictionary alloc] init];
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"yyyyMMddHHmmssSSSS"];
         

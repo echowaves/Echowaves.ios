@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A388b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eYa-MG-G2M">
     <dependencies>
-        <deployment version="1792" identifier="iOS"/>
+        <deployment version="1792" defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -323,9 +323,9 @@
                                     <outlet property="delegate" destination="Wr0-jG-xAd" id="WRj-Nw-JqS"/>
                                 </connections>
                             </collectionView>
-                            <label opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="14" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Yo-sd-cbN">
-                                <rect key="frame" x="46" y="135" width="508" height="241"/>
-                                <string key="text">You don't seem to have any Photos in this wave. Take some pictures with your phone camera and go to the Waving tab to wave your photos to the cloud.    If you were brought onto this screen from SMS link, switch back to SMS and click the link again to see the photo shared with you and to establish blending.</string>
+                            <label opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="25" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Yo-sd-cbN">
+                                <rect key="frame" x="46" y="135" width="508" height="388"/>
+                                <mutableString key="text">You don't seem to have any Photos in this wave. Take some pictures with your phone camera and go to the Waving tab to wave your photos to the cloud.    If you were brought onto this screen from SMS link, switch back to SMS and click the link again to see the photo shared with you and to establish blending.</mutableString>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -333,19 +333,24 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="1Yo-sd-cbN" secondAttribute="trailing" constant="30" id="3uM-ut-1wg"/>
                             <constraint firstAttribute="trailingMargin" secondItem="t2L-Tu-34G" secondAttribute="trailing" constant="-16" id="4k9-pq-46u"/>
-                            <constraint firstItem="1Yo-sd-cbN" firstAttribute="top" secondItem="Jki-hG-rxR" secondAttribute="bottom" constant="41" id="BVm-cK-Iej"/>
+                            <constraint firstItem="RQx-aQ-EPz" firstAttribute="top" secondItem="1Yo-sd-cbN" secondAttribute="bottom" constant="28" id="5LZ-ZN-dgt"/>
                             <constraint firstItem="RQx-aQ-EPz" firstAttribute="top" secondItem="t2L-Tu-34G" secondAttribute="bottom" constant="8" id="Dz6-ec-Y7P"/>
+                            <constraint firstItem="1Yo-sd-cbN" firstAttribute="leading" secondItem="kEP-Gj-Dyc" secondAttribute="leadingMargin" constant="30" id="RN3-DO-7CQ"/>
                             <constraint firstItem="Jki-hG-rxR" firstAttribute="top" secondItem="8ff-oR-hBX" secondAttribute="bottom" id="Tnv-lt-X8F"/>
-                            <constraint firstAttribute="centerX" secondItem="1Yo-sd-cbN" secondAttribute="centerX" id="Xp4-32-FPF"/>
+                            <constraint firstItem="1Yo-sd-cbN" firstAttribute="top" secondItem="Jki-hG-rxR" secondAttribute="bottom" constant="41" id="YIf-d8-X6W"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Jki-hG-rxR" secondAttribute="trailing" constant="-16" id="ZEv-Td-NFg"/>
                             <constraint firstItem="Jki-hG-rxR" firstAttribute="leading" secondItem="kEP-Gj-Dyc" secondAttribute="leadingMargin" constant="-16" id="jul-oh-gch"/>
                             <constraint firstItem="t2L-Tu-34G" firstAttribute="leading" secondItem="kEP-Gj-Dyc" secondAttribute="leadingMargin" constant="-16" id="lpp-xf-EaP"/>
-                            <constraint firstItem="1Yo-sd-cbN" firstAttribute="leading" secondItem="kEP-Gj-Dyc" secondAttribute="leadingMargin" constant="30" id="mG8-pb-8p6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1Yo-sd-cbN" secondAttribute="trailing" constant="30" id="oZL-iR-i2g"/>
                             <constraint firstItem="t2L-Tu-34G" firstAttribute="top" secondItem="Jki-hG-rxR" secondAttribute="bottom" constant="8" id="tKv-NT-AG5"/>
                             <constraint firstItem="RQx-aQ-EPz" firstAttribute="top" secondItem="1Yo-sd-cbN" secondAttribute="bottom" constant="175" id="vVM-p8-P2z"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="vVM-p8-P2z"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="EchoWave" image="echowave" id="qTv-cn-Zs7"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>

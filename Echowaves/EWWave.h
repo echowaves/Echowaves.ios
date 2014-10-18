@@ -52,8 +52,7 @@
                    success:(void (^)(NSString *waveName))success
                    failure:(void (^)(NSString *errorMessage))failure;
 
-+(void) sendPushNotifyForWave:(NSString *) waveName
-                        badge:(NSInteger) numberOfImages
++(void) sendPushNotifyBadge:(NSInteger) numberOfImages
                success:(void (^)())success
                failure:(void (^)(NSError *error))failure;
 

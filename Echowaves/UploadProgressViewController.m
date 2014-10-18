@@ -80,8 +80,7 @@
                                                              [self comeBack];
                                                              
                                                              if (assetsCount > 0) {
-                                                                 [EWWave sendPushNotifyForWave:[APP_DELEGATE currentWaveName]
-                                                                                         badge:assetsCount
+                                                                 [EWWave sendPushNotifyBadge:assetsCount
                                                                                        success:^{
                                                                                            NSLog(@"!!!!!!!!!!!!!!!pushed notify successfully %ld", assetsCount);
                                                                                        }
@@ -143,6 +142,8 @@
                            [self comeBack];
                        }];// tune in with name
         
+        
+        NSLog(@"++++++++++++++++++++++++++++++++++++++++++++++++++ done posting, assetsCount %ld", assetsCount);
     } else { // credentials are not set, can't really ever happen, something is really wrong here
         NSLog(@"this error should never happen credentials are not set, can't really ever happen, something is really wrong here 1");
     }

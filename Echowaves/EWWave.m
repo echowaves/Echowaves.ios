@@ -249,8 +249,7 @@
     }];
 }
 
-+(void) sendPushNotifyForWave:(NSString *)waveName
-                        badge:(NSInteger) numberOfImages
++(void) sendPushNotifyBadge:(NSInteger) numberOfImages
                       success:(void (^)())success
                       failure:(void (^)(NSError *error))failure {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -259,10 +258,9 @@
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
-    NSDictionary *parameters = @{@"badge": [NSString stringWithFormat: @"%ld", (long)numberOfImages],
-                                 @"wave_name": waveName};
+    NSDictionary *parameters = @{@"badge": [NSString stringWithFormat: @"%ld", (long)numberOfImages]};
     
-    [manager POST:[NSString stringWithFormat:@"%@/send-push-notify.json", EWHost] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:[NSString stringWithFormat:@"%@/push-notify.json", EWHost] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"+++notification pushed");
         success();
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
