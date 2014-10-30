@@ -192,12 +192,36 @@
 -(void)shareImage {
     NSLog(@"sharing image");
     
-    ABPeoplePickerNavigationController *peoplePicker = [ABPeoplePickerNavigationController new];
-    peoplePicker.peoplePickerDelegate = self;
-//    peoplePicker.modalPresentationStyle = 
-    [self presentViewController:peoplePicker animated:YES completion:^{
-        NSLog(@"done presenting");
-    }];
+    
+    CFErrorRef *error = nil;
+
+    ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, error);
+    
+    __block BOOL accessGranted = NO;
+    if (ABAddressBookRequestAccessWithCompletion != NULL) { // we're on iOS 6
+        dispatch_semaphore_t sema = dispatch_semaphore_create(0);
+        ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error) {
+            accessGranted = granted;
+            dispatch_semaphore_signal(sema);
+        });
+        dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
+        
+    }
+    
+    if (accessGranted) {
+        ABPeoplePickerNavigationController *peoplePicker = [ABPeoplePickerNavigationController new];
+        peoplePicker.peoplePickerDelegate = self;
+        //    peoplePicker.modalPresentationStyle =
+        [self presentViewController:peoplePicker animated:YES completion:^{
+            NSLog(@"done presenting");
+        }];
+    } else {
+        [EWImage showAlertWithMessage:@"Enable access to contacts for Echowaves in preferences" FromSender:self];
+    }
+
+    
+    
+    
     
 }
 
