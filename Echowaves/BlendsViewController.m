@@ -62,8 +62,7 @@
 }
 
 - (void) refreshView {
-    EWBlend* blend = [EWBlend new];
-    [blend getBlendedWith:^(NSArray *waveNames) {
+    [EWBlend getBlendedWith:^(NSArray *waveNames) {
         self.blendedWith = waveNames;
         [self.tableView reloadData];
         [self.tableView reloadInputViews];
@@ -159,79 +158,6 @@
     return height;
 }
 
-//- (IBAction)acceptButtonClicked:(id)sender {
-//    UIView *button = sender;
-//    NSString *waveName;
-//
-//    for (UIView *parent = [button superview]; parent != nil; parent = [parent superview]) {
-//        if ([parent isKindOfClass: [UITableViewCell class]]) {
-//            UITableViewCell *cell = (UITableViewCell *) parent;
-//            NSIndexPath *path = [self.tableView indexPathForCell: cell];
-//            waveName = [((NSDictionary*)[self.requestedBlends objectAtIndex:path.row]) objectForKey:@"name"];
-//
-//            AcceptBlendingRequestViewController *pickAWaveViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil] instantiateViewControllerWithIdentifier:@"PickAWaveView"];
-//
-//            pickAWaveViewController.fromWave = waveName;
-//            pickAWaveViewController.toWave = [APP_DELEGATE currentWaveName];
-//
-//            [self.navigationController pushViewController:pickAWaveViewController animated:NO];
-//            break; // for
-//        }
-//    }
-////    NSLog(@"accepting blend request from %@",waveName);
-//}
-
-//- (IBAction)rejectButtonClicked:(id)sender {
-//    UIView *button = sender;
-//    NSString *waveName;
-//
-//    for (UIView *parent = [button superview]; parent != nil; parent = [parent superview]) {
-//        if ([parent isKindOfClass: [UITableViewCell class]]) {
-//            UITableViewCell *cell = (UITableViewCell *) parent;
-//            NSIndexPath *path = [self.tableView indexPathForCell: cell];
-//            waveName = [((NSDictionary*)[self.requestedBlends objectAtIndex:path.row]) objectForKey:@"name"];
-//
-//            UnblendAlertView *alertMessage = [[UnblendAlertView alloc] initWithTitle:@"Alert"
-//                                                                   message:@"Unblend?"
-//                                                                  delegate:self
-//                                                         cancelButtonTitle:@"Cancel"
-//                                                         otherButtonTitles:@"OK", nil];
-//            alertMessage.waveName = waveName;
-//            alertMessage.tag = 20001;
-//            [alertMessage show];
-//
-//            break; // for
-//        }
-//    }
-//    NSLog(@"rejecting blend request from %@",waveName);
-//}
-
-//- (IBAction)unblendButtonClicked:(id)sender {
-//    UIView *button = sender;
-//    NSString *waveName;
-//
-//    for (UIView *parent = [button superview]; parent != nil; parent = [parent superview]) {
-//        if ([parent isKindOfClass: [UITableViewCell class]]) {
-//            UITableViewCell *cell = (UITableViewCell *) parent;
-//            NSIndexPath *path = [self.tableView indexPathForCell: cell];
-//            waveName = [((NSDictionary*)[self.unconfirmedBlends objectAtIndex:path.row]) objectForKey:@"name"];
-//
-//            UnblendAlertView *alertMessage = [[UnblendAlertView alloc] initWithTitle:@"Alert"
-//                                                                             message:@"Unblend?"
-//                                                                            delegate:self
-//                                                                   cancelButtonTitle:@"Cancel"
-//                                                                   otherButtonTitles:@"OK", nil];
-//            alertMessage.waveName = waveName;
-//            alertMessage.tag = 20002;
-//            [alertMessage show];
-//
-//
-//            break; // for
-//        }
-//    }
-//
-//    NSLog(@"unblending wave %@",waveName);
-//}
 
 - (IBAction)unblendBlendedButtonClicked:(id)sender {
     UIView *button = sender;
@@ -262,8 +188,7 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if(buttonIndex == 1) {//OK button clicked, let's delete the wave
-            EWBlend* blend = [EWBlend new];
-        [blend unblendFrom:[(UnblendAlertView *)alertView waveName]
+        [EWBlend unblendFrom:[(UnblendAlertView *)alertView waveName]
                  currentWave:[APP_DELEGATE currentWaveName]
                      success:^{
                          [self refreshView];

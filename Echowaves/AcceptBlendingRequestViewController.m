@@ -42,8 +42,7 @@
     
     NSLog(@"origToWave:%@ toWave:%@ fromWave:%@", self.origToWave, self.toWave, self.fromWave);
     
-    EWBlend* blend = [EWBlend new];
-    [blend acceptBlending:[self origToWave]
+    [EWBlend acceptBlending:[self origToWave]
                  myWaveName:[self toWave]    
              friendWaveName:[self fromWave]
                     success:^{

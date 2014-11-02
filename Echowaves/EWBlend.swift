@@ -15,7 +15,7 @@ let APP_DELEGATE = UIApplication.sharedApplication().delegate as EchowavesAppDel
 @objc class EWBlend: EWDataModel {
 
     
-    func unblendFrom(
+    class func unblendFrom(
         waveName:String,
         currentWave: String,
         success:() -> (),
@@ -42,7 +42,7 @@ let APP_DELEGATE = UIApplication.sharedApplication().delegate as EchowavesAppDel
     }
     
     
-    func getBlendedWith(
+    class func getBlendedWith(
         success:(waveNames:NSArray) -> (),
         failure:(error: NSError!) -> ()) -> () {
             
@@ -66,7 +66,7 @@ let APP_DELEGATE = UIApplication.sharedApplication().delegate as EchowavesAppDel
     }
     
     
-    func acceptBlending(
+    class func acceptBlending(
         origMyWaveName: String,
         myWaveName: String,
         friendWaveName:String,
@@ -94,8 +94,6 @@ let APP_DELEGATE = UIApplication.sharedApplication().delegate as EchowavesAppDel
                 failure: { (operation: AFHTTPRequestOperation!,error: NSError!) in
                     println("Error: \(error.localizedDescription)")
                     failure(error: error)
-            })
-            
-            
+            })            
     }
 }
