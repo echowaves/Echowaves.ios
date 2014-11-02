@@ -6,8 +6,9 @@
 //  Copyright (c) 2014 Echowaves. All rights reserved.
 //
 
+#import "Echowaves-Swift.h"
 #import "AcceptBlendingRequestViewController.h"
-#import "EWBlend.h"
+
 
 @implementation AcceptBlendingRequestViewController
 
@@ -40,8 +41,10 @@
     [EWBlend showLoadingIndicator:nil];
     
     NSLog(@"origToWave:%@ toWave:%@ fromWave:%@", self.origToWave, self.toWave, self.fromWave);
-    [EWBlend acceptBlending:[self origToWave]
-                 myWaveName:[self toWave]
+    
+    EWBlend* blend = [EWBlend new];
+    [blend acceptBlending:[self origToWave]
+                 myWaveName:[self toWave]    
              friendWaveName:[self fromWave]
                     success:^{
                         [EWBlend hideLoadingIndicator:nil];
@@ -52,7 +55,6 @@
                         [EWBlend hideLoadingIndicator:nil];
                         [self.navigationController popViewControllerAnimated:FALSE];
                     }];
-    
 }
 
 

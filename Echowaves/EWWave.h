@@ -10,6 +10,7 @@
 #import "AFHTTPRequestOperationManager.h"
 #import "EWDataModel.h"
 
+
 @interface EWWave : EWDataModel
 
 @property (strong, nonatomic) NSString *waveName;

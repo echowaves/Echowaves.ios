@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Echowaves. All rights reserved.
 //
 
+#import "Echowaves-Swift.h"
 #import "BlendsViewController.h"
 #import "NavigationTabBarViewController.h"
-#import "EWBlend.h"
 #import "AcceptBlendingRequestViewController.h"
 
 @interface UnblendAlertView : UIAlertView
@@ -23,8 +23,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    self.wavesPicker.style = HPStyle_iOS7;
-//    self.wavesPicker.font = [UIFont fontWithName: @"Trebuchet MS" size: 14.0f];
+    //    self.wavesPicker.style = HPStyle_iOS7;
+    //    self.wavesPicker.font = [UIFont fontWithName: @"Trebuchet MS" size: 14.0f];
     
     self.blendedWith = [[NSArray alloc]init];
     [self refreshView];
@@ -54,7 +54,7 @@
         
         [self waveSelected].text = [APP_DELEGATE currentWaveName];
         [self refreshView];
-
+        
     } failure:^(NSError *error) {
         [EWWave showErrorAlertWithMessage:error.description
                                FromSender:nil];
@@ -62,7 +62,8 @@
 }
 
 - (void) refreshView {
-    [EWBlend getBlendedWith:^(NSArray *waveNames) {
+    EWBlend* blend = [EWBlend new];
+    [blend getBlendedWith:^(NSArray *waveNames) {
         self.blendedWith = waveNames;
         [self.tableView reloadData];
         [self.tableView reloadInputViews];
@@ -154,14 +155,14 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat height = 44;   
+    CGFloat height = 44;
     return height;
 }
 
 //- (IBAction)acceptButtonClicked:(id)sender {
 //    UIView *button = sender;
 //    NSString *waveName;
-//    
+//
 //    for (UIView *parent = [button superview]; parent != nil; parent = [parent superview]) {
 //        if ([parent isKindOfClass: [UITableViewCell class]]) {
 //            UITableViewCell *cell = (UITableViewCell *) parent;
@@ -183,13 +184,13 @@
 //- (IBAction)rejectButtonClicked:(id)sender {
 //    UIView *button = sender;
 //    NSString *waveName;
-//    
+//
 //    for (UIView *parent = [button superview]; parent != nil; parent = [parent superview]) {
 //        if ([parent isKindOfClass: [UITableViewCell class]]) {
 //            UITableViewCell *cell = (UITableViewCell *) parent;
 //            NSIndexPath *path = [self.tableView indexPathForCell: cell];
 //            waveName = [((NSDictionary*)[self.requestedBlends objectAtIndex:path.row]) objectForKey:@"name"];
-//            
+//
 //            UnblendAlertView *alertMessage = [[UnblendAlertView alloc] initWithTitle:@"Alert"
 //                                                                   message:@"Unblend?"
 //                                                                  delegate:self
@@ -198,7 +199,7 @@
 //            alertMessage.waveName = waveName;
 //            alertMessage.tag = 20001;
 //            [alertMessage show];
-//            
+//
 //            break; // for
 //        }
 //    }
@@ -208,7 +209,7 @@
 //- (IBAction)unblendButtonClicked:(id)sender {
 //    UIView *button = sender;
 //    NSString *waveName;
-//    
+//
 //    for (UIView *parent = [button superview]; parent != nil; parent = [parent superview]) {
 //        if ([parent isKindOfClass: [UITableViewCell class]]) {
 //            UITableViewCell *cell = (UITableViewCell *) parent;
@@ -224,11 +225,11 @@
 //            alertMessage.tag = 20002;
 //            [alertMessage show];
 //
-//            
+//
 //            break; // for
 //        }
 //    }
-//    
+//
 //    NSLog(@"unblending wave %@",waveName);
 //}
 
@@ -241,7 +242,7 @@
             UITableViewCell *cell = (UITableViewCell *) parent;
             NSIndexPath *path = [self.tableView indexPathForCell: cell];
             waveName = [((NSDictionary*)[self.blendedWith objectAtIndex:path.row]) objectForKey:@"name"];
-
+            
             UnblendAlertView *alertMessage = [[UnblendAlertView alloc] initWithTitle:@"Alert"
                                                                              message:@"Unblend?"
                                                                             delegate:self
@@ -250,7 +251,7 @@
             alertMessage.waveName = waveName;
             alertMessage.tag = 20003;
             [alertMessage show];
-
+            
             
             break; // for
         }
@@ -261,21 +262,21 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if(buttonIndex == 1) {//OK button clicked, let's delete the wave
-   
-    [EWBlend unblendFrom:[(UnblendAlertView *)alertView waveName]
-              currentWave:[APP_DELEGATE currentWaveName]
-                 success:^{
-                     [self refreshView];
-                 }
-                 failure:^(NSError *error) {
-                     NSLog(@"error: %@", error.debugDescription);
-                 }];
+            EWBlend* blend = [EWBlend new];
+        [blend unblendFrom:[(UnblendAlertView *)alertView waveName]
+                 currentWave:[APP_DELEGATE currentWaveName]
+                     success:^{
+                         [self refreshView];
+                     }
+                     failure:^(NSError *error) {
+                         NSLog(@"error: %@", error.debugDescription);
+                     }];
     }
 }
 
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
+    
     NSLog(@"--------didDeselectRowAtIndexPath %ld for section %ld", (long)indexPath.row, (long)indexPath.section);
     
     
@@ -288,10 +289,10 @@
             pickAWaveViewController.fromWave = [((NSDictionary*)[self.blendedWith objectAtIndex:indexPath.row]) objectForKey:@"name"];
             
             [self.navigationController pushViewController:pickAWaveViewController animated:NO];
-
+            
             break;
     }
-
+    
     
 }
 
@@ -337,7 +338,7 @@
     
     self.navigationController.navigationBar.topItem.title = @"";//[APP_DELEGATE currentWaveName];
     [self refreshView];
-
+    
 }
 
 #pragma mark -  UIPickerViewDataSource

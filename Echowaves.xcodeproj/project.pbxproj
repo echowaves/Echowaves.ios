@@ -14,7 +14,6 @@
 		0A28E5DD1889B8C400B7BDDB /* BlendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A28E5DC1889B8C400B7BDDB /* BlendsViewController.m */; };
 		0A28E5E11889C5EF00B7BDDB /* EWWave.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A28E5E01889C5EF00B7BDDB /* EWWave.m */; };
 		0A28E5E41889C60400B7BDDB /* EWImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A28E5E31889C60400B7BDDB /* EWImage.m */; };
-		0A28E5E71889C61500B7BDDB /* EWBlend.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A28E5E61889C61500B7BDDB /* EWBlend.m */; };
 		0A28E5EA188F36C200B7BDDB /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A28E5E9188F36C200B7BDDB /* SignInViewController.m */; };
 		0A28E5ED188F36D300B7BDDB /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A28E5EC188F36D300B7BDDB /* HomeViewController.m */; };
 		0A34C00E18556B4100E085BC /* libFlurry_4.3.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A34C00D18556B4100E085BC /* libFlurry_4.3.0.a */; };
@@ -22,6 +21,7 @@
 		0A5BF76919103661005C2742 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A5BF76819103661005C2742 /* QuartzCore.framework */; };
 		0A6B326C193509EE00AE6A6E /* DetailedImagePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6B326B193509EE00AE6A6E /* DetailedImagePageViewController.m */; };
 		0A7C733C18948E9300292622 /* NavigationTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7C733B18948E9300292622 /* NavigationTabBarViewController.m */; };
+		0A9873271A06A335008499A1 /* EWBlend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9873261A06A335008499A1 /* EWBlend.swift */; };
 		0AB1CF511890C1380056A94A /* EWDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB1CF501890C1380056A94A /* EWDataModel.m */; };
 		0ABC9315199C4A680011F502 /* DateTimePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ABC9314199C4A680011F502 /* DateTimePickerViewController.m */; };
 		0AC91E66186BF50300D61381 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AC91E65186BF50300D61381 /* Security.framework */; };
@@ -90,8 +90,6 @@
 		0A28E5E01889C5EF00B7BDDB /* EWWave.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWWave.m; sourceTree = "<group>"; };
 		0A28E5E21889C60400B7BDDB /* EWImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWImage.h; sourceTree = "<group>"; };
 		0A28E5E31889C60400B7BDDB /* EWImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWImage.m; sourceTree = "<group>"; };
-		0A28E5E51889C61500B7BDDB /* EWBlend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWBlend.h; sourceTree = "<group>"; };
-		0A28E5E61889C61500B7BDDB /* EWBlend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWBlend.m; sourceTree = "<group>"; };
 		0A28E5E8188F36C200B7BDDB /* SignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInViewController.h; sourceTree = "<group>"; };
 		0A28E5E9188F36C200B7BDDB /* SignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInViewController.m; sourceTree = "<group>"; };
 		0A28E5EB188F36D300B7BDDB /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
@@ -105,6 +103,7 @@
 		0A6B326B193509EE00AE6A6E /* DetailedImagePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailedImagePageViewController.m; sourceTree = "<group>"; };
 		0A7C733A18948E9300292622 /* NavigationTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationTabBarViewController.h; sourceTree = "<group>"; };
 		0A7C733B18948E9300292622 /* NavigationTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationTabBarViewController.m; sourceTree = "<group>"; };
+		0A9873261A06A335008499A1 /* EWBlend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EWBlend.swift; sourceTree = "<group>"; };
 		0AB1CF4F1890C1380056A94A /* EWDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWDataModel.h; sourceTree = "<group>"; };
 		0AB1CF501890C1380056A94A /* EWDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWDataModel.m; sourceTree = "<group>"; };
 		0ABC9313199C4A680011F502 /* DateTimePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateTimePickerViewController.h; sourceTree = "<group>"; };
@@ -214,10 +213,9 @@
 				0A28E5E01889C5EF00B7BDDB /* EWWave.m */,
 				0A28E5E21889C60400B7BDDB /* EWImage.h */,
 				0A28E5E31889C60400B7BDDB /* EWImage.m */,
-				0A28E5E51889C61500B7BDDB /* EWBlend.h */,
-				0A28E5E61889C61500B7BDDB /* EWBlend.m */,
 				0AB1CF4F1890C1380056A94A /* EWDataModel.h */,
 				0AB1CF501890C1380056A94A /* EWDataModel.m */,
+				0A9873261A06A335008499A1 /* EWBlend.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -545,6 +543,7 @@
 				7A65E0D618CB19B800204530 /* EchowavesImagePickerController.m in Sources */,
 				0A28E5D71889B87B00B7BDDB /* SignUpViewController.m in Sources */,
 				0AFD9A7018ECEBA2007F5749 /* AddChildWaveViewController.m in Sources */,
+				0A9873271A06A335008499A1 /* EWBlend.swift in Sources */,
 				0AF15B741940FF6D00625F34 /* AFURLSessionManager.m in Sources */,
 				0A7C733C18948E9300292622 /* NavigationTabBarViewController.m in Sources */,
 				0AF15B871940FF8300625F34 /* AFNetworkActivityIndicatorManager.m in Sources */,
@@ -553,7 +552,6 @@
 				0A28E5E11889C5EF00B7BDDB /* EWWave.m in Sources */,
 				0A28E5E41889C60400B7BDDB /* EWImage.m in Sources */,
 				0AF15B6F1940FF6D00625F34 /* AFNetworkReachabilityManager.m in Sources */,
-				0A28E5E71889C61500B7BDDB /* EWBlend.m in Sources */,
 				0AF15B6E1940FF6D00625F34 /* AFHTTPSessionManager.m in Sources */,
 				0AF15B721940FF6D00625F34 /* AFURLRequestSerialization.m in Sources */,
 				0A1415B5199B12D50095D6E7 /* PickWavesForUploadViewController.m in Sources */,
@@ -696,6 +694,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Echowaves/Echowaves-Prefix.pch";
 				INFOPLIST_FILE = "Echowaves/Echowaves-Info.plist";
@@ -722,6 +721,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Echowaves/Echowaves-Prefix.pch";
 				INFOPLIST_FILE = "Echowaves/Echowaves-Info.plist";

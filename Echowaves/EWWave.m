@@ -8,6 +8,7 @@
 
 #import "EWWave.h"
 
+
 @implementation EWWave
 
 + (NSURLProtectionSpace*) echowavesProtectionSpace {
