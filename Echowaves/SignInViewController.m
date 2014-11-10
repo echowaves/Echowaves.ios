@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Echowaves. All rights reserved.
 //
 
+#import "Echowaves-Swift.h"
 #import "SignInViewController.h"
-#import "EWWave.h"
 #import "NavigationTabBarViewController.h"
 
 @interface SignInViewController ()
@@ -28,14 +28,16 @@
     }
     NSLog(@"-------calling tuneIn");
     [EWWave showLoadingIndicator:self];
-    [EWWave tuneInWithName:wave
-               andPassword:wavePassword
+    
+    
+    [EWWave tuneIn:wave
+               wavePassword:wavePassword
                    success:^(NSString *waveName) {
                        [EWWave hideLoadingIndicator:self];
-                       [EWWave storeCredentialForWaveName:self.waveName.text withPassword:self.wavePassword.text];
+                       [EWWave storeCredential:self.waveName.text wavePassword:self.wavePassword.text];
                        NSString *deviceToken=[(EchowavesAppDelegate *)[[UIApplication sharedApplication] delegate] deviceToken];
                        if(deviceToken) {
-                           [EWWave storeIosTokenForWave:self.waveName.text
+                           [EWWave storeIosToken:self.waveName.text
                                               token:deviceToken
                                             success:^(NSString *waveName) {
                                                 NSLog(@"stored device token for: %@", waveName);
@@ -50,7 +52,7 @@
                    }
                    failure:^(NSString *errorMessage) {
                        [EWWave hideLoadingIndicator:self];
-                       [EWWave showErrorAlertWithMessage:errorMessage FromSender:nil];
+                       [EWWave showErrorAlertWithMessage: errorMessage fromSender:nil];
                    }];
 }
 

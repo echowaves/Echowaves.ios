@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Echowaves. All rights reserved.
 //
 
+#import "Echowaves-Swift.h"
+
 #import "AddChildWaveViewController.h"
 
 @interface AddChildWaveViewController ()
@@ -33,13 +35,13 @@
 }
 
 - (IBAction)createChildWave:(id)sender {
-    [EWWave createChildWaveWithName:[self childWaveName].text
+    [EWWave createChildWave:[self childWaveName].text
                             success:^(NSString *waveName) {
                                 [self.navigationController popViewControllerAnimated:YES];
                             }
                             failure:^(NSString *errorMessage) {
                                 [EWWave showErrorAlertWithMessage:errorMessage
-                                                  FromSender:nil];
+                                                  fromSender:nil];
                                 [self.navigationController popViewControllerAnimated:YES];
 
                             }];

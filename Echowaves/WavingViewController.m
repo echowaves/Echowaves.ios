@@ -6,9 +6,8 @@
 //  Copyright (c) 2013 Echowaves. All rights reserved.
 //
 
+#import "Echowaves-Swift.h"
 #import "WavingViewController.h"
-#import "EWWave.h"
-#import "EWImage.h"
 #import "NavigationTabBarViewController.h"
 
 @interface WavingViewController ()
@@ -26,18 +25,18 @@
     [super viewDidLoad];
     APP_DELEGATE.wavingViewController = self;
     self.delegate = self;
-
-//    self.wavesPicker.style = HPStyle_iOS7;
-//    self.wavesPicker.font = [UIFont fontWithName: @"Trebuchet MS" size: 14.0f];
-
+    
+    //    self.wavesPicker.style = HPStyle_iOS7;
+    //    self.wavesPicker.font = [UIFont fontWithName: @"Trebuchet MS" size: 14.0f];
+    
     
     //initialize waving switch to yes initially
-//    if(![USER_DEFAULTS objectForKey:@"lastCheckTime"]) {
-//        [USER_DEFAULTS setBool:YES forKey:@"waving"];
-//        [USER_DEFAULTS synchronize];
-//    }
+    //    if(![USER_DEFAULTS objectForKey:@"lastCheckTime"]) {
+    //        [USER_DEFAULTS setBool:YES forKey:@"waving"];
+    //        [USER_DEFAULTS synchronize];
+    //    }
     
-//    [[self selectedWave] setTitle:[APP_DELEGATE currentWaveName] forState:UIControlStateNormal];
+    //    [[self selectedWave] setTitle:[APP_DELEGATE currentWaveName] forState:UIControlStateNormal];
     self.navigationController.navigationBar.topItem.title = @"";//[APP_DELEGATE currentWaveName];
 }
 
@@ -68,12 +67,12 @@
         [self refreshView];
     } failure:^(NSError *error) {
         [EWWave showErrorAlertWithMessage:error.description
-                               FromSender:nil];
+                               fromSender:nil];
     }];
 }
 
 - (void) refreshView {
-//    [[self selectedWave] setTitle:[APP_DELEGATE currentWaveName] forState:UIControlStateNormal];
+    //    [[self selectedWave] setTitle:[APP_DELEGATE currentWaveName] forState:UIControlStateNormal];
 }
 
 
@@ -91,9 +90,9 @@
     [dateFormat setDateFormat:@"MMM dd, yyyy hh:mm a"];
     NSLocale *usLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
     [dateFormat setLocale: usLocale];
-
+    
     NSDate* currentDateTime = [USER_DEFAULTS objectForKey:@"lastCheckTime"];
-
+    
     if(currentDateTime == nil) {
         currentDateTime = [NSDate date];
         [USER_DEFAULTS setObject:currentDateTime forKey:@"lastCheckTime"];
@@ -104,12 +103,12 @@
     [EWImage checkForNewAssetsToPostToWaveSinceDate:currentDateTime
                                             success:^(NSArray *assets) {
                                                 [self photosCount].text =  [NSString stringWithFormat: @"%lu", (unsigned long)[assets count]];
-                                            } whenError:^(NSError *error) {
+                                            }
+                                            failure:^(NSError *error) {
                                                 [EWWave showErrorAlertWithMessage:error.description
-                                                                       FromSender:nil];
+                                                                       fromSender:nil];
                                                 NSLog(@"Error updating photos count");
                                             }];
-    
     
     NSLog(@"Date %@", theDateTime);
     
@@ -120,14 +119,14 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-
+    
     NSLog(@"!!!!!!!!!!!!!!!!!!!!!!!!! viewWillApear");
     
     [self updatePhotosCount];
-
-
-//    [[self sinceDateTime] performSelectorOnMainThread:@selector(setText:) withObject:theDateTime waitUntilDone:NO];
-
+    
+    
+    //    [[self sinceDateTime] performSelectorOnMainThread:@selector(setText:) withObject:theDateTime waitUntilDone:NO];
+    
     
     [self reloadWavesPicker];
 }
@@ -148,7 +147,7 @@
 
 -(void) pictureSaved
 {
-//    [self checkForNewImages];
+    //    [self checkForNewImages];
     [APP_DELEGATE checkForInitialViewToPresent];
 }
 
@@ -202,7 +201,7 @@
     
     self.navigationController.navigationBar.topItem.title = @"";//[APP_DELEGATE currentWaveName];
     [self refreshView];
-
+    
 }
 
 #pragma mark -  UIPickerViewDataSource

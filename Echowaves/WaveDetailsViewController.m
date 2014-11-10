@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Echowaves. All rights reserved.
 //
 
+#import "Echowaves-Swift.h"
 #import "WaveDetailsViewController.h"
 
 @interface WaveDetailsViewController ()
@@ -32,13 +33,13 @@
                            [self deleteWaveButton].hidden=YES;
                        }
                    } failure:^(NSString *errorMessage) {
-                       [EWWave showErrorAlertWithMessage:errorMessage FromSender:nil];
+                       [EWWave showErrorAlertWithMessage:errorMessage fromSender:nil];
                    }];
     
 }
 
 - (IBAction)deleteWave:(id)sender {
-    [EWWave showAlertWithMessageAndCancelButton:@"Will remove wave and all it's photos. Sure?" FromSender:self];
+    [EWWave showAlertWithMessageAndCancelButton:@"Will remove wave and all it's photos. Sure?" fromSender:self];
 }
 
 
@@ -51,7 +52,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
                             [self.navigationController popViewControllerAnimated:YES];
                         }
                         failure:^(NSString *errorMessage) {
-                            [EWWave showErrorAlertWithMessage:errorMessage FromSender:nil];
+                            [EWWave showErrorAlertWithMessage:errorMessage fromSender:nil];
                             [self.navigationController popViewControllerAnimated:YES];
                         }];
 

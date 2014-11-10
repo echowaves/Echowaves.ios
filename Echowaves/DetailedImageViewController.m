@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Echowaves. All rights reserved.
 //
 
+#import "Echowaves-Swift.h"
 #import "DetailedImageViewController.h"
-#import "EWImage.h"
 
 @interface DeleteImageAlertView : UIAlertView
 @property (nonatomic) NSString *waveName;
@@ -27,7 +27,7 @@
     self.imageScrollView.maximumZoomScale = 100.0;
     self.progressView.progress = 0.0;
     self.progressView.hidden = TRUE;
-
+    
     [self initView];
     
     UITapGestureRecognizer *tapOnce =
@@ -55,14 +55,14 @@
     self.highQualityButton.hidden = YES;
     
     [EWImage loadFullImage:[self imageName]
-                   forWave:[self waveName]
+                  waveName:[self waveName]
                    success:^(UIImage *image) {
                        self.imageView.image = image;
                        self.progressView.hidden = TRUE;
                    }
                    failure:^(NSError *error) {
                        self.progressView.hidden = TRUE;
-                       [EWDataModel showErrorAlertWithMessage:@"Error Loading full image" FromSender:nil];
+                       [EWDataModel showErrorAlertWithMessage:@"Error Loading full image" fromSender:nil];
                        NSLog(@"error: %@", error.description);
                        self.fullSizeImageLoaded=NO;
                    }
@@ -105,21 +105,24 @@
 //}
 
 - (void) initView {
-//    self.currImageView.contentMode = UIViewContentModeScaleAspectFit;
+    //    self.currImageView.contentMode = UIViewContentModeScaleAspectFit;
     NSLog(@",,,,,,,,,,,,,,,,,,,,,,,%@/%@", [self waveName], [self imageName]);
     [EWImage loadThumbImage:[self imageName]
-                    forWave:[self waveName]
+                   waveName:[self waveName]
                     success:^(UIImage *image) {
                         self.imageView.image = image;
-//                        self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+                        //                        self.imageView.contentMode = UIViewContentModeScaleAspectFit;
                         
-//                        [self.imageView sizeToFit];
+                        //                        [self.imageView sizeToFit];
                         self.imageScrollView.contentSize = image.size;
                     }
                     failure:^(NSError *error) {
-                        [EWDataModel showErrorAlertWithMessage:@"Error Loading thumb image" FromSender:nil];
+                        [EWDataModel showErrorAlertWithMessage:@"Error Loading thumb image" fromSender:nil];
                         NSLog(@"error: %@", error.description);
-                    }];
+                    }
+                   progress:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
+                   }
+     ];
     
 }
 
@@ -129,7 +132,7 @@
     } else {
         self.waveNameLable.hidden = NO;
     }
-
+    
     
     [self navItem].rightBarButtonItems = nil;
     
@@ -146,7 +149,7 @@
     [formatter setDateFormat:@"MM/dd/yyyy HH:mm:ss"];
     [self.navItem setTitle:[formatter stringFromDate:dateTime]];
     
-//        [[self navigationItem].backBarButtonItem setTitle:@" qwe"];
+    //        [[self navigationItem].backBarButtonItem setTitle:@" qwe"];
     
     if ([self.waveName isEqualToString:[APP_DELEGATE currentWaveName]]) {
         
@@ -184,7 +187,7 @@
     alertMessage.imageName = self.imageName;
     alertMessage.tag = 20002;
     [alertMessage show];
-
+    
     
     
 }
@@ -194,7 +197,7 @@
     
     
     CFErrorRef *error = nil;
-
+    
     ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, error);
     
     __block BOOL accessGranted = NO;
@@ -216,9 +219,9 @@
             NSLog(@"done presenting");
         }];
     } else {
-        [EWImage showAlertWithMessage:@"Enable access to contacts for Echowaves in preferences" FromSender:self];
+        [EWImage showAlertWithMessage:@"Enable access to contacts for Echowaves in preferences" fromSender:self];
     }
-
+    
     
     
     
@@ -230,14 +233,14 @@
     if(buttonIndex == 1) {//OK button clicked, let's delete the wave
         [EWImage showLoadingIndicator:self];
         [EWImage deleteImage:[(DeleteImageAlertView*)alertView imageName]
-                      inWave:[(DeleteImageAlertView*)alertView waveName]
+                      waveName:[(DeleteImageAlertView*)alertView waveName]
                      success:^{
                          [self.navigationController popViewControllerAnimated:YES];
                          [EWImage hideLoadingIndicator:self];
                      }
                      failure:^(NSError *error) {
                          [EWImage hideLoadingIndicator:self];
-                         [EWImage showErrorAlertWithMessage:@"Unable to delete image" FromSender:nil];
+                         [EWImage showErrorAlertWithMessage:@"Unable to delete image" fromSender:nil];
                          [self.navigationController popViewControllerAnimated:YES];
                      }];
         
@@ -249,10 +252,10 @@
     [EWImage saveImageToAssetLibrary:[self.imageView image]
                              success:^{
                                  [EWDataModel showAlertWithMessage:@"Photo Saved to iPhone"
-                                                        FromSender:nil];
+                                                        fromSender:nil];
                              }
                              failure:^(NSError *error) {
-                                 [EWDataModel showErrorAlertWithMessage:@"Error saving" FromSender:nil];
+                                 [EWDataModel showErrorAlertWithMessage:@"Error saving" fromSender:nil];
                              }]
     ;
 }
@@ -270,7 +273,7 @@
 
 - (void)peoplePickerNavigationController:
 (ABPeoplePickerNavigationController *)picker
-      didSelectPerson:(ABRecordRef)person
+                         didSelectPerson:(ABRecordRef)person
                                 property:(ABPropertyID)property
                               identifier:(ABMultiValueIdentifier)identifier
 {
@@ -285,7 +288,7 @@
                                              CFRelease(multiPhones);
                                              NSString *phoneNumber = (__bridge NSString *) phoneNumberRef;
                                              CFRelease(phoneNumberRef);
-//                                             NSLog(@"...........phone number %@", phoneNumber);
+                                             //                                             NSLog(@"...........phone number %@", phoneNumber);
                                              
                                              
                                              MFMessageComposeViewController *smscontroller = [MFMessageComposeViewController new];
@@ -294,33 +297,33 @@
                                                  
                                                  
                                                  [EWImage shareImage:self.imageName
-                                                              inWave:self.waveName
+                                                              waveName:self.waveName
                                                              success:^(NSString *token) {
                                                                  
                                                                  smscontroller.recipients = [NSArray arrayWithObjects: phoneNumber, nil];
                                                                  smscontroller.messageComposeDelegate = self;
-                                                                 smscontroller.body = [NSString stringWithFormat:@"Look at my photo and blend with my wave http://echowaves.com/mobile?token=%@", token];                                                                 
-
+                                                                 smscontroller.body = [NSString stringWithFormat:@"Look at my photo and blend with my wave http://echowaves.com/mobile?token=%@", token];
+                                                                 
                                                                  [self presentViewController:smscontroller animated:YES completion:^{
-
+                                                                     
                                                                      NSLog(@"sms controller presented");
                                                                  }];
-                    
+                                                                 
                                                                  
                                                              } failure:^(NSError *error) {
                                                                  [EWDataModel showAlertWithMessage:[error description]
-                                                                                        FromSender:nil];
+                                                                                        fromSender:nil];
                                                              }];
                                                  
                                              }
                                          }
                                      }
                                  }
-                             
+                                 
                              }];
     
     NSLog(@"returning from people picker");
-//    return YES;
+    //    return YES;
 }
 
 - (void)peoplePickerNavigationControllerDidCancel:
@@ -330,27 +333,27 @@
                              completion:^{
                                  NSLog(@"dismissing people picker");
                              }];
-
+    
 }
 
 
 - (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result
 {
-	switch (result) {
-		case MessageComposeResultCancelled:
-			NSLog(@"Cancelled");
-			break;
-		case MessageComposeResultFailed:
-			[EWImage showAlertWithMessage:@"Failed SMS" FromSender:nil];
-			break;
-		case MessageComposeResultSent:
+    switch (result) {
+        case MessageComposeResultCancelled:
+            NSLog(@"Cancelled");
+            break;
+        case MessageComposeResultFailed:
+            [EWImage showAlertWithMessage:@"Failed SMS" fromSender:nil];
+            break;
+        case MessageComposeResultSent:
             
-			break;
-		default:
-			break;
-	}
+            break;
+        default:
+            break;
+    }
     
-	
+    
     [self dismissViewControllerAnimated:YES completion:^{
         NSLog(@"dismissed sms controller");
     }];

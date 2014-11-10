@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Echowaves. All rights reserved.
 //
 
+#import "Echowaves-Swift.h"
 #import "DateTimePickerViewController.h"
 
 @interface DateTimePickerViewController ()
@@ -22,9 +23,9 @@
     [EWImage checkForNewAssetsToPostToWaveSinceDate:self.dateFromPickers
                                             success:^(NSArray *assets) {
                                                 [self photosCount].text =  [NSString stringWithFormat: @"%lu", (unsigned long)[assets count]];
-                                            } whenError:^(NSError *error) {
+                                            } failure:^(NSError *error) {
                                                 [EWWave showErrorAlertWithMessage:error.description
-                                                                       FromSender:nil];
+                                                                       fromSender:nil];
                                                 NSLog(@"Error updating photos count");
                                             }];
 }
@@ -33,7 +34,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-//    [self dateTimePicker].datePickerMode = UIDatePickerModeDateAndTime;
+    //    [self dateTimePicker].datePickerMode = UIDatePickerModeDateAndTime;
     
     
     NSDate *dateTime = [USER_DEFAULTS objectForKey:@"lastCheckTime"];
@@ -43,37 +44,37 @@
     [EWImage checkForNewAssetsToPostToWaveSinceDate:self.dateFromPickers
                                             success:^(NSArray *assets) {
                                                 [self photosCount].text =  [NSString stringWithFormat: @"%lu", (unsigned long)[assets count]];
-                                            } whenError:^(NSError *error) {
+                                            } failure:^(NSError *error) {
                                                 [EWWave showErrorAlertWithMessage:error.description
-                                                                       FromSender:nil];
+                                                                       fromSender:nil];
                                                 NSLog(@"Error updating photos count");
                                             }];
-
+    
 }
 
 - (IBAction)dateChanged:(id)sender {
     NSLog(@"((((((((((((((((((((((( date changed");
     [EWImage checkForNewAssetsToPostToWaveSinceDate:self.dateFromPickers
-                                                   success:^(NSArray *assets) {
-        [self photosCount].text =  [NSString stringWithFormat: @"%lu", (unsigned long)[assets count]];
-    } whenError:^(NSError *error) {
-        [EWWave showErrorAlertWithMessage:error.description
-                               FromSender:nil];
-        NSLog(@"Error updating photos count");
-    }];
-
+                                            success:^(NSArray *assets) {
+                                                [self photosCount].text =  [NSString stringWithFormat: @"%lu", (unsigned long)[assets count]];
+                                            } failure:^(NSError *error) {
+                                                [EWWave showErrorAlertWithMessage:error.description
+                                                                       fromSender:nil];
+                                                NSLog(@"Error updating photos count");
+                                            }];
+    
 }
 - (IBAction)timeChanged:(id)sender {
     NSLog(@"))))))))))))))))))))))) time changed");
     [EWImage checkForNewAssetsToPostToWaveSinceDate:self.dateFromPickers
                                             success:^(NSArray *assets) {
                                                 [self photosCount].text =  [NSString stringWithFormat: @"%lu", (unsigned long)[assets count]];
-                                            } whenError:^(NSError *error) {
+                                            } failure:^(NSError *error) {
                                                 [EWWave showErrorAlertWithMessage:error.description
-                                                                       FromSender:nil];
+                                                                       fromSender:nil];
                                                 NSLog(@"Error updating photos count");
                                             }];
-
+    
 }
 
 - (IBAction)setDateTime:(id)sender {
@@ -84,7 +85,7 @@
     
     [USER_DEFAULTS setObject:date forKey:@"lastCheckTime"];
     [USER_DEFAULTS synchronize];
-
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 

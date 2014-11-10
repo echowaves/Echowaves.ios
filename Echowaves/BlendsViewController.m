@@ -57,7 +57,7 @@
         
     } failure:^(NSError *error) {
         [EWWave showErrorAlertWithMessage:error.description
-                               FromSender:nil];
+                               fromSender:nil];
     }];
 }
 

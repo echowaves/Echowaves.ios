@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Echowaves. All rights reserved.
 //
 
+#import "Echowaves-Swift.h"
 #import "EchowavesAppDelegate.h"
 #import "HomeViewController.h"
 #import "DetailedImageViewController.h"
@@ -149,7 +150,7 @@
                                   
                               } failure:^(NSError *error) {
                                   if([APP_DELEGATE currentWaveName]) {
-                                      [EWImage showAlertWithMessage:@"Token expired..." FromSender:nil];
+                                      [EWImage showAlertWithMessage:@"Token expired..." fromSender:nil];
                                   }
                                   NSLog(@"error retreiving token");
                               }];
@@ -182,7 +183,7 @@
     
     NSURLCredential *credential = [EWWave getStoredCredential];
     if([credential.user length]) {
-        [EWWave storeIosTokenForWave:credential.user
+        [EWWave storeIosToken:credential.user
                            token:self.deviceToken
                          success:^(NSString *waveName) {
                              NSLog(@"stored device token for: %@", waveName);

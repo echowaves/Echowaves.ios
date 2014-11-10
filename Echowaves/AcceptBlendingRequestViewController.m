@@ -49,7 +49,7 @@
                         [EWBlend hideLoadingIndicator:nil];
                         [self.navigationController popViewControllerAnimated:FALSE];
                     } failure:^(NSError *error) {
-                        [EWBlend showAlertWithMessage:@"Blending failed" FromSender:nil];
+                        [EWBlend showAlertWithMessage:@"Blending failed" fromSender:nil];
                         NSLog(@"failed blending %@", error.debugDescription);
                         [EWBlend hideLoadingIndicator:nil];
                         [self.navigationController popViewControllerAnimated:FALSE];
@@ -72,7 +72,7 @@
         [self.wavesPicker selectRow:[APP_DELEGATE currentWaveIndex] inComponent:0 animated:NO];
     } failure:^(NSError *error) {
         [EWWave showErrorAlertWithMessage:error.description
-                               FromSender:nil];
+                               fromSender:nil];
     }];
     
 }

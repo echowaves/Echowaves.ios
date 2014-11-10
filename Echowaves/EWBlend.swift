@@ -8,12 +8,8 @@
 
 import Foundation
 
-
-let EWHost = "http://echowaves.com"
-let APP_DELEGATE = UIApplication.sharedApplication().delegate as EchowavesAppDelegate
-
 @objc class EWBlend: EWDataModel {
-
+    
     
     class func unblendFrom(
         waveName:String,
@@ -25,8 +21,9 @@ let APP_DELEGATE = UIApplication.sharedApplication().delegate as EchowavesAppDel
             // perform authentication, wave/password non blank and exist in the server side, and enter a sending loop
             
             //ideally not going to need the following line, if making a request to json service
-            //    manager.responseSerializer = AFJSONResponseSerializer.serializer
-            //    manager.requestSerializer = AFJSONRequestSerializer.serializer
+            manager.responseSerializer = AFJSONResponseSerializer() as AFJSONResponseSerializer
+            manager.requestSerializer = AFJSONRequestSerializer() as AFJSONRequestSerializer
+            
             
             let parameters = ["wave_name": waveName, "from_wave": currentWave]
             
@@ -48,8 +45,8 @@ let APP_DELEGATE = UIApplication.sharedApplication().delegate as EchowavesAppDel
             
             let manager = AFHTTPRequestOperationManager()
             //ideally not going to need the following line, if making a request to json service
-            //    manager.responseSerializer = [AFJSONResponseSerializer serializer];
-            //    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+            manager.responseSerializer = AFJSONResponseSerializer() as AFJSONResponseSerializer
+            manager.requestSerializer = AFJSONRequestSerializer() as AFJSONRequestSerializer
             
             let parameters = ["wave_name":APP_DELEGATE.currentWaveName]
             
@@ -78,8 +75,8 @@ let APP_DELEGATE = UIApplication.sharedApplication().delegate as EchowavesAppDel
             // perform authentication, wave/password non blank and exist in the server side, and enter a sending loop
             
             //ideally not going to need the following line, if making a request to json service
-            //    manager.responseSerializer = [AFJSONResponseSerializer serializer];
-            //    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+            manager.responseSerializer = AFJSONResponseSerializer() as AFJSONResponseSerializer
+            manager.requestSerializer = AFJSONRequestSerializer() as AFJSONRequestSerializer
             
             let parameters =
             ["orig_my_wave_name": origMyWaveName,
@@ -94,6 +91,6 @@ let APP_DELEGATE = UIApplication.sharedApplication().delegate as EchowavesAppDel
                 failure: { (operation: AFHTTPRequestOperation!,error: NSError!) in
                     println("Error: \(error.localizedDescription)")
                     failure(error: error)
-            })            
+            })
     }
 }

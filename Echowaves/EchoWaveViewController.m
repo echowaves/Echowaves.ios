@@ -1,4 +1,3 @@
-//
 //  WaveViewController.m
 //  Echowaves
 //
@@ -6,9 +5,9 @@
 //  Copyright (c) 2014 Echowaves. All rights reserved.
 //
 
+#import "Echowaves-Swift.h"
 #import "EchoWaveViewController.h"
 #import "NavigationTabBarViewController.h"
-#import "EWImage.h"
 #import "DetailedImagePageViewController.h"
 
 
@@ -55,17 +54,19 @@
         self.navigationController.navigationBar.topItem.title = @"";//[APP_DELEGATE currentWaveName];
         
         [self waveSelected].text = [APP_DELEGATE currentWaveName];
-
+        
         [self refreshView];
-
-    } failure:^(NSError *error) {
+        
+    } failure:^( NSError *error) {
         [EWWave showErrorAlertWithMessage:error.description
-                               FromSender:nil];
+                               fromSender:nil];
+        
     }];
 }
 
+
 - (void) refreshView {
-     [self startRefresh:self.refreshControl];
+    [self startRefresh:self.refreshControl];
 }
 
 - (void)attachPickerToTextField: (UITextField*) textField :(UIPickerView*) picker{
@@ -93,7 +94,7 @@
                              NSLog(@"@total images %lu", (unsigned long)[self.waveImages count]);
                              [self.imagesCollectionView reloadData];
                              [self.imagesCollectionView reloadInputViews];
-
+                             
                              if(self.waveImages.count == 0) {
                                  NSLog(@"hiding NO");
                                  [self emptyWaveLabel].hidden = NO;
@@ -101,7 +102,7 @@
                                  NSLog(@"hiding YES");
                                  [self emptyWaveLabel].hidden = YES;
                              }
-
+                             
                              [sender endRefreshing];
                              
                          }
@@ -109,7 +110,7 @@
                              NSLog(@"error %@", error.description);
                          }];
     
- 
+    
 }
 
 #pragma mark - Picker delegate stuff
@@ -121,7 +122,7 @@
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-//    NSLog(@"5555555555555 numberOfRowsInComponent: %lu", (unsigned long)self.myWaves.count);
+    //    NSLog(@"5555555555555 numberOfRowsInComponent: %lu", (unsigned long)self.myWaves.count);
     return self.myWaves.count;
 }
 
@@ -134,9 +135,9 @@
     label.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
     label.textAlignment = NSTextAlignmentCenter;
     //WithFrame:CGRectMake(0, 0, pickerView.frame.size.width, 60)];
-
+    
     NSString* waveName = [((NSDictionary*)[self.myWaves objectAtIndex:row]) objectForKey:@"name"];
-
+    
     [label setText:waveName];
     return label;
 }
@@ -170,7 +171,7 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-//    NSLog(@"@@@at index %d", indexPath.row);
+    //    NSLog(@"@@@at index %d", indexPath.row);
     
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageCell" forIndexPath:indexPath];
     
@@ -178,27 +179,33 @@
     
     NSString* imageName = [((NSDictionary*)[self.waveImages objectAtIndex:indexPath.row]) objectForKey:@"name"];
     NSString* waveName = [((NSDictionary*)[self.waveImages objectAtIndex:indexPath.row]) objectForKey:@"name_2"];
-//    NSString* imageUrl = [NSString stringWithFormat:@"%@/img/%@/thumb_%@", EWAWSBucket, waveName, imageName];
+    //    NSString* imageUrl = [NSString stringWithFormat:@"%@/img/%@/thumb_%@", EWAWSBucket, waveName, imageName];
     
     
     ((UIImageView *)[cell viewWithTag:100]).image = nil;//[UIImage imageNamed:@"echowave.png"]; // no need to show the background image
-
+    
     [EWImage loadThumbImage:imageName
-                    forWave:waveName
+                   waveName:waveName
                     success:^(UIImage *image) {
                         if([collectionView.indexPathsForVisibleItems containsObject:indexPath]) {
                             ((UIImageView *)[cell viewWithTag:100]).image = image;
                             waveImageView.contentMode = UIViewContentModeScaleAspectFit;
                         }
-                    } failure:^(NSError *error) {
+                    }
+                    failure:^(NSError *error) {
                         NSLog(@"error: %@", error.description);
-                    }];
+                    }
+                   progress:^(NSUInteger bytesRead, int64_t totalBytesRead, int64_t totalBytesExpectedToRead) {
+                       NSLog(@"loading thumb");
+                   }
+     ];
+    
     return cell;
 }
 
 
 - (void)collectionView:(UICollectionView *)imagesCollectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-
+    
     DetailedImagePageViewController *detailedImagePageViewController = [[UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil] instantiateViewControllerWithIdentifier:@"DetailedImagePageView"];
     
     detailedImagePageViewController.initialViewIndex = indexPath.row;

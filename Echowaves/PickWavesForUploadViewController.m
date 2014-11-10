@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Echowaves. All rights reserved.
 //
 
+#import "Echowaves-Swift.h"
 #import "PickWavesForUploadViewController.h"
 
 @interface PickWavesForUploadViewController ()
@@ -26,7 +27,7 @@
         
     } failure:^(NSError *error) {
         [EWWave showErrorAlertWithMessage:error.description
-                               FromSender:nil];
+                               fromSender:nil];
     }];
     
     
@@ -69,12 +70,13 @@
     NSString *waveName = label.text;
     
     [EWWave showLoadingIndicator:self];
-    [EWWave makeWaveActive:waveName active:waveOn.isOn
+    [EWWave makeWaveActive:waveName
+                    active:waveOn.isOn
                    success:^(NSString *waveName) {
                        [EWWave hideLoadingIndicator:self];
                    } failure:^(NSString *errorMessage) {
                        [EWWave hideLoadingIndicator:self];
-                       [EWWave showAlertWithMessage:errorMessage FromSender:self];
+                       [EWWave showAlertWithMessage:errorMessage fromSender:self];
                    }];
 }
 
