@@ -22,7 +22,7 @@ var alertShowing: Bool = false;
     
     class func showLoadingIndicator(sender: AnyObject) -> () {
         if (loadingIndicator == nil) {
-            loadingIndicator! = UIAlertController(title: "Loading...", message: "Please Wait", preferredStyle: UIAlertControllerStyle.Alert)
+            loadingIndicator = UIAlertController(title: "Loading...", message: "Please Wait", preferredStyle: UIAlertControllerStyle.Alert)
         }
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true;
         (sender as UIViewController).presentViewController(loadingIndicator!, animated: true, completion: nil)
@@ -32,7 +32,9 @@ var alertShowing: Bool = false;
     
     class func hideLoadingIndicator(sender: AnyObject) -> () {
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false;
+        println("removing loading indicator")
         if (loadingIndicator != nil) {
+            println("removing loading indicator since it's not nill")
             loadingIndicator!.removeFromParentViewController()
         }
         loadingIndicator = nil;

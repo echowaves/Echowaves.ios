@@ -9,21 +9,24 @@
 import Foundation
 
 @objc class EWWave : EWDataModel {
-//    var waveName: String
+    //    var waveName: String
     
-//
+    //
     class  func echowavesProtectionSpace() -> (NSURLProtectionSpace) {
-        let url: NSURL = NSURL(fileURLWithPath: EWHost)!
+        let url = NSURL(string: EWHost)
+        let assumedPort  = url!.port
+        
         let protSpace:NSURLProtectionSpace =
-        NSURLProtectionSpace(host: url.host!,
-            port: url.port!.integerValue,
-            `protocol`: url.scheme,
+        NSURLProtectionSpace(
+            host: url!.host!,
+            port: ( assumedPort != nil ? assumedPort!.integerValue : 80 ),
+            `protocol`: url!.scheme,
             realm:nil,
             authenticationMethod:nil)
         return protSpace;
     }
-//
-//    
+    //
+    //
     class func storeCredential(waveName: String, wavePassword:String)  -> () {
         var credentials: NSDictionary = NSURLCredentialStorage.sharedCredentialStorage().credentialsForProtectionSpace(EWWave.echowavesProtectionSpace())!
         
@@ -38,7 +41,7 @@ import Foundation
         credential = NSURLCredential(user: waveName, password: wavePassword, persistence: NSURLCredentialPersistence.Permanent)
         NSURLCredentialStorage.sharedCredentialStorage().setCredential(credential!, forProtectionSpace: EWWave.echowavesProtectionSpace())
     }
-
+    
     
     class func getStoredCredential() -> (NSURLCredential)  {
         //check if credentials are already stored, then show it in the tune in fields
@@ -47,7 +50,7 @@ import Foundation
     }
     
     
-
+    
     class func createWave(
         waveName: String,
         wavePassword: String,
@@ -93,7 +96,7 @@ import Foundation
         
     }
     
-
+    
     class func createChildWave(waveName: String,
         success:(waveName: String) -> (),
         failure:(errorMessage:String) -> ()) -> ()
@@ -124,7 +127,7 @@ import Foundation
         })
     }
     
-
+    
     class func makeWaveActive(waveName: String,
         active: Bool,
         success:(waveName: String) -> (),
@@ -210,7 +213,7 @@ import Foundation
         success:(waves: NSArray) -> (),
         failure:(error: NSError) -> ()) -> () {
             UIApplication.sharedApplication().networkActivityIndicatorVisible = true;
-
+            
             let manager = AFHTTPRequestOperationManager()
             //ideally not going to need the following line, if making a request to json service
             manager.responseSerializer = AFJSONResponseSerializer() as AFJSONResponseSerializer
@@ -230,10 +233,10 @@ import Foundation
             })
             
     }
-
-
-//
-//    
+    
+    
+    //
+    //
     class func storeIosToken(waveName: String,
         token: String,
         success:(waveName: String) -> (),
@@ -258,8 +261,8 @@ import Foundation
                     failure(errorMessage: "Unable to store token for wave: \(waveName): \(errorMessage)")
             })
     }
-
-     
+    
+    
     class func sendPushNotifyBadge(numberOfImages: Int,
         success:() -> (),
         failure:(error: NSError) -> ()) -> () {
@@ -285,9 +288,9 @@ import Foundation
     }
     
     
-
     
-        class func tuneIn(waveName: String,
+    
+    class func tuneIn(waveName: String,
         wavePassword: String,
         success:(waveName: String) -> (),
         failure:(errorMessage:String) -> ()) -> () {
@@ -343,5 +346,5 @@ import Foundation
         
     }
     
-
+    
 }
