@@ -1,4 +1,4 @@
-//
+    //
 //  EWImage.swift
 //  Echowaves
 //
@@ -28,12 +28,13 @@ import AssetsLibrary
             // Enumerate just the photos and videos group by using ALAssetsGroupSavedPhotos.
             library.enumerateGroupsWithTypes(
                 ALAssetsGroupSavedPhotos,
-                usingBlock: { (group: ALAssetsGroup!, stop: UnsafeMutablePointer<ObjCBool>) -> Void in
+                usingBlock: { (group: ALAssetsGroup?, stop: UnsafeMutablePointer<ObjCBool>) -> Void in
+                     if group != nil {
                     // Within the group enumeration block, filter to enumerate just videos.
-                    group.setAssetsFilter(ALAssetsFilter.allPhotos())
+                    group!.setAssetsFilter(ALAssetsFilter.allPhotos())
                     
                     // iterating over all assets
-                    group.enumerateAssetsUsingBlock({ (alAsset: ALAsset!, index: Int, innerStop: UnsafeMutablePointer<ObjCBool>) -> Void in
+                    group!.enumerateAssetsUsingBlock({ (alAsset: ALAsset!, index: Int, innerStop: UnsafeMutablePointer<ObjCBool>) -> Void in
                         // The end of the enumeration is signaled by asset == nil.
                         if alAsset != nil
                         {
@@ -63,6 +64,11 @@ import AssetsLibrary
                         }
                         
                     })
+                     } else if group == nil {
+                        println("group is nil")
+                    }
+                    
+                    
                 }, failureBlock: {
                     (error: NSError!) in
                     println("Error2!")

@@ -46,12 +46,12 @@
                  myWaveName:[self toWave]    
              friendWaveName:[self fromWave]
                     success:^{
-                        [EWBlend hideLoadingIndicator:nil];
+                        [EWBlend hideLoadingIndicator:self];
                         [self.navigationController popViewControllerAnimated:FALSE];
                     } failure:^(NSError *error) {
                         [EWBlend showAlertWithMessage:@"Blending failed" fromSender:nil];
                         NSLog(@"failed blending %@", error.debugDescription);
-                        [EWBlend hideLoadingIndicator:nil];
+                        [EWBlend hideLoadingIndicator:self];
                         [self.navigationController popViewControllerAnimated:FALSE];
                     }];
 }
