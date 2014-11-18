@@ -20,13 +20,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self waveName].text = [APP_DELEGATE currentWaveName];
-
+    
     [EWWave getWaveDetails:[self waveName].text
                    success:^(NSDictionary *waveDetails) {
                        //show delete button only for child waves
                        if([waveDetails objectForKey:@"parent_wave_id"] != [NSNull null]) {
                            [self navigationItem].rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash
-
+                                                                       
                                                                                                                     target:self
                                                                                                                     action:@selector(deleteWave:)];
                        } else {
@@ -39,25 +39,21 @@
 }
 
 - (IBAction)deleteWave:(id)sender {
-    [EWWave showAlertWithMessageAndCancelButton:@"Will remove wave and all it's photos. Sure?" fromSender:self];
+    [EWWave showAlertWithMessageAndCancelButton:@"Will remove wave and all it's photos. Sure?"
+                                       okAction:^(UIAlertAction *okAction) {
+                                           [EWWave deleteChildWave:[self.waveName text]
+                                                           success:^(NSString *waveName) {
+                                                               APP_DELEGATE.currentWaveName = nil;// this will be an indicator for the wavingViewController to reload and reinitialize the proper waveName
+                                                               [self.navigationController popViewControllerAnimated:YES];
+                                                           }
+                                                           failure:^(NSString *errorMessage) {
+                                                               [EWWave showErrorAlertWithMessage:errorMessage fromSender:nil];
+                                                               [self.navigationController popViewControllerAnimated:YES];
+                                                           }];
+                                       }
+                                     fromSender:self];
 }
 
 
-- (void)alertView:(UIAlertView *)alertView
-clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if(buttonIndex == 1) {//OK button clicked, let's delete the wave
-        [EWWave deleteChildWave:[self.waveName text]
-                        success:^(NSString *waveName) {
-                            APP_DELEGATE.currentWaveName = nil;// this will be an indicator for the wavingViewController to reload and reinitialize the proper waveName
-                            [self.navigationController popViewControllerAnimated:YES];
-                        }
-                        failure:^(NSString *errorMessage) {
-                            [EWWave showErrorAlertWithMessage:errorMessage fromSender:nil];
-                            [self.navigationController popViewControllerAnimated:YES];
-                        }];
-
-    }
-    
-}
 
 @end

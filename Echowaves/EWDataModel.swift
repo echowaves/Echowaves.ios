@@ -50,18 +50,17 @@ var alertShowing: Bool = false;
     class func showAlertWithMessage(message: String, fromSender: AnyObject) -> () {
         var alertMessage = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertControllerStyle.Alert)
 //        alertMessage. tag = 10002
-        alertMessage.delete(fromSender)
         let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in})
         alertMessage.addAction(ok)
         (fromSender as UIViewController).presentViewController(alertMessage, animated: true, completion: nil)
     }
 
-    class func showAlertWithMessageAndCancelButton(message: String,  fromSender: AnyObject) -> () {
+    class func showAlertWithMessageAndCancelButton(message: String, okAction: (UIAlertAction!) -> Void, fromSender: AnyObject) -> () {
         let alertMessage = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertControllerStyle.Alert)
 //        alertMessage.tag = 10003
-        alertMessage.delete(fromSender)
-        let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in})
+        let ok = UIAlertAction(title: "OK", style: .Default, handler: okAction)
         let cancel = UIAlertAction(title: "Cancel", style: .Default, handler: { (action) -> Void in})
+        
         alertMessage.addAction(ok)
         alertMessage.addAction(cancel)
         (fromSender as UIViewController).presentViewController(alertMessage, animated: true, completion: nil)
@@ -70,7 +69,6 @@ var alertShowing: Bool = false;
     class func showErrorAlertWithMessage(message: String, fromSender: AnyObject) -> () {
         let errorMessage = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertControllerStyle.Alert)
 //        errorMessage.tag = 10001
-        errorMessage.delete(fromSender)
         let cancel = UIAlertAction(title: "Cancel", style: .Default, handler: { (action) -> Void in})
         errorMessage.addAction(cancel)
         (fromSender as UIViewController).presentViewController(errorMessage, animated: true, completion: nil)

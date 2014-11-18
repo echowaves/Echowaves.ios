@@ -196,7 +196,7 @@
                         NSLog(@"error: %@", error.description);
                     }
                    progress:^(NSUInteger bytesRead, int64_t totalBytesRead, int64_t totalBytesExpectedToRead) {
-                       NSLog(@"loading thumb");
+//                       NSLog(@"loading thumb");
                    }
      ];
     
