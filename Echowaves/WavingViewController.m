@@ -8,7 +8,6 @@
 
 #import "Echowaves-Swift.h"
 #import "WavingViewController.h"
-#import "NavigationTabBarViewController.h"
 
 @interface WavingViewController ()
 

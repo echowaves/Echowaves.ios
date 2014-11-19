@@ -606,7 +606,7 @@
         <!--Navigation Tab Bar View Controller-->
         <scene sceneID="ssY-qE-FTr">
             <objects>
-                <tabBarController definesPresentationContext="YES" id="4Wa-qa-6Wy" customClass="NavigationTabBarViewController" sceneMemberID="viewController">
+                <tabBarController definesPresentationContext="YES" id="4Wa-qa-6Wy" customClass="NavigationTabBarViewController" customModule="Echowaves" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="70E-4t-zqk">
                         <barButtonItem key="leftBarButtonItem" title="TuneOut" id="eXP-6K-HVp">
                             <connections>

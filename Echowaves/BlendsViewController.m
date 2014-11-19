@@ -8,7 +8,6 @@
 
 #import "Echowaves-Swift.h"
 #import "BlendsViewController.h"
-#import "NavigationTabBarViewController.h"
 #import "AcceptBlendingRequestViewController.h"
 
 @interface UnblendAlertView : UIAlertView
