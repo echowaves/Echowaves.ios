@@ -175,7 +175,7 @@
         <!--Create new Wave-->
         <scene sceneID="600-qt-TBO">
             <objects>
-                <viewController id="wWl-ta-JWX" customClass="SignUpViewController" sceneMemberID="viewController">
+                <viewController id="wWl-ta-JWX" customClass="SignUpViewController" customModule="Echowaves" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="AtD-bJ-C1h"/>
                         <viewControllerLayoutGuide type="bottom" id="jTd-3q-RYS"/>
@@ -1453,6 +1453,6 @@
         <image name="waving" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lU3-tf-NsI"/>
+        <segue reference="h0z-up-Au7"/>
     </inferredMetricsTieBreakers>
 </document>
