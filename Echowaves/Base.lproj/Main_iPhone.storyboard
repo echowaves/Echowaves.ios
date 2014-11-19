@@ -101,7 +101,7 @@
         <!--TuneIn-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="SignInViewController" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="SignInViewController" customModule="Echowaves" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="oGS-jw-O3b"/>
                         <viewControllerLayoutGuide type="bottom" id="YPN-LF-gf3"/>
@@ -1453,6 +1453,6 @@
         <image name="waving" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="h0z-up-Au7"/>
+        <segue reference="AnV-QM-P86"/>
     </inferredMetricsTieBreakers>
 </document>

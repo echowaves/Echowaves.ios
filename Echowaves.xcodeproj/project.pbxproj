@@ -11,7 +11,6 @@
 		0A163DC418AAD72900148595 /* DetailedImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A163DC318AAD72900148595 /* DetailedImageViewController.m */; };
 		0A28E5DA1889B8B300B7BDDB /* EchoWaveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A28E5D91889B8B300B7BDDB /* EchoWaveViewController.m */; };
 		0A28E5DD1889B8C400B7BDDB /* BlendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A28E5DC1889B8C400B7BDDB /* BlendsViewController.m */; };
-		0A28E5EA188F36C200B7BDDB /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A28E5E9188F36C200B7BDDB /* SignInViewController.m */; };
 		0A34C00E18556B4100E085BC /* libFlurry_4.3.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A34C00D18556B4100E085BC /* libFlurry_4.3.0.a */; };
 		0A34FEFD18F4A1F600B5AF34 /* WaveDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A34FEFC18F4A1F600B5AF34 /* WaveDetailsViewController.m */; };
 		0A5BF76919103661005C2742 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A5BF76819103661005C2742 /* QuartzCore.framework */; };
@@ -19,6 +18,7 @@
 		0A7C733C18948E9300292622 /* NavigationTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7C733B18948E9300292622 /* NavigationTabBarViewController.m */; };
 		0A7FBC2E1A1BEAA70034B232 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7FBC2D1A1BEAA70034B232 /* HomeViewController.swift */; };
 		0A7FBC301A1D2C230034B232 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7FBC2F1A1D2C230034B232 /* SignUpViewController.swift */; };
+		0A7FBC321A1D3B8A0034B232 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7FBC311A1D3B8A0034B232 /* SignInViewController.swift */; };
 		0A9873271A06A335008499A1 /* EWBlend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9873261A06A335008499A1 /* EWBlend.swift */; };
 		0A9873291A06F9D6008499A1 /* EWDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9873281A06F9D6008499A1 /* EWDataModel.swift */; };
 		0A98732B1A071C87008499A1 /* EWWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A98732A1A071C87008499A1 /* EWWave.swift */; };
@@ -84,8 +84,6 @@
 		0A28E5D91889B8B300B7BDDB /* EchoWaveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EchoWaveViewController.m; sourceTree = "<group>"; };
 		0A28E5DB1889B8C400B7BDDB /* BlendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlendsViewController.h; sourceTree = "<group>"; };
 		0A28E5DC1889B8C400B7BDDB /* BlendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlendsViewController.m; sourceTree = "<group>"; };
-		0A28E5E8188F36C200B7BDDB /* SignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInViewController.h; sourceTree = "<group>"; };
-		0A28E5E9188F36C200B7BDDB /* SignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInViewController.m; sourceTree = "<group>"; };
 		0A34C00C18556B4100E085BC /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
 		0A34C00D18556B4100E085BC /* libFlurry_4.3.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.3.0.a; sourceTree = "<group>"; };
 		0A34FEFB18F4A1F600B5AF34 /* WaveDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaveDetailsViewController.h; sourceTree = "<group>"; };
@@ -97,6 +95,7 @@
 		0A7C733B18948E9300292622 /* NavigationTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationTabBarViewController.m; sourceTree = "<group>"; };
 		0A7FBC2D1A1BEAA70034B232 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = ../HomeViewController.swift; sourceTree = "<group>"; };
 		0A7FBC2F1A1D2C230034B232 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		0A7FBC311A1D3B8A0034B232 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		0A9873261A06A335008499A1 /* EWBlend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EWBlend.swift; sourceTree = "<group>"; };
 		0A9873281A06F9D6008499A1 /* EWDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EWDataModel.swift; sourceTree = "<group>"; };
 		0A98732A1A071C87008499A1 /* EWWave.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EWWave.swift; sourceTree = "<group>"; };
@@ -285,6 +284,7 @@
 				0A34C00F18556B4800E085BC /* Resources */,
 				0AD6E25A18011F59008303E0 /* Main_iPhone.storyboard */,
 				0A7FBC2D1A1BEAA70034B232 /* HomeViewController.swift */,
+				0A7FBC311A1D3B8A0034B232 /* SignInViewController.swift */,
 				0A7FBC2F1A1D2C230034B232 /* SignUpViewController.swift */,
 				0ABC9313199C4A680011F502 /* DateTimePickerViewController.h */,
 				0ABC9314199C4A680011F502 /* DateTimePickerViewController.m */,
@@ -304,8 +304,6 @@
 				0A163DC318AAD72900148595 /* DetailedImageViewController.m */,
 				0A7C733A18948E9300292622 /* NavigationTabBarViewController.h */,
 				0A7C733B18948E9300292622 /* NavigationTabBarViewController.m */,
-				0A28E5E8188F36C200B7BDDB /* SignInViewController.h */,
-				0A28E5E9188F36C200B7BDDB /* SignInViewController.m */,
 				0A28E5D81889B8B300B7BDDB /* EchoWaveViewController.h */,
 				0A28E5D91889B8B300B7BDDB /* EchoWaveViewController.m */,
 				0A28E5DB1889B8C400B7BDDB /* BlendsViewController.h */,
@@ -520,7 +518,6 @@
 				0AF15B8B1940FF8300625F34 /* UIImageView+AFNetworking.m in Sources */,
 				0A28E5DD1889B8C400B7BDDB /* BlendsViewController.m in Sources */,
 				0AD6E26218011F59008303E0 /* WavingViewController.m in Sources */,
-				0A28E5EA188F36C200B7BDDB /* SignInViewController.m in Sources */,
 				0AF15B731940FF6D00625F34 /* AFURLResponseSerialization.m in Sources */,
 				0AF15B881940FF8300625F34 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				0A98732D1A07B2F2008499A1 /* EWImage.swift in Sources */,
@@ -544,6 +541,7 @@
 				0AF15B721940FF6D00625F34 /* AFURLRequestSerialization.m in Sources */,
 				0A1415B5199B12D50095D6E7 /* PickWavesForUploadViewController.m in Sources */,
 				0AF15B891940FF8300625F34 /* UIAlertView+AFNetworking.m in Sources */,
+				0A7FBC321A1D3B8A0034B232 /* SignInViewController.swift in Sources */,
 				0A98732B1A071C87008499A1 /* EWWave.swift in Sources */,
 				0ABC9315199C4A680011F502 /* DateTimePickerViewController.m in Sources */,
 				0A163DC418AAD72900148595 /* DetailedImageViewController.m in Sources */,
