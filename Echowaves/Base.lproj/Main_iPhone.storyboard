@@ -9,7 +9,7 @@
         <!--Welcome to EchoWaves-->
         <scene sceneID="aeH-uz-dP4">
             <objects>
-                <viewController id="1U9-q6-r7W" customClass="HomeViewController" sceneMemberID="viewController">
+                <viewController id="1U9-q6-r7W" customClass="HomeViewController" customModule="Echowaves" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0wL-3G-ic6"/>
                         <viewControllerLayoutGuide type="bottom" id="2Oq-BC-GLw"/>
@@ -90,7 +90,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="createNewWaveButton" destination="RoO-Mo-w82" id="c1Q-VV-uGp"/>
-                        <outlet property="tuneInButton" destination="chx-9d-bpa" id="xG1-HD-Xw9"/>
+                        <outlet property="tuneInButton" destination="chx-9d-bpa" id="BO6-mE-r5U"/>
                         <segue destination="4Wa-qa-6Wy" kind="show" identifier="AutoSignIn" id="lU3-tf-NsI"/>
                     </connections>
                 </viewController>

@@ -11,7 +11,4 @@
 @interface WaveDetailsViewController : UIViewController <UIAlertViewDelegate>
 @property (strong, nonatomic) IBOutlet UILabel *waveName;
 @property (strong, nonatomic) IBOutlet UIButton *deleteWaveButton;
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
-
 @end

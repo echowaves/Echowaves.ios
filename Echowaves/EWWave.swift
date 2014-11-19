@@ -43,10 +43,10 @@ import Foundation
     }
     
     
-    class func getStoredCredential() -> (NSURLCredential)  {
+    class func getStoredCredential() -> (NSURLCredential?)  {
         //check if credentials are already stored, then show it in the tune in fields
         let credentials: NSDictionary = NSURLCredentialStorage.sharedCredentialStorage().credentialsForProtectionSpace(EWWave.echowavesProtectionSpace())!
-        return credentials.objectEnumerator().nextObject() as NSURLCredential
+        return credentials.objectEnumerator().nextObject() as NSURLCredential?
     }
     
     
