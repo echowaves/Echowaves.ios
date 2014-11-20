@@ -367,7 +367,7 @@
         <!--Detailed Image Page View Controller-->
         <scene sceneID="P3J-2s-K85">
             <objects>
-                <viewController storyboardIdentifier="DetailedImagePageView" id="uGD-Jv-xSJ" customClass="DetailedImagePageViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailedImagePageView" id="uGD-Jv-xSJ" customClass="DetailedImagePageViewController" customModule="Echowaves" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JAw-do-ipk"/>
                         <viewControllerLayoutGuide type="bottom" id="yTL-6i-YCI"/>

@@ -7,7 +7,6 @@
 
 #import "Echowaves-Swift.h"
 #import "EchoWaveViewController.h"
-#import "DetailedImagePageViewController.h"
 
 
 @implementation EchoWaveViewController

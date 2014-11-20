@@ -14,11 +14,11 @@
 		0A34C00E18556B4100E085BC /* libFlurry_4.3.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A34C00D18556B4100E085BC /* libFlurry_4.3.0.a */; };
 		0A34FEFD18F4A1F600B5AF34 /* WaveDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A34FEFC18F4A1F600B5AF34 /* WaveDetailsViewController.m */; };
 		0A5BF76919103661005C2742 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A5BF76819103661005C2742 /* QuartzCore.framework */; };
-		0A6B326C193509EE00AE6A6E /* DetailedImagePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6B326B193509EE00AE6A6E /* DetailedImagePageViewController.m */; };
 		0A7FBC2E1A1BEAA70034B232 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7FBC2D1A1BEAA70034B232 /* HomeViewController.swift */; };
 		0A7FBC301A1D2C230034B232 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7FBC2F1A1D2C230034B232 /* SignUpViewController.swift */; };
 		0A7FBC321A1D3B8A0034B232 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7FBC311A1D3B8A0034B232 /* SignInViewController.swift */; };
 		0A7FBC341A1D4F4A0034B232 /* NavigationTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7FBC331A1D4F4A0034B232 /* NavigationTabBarViewController.swift */; };
+		0A7FBC361A1D8F270034B232 /* DetailedImagePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7FBC351A1D8F270034B232 /* DetailedImagePageViewController.swift */; };
 		0A9873271A06A335008499A1 /* EWBlend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9873261A06A335008499A1 /* EWBlend.swift */; };
 		0A9873291A06F9D6008499A1 /* EWDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9873281A06F9D6008499A1 /* EWDataModel.swift */; };
 		0A98732B1A071C87008499A1 /* EWWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A98732A1A071C87008499A1 /* EWWave.swift */; };
@@ -89,12 +89,11 @@
 		0A34FEFB18F4A1F600B5AF34 /* WaveDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaveDetailsViewController.h; sourceTree = "<group>"; };
 		0A34FEFC18F4A1F600B5AF34 /* WaveDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaveDetailsViewController.m; sourceTree = "<group>"; };
 		0A5BF76819103661005C2742 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		0A6B326A193509EE00AE6A6E /* DetailedImagePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailedImagePageViewController.h; sourceTree = "<group>"; };
-		0A6B326B193509EE00AE6A6E /* DetailedImagePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailedImagePageViewController.m; sourceTree = "<group>"; };
 		0A7FBC2D1A1BEAA70034B232 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = ../HomeViewController.swift; sourceTree = "<group>"; };
 		0A7FBC2F1A1D2C230034B232 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		0A7FBC311A1D3B8A0034B232 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		0A7FBC331A1D4F4A0034B232 /* NavigationTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationTabBarViewController.swift; sourceTree = "<group>"; };
+		0A7FBC351A1D8F270034B232 /* DetailedImagePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailedImagePageViewController.swift; sourceTree = "<group>"; };
 		0A9873261A06A335008499A1 /* EWBlend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EWBlend.swift; sourceTree = "<group>"; };
 		0A9873281A06F9D6008499A1 /* EWDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EWDataModel.swift; sourceTree = "<group>"; };
 		0A98732A1A071C87008499A1 /* EWWave.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EWWave.swift; sourceTree = "<group>"; };
@@ -286,12 +285,13 @@
 				0A7FBC311A1D3B8A0034B232 /* SignInViewController.swift */,
 				0A7FBC2F1A1D2C230034B232 /* SignUpViewController.swift */,
 				0A7FBC331A1D4F4A0034B232 /* NavigationTabBarViewController.swift */,
+				0A7FBC351A1D8F270034B232 /* DetailedImagePageViewController.swift */,
+				0A163DC218AAD72900148595 /* DetailedImageViewController.h */,
+				0A163DC318AAD72900148595 /* DetailedImageViewController.m */,
 				0ABC9313199C4A680011F502 /* DateTimePickerViewController.h */,
 				0ABC9314199C4A680011F502 /* DateTimePickerViewController.m */,
 				0A1415B3199B12D50095D6E7 /* PickWavesForUploadViewController.h */,
 				0A1415B4199B12D50095D6E7 /* PickWavesForUploadViewController.m */,
-				0A6B326A193509EE00AE6A6E /* DetailedImagePageViewController.h */,
-				0A6B326B193509EE00AE6A6E /* DetailedImagePageViewController.m */,
 				0AF4BA75192BEB1200E11E29 /* AcceptBlendingRequestViewController.h */,
 				0AF4BA76192BEB1200E11E29 /* AcceptBlendingRequestViewController.m */,
 				0A34FEFB18F4A1F600B5AF34 /* WaveDetailsViewController.h */,
@@ -300,8 +300,6 @@
 				0AFD9A6F18ECEBA2007F5749 /* AddChildWaveViewController.m */,
 				0AFD9A6B18ECD457007F5749 /* UploadProgressViewController.h */,
 				0AFD9A6C18ECD457007F5749 /* UploadProgressViewController.m */,
-				0A163DC218AAD72900148595 /* DetailedImageViewController.h */,
-				0A163DC318AAD72900148595 /* DetailedImageViewController.m */,
 				0A28E5D81889B8B300B7BDDB /* EchoWaveViewController.h */,
 				0A28E5D91889B8B300B7BDDB /* EchoWaveViewController.m */,
 				0A28E5DB1889B8C400B7BDDB /* BlendsViewController.h */,
@@ -539,11 +537,11 @@
 				0AF15B721940FF6D00625F34 /* AFURLRequestSerialization.m in Sources */,
 				0A1415B5199B12D50095D6E7 /* PickWavesForUploadViewController.m in Sources */,
 				0AF15B891940FF8300625F34 /* UIAlertView+AFNetworking.m in Sources */,
+				0A7FBC361A1D8F270034B232 /* DetailedImagePageViewController.swift in Sources */,
 				0A7FBC321A1D3B8A0034B232 /* SignInViewController.swift in Sources */,
 				0A98732B1A071C87008499A1 /* EWWave.swift in Sources */,
 				0ABC9315199C4A680011F502 /* DateTimePickerViewController.m in Sources */,
 				0A163DC418AAD72900148595 /* DetailedImageViewController.m in Sources */,
-				0A6B326C193509EE00AE6A6E /* DetailedImagePageViewController.m in Sources */,
 				0AD6E25918011F59008303E0 /* EchowavesAppDelegate.m in Sources */,
 				0A7FBC301A1D2C230034B232 /* SignUpViewController.swift in Sources */,
 				0A7FBC2E1A1BEAA70034B232 /* HomeViewController.swift in Sources */,
