@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0A1415B5199B12D50095D6E7 /* PickWavesForUploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A1415B4199B12D50095D6E7 /* PickWavesForUploadViewController.m */; };
-		0A28E5DA1889B8B300B7BDDB /* EchoWaveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A28E5D91889B8B300B7BDDB /* EchoWaveViewController.m */; };
 		0A28E5DD1889B8C400B7BDDB /* BlendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A28E5DC1889B8C400B7BDDB /* BlendsViewController.m */; };
 		0A34A1D91A1E310200EED81F /* DetailedImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A34A1D81A1E310200EED81F /* DetailedImageViewController.swift */; };
 		0A34C00E18556B4100E085BC /* libFlurry_4.3.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A34C00D18556B4100E085BC /* libFlurry_4.3.0.a */; };
@@ -26,6 +25,7 @@
 		0ABC9315199C4A680011F502 /* DateTimePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ABC9314199C4A680011F502 /* DateTimePickerViewController.m */; };
 		0AC91E66186BF50300D61381 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AC91E65186BF50300D61381 /* Security.framework */; };
 		0AC91E68186BF52F00D61381 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AC91E67186BF52F00D61381 /* SystemConfiguration.framework */; };
+		0AD0CB531A2ACFFF00FBDE21 /* EchoWaveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD0CB521A2ACFFF00FBDE21 /* EchoWaveViewController.swift */; };
 		0AD529DF18C7A46C0047951D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AD529DE18C7A4470047951D /* Default-568h@2x.png */; };
 		0AD6E24918011F59008303E0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AD6E24818011F59008303E0 /* Foundation.framework */; };
 		0AD6E24B18011F59008303E0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AD6E24A18011F59008303E0 /* CoreGraphics.framework */; };
@@ -78,8 +78,6 @@
 		0A13C8D119416C30004BD744 /* Echowaves-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Echowaves-Bridging-Header.h"; sourceTree = "<group>"; };
 		0A1415B3199B12D50095D6E7 /* PickWavesForUploadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickWavesForUploadViewController.h; sourceTree = "<group>"; };
 		0A1415B4199B12D50095D6E7 /* PickWavesForUploadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickWavesForUploadViewController.m; sourceTree = "<group>"; };
-		0A28E5D81889B8B300B7BDDB /* EchoWaveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EchoWaveViewController.h; sourceTree = "<group>"; };
-		0A28E5D91889B8B300B7BDDB /* EchoWaveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EchoWaveViewController.m; sourceTree = "<group>"; };
 		0A28E5DB1889B8C400B7BDDB /* BlendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlendsViewController.h; sourceTree = "<group>"; };
 		0A28E5DC1889B8C400B7BDDB /* BlendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlendsViewController.m; sourceTree = "<group>"; };
 		0A34A1D81A1E310200EED81F /* DetailedImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailedImageViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +99,7 @@
 		0ABC9314199C4A680011F502 /* DateTimePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateTimePickerViewController.m; sourceTree = "<group>"; };
 		0AC91E65186BF50300D61381 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		0AC91E67186BF52F00D61381 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		0AD0CB521A2ACFFF00FBDE21 /* EchoWaveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EchoWaveViewController.swift; sourceTree = "<group>"; };
 		0AD529DC18C7A4200047951D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		0AD529DD18C7A4360047951D /* Default~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default~iphone.png"; sourceTree = "<group>"; };
 		0AD529DE18C7A4470047951D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -286,8 +285,7 @@
 				0A7FBC331A1D4F4A0034B232 /* NavigationTabBarViewController.swift */,
 				0A7FBC351A1D8F270034B232 /* DetailedImagePageViewController.swift */,
 				0A34A1D81A1E310200EED81F /* DetailedImageViewController.swift */,
-				0A28E5D81889B8B300B7BDDB /* EchoWaveViewController.h */,
-				0A28E5D91889B8B300B7BDDB /* EchoWaveViewController.m */,
+				0AD0CB521A2ACFFF00FBDE21 /* EchoWaveViewController.swift */,
 				0AD6E26018011F59008303E0 /* WavingViewController.h */,
 				0AD6E26118011F59008303E0 /* WavingViewController.m */,
 				0A28E5DB1889B8C400B7BDDB /* BlendsViewController.h */,
@@ -515,7 +513,7 @@
 				0AF15B731940FF6D00625F34 /* AFURLResponseSerialization.m in Sources */,
 				0AF15B881940FF8300625F34 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				0A98732D1A07B2F2008499A1 /* EWImage.swift in Sources */,
-				0A28E5DA1889B8B300B7BDDB /* EchoWaveViewController.m in Sources */,
+				0AD0CB531A2ACFFF00FBDE21 /* EchoWaveViewController.swift in Sources */,
 				0AF15B8A1940FF8300625F34 /* UIButton+AFNetworking.m in Sources */,
 				0AF15B711940FF6D00625F34 /* AFURLConnectionOperation.m in Sources */,
 				0AF15B6D1940FF6D00625F34 /* AFHTTPRequestOperationManager.m in Sources */,

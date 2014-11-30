@@ -271,7 +271,7 @@
         <!--EchoWave-->
         <scene sceneID="A9T-JU-6fP">
             <objects>
-                <viewController id="Wr0-jG-xAd" customClass="EchoWaveViewController" sceneMemberID="viewController">
+                <viewController id="Wr0-jG-xAd" customClass="EchoWaveViewController" customModule="Echowaves" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8ff-oR-hBX"/>
                         <viewControllerLayoutGuide type="bottom" id="RQx-aQ-EPz"/>
