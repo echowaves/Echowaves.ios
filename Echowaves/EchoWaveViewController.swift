@@ -27,7 +27,7 @@ class EchoWaveViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         if(self.refreshControl == nil) {
             self.refreshControl = UIRefreshControl()
-            self.refreshControl.addTarget(self, action: Selector("startRefresh"), forControlEvents: .ValueChanged)
+            self.refreshControl.addTarget(self, action: Selector("refreshView"), forControlEvents: .ValueChanged)
             self.imagesCollectionView.addSubview(self.refreshControl)
         }
     }
