@@ -194,9 +194,11 @@ class EchoWaveViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     
-    func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
-        
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        NSLog("selecting image")
         let detailedImagePageViewController:DetailedImagePageViewController! = UIStoryboard(name: "Main_iPhone", bundle: nil).instantiateViewControllerWithIdentifier("DetailedImagePageView") as DetailedImagePageViewController
+        
+        NSLog("index path: \(indexPath.row) and unsigned \(UInt(indexPath.row))")
         
         detailedImagePageViewController.initialViewIndex = UInt(indexPath.row)
         detailedImagePageViewController.waveImages = self.waveImages
