@@ -4,5 +4,4 @@
 
 #import "AFNetworking.h"
 #import "EchowavesAppDelegate.h"
-#import "DetailedImageViewController.h"
 

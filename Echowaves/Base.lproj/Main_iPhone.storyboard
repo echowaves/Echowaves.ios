@@ -385,7 +385,7 @@
         <!--Detailed Image View Controller-->
         <scene sceneID="wXD-EU-zsb">
             <objects>
-                <viewController storyboardIdentifier="DetailedImageView" id="5T2-Jh-Jpt" customClass="DetailedImageViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailedImageView" id="5T2-Jh-Jpt" customClass="DetailedImageViewController" customModule="Echowaves" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fSe-De-Aqb"/>
                         <viewControllerLayoutGuide type="bottom" id="8Ee-JC-pO7"/>

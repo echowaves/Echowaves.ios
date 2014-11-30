@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0A1415B5199B12D50095D6E7 /* PickWavesForUploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A1415B4199B12D50095D6E7 /* PickWavesForUploadViewController.m */; };
-		0A163DC418AAD72900148595 /* DetailedImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A163DC318AAD72900148595 /* DetailedImageViewController.m */; };
 		0A28E5DA1889B8B300B7BDDB /* EchoWaveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A28E5D91889B8B300B7BDDB /* EchoWaveViewController.m */; };
 		0A28E5DD1889B8C400B7BDDB /* BlendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A28E5DC1889B8C400B7BDDB /* BlendsViewController.m */; };
+		0A34A1D91A1E310200EED81F /* DetailedImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A34A1D81A1E310200EED81F /* DetailedImageViewController.swift */; };
 		0A34C00E18556B4100E085BC /* libFlurry_4.3.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A34C00D18556B4100E085BC /* libFlurry_4.3.0.a */; };
 		0A34FEFD18F4A1F600B5AF34 /* WaveDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A34FEFC18F4A1F600B5AF34 /* WaveDetailsViewController.m */; };
 		0A5BF76919103661005C2742 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A5BF76819103661005C2742 /* QuartzCore.framework */; };
@@ -78,12 +78,11 @@
 		0A13C8D119416C30004BD744 /* Echowaves-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Echowaves-Bridging-Header.h"; sourceTree = "<group>"; };
 		0A1415B3199B12D50095D6E7 /* PickWavesForUploadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickWavesForUploadViewController.h; sourceTree = "<group>"; };
 		0A1415B4199B12D50095D6E7 /* PickWavesForUploadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickWavesForUploadViewController.m; sourceTree = "<group>"; };
-		0A163DC218AAD72900148595 /* DetailedImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailedImageViewController.h; sourceTree = "<group>"; };
-		0A163DC318AAD72900148595 /* DetailedImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailedImageViewController.m; sourceTree = "<group>"; };
 		0A28E5D81889B8B300B7BDDB /* EchoWaveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EchoWaveViewController.h; sourceTree = "<group>"; };
 		0A28E5D91889B8B300B7BDDB /* EchoWaveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EchoWaveViewController.m; sourceTree = "<group>"; };
 		0A28E5DB1889B8C400B7BDDB /* BlendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlendsViewController.h; sourceTree = "<group>"; };
 		0A28E5DC1889B8C400B7BDDB /* BlendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlendsViewController.m; sourceTree = "<group>"; };
+		0A34A1D81A1E310200EED81F /* DetailedImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailedImageViewController.swift; sourceTree = "<group>"; };
 		0A34C00C18556B4100E085BC /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
 		0A34C00D18556B4100E085BC /* libFlurry_4.3.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.3.0.a; sourceTree = "<group>"; };
 		0A34FEFB18F4A1F600B5AF34 /* WaveDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaveDetailsViewController.h; sourceTree = "<group>"; };
@@ -286,8 +285,7 @@
 				0A7FBC2F1A1D2C230034B232 /* SignUpViewController.swift */,
 				0A7FBC331A1D4F4A0034B232 /* NavigationTabBarViewController.swift */,
 				0A7FBC351A1D8F270034B232 /* DetailedImagePageViewController.swift */,
-				0A163DC218AAD72900148595 /* DetailedImageViewController.h */,
-				0A163DC318AAD72900148595 /* DetailedImageViewController.m */,
+				0A34A1D81A1E310200EED81F /* DetailedImageViewController.swift */,
 				0ABC9313199C4A680011F502 /* DateTimePickerViewController.h */,
 				0ABC9314199C4A680011F502 /* DateTimePickerViewController.m */,
 				0A1415B3199B12D50095D6E7 /* PickWavesForUploadViewController.h */,
@@ -532,6 +530,7 @@
 				0AF15B871940FF8300625F34 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				0AF15B701940FF6D00625F34 /* AFSecurityPolicy.m in Sources */,
 				0AF15B8C1940FF8300625F34 /* UIProgressView+AFNetworking.m in Sources */,
+				0A34A1D91A1E310200EED81F /* DetailedImageViewController.swift in Sources */,
 				0AF15B6F1940FF6D00625F34 /* AFNetworkReachabilityManager.m in Sources */,
 				0AF15B6E1940FF6D00625F34 /* AFHTTPSessionManager.m in Sources */,
 				0AF15B721940FF6D00625F34 /* AFURLRequestSerialization.m in Sources */,
@@ -541,7 +540,6 @@
 				0A7FBC321A1D3B8A0034B232 /* SignInViewController.swift in Sources */,
 				0A98732B1A071C87008499A1 /* EWWave.swift in Sources */,
 				0ABC9315199C4A680011F502 /* DateTimePickerViewController.m in Sources */,
-				0A163DC418AAD72900148595 /* DetailedImageViewController.m in Sources */,
 				0AD6E25918011F59008303E0 /* EchowavesAppDelegate.m in Sources */,
 				0A7FBC301A1D2C230034B232 /* SignUpViewController.swift in Sources */,
 				0A7FBC2E1A1BEAA70034B232 /* HomeViewController.swift in Sources */,

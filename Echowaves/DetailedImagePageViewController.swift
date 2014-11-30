@@ -14,7 +14,7 @@ class DetailedImagePageViewController : UIViewController, UIPageViewControllerDa
     //following 2 properties must be always set for the view to work correctly (flipping through images)
     var waveImages = []
     var initialViewIndex:UInt = 0
-    var pageController:UIPageViewController?
+    var pageController:UIPageViewController!
     
     
     override func viewDidLoad() {
@@ -69,7 +69,7 @@ class DetailedImagePageViewController : UIViewController, UIPageViewControllerDa
         detailedImageViewController.waveName = imageFromJson.objectForKey("name_2") as String
         detailedImageViewController.imageIndex = index
         
-        detailedImageViewController.navItem = self.navigationItem;
+        detailedImageViewController.navItem? = self.navigationItem;
         
         return detailedImageViewController;
     }

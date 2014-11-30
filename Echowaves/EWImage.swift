@@ -212,9 +212,9 @@ import AssetsLibrary
     class func loadFullImage(
         imageName: String,
         waveName: String,
-        success:(image:UIImage) -> (),
-        failure:(error:NSError) -> (),
-        progress:(bytesRead: UInt, totalBytesRead: Int64, totalBytesExpectedToRead: Int64) -> () ) -> () {
+        success:(image:UIImage) -> Void,
+        failure:(error:NSError) -> Void,
+        progress:(bytesRead: UInt, totalBytesRead: Int64, totalBytesExpectedToRead: Int64) -> Void ) -> Void {
             let imageUrl = "\(EWAWSBucket)/img/\(waveName)/\(imageName)"
             EWImage.loadImageFromUrl(
                 imageUrl,
@@ -297,10 +297,8 @@ import AssetsLibrary
             img,
             orientation: ALAssetOrientation.Up,
             completionBlock: { (assetURL: NSURL!, error: NSError!) -> Void in
-                if (error.code == 0) {
+                if (error? == nil) {
                     println("saved image completed:\nurl: \(assetURL)")
-                    USER_DEFAULTS.setObject(NSDate(), forKey: "lastCheckTime")
-                    USER_DEFAULTS.synchronize()
                     success()
                 }
                 else {
