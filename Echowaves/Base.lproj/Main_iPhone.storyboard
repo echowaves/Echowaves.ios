@@ -962,7 +962,7 @@
         <!--Waving-->
         <scene sceneID="TFz-V2-zQT">
             <objects>
-                <viewController id="8lZ-lH-xhR" customClass="WavingViewController" sceneMemberID="viewController">
+                <viewController id="8lZ-lH-xhR" customClass="WavingViewController" customModule="Echowaves" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JLS-v2-L1J"/>
                         <viewControllerLayoutGuide type="bottom" id="1Hb-eb-cNk"/>
@@ -1274,7 +1274,7 @@
         <!--Add Child Wave View Controller-->
         <scene sceneID="9du-UH-FKh">
             <objects>
-                <viewController id="Stm-tM-xah" customClass="AddChildWaveViewController" sceneMemberID="viewController">
+                <viewController id="Stm-tM-xah" customClass="AddChildWaveViewController" customModule="Echowaves" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gbU-uZ-6Jq"/>
                         <viewControllerLayoutGuide type="bottom" id="POF-fp-34E"/>

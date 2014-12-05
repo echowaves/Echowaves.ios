@@ -8,11 +8,6 @@
 
 import Foundation
 
-let EWHost = "http://echowaves.com"
-let APP_DELEGATE = UIApplication.sharedApplication().delegate as EchowavesAppDelegate
-let EWAWSBucket = "http://images.echowaves.com"
-let USER_DEFAULTS = NSUserDefaults.standardUserDefaults()
-
 var loadingIndicator: UIAlertController?;
 var alertShowing: Bool = false;
 

@@ -43,7 +43,7 @@
                                        okAction:^(UIAlertAction *okAction) {
                                            [EWWave deleteChildWave:[self.waveName text]
                                                            success:^(NSString *waveName) {
-                                                               APP_DELEGATE.currentWaveName = nil;// this will be an indicator for the wavingViewController to reload and reinitialize the proper waveName
+                                                               APP_DELEGATE.currentWaveName = @"";// this will be an indicator for the wavingViewController to reload and reinitialize the proper waveName
                                                                [self.navigationController popViewControllerAnimated:YES];
                                                            }
                                                            failure:^(NSString *errorMessage) {

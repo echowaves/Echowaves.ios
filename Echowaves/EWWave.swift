@@ -12,41 +12,47 @@ import Foundation
     //    var waveName: String
     
     //
-    class  func echowavesProtectionSpace() -> (NSURLProtectionSpace) {
-        let url = NSURL(string: EWHost)
-        let assumedPort  = url!.port
+    class func echowavesProtectionSpace() -> (NSURLProtectionSpace) {
+        let url:NSURL = NSURL(string: EWHost)!
+
         
-        let protSpace:NSURLProtectionSpace =
+        let protSpace =
         NSURLProtectionSpace(
-            host: url!.host!,
-            port: ( assumedPort != nil ? assumedPort!.integerValue : 80 ),
-            `protocol`: url!.scheme,
-            realm:nil,
-            authenticationMethod:nil)
-        return protSpace;
+            host: url.host!,
+            port: 80,
+            `protocol`: url.scheme?,
+            realm: nil,
+            authenticationMethod: nil)
+        
+        println("prot space: \(protSpace)")
+        return protSpace
     }
-    //
-    //
+
     class func storeCredential(waveName: String, wavePassword:String)  -> () {
-        var credentials: NSDictionary = NSURLCredentialStorage.sharedCredentialStorage().credentialsForProtectionSpace(EWWave.echowavesProtectionSpace())!
+        let protSpace = EWWave.echowavesProtectionSpace()
         
-        var credential:NSURLCredential?
-        
-        //remove all credentials
-        for credentialKey in credentials {
-            credential = (credentials.objectForKey(credentialKey.key) as NSURLCredential)
-            NSURLCredentialStorage.sharedCredentialStorage().removeCredential(credential!, forProtectionSpace: EWWave.echowavesProtectionSpace())
+        if let credentials: NSDictionary = NSURLCredentialStorage.sharedCredentialStorage().credentialsForProtectionSpace(protSpace) {
+            
+            //remove all credentials
+            for credentialKey in credentials {
+                let credential = (credentials.objectForKey(credentialKey.key) as NSURLCredential)
+                NSURLCredentialStorage.sharedCredentialStorage().removeCredential(credential, forProtectionSpace: protSpace)
+            }
         }
-        //store new credential
-        credential = NSURLCredential(user: waveName, password: wavePassword, persistence: NSURLCredentialPersistence.Permanent)
-        NSURLCredentialStorage.sharedCredentialStorage().setCredential(credential!, forProtectionSpace: EWWave.echowavesProtectionSpace())
+            //store new credential
+            let credential = NSURLCredential(user: waveName, password: wavePassword, persistence: NSURLCredentialPersistence.Permanent)
+            NSURLCredentialStorage.sharedCredentialStorage().setCredential(credential, forProtectionSpace: protSpace)
+        
     }
     
     
     class func getStoredCredential() -> (NSURLCredential?)  {
         //check if credentials are already stored, then show it in the tune in fields
-        let credentials: NSDictionary = NSURLCredentialStorage.sharedCredentialStorage().credentialsForProtectionSpace(EWWave.echowavesProtectionSpace())!
-        return credentials.objectEnumerator().nextObject() as NSURLCredential?
+        
+        if let credentials: NSDictionary? = NSURLCredentialStorage.sharedCredentialStorage().credentialsForProtectionSpace(EWWave.echowavesProtectionSpace()) {
+            return credentials?.objectEnumerator().nextObject() as NSURLCredential?
+        }
+        return nil
     }
     
     
@@ -97,9 +103,9 @@ import Foundation
     }
     
     
-    class func createChildWave(waveName: String,
-        success:(waveName: String) -> (),
-        failure:(errorMessage:String) -> ()) -> ()
+    class func createChildWave(newWaveName: String,
+        success:(newWaveName: String) -> Void,
+        failure:(errorMessage:String) -> Void) -> Void
     {
         let manager = AFHTTPRequestOperationManager()
         
@@ -109,16 +115,16 @@ import Foundation
         manager.responseSerializer = AFJSONResponseSerializer() as AFJSONResponseSerializer
         manager.requestSerializer = AFJSONRequestSerializer() as AFJSONRequestSerializer
         
-        let parameters = ["name": waveName];
+        let parameters = ["name": newWaveName];
         
         manager.POST(
             "\(EWHost)/create-child-wave.json",
             parameters:parameters,
             success: { (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
                 println("+++child wave created")
-                println("wave name \(waveName)")
+                println("wave name \(newWaveName)")
                 
-                success(waveName: waveName)
+                success(newWaveName: newWaveName)
             },
             failure: { (operation: AFHTTPRequestOperation!, error: NSError!) in
                 println("Error: \(error.localizedDescription)")
@@ -288,8 +294,6 @@ import Foundation
     }
     
     
-    
-    
     class func tuneIn(waveName: String,
         wavePassword: String,
         success:(waveName: String) -> (),
@@ -333,7 +337,7 @@ import Foundation
         manager.responseSerializer = AFJSONResponseSerializer() as AFJSONResponseSerializer
         manager.requestSerializer = AFJSONRequestSerializer() as AFJSONRequestSerializer
         
-        APP_DELEGATE.currentWaveName = nil;
+        APP_DELEGATE.currentWaveName = ""
         manager.POST("\(EWHost)/logout.json",
             parameters:nil,
             success: { (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in

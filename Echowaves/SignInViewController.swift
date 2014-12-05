@@ -32,8 +32,8 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
                 EWWave.hideLoadingIndicator(self)
                 EWWave.storeCredential(waveName, wavePassword: wavePassword)
                 
-                if let deviceToken = (UIApplication.sharedApplication().delegate  as EchowavesAppDelegate).deviceToken {
-                    EWWave.storeIosToken(waveName, token: deviceToken,
+                if APP_DELEGATE.deviceToken != "" {
+                    EWWave.storeIosToken(waveName, token: APP_DELEGATE.deviceToken,
                         success: { (waveName) -> () in
                             NSLog("stored device token for: \(waveName)")
                         },

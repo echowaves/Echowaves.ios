@@ -35,13 +35,13 @@ class HomeViewController: UIViewController {
         
         //user is signed in before
         //try to sign in to see if connection is awailable
-        if let credential:NSURLCredential? = EWWave.getStoredCredential() {
+        if let credential:NSURLCredential = EWWave.getStoredCredential() {
             
-            NSLog("$$$$$$$$$$$$$$$$User \(credential?.user) already connected with password.")
+            NSLog("$$$$$$$$$$$$$$$$User \(credential.user) already connected with password.")
             NSLog("~~~~~~~~~~~~~~~~~~~~~~ preparing to sign in")
             EWWave.showLoadingIndicator(self)
-            EWWave.tuneIn( credential!.user!,
-                wavePassword: credential!.password!,
+            EWWave.tuneIn( credential.user!,
+                wavePassword: credential.password!,
                 success: { (waveName) -> () in
                     EWWave.hideLoadingIndicator(self)
                     self.performSegueWithIdentifier("AutoSignIn", sender: self)

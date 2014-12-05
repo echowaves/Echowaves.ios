@@ -14,6 +14,7 @@ class EchoWaveViewController: UIViewController, UICollectionViewDelegate, UIColl
     @IBOutlet var waveSelected:UITextField!
     @IBOutlet var emptyWaveLabel:UILabel!
     @IBOutlet var wavesPicker:UIPickerView!
+    
     var waveImages:NSArray = NSArray()
     var myWaves:NSArray = NSArray()
     var refreshControl:UIRefreshControl!
@@ -29,7 +30,7 @@ class EchoWaveViewController: UIViewController, UICollectionViewDelegate, UIColl
             self.refreshControl = UIRefreshControl()
             self.refreshControl.addTarget(self, action: Selector("refreshView"), forControlEvents: .ValueChanged)
             self.imagesCollectionView.addSubview(self.refreshControl)
-        }
+        }    
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -45,10 +46,11 @@ class EchoWaveViewController: UIViewController, UICollectionViewDelegate, UIColl
             self.myWaves = waves;
             NSLog("11111111111 currentWaveName: \(APP_DELEGATE.currentWaveName)")
             
-            if APP_DELEGATE.currentWaveName == nil {
-                let credential:NSURLCredential! = EWWave.getStoredCredential()
-                APP_DELEGATE.currentWaveName = credential.user
-                APP_DELEGATE.currentWaveIndex = 0
+            if APP_DELEGATE.currentWaveName == "" {
+                if let credential:NSURLCredential = EWWave.getStoredCredential() {
+                    APP_DELEGATE.currentWaveName = credential.user!
+                    APP_DELEGATE.currentWaveIndex = 0
+                }
             }
             NSLog("2222222222 currentWaveName: \(APP_DELEGATE.currentWaveName)")
             NSLog("3333333333 wavesPickerSize: \(self.myWaves.count)")

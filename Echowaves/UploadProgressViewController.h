@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AFHTTPRequestOperation.h"
-#import "EchowavesAppDelegate.h"
+
 //#import "EchowavesImagePickerController.h"
 
 

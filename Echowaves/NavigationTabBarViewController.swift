@@ -12,14 +12,17 @@ class NavigationTabBarViewController : UITabBarController {
     
     @IBAction func takePicture(sender: AnyObject?) {
         NSLog("taking picture")
-        APP_DELEGATE.wavingViewController.takepicture()
+        
+        self.selectedIndex = 1 // select waving controller
+        APP_DELEGATE.wavingViewController!.takePicture(self)
     }
+    
+    
     
     @IBAction func pushUpload(sender: AnyObject?) {
         NSLog("pushing upload")
         APP_DELEGATE.checkForInitialViewToPresent()
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
