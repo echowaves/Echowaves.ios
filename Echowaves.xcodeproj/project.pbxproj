@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A0E98D01A3416360027333F /* WaveDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0E98CF1A3416360027333F /* WaveDetailsViewController.swift */; };
 		0A1415B5199B12D50095D6E7 /* PickWavesForUploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A1415B4199B12D50095D6E7 /* PickWavesForUploadViewController.m */; };
 		0A28E5DD1889B8C400B7BDDB /* BlendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A28E5DC1889B8C400B7BDDB /* BlendsViewController.m */; };
 		0A34A1D91A1E310200EED81F /* DetailedImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A34A1D81A1E310200EED81F /* DetailedImageViewController.swift */; };
 		0A34C00E18556B4100E085BC /* libFlurry_4.3.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A34C00D18556B4100E085BC /* libFlurry_4.3.0.a */; };
-		0A34FEFD18F4A1F600B5AF34 /* WaveDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A34FEFC18F4A1F600B5AF34 /* WaveDetailsViewController.m */; };
 		0A5992941A2CA810008F99B4 /* EchowavesImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5992931A2CA810008F99B4 /* EchowavesImagePickerController.swift */; };
 		0A5992961A2D4341008F99B4 /* EchowavesAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5992951A2D4341008F99B4 /* EchowavesAppDelegate.swift */; };
 		0A5BF76919103661005C2742 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A5BF76819103661005C2742 /* QuartzCore.framework */; };
@@ -74,6 +74,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A0E98CF1A3416360027333F /* WaveDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveDetailsViewController.swift; sourceTree = "<group>"; };
 		0A13C8D119416C30004BD744 /* Echowaves-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Echowaves-Bridging-Header.h"; sourceTree = "<group>"; };
 		0A1415B3199B12D50095D6E7 /* PickWavesForUploadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickWavesForUploadViewController.h; sourceTree = "<group>"; };
 		0A1415B4199B12D50095D6E7 /* PickWavesForUploadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickWavesForUploadViewController.m; sourceTree = "<group>"; };
@@ -82,8 +83,6 @@
 		0A34A1D81A1E310200EED81F /* DetailedImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailedImageViewController.swift; sourceTree = "<group>"; };
 		0A34C00C18556B4100E085BC /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
 		0A34C00D18556B4100E085BC /* libFlurry_4.3.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.3.0.a; sourceTree = "<group>"; };
-		0A34FEFB18F4A1F600B5AF34 /* WaveDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaveDetailsViewController.h; sourceTree = "<group>"; };
-		0A34FEFC18F4A1F600B5AF34 /* WaveDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaveDetailsViewController.m; sourceTree = "<group>"; };
 		0A5992931A2CA810008F99B4 /* EchowavesImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EchowavesImagePickerController.swift; sourceTree = "<group>"; };
 		0A5992951A2D4341008F99B4 /* EchowavesAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EchowavesAppDelegate.swift; sourceTree = "<group>"; };
 		0A5BF76819103661005C2742 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -283,8 +282,7 @@
 				0AAF39BB1A2BD3A20059A994 /* WavingViewController.swift */,
 				0A28E5DB1889B8C400B7BDDB /* BlendsViewController.h */,
 				0A28E5DC1889B8C400B7BDDB /* BlendsViewController.m */,
-				0A34FEFB18F4A1F600B5AF34 /* WaveDetailsViewController.h */,
-				0A34FEFC18F4A1F600B5AF34 /* WaveDetailsViewController.m */,
+				0A0E98CF1A3416360027333F /* WaveDetailsViewController.swift */,
 				0A90A0121A2EB71000883F8A /* AddChildWaveViewController.swift */,
 				0ABC9313199C4A680011F502 /* DateTimePickerViewController.h */,
 				0ABC9314199C4A680011F502 /* DateTimePickerViewController.m */,
@@ -508,7 +506,6 @@
 				0A5992941A2CA810008F99B4 /* EchowavesImagePickerController.swift in Sources */,
 				0AF15B6D1940FF6D00625F34 /* AFHTTPRequestOperationManager.m in Sources */,
 				0AFD9A6D18ECD457007F5749 /* UploadProgressViewController.m in Sources */,
-				0A34FEFD18F4A1F600B5AF34 /* WaveDetailsViewController.m in Sources */,
 				0A9873271A06A335008499A1 /* EWBlend.swift in Sources */,
 				0AF15B741940FF6D00625F34 /* AFURLSessionManager.m in Sources */,
 				0A9873291A06F9D6008499A1 /* EWDataModel.swift in Sources */,
@@ -520,6 +517,7 @@
 				0AF15B6F1940FF6D00625F34 /* AFNetworkReachabilityManager.m in Sources */,
 				0AAF39BC1A2BD3A20059A994 /* WavingViewController.swift in Sources */,
 				0AF15B6E1940FF6D00625F34 /* AFHTTPSessionManager.m in Sources */,
+				0A0E98D01A3416360027333F /* WaveDetailsViewController.swift in Sources */,
 				0AF15B721940FF6D00625F34 /* AFURLRequestSerialization.m in Sources */,
 				0A1415B5199B12D50095D6E7 /* PickWavesForUploadViewController.m in Sources */,
 				0AF15B891940FF8300625F34 /* UIAlertView+AFNetworking.m in Sources */,
