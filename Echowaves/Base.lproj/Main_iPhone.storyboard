@@ -640,7 +640,7 @@
         <!--Blends-->
         <scene sceneID="3r8-nV-WDX">
             <objects>
-                <viewController title="Blends" id="Edp-kY-vOe" customClass="BlendsViewController" sceneMemberID="viewController">
+                <viewController title="Blends" id="Edp-kY-vOe" customClass="BlendsViewController" customModule="Echowaves" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9pN-2c-tnF"/>
                         <viewControllerLayoutGuide type="bottom" id="1Gd-zN-Uha"/>

@@ -15,8 +15,8 @@ class EchoWaveViewController: UIViewController, UICollectionViewDelegate, UIColl
     @IBOutlet var emptyWaveLabel:UILabel!
     @IBOutlet var wavesPicker:UIPickerView!
     
-    var waveImages:NSArray = NSArray()
-    var myWaves:NSArray = NSArray()
+    var waveImages = []
+    var myWaves = []
     var refreshControl:UIRefreshControl!
     
     

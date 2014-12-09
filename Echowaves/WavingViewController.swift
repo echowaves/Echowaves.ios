@@ -23,7 +23,7 @@ class WavingViewController:
     @IBOutlet var sinceDateTime:UIButton!
     @IBOutlet var photosCount:UILabel!
     
-    var myWaves = NSArray()
+    var myWaves = []
     var checkedAtload = false
     
     override func viewDidLoad() {
