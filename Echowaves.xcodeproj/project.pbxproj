@@ -15,6 +15,7 @@
 		0A5992941A2CA810008F99B4 /* EchowavesImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5992931A2CA810008F99B4 /* EchowavesImagePickerController.swift */; };
 		0A5992961A2D4341008F99B4 /* EchowavesAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5992951A2D4341008F99B4 /* EchowavesAppDelegate.swift */; };
 		0A5BF76919103661005C2742 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A5BF76819103661005C2742 /* QuartzCore.framework */; };
+		0A6277261A3783BE001763EA /* DateTimePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6277251A3783BE001763EA /* DateTimePickerViewController.swift */; };
 		0A7FBC2E1A1BEAA70034B232 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7FBC2D1A1BEAA70034B232 /* HomeViewController.swift */; };
 		0A7FBC301A1D2C230034B232 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7FBC2F1A1D2C230034B232 /* SignUpViewController.swift */; };
 		0A7FBC321A1D3B8A0034B232 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7FBC311A1D3B8A0034B232 /* SignInViewController.swift */; };
@@ -26,7 +27,6 @@
 		0A98732B1A071C87008499A1 /* EWWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A98732A1A071C87008499A1 /* EWWave.swift */; };
 		0A98732D1A07B2F2008499A1 /* EWImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A98732C1A07B2F2008499A1 /* EWImage.swift */; };
 		0AAF39BC1A2BD3A20059A994 /* WavingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAF39BB1A2BD3A20059A994 /* WavingViewController.swift */; };
-		0ABC9315199C4A680011F502 /* DateTimePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ABC9314199C4A680011F502 /* DateTimePickerViewController.m */; };
 		0AC91E66186BF50300D61381 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AC91E65186BF50300D61381 /* Security.framework */; };
 		0AC91E68186BF52F00D61381 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AC91E67186BF52F00D61381 /* SystemConfiguration.framework */; };
 		0AD0CB531A2ACFFF00FBDE21 /* EchoWaveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD0CB521A2ACFFF00FBDE21 /* EchoWaveViewController.swift */; };
@@ -85,6 +85,7 @@
 		0A5992931A2CA810008F99B4 /* EchowavesImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EchowavesImagePickerController.swift; sourceTree = "<group>"; };
 		0A5992951A2D4341008F99B4 /* EchowavesAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EchowavesAppDelegate.swift; sourceTree = "<group>"; };
 		0A5BF76819103661005C2742 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		0A6277251A3783BE001763EA /* DateTimePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTimePickerViewController.swift; sourceTree = "<group>"; };
 		0A7FBC2D1A1BEAA70034B232 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = ../HomeViewController.swift; sourceTree = "<group>"; };
 		0A7FBC2F1A1D2C230034B232 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		0A7FBC311A1D3B8A0034B232 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -96,8 +97,6 @@
 		0A98732A1A071C87008499A1 /* EWWave.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EWWave.swift; sourceTree = "<group>"; };
 		0A98732C1A07B2F2008499A1 /* EWImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EWImage.swift; sourceTree = "<group>"; };
 		0AAF39BB1A2BD3A20059A994 /* WavingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WavingViewController.swift; sourceTree = "<group>"; };
-		0ABC9313199C4A680011F502 /* DateTimePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateTimePickerViewController.h; sourceTree = "<group>"; };
-		0ABC9314199C4A680011F502 /* DateTimePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateTimePickerViewController.m; sourceTree = "<group>"; };
 		0AC91E65186BF50300D61381 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		0AC91E67186BF52F00D61381 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0AD0CB521A2ACFFF00FBDE21 /* EchoWaveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EchoWaveViewController.swift; sourceTree = "<group>"; };
@@ -282,8 +281,7 @@
 				0A0E98D11A34C8CA0027333F /* BlendsViewController.swift */,
 				0A0E98CF1A3416360027333F /* WaveDetailsViewController.swift */,
 				0A90A0121A2EB71000883F8A /* AddChildWaveViewController.swift */,
-				0ABC9313199C4A680011F502 /* DateTimePickerViewController.h */,
-				0ABC9314199C4A680011F502 /* DateTimePickerViewController.m */,
+				0A6277251A3783BE001763EA /* DateTimePickerViewController.swift */,
 				0A1415B3199B12D50095D6E7 /* PickWavesForUploadViewController.h */,
 				0A1415B4199B12D50095D6E7 /* PickWavesForUploadViewController.m */,
 				0AFD9A6B18ECD457007F5749 /* UploadProgressViewController.h */,
@@ -507,6 +505,7 @@
 				0AF15B741940FF6D00625F34 /* AFURLSessionManager.m in Sources */,
 				0A9873291A06F9D6008499A1 /* EWDataModel.swift in Sources */,
 				0A7FBC341A1D4F4A0034B232 /* NavigationTabBarViewController.swift in Sources */,
+				0A6277261A3783BE001763EA /* DateTimePickerViewController.swift in Sources */,
 				0AF15B871940FF8300625F34 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				0AF15B701940FF6D00625F34 /* AFSecurityPolicy.m in Sources */,
 				0AF15B8C1940FF8300625F34 /* UIProgressView+AFNetworking.m in Sources */,
@@ -522,7 +521,6 @@
 				0A7FBC361A1D8F270034B232 /* DetailedImagePageViewController.swift in Sources */,
 				0A7FBC321A1D3B8A0034B232 /* SignInViewController.swift in Sources */,
 				0A98732B1A071C87008499A1 /* EWWave.swift in Sources */,
-				0ABC9315199C4A680011F502 /* DateTimePickerViewController.m in Sources */,
 				0A90A0131A2EB71000883F8A /* AddChildWaveViewController.swift in Sources */,
 				0A7FBC301A1D2C230034B232 /* SignUpViewController.swift in Sources */,
 				0A7FBC2E1A1BEAA70034B232 /* HomeViewController.swift in Sources */,

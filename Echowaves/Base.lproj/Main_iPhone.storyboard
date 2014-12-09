@@ -1134,7 +1134,7 @@
         <!--Date Time Picker View Controller-->
         <scene sceneID="L4f-Nq-Wdu">
             <objects>
-                <viewController id="KYg-hl-Zsa" customClass="DateTimePickerViewController" sceneMemberID="viewController">
+                <viewController id="KYg-hl-Zsa" customClass="DateTimePickerViewController" customModule="Echowaves" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZbO-YD-kVz"/>
                         <viewControllerLayoutGuide type="bottom" id="1RV-EG-Zss"/>
