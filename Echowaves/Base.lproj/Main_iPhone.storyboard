@@ -792,7 +792,7 @@
         <!--Pick Waves For Upload View Controller-->
         <scene sceneID="PDe-H7-1iw">
             <objects>
-                <viewController id="J1T-Ig-Tiv" customClass="PickWavesForUploadViewController" sceneMemberID="viewController">
+                <viewController id="J1T-Ig-Tiv" customClass="PickWavesForUploadViewController" customModule="Echowaves" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eDr-8Z-Hd6"/>
                         <viewControllerLayoutGuide type="bottom" id="VwF-JR-IAD"/>
