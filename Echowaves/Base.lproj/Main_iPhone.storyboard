@@ -1329,7 +1329,7 @@
         <!--Upload Progress View Controller-->
         <scene sceneID="Fhg-ub-qXd">
             <objects>
-                <viewController storyboardIdentifier="UploadView" id="9z9-Kg-9sc" customClass="UploadProgressViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UploadView" id="9z9-Kg-9sc" customClass="UploadProgressViewController" customModule="Echowaves" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RVD-2C-faT"/>
                         <viewControllerLayoutGuide type="bottom" id="bYd-Hg-izp"/>

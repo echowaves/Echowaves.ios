@@ -16,6 +16,7 @@
 		0A5BF76919103661005C2742 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A5BF76819103661005C2742 /* QuartzCore.framework */; };
 		0A6277261A3783BE001763EA /* DateTimePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6277251A3783BE001763EA /* DateTimePickerViewController.swift */; };
 		0A6277281A37A0D7001763EA /* PickWavesForUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6277271A37A0D7001763EA /* PickWavesForUploadViewController.swift */; };
+		0A62772A1A38DCE3001763EA /* UploadProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6277291A38DCE3001763EA /* UploadProgressViewController.swift */; };
 		0A7FBC2E1A1BEAA70034B232 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7FBC2D1A1BEAA70034B232 /* HomeViewController.swift */; };
 		0A7FBC301A1D2C230034B232 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7FBC2F1A1D2C230034B232 /* SignUpViewController.swift */; };
 		0A7FBC321A1D3B8A0034B232 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7FBC311A1D3B8A0034B232 /* SignInViewController.swift */; };
@@ -60,7 +61,6 @@
 		0AF15B8D1940FF8300625F34 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF15B841940FF8300625F34 /* UIRefreshControl+AFNetworking.m */; };
 		0AF15B8E1940FF8300625F34 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF15B861940FF8300625F34 /* UIWebView+AFNetworking.m */; };
 		0AF4BA77192BEB1200E11E29 /* AcceptBlendingRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF4BA76192BEB1200E11E29 /* AcceptBlendingRequestViewController.m */; };
-		0AFD9A6D18ECD457007F5749 /* UploadProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFD9A6C18ECD457007F5749 /* UploadProgressViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +85,7 @@
 		0A5BF76819103661005C2742 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0A6277251A3783BE001763EA /* DateTimePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTimePickerViewController.swift; sourceTree = "<group>"; };
 		0A6277271A37A0D7001763EA /* PickWavesForUploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickWavesForUploadViewController.swift; sourceTree = "<group>"; };
+		0A6277291A38DCE3001763EA /* UploadProgressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadProgressViewController.swift; sourceTree = "<group>"; };
 		0A7FBC2D1A1BEAA70034B232 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = ../HomeViewController.swift; sourceTree = "<group>"; };
 		0A7FBC2F1A1D2C230034B232 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		0A7FBC311A1D3B8A0034B232 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -154,8 +155,6 @@
 		0AF15B861940FF8300625F34 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
 		0AF4BA75192BEB1200E11E29 /* AcceptBlendingRequestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcceptBlendingRequestViewController.h; sourceTree = "<group>"; };
 		0AF4BA76192BEB1200E11E29 /* AcceptBlendingRequestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcceptBlendingRequestViewController.m; sourceTree = "<group>"; };
-		0AFD9A6B18ECD457007F5749 /* UploadProgressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadProgressViewController.h; sourceTree = "<group>"; };
-		0AFD9A6C18ECD457007F5749 /* UploadProgressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadProgressViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -282,8 +281,7 @@
 				0A90A0121A2EB71000883F8A /* AddChildWaveViewController.swift */,
 				0A6277251A3783BE001763EA /* DateTimePickerViewController.swift */,
 				0A6277271A37A0D7001763EA /* PickWavesForUploadViewController.swift */,
-				0AFD9A6B18ECD457007F5749 /* UploadProgressViewController.h */,
-				0AFD9A6C18ECD457007F5749 /* UploadProgressViewController.m */,
+				0A6277291A38DCE3001763EA /* UploadProgressViewController.swift */,
 				0AF4BA75192BEB1200E11E29 /* AcceptBlendingRequestViewController.h */,
 				0AF4BA76192BEB1200E11E29 /* AcceptBlendingRequestViewController.m */,
 				0AD6E26318011F59008303E0 /* Images.xcassets */,
@@ -498,7 +496,6 @@
 				0AF15B711940FF6D00625F34 /* AFURLConnectionOperation.m in Sources */,
 				0A5992941A2CA810008F99B4 /* EchowavesImagePickerController.swift in Sources */,
 				0AF15B6D1940FF6D00625F34 /* AFHTTPRequestOperationManager.m in Sources */,
-				0AFD9A6D18ECD457007F5749 /* UploadProgressViewController.m in Sources */,
 				0A9873271A06A335008499A1 /* EWBlend.swift in Sources */,
 				0AF15B741940FF6D00625F34 /* AFURLSessionManager.m in Sources */,
 				0A9873291A06F9D6008499A1 /* EWDataModel.swift in Sources */,
@@ -513,6 +510,7 @@
 				0AF15B6F1940FF6D00625F34 /* AFNetworkReachabilityManager.m in Sources */,
 				0AAF39BC1A2BD3A20059A994 /* WavingViewController.swift in Sources */,
 				0AF15B6E1940FF6D00625F34 /* AFHTTPSessionManager.m in Sources */,
+				0A62772A1A38DCE3001763EA /* UploadProgressViewController.swift in Sources */,
 				0A0E98D01A3416360027333F /* WaveDetailsViewController.swift in Sources */,
 				0AF15B721940FF6D00625F34 /* AFURLRequestSerialization.m in Sources */,
 				0AF15B891940FF8300625F34 /* UIAlertView+AFNetworking.m in Sources */,
