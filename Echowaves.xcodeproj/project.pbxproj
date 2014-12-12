@@ -10,13 +10,16 @@
 		0A0E98D01A3416360027333F /* WaveDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0E98CF1A3416360027333F /* WaveDetailsViewController.swift */; };
 		0A0E98D21A34C8CA0027333F /* BlendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0E98D11A34C8CA0027333F /* BlendsViewController.swift */; };
 		0A34A1D91A1E310200EED81F /* DetailedImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A34A1D81A1E310200EED81F /* DetailedImageViewController.swift */; };
-		0A34C00E18556B4100E085BC /* libFlurry_4.3.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A34C00D18556B4100E085BC /* libFlurry_4.3.0.a */; };
 		0A5992941A2CA810008F99B4 /* EchowavesImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5992931A2CA810008F99B4 /* EchowavesImagePickerController.swift */; };
 		0A5992961A2D4341008F99B4 /* EchowavesAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5992951A2D4341008F99B4 /* EchowavesAppDelegate.swift */; };
 		0A5BF76919103661005C2742 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A5BF76819103661005C2742 /* QuartzCore.framework */; };
 		0A6277261A3783BE001763EA /* DateTimePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6277251A3783BE001763EA /* DateTimePickerViewController.swift */; };
 		0A6277281A37A0D7001763EA /* PickWavesForUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6277271A37A0D7001763EA /* PickWavesForUploadViewController.swift */; };
 		0A62772A1A38DCE3001763EA /* UploadProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6277291A38DCE3001763EA /* UploadProgressViewController.swift */; };
+		0A62772E1A3A858B001763EA /* libFlurry_5.4.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A62772D1A3A858B001763EA /* libFlurry_5.4.0.a */; settings = {ATTRIBUTES = (Required, ); }; };
+		0A6277301A3A85FA001763EA /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A62772F1A3A85FA001763EA /* MediaPlayer.framework */; };
+		0A6277321A3A861B001763EA /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A6277311A3A861B001763EA /* StoreKit.framework */; };
+		0A6277341A3A8643001763EA /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A6277331A3A8643001763EA /* libz.dylib */; };
 		0A7FBC2E1A1BEAA70034B232 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7FBC2D1A1BEAA70034B232 /* HomeViewController.swift */; };
 		0A7FBC301A1D2C230034B232 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7FBC2F1A1D2C230034B232 /* SignUpViewController.swift */; };
 		0A7FBC321A1D3B8A0034B232 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7FBC311A1D3B8A0034B232 /* SignInViewController.swift */; };
@@ -33,7 +36,7 @@
 		0AD0CB531A2ACFFF00FBDE21 /* EchoWaveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD0CB521A2ACFFF00FBDE21 /* EchoWaveViewController.swift */; };
 		0AD529DF18C7A46C0047951D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AD529DE18C7A4470047951D /* Default-568h@2x.png */; };
 		0AD6E24918011F59008303E0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AD6E24818011F59008303E0 /* Foundation.framework */; };
-		0AD6E24B18011F59008303E0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AD6E24A18011F59008303E0 /* CoreGraphics.framework */; };
+		0AD6E24B18011F59008303E0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AD6E24A18011F59008303E0 /* CoreGraphics.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		0AD6E24D18011F59008303E0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AD6E24C18011F59008303E0 /* UIKit.framework */; };
 		0AD6E25318011F59008303E0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0AD6E25118011F59008303E0 /* InfoPlist.strings */; };
 		0AD6E25C18011F59008303E0 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AD6E25A18011F59008303E0 /* Main_iPhone.storyboard */; };
@@ -78,14 +81,17 @@
 		0A0E98D11A34C8CA0027333F /* BlendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlendsViewController.swift; sourceTree = "<group>"; };
 		0A13C8D119416C30004BD744 /* Echowaves-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Echowaves-Bridging-Header.h"; sourceTree = "<group>"; };
 		0A34A1D81A1E310200EED81F /* DetailedImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailedImageViewController.swift; sourceTree = "<group>"; };
-		0A34C00C18556B4100E085BC /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
-		0A34C00D18556B4100E085BC /* libFlurry_4.3.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.3.0.a; sourceTree = "<group>"; };
 		0A5992931A2CA810008F99B4 /* EchowavesImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EchowavesImagePickerController.swift; sourceTree = "<group>"; };
 		0A5992951A2D4341008F99B4 /* EchowavesAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EchowavesAppDelegate.swift; sourceTree = "<group>"; };
 		0A5BF76819103661005C2742 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0A6277251A3783BE001763EA /* DateTimePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTimePickerViewController.swift; sourceTree = "<group>"; };
 		0A6277271A37A0D7001763EA /* PickWavesForUploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickWavesForUploadViewController.swift; sourceTree = "<group>"; };
 		0A6277291A38DCE3001763EA /* UploadProgressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadProgressViewController.swift; sourceTree = "<group>"; };
+		0A62772C1A3A858B001763EA /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		0A62772D1A3A858B001763EA /* libFlurry_5.4.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_5.4.0.a; sourceTree = "<group>"; };
+		0A62772F1A3A85FA001763EA /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		0A6277311A3A861B001763EA /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		0A6277331A3A8643001763EA /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		0A7FBC2D1A1BEAA70034B232 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = ../HomeViewController.swift; sourceTree = "<group>"; };
 		0A7FBC2F1A1D2C230034B232 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		0A7FBC311A1D3B8A0034B232 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -162,13 +168,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A6277321A3A861B001763EA /* StoreKit.framework in Frameworks */,
+				0A6277301A3A85FA001763EA /* MediaPlayer.framework in Frameworks */,
 				0A5BF76919103661005C2742 /* QuartzCore.framework in Frameworks */,
 				0AC91E68186BF52F00D61381 /* SystemConfiguration.framework in Frameworks */,
 				0AC91E66186BF50300D61381 /* Security.framework in Frameworks */,
 				0AD6E24B18011F59008303E0 /* CoreGraphics.framework in Frameworks */,
-				0A34C00E18556B4100E085BC /* libFlurry_4.3.0.a in Frameworks */,
 				0AD6E24D18011F59008303E0 /* UIKit.framework in Frameworks */,
 				0AD6E24918011F59008303E0 /* Foundation.framework in Frameworks */,
+				0A62772E1A3A858B001763EA /* libFlurry_5.4.0.a in Frameworks */,
+				0A6277341A3A8643001763EA /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,21 +205,11 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		0A34C00B18556B4100E085BC /* Flurry */ = {
-			isa = PBXGroup;
-			children = (
-				0A34C00C18556B4100E085BC /* Flurry.h */,
-				0A34C00D18556B4100E085BC /* libFlurry_4.3.0.a */,
-			);
-			name = Flurry;
-			path = Resources/Flurry;
-			sourceTree = "<group>";
-		};
 		0A34C00F18556B4800E085BC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0A62772B1A3A858B001763EA /* Flurry */,
 				0A4621571888E29C005CC161 /* AFNetworking */,
-				0A34C00B18556B4100E085BC /* Flurry */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -223,6 +222,15 @@
 			);
 			name = AFNetworking;
 			path = Resources/AFNetworking;
+			sourceTree = "<group>";
+		};
+		0A62772B1A3A858B001763EA /* Flurry */ = {
+			isa = PBXGroup;
+			children = (
+				0A62772C1A3A858B001763EA /* Flurry.h */,
+				0A62772D1A3A858B001763EA /* libFlurry_5.4.0.a */,
+			);
+			path = Flurry;
 			sourceTree = "<group>";
 		};
 		0AD6E23C18011F59008303E0 = {
@@ -250,6 +258,9 @@
 		0AD6E24718011F59008303E0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0A6277331A3A8643001763EA /* libz.dylib */,
+				0A6277311A3A861B001763EA /* StoreKit.framework */,
+				0A62772F1A3A85FA001763EA /* MediaPlayer.framework */,
 				0A5BF76819103661005C2742 /* QuartzCore.framework */,
 				0AC91E67186BF52F00D61381 /* SystemConfiguration.framework */,
 				0AC91E65186BF50300D61381 /* Security.framework */,
@@ -661,6 +672,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/Echowaves/Resources/Flurry",
+					"$(PROJECT_DIR)/Echowaves/Flurry",
 				);
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -690,6 +702,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/Echowaves/Resources/Flurry",
+					"$(PROJECT_DIR)/Echowaves/Flurry",
 				);
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
