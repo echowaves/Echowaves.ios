@@ -59,7 +59,7 @@ class EchoWaveViewController: UIViewController, UICollectionViewDelegate, UIColl
             
             self.attachPickerToTextField(self.waveSelected, picker: self.wavesPicker)
             
-            self.wavesPicker.selectRow(APP_DELEGATE.currentWaveIndex, inComponent: 0, animated: false)
+            self.wavesPicker.selectRow(APP_DELEGATE.currentWaveIndex, inComponent: 0, animated: true)
             
             NSLog("setting wave index: \(APP_DELEGATE.currentWaveIndex)")
             self.navigationController?.navigationBar.topItem?.title = ""
@@ -205,7 +205,7 @@ class EchoWaveViewController: UIViewController, UICollectionViewDelegate, UIColl
         detailedImagePageViewController.initialViewIndex = UInt(indexPath.row)
         detailedImagePageViewController.waveImages = self.waveImages
         
-        self.navigationController?.pushViewController(detailedImagePageViewController, animated: false)
+        self.navigationController?.pushViewController(detailedImagePageViewController, animated: true)
     }
     
     

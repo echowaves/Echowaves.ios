@@ -85,11 +85,11 @@ UIScrollViewDelegate {
     
     
     func tapOnce(gesture: UIGestureRecognizer) -> () {
-        if((self.navigationController?.navigationBarHidden) != nil) {
+        if self.navigationController?.navigationBarHidden != false {
             self.navigationController?.setNavigationBarHidden(false, animated: true)
             self.waveNameLable.hidden = false
         } else {
-            self.navigationController?.setNavigationBarHidden(false, animated:true)
+            self.navigationController?.setNavigationBarHidden(true, animated:true)
             self.waveNameLable.hidden = true
         }
     }

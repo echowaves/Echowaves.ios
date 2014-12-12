@@ -125,7 +125,7 @@ let USER_DEFAULTS = NSUserDefaults.standardUserDefaults()
                 
                 
                 
-                self.window?.rootViewController?.navigationController?.pushViewController(pickAWaveViewController, animated: false)
+                self.window?.rootViewController?.navigationController?.pushViewController(pickAWaveViewController, animated: true)
                 
                 
                 let detailedImageViewController:DetailedImageViewController = UIStoryboard(name: "Main_iPhone", bundle: nil).instantiateViewControllerWithIdentifier("DetailedImageView") as DetailedImageViewController
@@ -142,7 +142,7 @@ let USER_DEFAULTS = NSUserDefaults.standardUserDefaults()
                 detailedImageViewController.title = "Preview"
                 
                 
-                pickAWaveViewController.navigationController?.pushViewController(detailedImageViewController, animated: false)
+                pickAWaveViewController.navigationController?.pushViewController(detailedImageViewController, animated: true)
                 
                 
                 APP_DELEGATE.shareActionToken = "";//release the token

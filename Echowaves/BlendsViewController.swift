@@ -102,7 +102,7 @@ class BlendsViewController : UIViewController, UITableViewDelegate, UITableViewD
             self.wavesPicker = UIPickerView(frame: CGRectZero)
             self.attachPickerToTextField(self.waveSelected, picker: self.wavesPicker)
             
-            self.wavesPicker.selectRow(APP_DELEGATE.currentWaveIndex, inComponent: 0, animated: false)
+            self.wavesPicker.selectRow(APP_DELEGATE.currentWaveIndex, inComponent: 0, animated: true)
             
             NSLog("setting wave index: \(APP_DELEGATE.currentWaveIndex)")
             self.navigationController?.navigationBar.topItem?.title = ""

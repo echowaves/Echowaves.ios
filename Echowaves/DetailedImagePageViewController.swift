@@ -41,7 +41,7 @@ class DetailedImagePageViewController : UIViewController, UIPageViewControllerDa
         
         self.pageController?.setViewControllers(viewControllers,
             direction: UIPageViewControllerNavigationDirection.Forward,
-            animated: false,
+            animated: true,
             completion: nil)
         
         

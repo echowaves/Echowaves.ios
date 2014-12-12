@@ -14,14 +14,14 @@
     #import <Foundation/Foundation.h>
 #endif
 
-#define APP_DELEGATE ((EchowavesAppDelegate*)([[UIApplication sharedApplication] delegate]))
-#define USER_DEFAULTS [NSUserDefaults standardUserDefaults]
-
-#define EWHost @"http://echowaves.com"
+//#define APP_DELEGATE ((EchowavesAppDelegate*)([[UIApplication sharedApplication] delegate]))
+//#define USER_DEFAULTS [NSUserDefaults standardUserDefaults]
+//
+//#define EWHost @"http://echowaves.com"
 //#warning "Dont forget to switch to production before the deployment"
 //#define EWHost @"http://192.168.1.105:3000"
 
-#define EWAWSBucket @"http://images.echowaves.com"
+//#define EWAWSBucket @"http://images.echowaves.com"
 //#warning "Dont forget to switch to production before the deployment"
 //#define EWAWSBucket @"http://imagesdev.echowaves.com"
 
