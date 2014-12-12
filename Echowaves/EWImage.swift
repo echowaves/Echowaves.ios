@@ -79,7 +79,7 @@ class EWImage : EWDataModel {
     
     class func operationFromAsset(asset: ALAsset,
         waveName: String,
-        success:(operation:AFHTTPRequestOperation, image: UIImage , currentAssetDateTime:NSDate) -> ()) -> () {
+        success:(operation:AFHTTPRequestOperation, image: UIImage , currentAssetDateTime:NSDate) -> Void ) -> Void {
             
             println("----------------- Posting asset")
             

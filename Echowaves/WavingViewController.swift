@@ -110,8 +110,6 @@ class WavingViewController:
         
         NSLog("Date \(theDateTime)")
         
-        //    [[self sinceDateTime] titleLabel].text = theDateTime;
-        
         self.sinceDateTime.setTitle(theDateTime, forState: .Normal)
     }
     

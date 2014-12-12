@@ -73,18 +73,18 @@ class DateTimePickerViewController : UIViewController {
     }
     
     @IBAction func setDateTime(sender: AnyObject!) {
-    
-    let date = self.dateFromPickers()
-    NSLog("\(date)")
-    USER_DEFAULTS.setObject(date, forKey: "lastCheckTime")
-    USER_DEFAULTS.synchronize()    
-    self.navigationController?.popViewControllerAnimated(true)
+        
+        let date = self.dateFromPickers()
+        NSLog("aha date \(date)")
+        USER_DEFAULTS.setObject(date, forKey: "lastCheckTime")
+        USER_DEFAULTS.synchronize()
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
-
     
     
-    func dateFromPickers() -> NSDate! {
+    
+    func dateFromPickers() -> NSDate {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let stringFromDate = dateFormatter.stringFromDate(self.datePicker.date)
@@ -97,7 +97,7 @@ class DateTimePickerViewController : UIViewController {
         let dateTimeString = "\(stringFromDate) \(stringFromTime)"
         let formatter = NSDateFormatter()
         formatter.dateFormat = "yyyy-MM-dd hh:mm a"
-        return formatter.dateFromString(dateTimeString)
+        return formatter.dateFromString(dateTimeString)!
     }
     
     
