@@ -89,18 +89,20 @@ class EWImage : EWDataModel {
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             // post image to echowaves.com
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            var orientation: UIImageOrientation  = UIImageOrientation.Up
-            //            let orientationValue: Int = asset.valueForProperty("ALAssetPropertyOrientation") as Int
+            var orientation = UIImageOrientation.Up
+            let orientationValue:Int? = asset.valueForProperty("ALAssetPropertyOrientation") as? Int
             
-            //            if (orientationValue != nil) {
-            //                orientation = orientationValue!.in
-            //            }
+            if (orientationValue != nil) {
+                orientation = UIImageOrientation(rawValue: orientationValue!)!
+            }
             
-//            let oneScale = CGFloat(1.0)
-            var orientedImage:UIImage = UIImage(CGImage: representation.fullResolutionImage().takeUnretainedValue())!
+            var orientedImage:UIImage =
             
+//            UIImage(CGImage: representation.fullResolutionImage().takeUnretainedValue())!
             
-//            UIImage(CGImage: representation.fullResolutionImage(), scale: oneScale, orientation: orientation)
+//            UIImage(CGImage: <#CGImage!#>, scale: <#CGFloat#>, orientation: <#UIImageOrientation#>)
+            
+            UIImage(CGImage: representation.fullResolutionImage().takeUnretainedValue(), scale:1.0, orientation:orientation)!
             
             
             let newSize: CGSize  = orientedImage.size
