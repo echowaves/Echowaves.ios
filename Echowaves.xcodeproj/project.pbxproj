@@ -20,6 +20,7 @@
 		0A6277301A3A85FA001763EA /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A62772F1A3A85FA001763EA /* MediaPlayer.framework */; };
 		0A6277321A3A861B001763EA /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A6277311A3A861B001763EA /* StoreKit.framework */; };
 		0A6277341A3A8643001763EA /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A6277331A3A8643001763EA /* libz.dylib */; };
+		0A6277361A3AA8B1001763EA /* AcceptBlendingRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6277351A3AA8B1001763EA /* AcceptBlendingRequestViewController.swift */; };
 		0A7FBC2E1A1BEAA70034B232 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7FBC2D1A1BEAA70034B232 /* HomeViewController.swift */; };
 		0A7FBC301A1D2C230034B232 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7FBC2F1A1D2C230034B232 /* SignUpViewController.swift */; };
 		0A7FBC321A1D3B8A0034B232 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7FBC311A1D3B8A0034B232 /* SignInViewController.swift */; };
@@ -63,7 +64,6 @@
 		0AF15B8C1940FF8300625F34 /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF15B821940FF8300625F34 /* UIProgressView+AFNetworking.m */; };
 		0AF15B8D1940FF8300625F34 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF15B841940FF8300625F34 /* UIRefreshControl+AFNetworking.m */; };
 		0AF15B8E1940FF8300625F34 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF15B861940FF8300625F34 /* UIWebView+AFNetworking.m */; };
-		0AF4BA77192BEB1200E11E29 /* AcceptBlendingRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF4BA76192BEB1200E11E29 /* AcceptBlendingRequestViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +92,7 @@
 		0A62772F1A3A85FA001763EA /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		0A6277311A3A861B001763EA /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		0A6277331A3A8643001763EA /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		0A6277351A3AA8B1001763EA /* AcceptBlendingRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcceptBlendingRequestViewController.swift; sourceTree = "<group>"; };
 		0A7FBC2D1A1BEAA70034B232 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = ../HomeViewController.swift; sourceTree = "<group>"; };
 		0A7FBC2F1A1D2C230034B232 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		0A7FBC311A1D3B8A0034B232 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -159,8 +160,6 @@
 		0AF15B841940FF8300625F34 /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
 		0AF15B851940FF8300625F34 /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		0AF15B861940FF8300625F34 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
-		0AF4BA75192BEB1200E11E29 /* AcceptBlendingRequestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcceptBlendingRequestViewController.h; sourceTree = "<group>"; };
-		0AF4BA76192BEB1200E11E29 /* AcceptBlendingRequestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcceptBlendingRequestViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -293,8 +292,7 @@
 				0A6277251A3783BE001763EA /* DateTimePickerViewController.swift */,
 				0A6277271A37A0D7001763EA /* PickWavesForUploadViewController.swift */,
 				0A6277291A38DCE3001763EA /* UploadProgressViewController.swift */,
-				0AF4BA75192BEB1200E11E29 /* AcceptBlendingRequestViewController.h */,
-				0AF4BA76192BEB1200E11E29 /* AcceptBlendingRequestViewController.m */,
+				0A6277351A3AA8B1001763EA /* AcceptBlendingRequestViewController.swift */,
 				0AD6E26318011F59008303E0 /* Images.xcassets */,
 				0AD6E24F18011F59008303E0 /* Supporting Files */,
 				0A13C8D119416C30004BD744 /* Echowaves-Bridging-Header.h */,
@@ -507,6 +505,7 @@
 				0AF15B711940FF6D00625F34 /* AFURLConnectionOperation.m in Sources */,
 				0A5992941A2CA810008F99B4 /* EchowavesImagePickerController.swift in Sources */,
 				0AF15B6D1940FF6D00625F34 /* AFHTTPRequestOperationManager.m in Sources */,
+				0A6277361A3AA8B1001763EA /* AcceptBlendingRequestViewController.swift in Sources */,
 				0A9873271A06A335008499A1 /* EWBlend.swift in Sources */,
 				0AF15B741940FF6D00625F34 /* AFURLSessionManager.m in Sources */,
 				0A9873291A06F9D6008499A1 /* EWDataModel.swift in Sources */,
@@ -532,7 +531,6 @@
 				0A7FBC301A1D2C230034B232 /* SignUpViewController.swift in Sources */,
 				0A7FBC2E1A1BEAA70034B232 /* HomeViewController.swift in Sources */,
 				0AF15B8E1940FF8300625F34 /* UIWebView+AFNetworking.m in Sources */,
-				0AF4BA77192BEB1200E11E29 /* AcceptBlendingRequestViewController.m in Sources */,
 				0AF15B8D1940FF8300625F34 /* UIRefreshControl+AFNetworking.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

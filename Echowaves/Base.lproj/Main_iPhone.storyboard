@@ -480,7 +480,7 @@
         <!--Accept Blending Request View Controller-->
         <scene sceneID="Uwh-lV-O49">
             <objects>
-                <viewController storyboardIdentifier="PickAWaveView" id="1Fd-6Z-QUA" customClass="AcceptBlendingRequestViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PickAWaveView" id="1Fd-6Z-QUA" customClass="AcceptBlendingRequestViewController" customModule="Echowaves" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RMe-tP-7Ol"/>
                         <viewControllerLayoutGuide type="bottom" id="x70-e8-0n2"/>
