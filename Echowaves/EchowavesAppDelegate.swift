@@ -14,7 +14,7 @@ let EWAWSBucket = "http://images.echowaves.com"
 let USER_DEFAULTS = NSUserDefaults.standardUserDefaults()
 
 
-@objc @UIApplicationMain class EchowavesAppDelegate: UIResponder, UIApplicationDelegate {
+@UIApplicationMain class EchowavesAppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     

@@ -23,7 +23,7 @@ extension UIColor {
     }
 }
 
-@objc class EWDataModel : NSObject {
+class EWDataModel : NSObject {
     
     
     class func showLoadingIndicator(sender: AnyObject) -> () {

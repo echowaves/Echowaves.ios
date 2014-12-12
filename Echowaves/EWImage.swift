@@ -11,7 +11,7 @@ import UIKit
 import CoreImage
 import AssetsLibrary
 
-@objc class EWImage : EWDataModel {
+class EWImage : EWDataModel {
     
     class func checkForNewAssetsToPostToWaveSinceDate(date: NSDate,
         success:(assets: NSArray) -> (),

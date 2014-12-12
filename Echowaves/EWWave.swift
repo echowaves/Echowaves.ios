@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc class EWWave : EWDataModel {
+class EWWave : EWDataModel {
     //    var waveName: String
     
     //

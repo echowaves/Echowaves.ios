@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc class EWBlend: EWDataModel {
+class EWBlend: EWDataModel {
     
     
     class func unblendFrom(
