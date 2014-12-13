@@ -54,7 +54,7 @@ class EchowavesImagePickerController:
             if backfacing {
                 imagePickerController.cameraDevice = UIImagePickerControllerCameraDevice.Front
             }
-            self.imagePickerController = imagePickerController;
+            self.imagePickerController = imagePickerController
             
             let appDelegate = UIApplication.sharedApplication().delegate
             
