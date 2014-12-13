@@ -24,6 +24,7 @@ let USER_DEFAULTS = NSUserDefaults.standardUserDefaults()
     var currentWaveIndex = 0
     
     var wavingViewController:WavingViewController!
+    var navController:UINavigationController!
     
     let networkQueue = NSOperationQueue()
     
@@ -78,10 +79,10 @@ let USER_DEFAULTS = NSUserDefaults.standardUserDefaults()
         }
         
         currentWaveIndex = 0
-     
+        
         //initalize wavingViewController
-//        self.wavingViewController = UIStoryboard(name: "Main_iPhone", bundle: nil).instantiateViewControllerWithIdentifier("WavingViewController") as WavingViewController
-
+        //        self.wavingViewController = UIStoryboard(name: "Main_iPhone", bundle: nil).instantiateViewControllerWithIdentifier("WavingViewController") as WavingViewController
+        
         
         return true
     }
@@ -106,7 +107,7 @@ let USER_DEFAULTS = NSUserDefaults.standardUserDefaults()
     
     
     func checkForInitialViewToPresent() -> Void {
-        if APP_DELEGATE.shareActionToken != "" {
+        if self.shareActionToken != "" && self.navController != nil {
             self.presentDetailedImageBasedOnShareToken()
         }
     }
@@ -122,10 +123,9 @@ let USER_DEFAULTS = NSUserDefaults.standardUserDefaults()
                 pickAWaveViewController.origToWave = self.currentWaveName
                 pickAWaveViewController.toWave = self.currentWaveName
                 pickAWaveViewController.fromWave = fromWaveName
+
                 
-                
-                
-                self.window?.rootViewController?.navigationController?.pushViewController(pickAWaveViewController, animated: true)
+                self.navController.pushViewController(pickAWaveViewController, animated: true)
                 
                 
                 let detailedImageViewController:DetailedImageViewController = UIStoryboard(name: "Main_iPhone", bundle: nil).instantiateViewControllerWithIdentifier("DetailedImageView") as DetailedImageViewController
@@ -136,13 +136,12 @@ let USER_DEFAULTS = NSUserDefaults.standardUserDefaults()
                 
                 let backButton:UIBarButtonItem = UIBarButtonItem(title: "OK", style: UIBarButtonItemStyle.Done, target: nil, action: nil)
                 
-                
-                pickAWaveViewController.navigationItem.backBarButtonItem = backButton
-                
                 detailedImageViewController.title = "Preview"
-                
-                
-                pickAWaveViewController.navigationController?.pushViewController(detailedImageViewController, animated: true)
+
+                pickAWaveViewController.navigationItem.backBarButtonItem = backButton
+
+                self.navController.pushViewController(detailedImageViewController, animated: true)
+//                pickAWaveViewController.presentViewController(detailedImageViewController, animated: true, completion: nil)
                 
                 
                 APP_DELEGATE.shareActionToken = "";//release the token

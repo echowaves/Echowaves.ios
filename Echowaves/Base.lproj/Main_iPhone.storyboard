@@ -452,6 +452,7 @@
                             <constraint firstAttribute="bottomMargin" secondItem="cOH-bW-lzp" secondAttribute="bottom" constant="20" id="6fx-Pw-eVw"/>
                             <constraint firstAttribute="trailingMargin" secondItem="cOH-bW-lzp" secondAttribute="trailing" constant="-16" id="FQW-8w-AHm"/>
                             <constraint firstItem="Rix-Hx-RKl" firstAttribute="leading" secondItem="mgL-Zp-i44" secondAttribute="leadingMargin" constant="-16" id="FdP-bk-Mdk"/>
+                            <constraint firstItem="8Ee-JC-pO7" firstAttribute="top" secondItem="Rix-Hx-RKl" secondAttribute="bottom" id="KJq-Dj-s29"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Rix-Hx-RKl" secondAttribute="trailing" constant="-16" id="XIT-lh-V5X"/>
                             <constraint firstItem="cOH-bW-lzp" firstAttribute="top" secondItem="lvK-dZ-hMy" secondAttribute="bottom" constant="8" id="apB-8l-fiN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="mgh-zC-eoo" secondAttribute="trailing" constant="-16" id="aqn-Wy-5Cz"/>
@@ -593,7 +594,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="acceptButton" destination="1JF-pj-g3O" id="Bpe-bm-Mz0"/>
                         <outlet property="blendWaveLabel" destination="HTI-ym-nyW" id="uQq-7W-EB1"/>
+                        <outlet property="cancelButton" destination="81o-ej-G6Q" id="SWz-KG-M9W"/>
                         <outlet property="fromWaveLabel" destination="GBg-21-aIs" id="mvY-q1-Zd1"/>
                         <outlet property="toWaveLabel" destination="IwT-CT-f6e" id="JZi-ii-vyl"/>
                         <outlet property="wavesPicker" destination="y9S-fQ-YU2" id="EVT-sy-7aq"/>
@@ -1453,6 +1456,6 @@
         <image name="waving" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="AnV-QM-P86"/>
+        <segue reference="lU3-tf-NsI"/>
     </inferredMetricsTieBreakers>
 </document>

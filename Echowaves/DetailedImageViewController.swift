@@ -96,7 +96,7 @@ UIScrollViewDelegate {
     
     func tapTwice(gesture: UIGestureRecognizer) -> () {
         let point = gesture.locationInView(imageView)
-        let rectToZoomOutTo = CGRectMake(point.x/2, point.y/2, self.imageView.frame.size.width/2, self.imageView.frame.size.height/2);
+        let rectToZoomOutTo = CGRectMake(point.x/2, point.y/2, self.imageView.frame.size.width/2, self.imageView.frame.size.height/2)
         self.imageScrollView.zoomToRect(rectToZoomOutTo, animated: true)
     }
     
@@ -117,6 +117,7 @@ UIScrollViewDelegate {
             success: { (image) -> () in
                 self.imageView.image = image
                 self.imageScrollView.contentSize = image.size
+                self.imageScrollView.zoomScale = 1.0
             },
             failure: { (error) -> () in
                 EWDataModel.showErrorAlertWithMessage("Error Loading thumb image", fromSender: self)

@@ -24,7 +24,7 @@ class WavingViewController:
     @IBOutlet var photosCount:UILabel!
     
     var myWaves = []
-    var checkedAtload = false
+//    var checkedAtload = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -130,16 +130,16 @@ class WavingViewController:
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        if self.checkedAtload == false {
-            self.checkedAtload = true
-            APP_DELEGATE.checkForInitialViewToPresent() // only call it once, when the view loads for the first time
-        }
+//        if self.checkedAtload == false {
+//            self.checkedAtload = true
+//            APP_DELEGATE.checkForInitialViewToPresent() // only call it once, when the view loads for the first time
+//        }
     }
     
     
     func pictureSaved() -> Void {
         //    [self checkForNewImages];
-        APP_DELEGATE.checkForInitialViewToPresent()
+//        APP_DELEGATE.checkForInitialViewToPresent()
     }
     
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {

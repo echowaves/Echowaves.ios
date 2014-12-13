@@ -19,12 +19,18 @@ class NavigationTabBarViewController : UITabBarController {
     
     
     
-    @IBAction func pushUpload(sender: AnyObject?) {
-        NSLog("pushing upload")
+//    @IBAction func pushUpload(sender: AnyObject?) {
+//        NSLog("pushing upload")
+//        APP_DELEGATE.checkForInitialViewToPresent()
+//    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         APP_DELEGATE.checkForInitialViewToPresent()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        APP_DELEGATE.navController = self.navigationController
     }
 }

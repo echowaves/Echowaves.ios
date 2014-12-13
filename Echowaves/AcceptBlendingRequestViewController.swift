@@ -14,6 +14,8 @@ class AcceptBlendingRequestViewController : UIViewController,UIPickerViewDelegat
     @IBOutlet var fromWaveLabel:UILabel!
     @IBOutlet var toWaveLabel:UILabel!
     
+    @IBOutlet weak var acceptButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
     
     @IBOutlet var wavesPicker:UIPickerView!
     
@@ -75,6 +77,11 @@ class AcceptBlendingRequestViewController : UIViewController,UIPickerViewDelegat
     @IBAction func acceptAction(sender: AnyObject!) {
         NSLog("called pickAWave POP")
         EWBlend.showLoadingIndicator(self)
+        self.acceptButton.hidden = true
+        self.cancelButton.hidden = true
+        self.wavesPicker.hidden = true
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+
         
         NSLog("origToWave:\(self.origToWave) toWave:\(self.toWave) fromWave:\(self.fromWave)")
         
@@ -85,11 +92,13 @@ class AcceptBlendingRequestViewController : UIViewController,UIPickerViewDelegat
             success: { () -> () in
                 EWBlend.hideLoadingIndicator(self)
                 self.navigationController?.popViewControllerAnimated(true)
+                self.navigationController?.setNavigationBarHidden(false, animated: true)
             }, failure: { (error) -> () in
                 EWBlend.hideLoadingIndicator(self)
                 EWBlend.showAlertWithMessage("Blending failed", fromSender: self)
                 NSLog("failed blending \(error.debugDescription)")
                 self.navigationController?.popViewControllerAnimated(true)
+                self.navigationController?.setNavigationBarHidden(false, animated: true)
         })
     }
     
