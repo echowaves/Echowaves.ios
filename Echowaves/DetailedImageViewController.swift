@@ -130,11 +130,11 @@ UIScrollViewDelegate {
     }
     
     func updateView() -> () {
-        if((self.navigationController?.navigationBarHidden) != nil) {
-            self.waveNameLable.hidden = true
-        } else {
-            self.waveNameLable.hidden = false
-        }
+//        if((self.navigationController?.navigationBarHidden) != nil) {
+//            self.waveNameLable.hidden = true
+//        } else {
+//            self.waveNameLable.hidden = false
+//        }
         
         
         self.navItem?.rightBarButtonItems = nil
