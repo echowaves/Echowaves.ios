@@ -35,10 +35,6 @@ class  PickWavesForUploadViewController : UIViewController, UITableViewDelegate,
         let waveOn:UISwitch = sender as UISwitch
         
         var cell:UITableViewCell = waveOn.superview?.superview as UITableViewCell
-//        if cell.isKindOfClass(UITableViewCell) { // ios >= 7.0 http://stackoverflow.com/questions/19162725/access-ios-7-hidden-uitableviewcellscrollview
-//            cell = cell.superview as UITableViewCell
-//            assert(cell.isKindOfClass(UITableViewCell))
-//        }
         let label = cell.contentView.viewWithTag(500) as UILabel
         let waveName = label.text
         

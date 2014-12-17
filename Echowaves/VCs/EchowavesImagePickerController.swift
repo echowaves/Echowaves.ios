@@ -84,6 +84,9 @@ class EchowavesImagePickerController:
         }
         
         self.imagePickerController.view.removeFromSuperview()
+        let pickAWaveViewController = UIStoryboard(name: "Main_iPhone", bundle: nil).instantiateViewControllerWithIdentifier("PickAWaveForUpload") as PickWavesForUploadViewController
+        self.parentViewController?.navigationController?.pushViewController(pickAWaveViewController, animated: true)
+        
     }
     
     
