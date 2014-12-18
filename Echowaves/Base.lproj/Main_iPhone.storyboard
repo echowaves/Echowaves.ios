@@ -607,11 +607,29 @@
             <objects>
                 <tabBarController definesPresentationContext="YES" id="4Wa-qa-6Wy" customClass="NavigationTabBarViewController" customModule="Echowaves" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="70E-4t-zqk">
+                        <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" title="TuneOut" id="eXP-6K-HVp">
                             <connections>
                                 <segue destination="Ua8-6L-qdg" kind="unwind" unwindAction="backToHomeViewController:" id="qKP-6b-qsN"/>
                             </connections>
                         </barButtonItem>
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="IsW-Ka-n3T">
+                            <rect key="frame" x="239" y="11" width="122" height="22"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="waveButtonClicked:" destination="4Wa-qa-6Wy" eventType="touchUpInside" id="JuK-oc-AU3"/>
+                            </connections>
+                        </button>
                         <barButtonItem key="rightBarButtonItem" systemItem="camera" id="AwZ-u4-fbO">
                             <connections>
                                 <action selector="takePicture:" destination="4Wa-qa-6Wy" id="Vbt-0a-wLN"/>
@@ -626,6 +644,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <outlet property="waveAllButton" destination="IsW-Ka-n3T" id="1zl-7g-JDV"/>
                         <segue destination="Wr0-jG-xAd" kind="relationship" relationship="viewControllers" id="cTz-Q0-fWs"/>
                         <segue destination="8lZ-lH-xhR" kind="relationship" relationship="viewControllers" id="OzU-Ir-F5h"/>
                         <segue destination="Edp-kY-vOe" kind="relationship" relationship="viewControllers" id="2TA-f1-FAK"/>
@@ -634,7 +653,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Xi-DV-OqN" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Ua8-6L-qdg" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2077.5" y="-42.25352112676056"/>
+            <point key="canvasLocation" x="2126" y="-43"/>
         </scene>
         <!--Blends-->
         <scene sceneID="3r8-nV-WDX">
@@ -846,7 +865,7 @@
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DvD-zq-4XK">
                                 <rect key="frame" x="16" y="513" width="568" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="QAB-aM-rRj"/>
                                 </constraints>
@@ -880,6 +899,7 @@
                     <navigationItem key="navigationItem" id="Gvq-U6-bzY"/>
                     <connections>
                         <outlet property="myWavesTableView" destination="Rvn-ds-Ina" id="8Kq-bK-YJQ"/>
+                        <outlet property="waveNowButton" destination="DvD-zq-4XK" id="eqR-BA-w3J"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gN9-2D-91m" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1452,6 +1472,6 @@
         <image name="waving" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="h0z-up-Au7"/>
+        <segue reference="lU3-tf-NsI"/>
     </inferredMetricsTieBreakers>
 </document>

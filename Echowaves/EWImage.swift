@@ -96,26 +96,18 @@ class EWImage : EWDataModel {
                 orientation = UIImageOrientation(rawValue: orientationValue!)!
             }
             
-            var orientedImage:UIImage =
-            
-//            UIImage(CGImage: representation.fullResolutionImage().takeUnretainedValue())!
-            
-//            UIImage(CGImage: <#CGImage!#>, scale: <#CGFloat#>, orientation: <#UIImageOrientation#>)
-            
-            UIImage(CGImage: representation.fullResolutionImage().takeUnretainedValue(), scale:1.0, orientation:orientation)!
-            
+            var orientedImage:UIImage = UIImage(CGImage: representation.fullResolutionImage().takeUnretainedValue(), scale:1.0, orientation:orientation)!
             
             let newSize: CGSize  = orientedImage.size
             
-            //            newSize.height = newSize.height / 1.0
-            //            newSize.width = newSize.width / 1.0
+//                        newSize.height = newSize.height / 1.0
+//                        newSize.width = newSize.width / 1.0
             
             UIGraphicsBeginImageContext(newSize) // a CGSize that has the size you want
             orientedImage.drawInRect(CGRectMake(0,0,newSize.width,newSize.height))
             
             //image is the original UIImage
-            var resizedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()
-            
+            var resizedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()            
             UIGraphicsEndImageContext()
             
             

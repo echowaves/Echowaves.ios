@@ -14,6 +14,7 @@ class  PickWavesForUploadViewController : UIViewController, UITableViewDelegate,
     @IBOutlet var myWavesTableView:UITableView!
     var myWaves = []
     
+    @IBOutlet weak var waveNowButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +29,10 @@ class  PickWavesForUploadViewController : UIViewController, UITableViewDelegate,
             failure: { (error) -> () in
                 EWWave.showErrorAlertWithMessage(error.description, fromSender: self)
         })
+        APP_DELEGATE.getPhotosCountSinceLast { (count) -> Void in
+            self.waveNowButton.setTitle("Wave \(count) Now", forState: .Normal)
+        }
+
     }
     
     

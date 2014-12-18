@@ -30,8 +30,6 @@ class WavingViewController:
         super.viewDidLoad()
         APP_DELEGATE.wavingViewController = self
         self.delegate = self
-        
-        self.navigationController?.navigationBar.topItem?.title = ""//[APP_DELEGATE currentWaveName];
     }
     
     
@@ -83,33 +81,17 @@ class WavingViewController:
     
     
     func updatePhotosCount() -> Void {
+        
+        let theDate = APP_DELEGATE.getPhotosCountSinceLast({ (count) -> Void in
+                    self.photosCount.text =  "\(count)"
+        })
+        
         let dateFormat:NSDateFormatter = NSDateFormatter()
         dateFormat.dateFormat = "MMM dd, yyyy hh:mm a"
         let usLocale:NSLocale = NSLocale(localeIdentifier: "en_US_POSIX")
         dateFormat.locale = usLocale
-        
-        var currentDateTime:NSDate? = USER_DEFAULTS.objectForKey("lastCheckTime") as? NSDate
-        
-        if currentDateTime == nil {
-            currentDateTime = NSDate()
-            USER_DEFAULTS.setObject(currentDateTime, forKey: "lastCheckTime")
-        }
-        
-        let theDateTime = dateFormat.stringFromDate(currentDateTime!)
-        
-        EWImage.checkForNewAssetsToPostToWaveSinceDate(currentDateTime!,
-            success: { (assets) -> () in
-                self.photosCount.text =  "\(assets.count)"
-            },
-            failure: { (error) -> () in
-                EWWave.showErrorAlertWithMessage(error.description,
-                    fromSender:self)
-                NSLog("Error updating photos count")
-        })
-        
-        
-        NSLog("Date \(theDateTime)")
-        
+
+        let theDateTime = dateFormat.stringFromDate(theDate)
         self.sinceDateTime.setTitle(theDateTime, forState: .Normal)
     }
     
@@ -124,16 +106,23 @@ class WavingViewController:
         
         //    [[self sinceDateTime] performSelectorOnMainThread:@selector(setText:) withObject:theDateTime waitUntilDone:NO];
         self.reloadWavesPicker()
+        
+        
+        let navController = self.parentViewController as NavigationTabBarViewController
+        APP_DELEGATE.getPhotosCountSinceLast({ (count) -> Void in
+            navController.waveAllButton.setTitle("Wave: \(count)", forState: .Normal)
+            if count > 0 {
+                navController.waveAllButton.hidden = false
+            } else {
+                navController.waveAllButton.hidden = true
+            }
+        })
+
     }
     
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
-//        if self.checkedAtload == false {
-//            self.checkedAtload = true
-//            APP_DELEGATE.checkForInitialViewToPresent() // only call it once, when the view loads for the first time
-//        }
     }
     
     
@@ -184,8 +173,5 @@ class WavingViewController:
     func numberOfRowsInPickerView(pickerView:UIPickerView) -> Int {
         return self.myWaves.count
     }
- 
-    
-    
     
 }

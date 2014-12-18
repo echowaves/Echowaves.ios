@@ -17,7 +17,12 @@ class NavigationTabBarViewController : UITabBarController {
         APP_DELEGATE.wavingViewController!.takePicture(self)
     }
     
+    @IBOutlet weak var waveAllButton: UIButton!
     
+    @IBAction func waveButtonClicked(sender: AnyObject) {
+        let pickAWaveViewController = UIStoryboard(name: "Main_iPhone", bundle: nil).instantiateViewControllerWithIdentifier("PickAWaveForUpload") as PickWavesForUploadViewController
+        self.navigationController?.pushViewController(pickAWaveViewController, animated: true)
+    }
     
 //    @IBAction func pushUpload(sender: AnyObject?) {
 //        NSLog("pushing upload")
@@ -33,4 +38,5 @@ class NavigationTabBarViewController : UITabBarController {
         super.viewDidLoad()
         APP_DELEGATE.navController = self.navigationController
     }
+    
 }

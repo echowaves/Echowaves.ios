@@ -87,6 +87,28 @@ let USER_DEFAULTS = NSUserDefaults.standardUserDefaults()
         return true
     }
     
+    
+    func getPhotosCountSinceLast(completionHandler:(count:Int) ->Void) -> NSDate {
+        
+        
+        var currentDateTime:NSDate? = USER_DEFAULTS.objectForKey("lastCheckTime") as? NSDate
+        
+        if currentDateTime == nil {
+            currentDateTime = NSDate()
+            USER_DEFAULTS.setObject(currentDateTime, forKey: "lastCheckTime")
+        }
+        
+        EWImage.checkForNewAssetsToPostToWaveSinceDate(currentDateTime!,
+            success: { (assets) -> () in
+                completionHandler(count: assets.count)
+            },
+            failure: { (error) -> () in
+                completionHandler(count: 0)
+        })
+        return currentDateTime!
+    }
+
+    
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.

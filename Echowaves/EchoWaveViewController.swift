@@ -39,6 +39,18 @@ class EchoWaveViewController: UIViewController, UICollectionViewDelegate, UIColl
         self.imagesCollectionView.autoresizingMask = .FlexibleHeight
         UIViewAutoresizing.FlexibleWidth
         self.reloadWavesPicker()
+        
+        
+        let navController = self.parentViewController as NavigationTabBarViewController
+        APP_DELEGATE.getPhotosCountSinceLast({ (count) -> Void in
+                navController.waveAllButton.setTitle("Wave: \(count)", forState: .Normal)
+            if count > 0 {
+                navController.waveAllButton.hidden = false
+            } else {
+                navController.waveAllButton.hidden = true
+            }
+            })
+        
     }
     
     func reloadWavesPicker() -> Void {
