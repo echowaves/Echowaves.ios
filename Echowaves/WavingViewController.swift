@@ -17,11 +17,10 @@ class WavingViewController:
     UITextFieldDelegate
 {
     
-    @IBOutlet var photoButton:UIButton!
+//    @IBOutlet var photoButton:UIButton!
     @IBOutlet var waveSelected:UITextField!
     @IBOutlet var wavesPicker:UIPickerView!
     @IBOutlet var sinceDateTime:UIButton!
-    @IBOutlet var photosCount:UILabel!
     
     var myWaves = []
 //    var checkedAtload = false
@@ -82,9 +81,9 @@ class WavingViewController:
     
     func updatePhotosCount() -> Void {
         
-        let theDate = APP_DELEGATE.getPhotosCountSinceLast({ (count) -> Void in
-                    self.photosCount.text =  "\(count)"
-        })
+        let theDate = APP_DELEGATE.getPhotosCountSinceLast { (count) -> Void in
+            NSLog("found \(count) photos")
+        }
         
         let dateFormat:NSDateFormatter = NSDateFormatter()
         dateFormat.dateFormat = "MMM dd, yyyy hh:mm a"
@@ -110,7 +109,7 @@ class WavingViewController:
         
         let navController = self.parentViewController as NavigationTabBarViewController
         APP_DELEGATE.getPhotosCountSinceLast({ (count) -> Void in
-            navController.waveAllButton.setTitle("Wave: \(count)", forState: .Normal)
+            navController.waveAllButton.setTitle("Wave \(count)", forState: .Normal)
             if count > 0 {
                 navController.waveAllButton.hidden = false
             } else {
