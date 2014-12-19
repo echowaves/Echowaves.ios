@@ -23,7 +23,6 @@
 		0A6277361A3AA8B1001763EA /* AcceptBlendingRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6277351A3AA8B1001763EA /* AcceptBlendingRequestViewController.swift */; };
 		0A7FBC2E1A1BEAA70034B232 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7FBC2D1A1BEAA70034B232 /* HomeViewController.swift */; };
 		0A7FBC301A1D2C230034B232 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7FBC2F1A1D2C230034B232 /* SignUpViewController.swift */; };
-		0A7FBC321A1D3B8A0034B232 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7FBC311A1D3B8A0034B232 /* SignInViewController.swift */; };
 		0A7FBC341A1D4F4A0034B232 /* NavigationTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7FBC331A1D4F4A0034B232 /* NavigationTabBarViewController.swift */; };
 		0A7FBC361A1D8F270034B232 /* DetailedImagePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7FBC351A1D8F270034B232 /* DetailedImagePageViewController.swift */; };
 		0A90A0131A2EB71000883F8A /* AddChildWaveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A90A0121A2EB71000883F8A /* AddChildWaveViewController.swift */; };
@@ -95,7 +94,6 @@
 		0A6277351A3AA8B1001763EA /* AcceptBlendingRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcceptBlendingRequestViewController.swift; sourceTree = "<group>"; };
 		0A7FBC2D1A1BEAA70034B232 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = ../HomeViewController.swift; sourceTree = "<group>"; };
 		0A7FBC2F1A1D2C230034B232 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		0A7FBC311A1D3B8A0034B232 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		0A7FBC331A1D4F4A0034B232 /* NavigationTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationTabBarViewController.swift; sourceTree = "<group>"; };
 		0A7FBC351A1D8F270034B232 /* DetailedImagePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailedImagePageViewController.swift; sourceTree = "<group>"; };
 		0A90A0121A2EB71000883F8A /* AddChildWaveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddChildWaveViewController.swift; sourceTree = "<group>"; };
@@ -279,7 +277,6 @@
 				0A34C00F18556B4800E085BC /* Resources */,
 				0AD6E25A18011F59008303E0 /* Main_iPhone.storyboard */,
 				0A7FBC2D1A1BEAA70034B232 /* HomeViewController.swift */,
-				0A7FBC311A1D3B8A0034B232 /* SignInViewController.swift */,
 				0A7FBC2F1A1D2C230034B232 /* SignUpViewController.swift */,
 				0A7FBC331A1D4F4A0034B232 /* NavigationTabBarViewController.swift */,
 				0A7FBC351A1D8F270034B232 /* DetailedImagePageViewController.swift */,
@@ -525,7 +522,6 @@
 				0AF15B721940FF6D00625F34 /* AFURLRequestSerialization.m in Sources */,
 				0AF15B891940FF8300625F34 /* UIAlertView+AFNetworking.m in Sources */,
 				0A7FBC361A1D8F270034B232 /* DetailedImagePageViewController.swift in Sources */,
-				0A7FBC321A1D3B8A0034B232 /* SignInViewController.swift in Sources */,
 				0A98732B1A071C87008499A1 /* EWWave.swift in Sources */,
 				0A90A0131A2EB71000883F8A /* AddChildWaveViewController.swift in Sources */,
 				0A7FBC301A1D2C230034B232 /* SignUpViewController.swift in Sources */,

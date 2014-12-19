@@ -19,29 +19,29 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="first time" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XIn-IL-qtR">
-                                <rect key="frame" x="16" y="198" width="271" height="90"/>
+                                <rect key="frame" x="22" y="72" width="271" height="90"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="90" id="sK0-pz-oij"/>
+                                    <constraint firstAttribute="height" constant="90" id="lx2-6v-JtL"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7NS-cw-2Zt">
-                                <rect key="frame" x="295" y="232" width="10" height="21"/>
+                                <rect key="frame" x="295" y="106" width="10" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="GnM-Xh-VJ0"/>
-                                    <constraint firstAttribute="width" constant="10" id="fFD-j8-oSr"/>
+                                    <constraint firstAttribute="height" constant="21" id="CDu-oD-I0m"/>
+                                    <constraint firstAttribute="width" constant="10" id="hiu-R6-jQW"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RoO-Mo-w82">
-                                <rect key="frame" x="313" y="198" width="271" height="90"/>
+                                <rect key="frame" x="313" y="72" width="271" height="90"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="90" id="5aB-nW-ksL"/>
+                                    <constraint firstAttribute="height" constant="90" id="xRI-dh-Uef"/>
                                 </constraints>
                                 <color key="tintColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Create New Wave">
@@ -49,128 +49,76 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="createWave:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Ire-Qp-XdT"/>
                                     <segue destination="wWl-ta-JWX" kind="show" id="5VY-SQ-8an"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="chx-9d-bpa">
-                                <rect key="frame" x="16" y="72" width="568" height="90"/>
-                                <color key="backgroundColor" red="0.98039221759999995" green="0.68627452850000004" blue="0.1647058874" alpha="1" colorSpace="deviceRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="90" id="yD4-N5-xqN"/>
-                                </constraints>
-                                <state key="normal" title="Tune In">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="tuneIn:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Sif-va-Af1"/>
-                                    <segue destination="vXZ-lx-hvc" kind="show" id="9al-2z-wCV"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="chx-9d-bpa" firstAttribute="leading" secondItem="nap-mG-wuf" secondAttribute="leadingMargin" id="0zM-1M-jNe"/>
-                            <constraint firstItem="chx-9d-bpa" firstAttribute="trailing" secondItem="nap-mG-wuf" secondAttribute="trailingMargin" id="8z8-nj-RU8"/>
-                            <constraint firstItem="RoO-Mo-w82" firstAttribute="trailing" secondItem="nap-mG-wuf" secondAttribute="trailingMargin" id="J4r-sa-nxN"/>
-                            <constraint firstItem="RoO-Mo-w82" firstAttribute="leading" secondItem="7NS-cw-2Zt" secondAttribute="trailing" constant="8" id="S8H-dH-M40"/>
-                            <constraint firstItem="XIn-IL-qtR" firstAttribute="top" secondItem="chx-9d-bpa" secondAttribute="bottom" constant="36" id="TTx-bt-kIb"/>
-                            <constraint firstItem="RoO-Mo-w82" firstAttribute="top" secondItem="chx-9d-bpa" secondAttribute="bottom" constant="36" id="XNg-Lt-BuU"/>
-                            <constraint firstItem="chx-9d-bpa" firstAttribute="top" secondItem="0wL-3G-ic6" secondAttribute="bottom" constant="8" id="Xzw-4s-cfJ"/>
-                            <constraint firstAttribute="centerX" secondItem="7NS-cw-2Zt" secondAttribute="centerX" id="Z0n-DY-8YG"/>
-                            <constraint firstItem="RoO-Mo-w82" firstAttribute="leading" secondItem="7NS-cw-2Zt" secondAttribute="trailing" constant="8" id="gI8-YG-e8f"/>
-                            <constraint firstItem="7NS-cw-2Zt" firstAttribute="leading" secondItem="XIn-IL-qtR" secondAttribute="trailing" constant="8" id="gah-QW-jvJ"/>
-                            <constraint firstItem="XIn-IL-qtR" firstAttribute="leading" secondItem="nap-mG-wuf" secondAttribute="leadingMargin" id="ocr-PW-ckT"/>
-                            <constraint firstItem="7NS-cw-2Zt" firstAttribute="leading" secondItem="XIn-IL-qtR" secondAttribute="trailing" constant="8" id="xKh-PP-yOm"/>
-                            <constraint firstItem="7NS-cw-2Zt" firstAttribute="top" secondItem="chx-9d-bpa" secondAttribute="bottom" constant="70" id="yoj-dP-M2S"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Welcome to EchoWaves" id="JuL-3W-eYF"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                    <connections>
-                        <outlet property="createNewWaveButton" destination="RoO-Mo-w82" id="c1Q-VV-uGp"/>
-                        <outlet property="tuneInButton" destination="chx-9d-bpa" id="BO6-mE-r5U"/>
-                        <segue destination="4Wa-qa-6Wy" kind="show" identifier="AutoSignIn" id="lU3-tf-NsI"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="OBA-5A-V4k" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-83" y="-43"/>
-        </scene>
-        <!--TuneIn-->
-        <scene sceneID="ufC-wZ-h7g">
-            <objects>
-                <viewController id="vXZ-lx-hvc" customClass="SignInViewController" customModule="Echowaves" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="oGS-jw-O3b"/>
-                        <viewControllerLayoutGuide type="bottom" id="YPN-LF-gf3"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="wave password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LhM-EG-VTk">
-                                <rect key="frame" x="16" y="118" width="568" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="rcp-Jz-nRj"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
-                                <connections>
-                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="owP-Hu-Ecv"/>
-                                </connections>
-                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="wave name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qm2-iU-b8u">
-                                <rect key="frame" x="16" y="80" width="568" height="30"/>
+                                <rect key="frame" x="11" y="247" width="568" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="r6F-Zj-NVG"/>
+                                    <constraint firstAttribute="height" constant="30" id="SSq-Yx-sZ3"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="next"/>
-                                <connections>
-                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="Qfo-NA-zYA"/>
-                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y5P-lL-Ivo">
-                                <rect key="frame" x="16" y="156" width="568" height="30"/>
+                                <rect key="frame" x="11" y="323" width="568" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="t0P-Zm-gT1"/>
+                                    <constraint firstAttribute="height" constant="30" id="Prz-cE-fS6"/>
                                 </constraints>
                                 <state key="normal" title="Tune In">
                                     <color key="titleColor" red="0.98039221759999995" green="0.68627452850000004" blue="0.1647058874" alpha="1" colorSpace="deviceRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="tuneIn:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="7EW-xM-Vo9"/>
+                                    <action selector="tuneIn:" destination="1U9-q6-r7W" eventType="touchUpInside" id="nBG-vY-6eL"/>
                                     <segue destination="4Wa-qa-6Wy" kind="show" identifier="TuneIn" id="AnV-QM-P86"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="wave password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LhM-EG-VTk">
+                                <rect key="frame" x="11" y="285" width="568" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="X6u-w8-FOQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                            </textField>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="LhM-EG-VTk" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="5fx-ue-F4T"/>
-                            <constraint firstItem="Qm2-iU-b8u" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="5jQ-e0-O2U"/>
-                            <constraint firstItem="Qm2-iU-b8u" firstAttribute="top" secondItem="oGS-jw-O3b" secondAttribute="bottom" constant="16" id="9V7-g6-0dg"/>
-                            <constraint firstItem="y5P-lL-Ivo" firstAttribute="top" secondItem="LhM-EG-VTk" secondAttribute="bottom" constant="8" id="QBH-ae-qKb"/>
-                            <constraint firstItem="y5P-lL-Ivo" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="ZfK-2s-pnv"/>
-                            <constraint firstItem="Qm2-iU-b8u" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="Zun-Vi-jjT"/>
-                            <constraint firstItem="LhM-EG-VTk" firstAttribute="top" secondItem="Qm2-iU-b8u" secondAttribute="bottom" constant="8" id="iNG-0m-HEs"/>
-                            <constraint firstItem="LhM-EG-VTk" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="kTs-9j-5cQ"/>
-                            <constraint firstItem="y5P-lL-Ivo" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="zrw-dF-cfn"/>
+                            <constraint firstAttribute="centerY" secondItem="LhM-EG-VTk" secondAttribute="centerY" id="DMn-Vc-vh0"/>
+                            <constraint firstItem="XIn-IL-qtR" firstAttribute="top" secondItem="0wL-3G-ic6" secondAttribute="bottom" constant="8" id="ELY-xM-ShZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Qm2-iU-b8u" secondAttribute="trailing" constant="5" id="Fvq-vU-xsa"/>
+                            <constraint firstItem="LhM-EG-VTk" firstAttribute="leading" secondItem="nap-mG-wuf" secondAttribute="leadingMargin" constant="-5" id="H1F-Kn-feu"/>
+                            <constraint firstItem="RoO-Mo-w82" firstAttribute="trailing" secondItem="nap-mG-wuf" secondAttribute="trailingMargin" id="UII-cH-unh"/>
+                            <constraint firstItem="RoO-Mo-w82" firstAttribute="top" secondItem="0wL-3G-ic6" secondAttribute="bottom" constant="8" id="Vs1-ft-5D2"/>
+                            <constraint firstItem="7NS-cw-2Zt" firstAttribute="leading" secondItem="XIn-IL-qtR" secondAttribute="trailing" constant="2" id="YZa-4g-3RI"/>
+                            <constraint firstItem="RoO-Mo-w82" firstAttribute="leading" secondItem="7NS-cw-2Zt" secondAttribute="trailing" constant="8" id="aE4-Ws-ytN"/>
+                            <constraint firstItem="y5P-lL-Ivo" firstAttribute="top" secondItem="LhM-EG-VTk" secondAttribute="bottom" constant="8" id="epK-T3-p6f"/>
+                            <constraint firstItem="XIn-IL-qtR" firstAttribute="leading" secondItem="nap-mG-wuf" secondAttribute="leadingMargin" constant="6" id="kWY-7M-DRU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="LhM-EG-VTk" secondAttribute="trailing" constant="5" id="ksZ-bw-sP9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="y5P-lL-Ivo" secondAttribute="trailing" constant="5" id="n6g-Of-BR3"/>
+                            <constraint firstAttribute="centerX" secondItem="7NS-cw-2Zt" secondAttribute="centerX" id="qbb-Wx-H1g"/>
+                            <constraint firstItem="7NS-cw-2Zt" firstAttribute="top" secondItem="0wL-3G-ic6" secondAttribute="bottom" constant="42" id="tKc-oo-bOt"/>
+                            <constraint firstItem="Qm2-iU-b8u" firstAttribute="leading" secondItem="nap-mG-wuf" secondAttribute="leadingMargin" constant="-5" id="vle-Ks-dbn"/>
+                            <constraint firstItem="LhM-EG-VTk" firstAttribute="top" secondItem="Qm2-iU-b8u" secondAttribute="bottom" constant="8" id="xfb-pR-u3I"/>
+                            <constraint firstItem="y5P-lL-Ivo" firstAttribute="leading" secondItem="nap-mG-wuf" secondAttribute="leadingMargin" constant="-5" id="zt4-oQ-g3O"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="TuneIn" id="kkb-YB-gdW"/>
+                    <navigationItem key="navigationItem" title="Welcome to EchoWaves" id="JuL-3W-eYF"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
-                        <outlet property="tuneInButton" destination="y5P-lL-Ivo" id="arX-2c-5HI"/>
-                        <outlet property="waveName" destination="Qm2-iU-b8u" id="aW2-uP-bPi"/>
-                        <outlet property="wavePassword" destination="LhM-EG-VTk" id="wX2-kX-4OR"/>
+                        <outlet property="createNewWaveButton" destination="RoO-Mo-w82" id="qUf-29-iWg"/>
+                        <outlet property="firstTimeLabel" destination="XIn-IL-qtR" id="f7U-jI-T7d"/>
+                        <outlet property="questionLabel" destination="7NS-cw-2Zt" id="MgH-gd-BKf"/>
+                        <outlet property="tuneInButton" destination="y5P-lL-Ivo" id="Tbl-Rg-g7T"/>
+                        <outlet property="waveName" destination="Qm2-iU-b8u" id="8gO-H6-eIG"/>
+                        <outlet property="wavePassword" destination="LhM-EG-VTk" id="6RV-Qs-8ld"/>
+                        <segue destination="4Wa-qa-6Wy" kind="show" identifier="AutoSignIn" id="lU3-tf-NsI"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OBA-5A-V4k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="989" y="-480"/>
+            <point key="canvasLocation" x="-34" y="-37"/>
         </scene>
         <!--Create new Wave-->
         <scene sceneID="600-qt-TBO">
@@ -201,7 +149,6 @@
                                 </state>
                                 <connections>
                                     <action selector="createWave:" destination="wWl-ta-JWX" eventType="touchUpInside" id="oyq-Rp-OKj"/>
-                                    <action selector="createWave:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="rMZ-Jj-VTV"/>
                                     <segue destination="4Wa-qa-6Wy" kind="show" identifier="CreateWave" id="h0z-up-Au7"/>
                                 </connections>
                             </button>
