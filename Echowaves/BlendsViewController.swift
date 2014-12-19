@@ -131,14 +131,7 @@ class BlendsViewController : UIViewController, UITableViewDelegate, UITableViewD
         
         
         let navController = self.parentViewController as NavigationTabBarViewController
-        APP_DELEGATE.getPhotosCountSinceLast({ (count) -> Void in
-            navController.waveAllButton.setTitle("Wave \(count)", forState: .Normal)
-            if count > 0 {
-                navController.waveAllButton.hidden = false
-            } else {
-                navController.waveAllButton.hidden = true
-            }
-        })
+        navController.updateWaveButton()
     }
     
     

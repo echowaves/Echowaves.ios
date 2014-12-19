@@ -24,7 +24,8 @@ let USER_DEFAULTS = NSUserDefaults.standardUserDefaults()
     var currentWaveIndex = 0
     
     var wavingViewController:WavingViewController!
-    var navController:UINavigationController!
+
+    var navigationTabBarViewController:NavigationTabBarViewController!
     
     let networkQueue = NSOperationQueue()
     
@@ -129,7 +130,7 @@ let USER_DEFAULTS = NSUserDefaults.standardUserDefaults()
     
     
     func checkForInitialViewToPresent() -> Void {
-        if self.shareActionToken != "" && self.navController != nil {
+        if self.shareActionToken != "" && self.navigationTabBarViewController != nil {
             self.presentDetailedImageBasedOnShareToken()
         }
     }
@@ -147,7 +148,7 @@ let USER_DEFAULTS = NSUserDefaults.standardUserDefaults()
                 pickAWaveViewController.fromWave = fromWaveName
 
                 
-                self.navController.pushViewController(pickAWaveViewController, animated: true)
+                self.navigationTabBarViewController.navigationController?.pushViewController(pickAWaveViewController, animated: true)
                 
                 
                 let detailedImageViewController:DetailedImageViewController = UIStoryboard(name: "Main_iPhone", bundle: nil).instantiateViewControllerWithIdentifier("DetailedImageView") as DetailedImageViewController
@@ -162,7 +163,7 @@ let USER_DEFAULTS = NSUserDefaults.standardUserDefaults()
 
                 pickAWaveViewController.navigationItem.backBarButtonItem = backButton
 
-                self.navController.pushViewController(detailedImageViewController, animated: true)
+                self.navigationTabBarViewController.navigationController?.pushViewController(detailedImageViewController, animated: true)
 //                pickAWaveViewController.presentViewController(detailedImageViewController, animated: true, completion: nil)
                 
                 
@@ -182,6 +183,9 @@ let USER_DEFAULTS = NSUserDefaults.standardUserDefaults()
         self.wavingViewController?.updatePhotosCount()
         UIApplication.sharedApplication().applicationIconBadgeNumber = 0
         self.checkForInitialViewToPresent()
+        
+
+        self.navigationTabBarViewController?.updateWaveButton()
     }
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {

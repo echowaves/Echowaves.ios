@@ -36,7 +36,18 @@ class NavigationTabBarViewController : UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        APP_DELEGATE.navController = self.navigationController
+        APP_DELEGATE.navigationTabBarViewController = self
+    }
+
+    func updateWaveButton() -> Void {
+        APP_DELEGATE.getPhotosCountSinceLast({ (count) -> Void in
+            self.waveAllButton.setTitle("Wave \(count)", forState: .Normal)
+            if count > 0 {
+                self.waveAllButton.hidden = false
+            } else {
+                self.waveAllButton.hidden = true
+            }
+        })
     }
     
 }
