@@ -8,7 +8,7 @@
 
 import Foundation
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, UITextFieldDelegate {
     
     //    required init(coder aDecoder: NSCoder) {
     //        fatalError("init(coder:) has not been implemented")
@@ -18,7 +18,6 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var firstTimeLabel: UILabel!
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var createNewWaveButton: UIButton!
-    var hideFirstTime = true
     
 
     @IBOutlet weak var waveName:UITextField!
@@ -63,6 +62,8 @@ class HomeViewController: UIViewController {
             NSLog("this error should never happen credentials are not set, can't really ever happen, something is really wrong here")
         }
         
+        self.waveName.delegate = self
+        
         tuneInButton.layer.cornerRadius = 4.0
         createNewWaveButton.layer.cornerRadius = 4.0
         
@@ -87,16 +88,24 @@ class HomeViewController: UIViewController {
             self.waveName.text = credential.user
             self.wavePassword.text = credential.password
             
-            if(self.hideFirstTime == true) {
-                self.hideFirstTime = false
-                self.firstTimeLabel.hidden = true
-                self.questionLabel.hidden = true
-                self.createNewWaveButton.hidden = true
-            } else {
-                self.firstTimeLabel.hidden = false
-                self.questionLabel.hidden = false
-                self.createNewWaveButton.hidden = false
-            }
+            hideTextIfNecessery()
+        }
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        NSLog("+++++++++textFieldDidEndEditing: \(textField.text.utf16Count)")
+        hideTextIfNecessery()
+    }
+    
+    func hideTextIfNecessery() -> Void {
+        if self.waveName.text.utf16Count > 0 {
+            self.firstTimeLabel.hidden = true
+            self.questionLabel.hidden = true
+            self.createNewWaveButton.hidden = true
+        } else {
+            self.firstTimeLabel.hidden = false
+            self.questionLabel.hidden = false
+            self.createNewWaveButton.hidden = false
         }
     }
     

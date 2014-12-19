@@ -272,7 +272,7 @@
                             </collectionView>
                             <label opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="14" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Yo-sd-cbN">
                                 <rect key="frame" x="46" y="135" width="508" height="388"/>
-                                <mutableString key="text">You don't seem to have any Photos in this wave. Take some pictures with your phone camera and come back to wave your photos to the cloud.    If you were brought onto this screen from SMS link, switch back to SMS and click the link again to see the photo shared with you and to establish blending.</mutableString>
+                                <string key="text">You don't seem to have any Photos in this wave. Take some pictures with your phone camera and come back to wave your photos to the cloud.    If you were brought onto this screen from SMS link, switch back to SMS and click the link again to see the photo shared with you and to establish blending.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
