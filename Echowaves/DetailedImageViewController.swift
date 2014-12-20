@@ -13,10 +13,12 @@ import AddressBookUI
 import MessageUI
 
 
+
 class DetailedImageViewController : UIViewController,
-UIAlertViewDelegate,
-ABPeoplePickerNavigationControllerDelegate,
-MFMessageComposeViewControllerDelegate,
+    UIAlertViewDelegate,
+    ABPeoplePickerNavigationControllerDelegate,
+    MFMessageComposeViewControllerDelegate,
+    MFMailComposeViewControllerDelegate,
 UIScrollViewDelegate {
     
     var imageIndex:UInt = 0
@@ -24,8 +26,8 @@ UIScrollViewDelegate {
     var waveName = ""
     var imageName = ""
     var navItem:UINavigationItem? = UINavigationItem()
-//    var navBar:UINavigationBar=UINavigationBar()
-
+    //    var navBar:UINavigationBar=UINavigationBar()
+    
     @IBOutlet var progressView:UIProgressView!
     @IBOutlet var highQualityButton:UIButton!
     @IBOutlet var imageScrollView:UIScrollView!
@@ -130,11 +132,11 @@ UIScrollViewDelegate {
     }
     
     func updateView() -> () {
-//        if((self.navigationController?.navigationBarHidden) != nil) {
-//            self.waveNameLable.hidden = true
-//        } else {
-//            self.waveNameLable.hidden = false
-//        }
+        //        if((self.navigationController?.navigationBarHidden) != nil) {
+        //            self.waveNameLable.hidden = true
+        //        } else {
+        //            self.waveNameLable.hidden = false
+        //        }
         
         
         self.navItem?.rightBarButtonItems = nil
@@ -166,7 +168,7 @@ UIScrollViewDelegate {
             
             self.navItem?.rightBarButtonItems = [shareButton, deleteButton]
         } else {
-         
+            
             self.navItem?.rightBarButtonItems =
                 [UIBarButtonItem(
                     barButtonSystemItem: .Save,
@@ -207,12 +209,12 @@ UIScrollViewDelegate {
         
         var errorRef: Unmanaged<CFErrorRef>? = nil
         let addressBookRef:ABAddressBookRef? = ABAddressBookCreateWithOptions(nil, &errorRef)?.takeRetainedValue()
-
+        
         if let addressBook: ABAddressBookRef  = addressBookRef {
             ABAddressBookRequestAccessWithCompletion(addressBook) {
                 (accessGranted, permissionError) in
                 if(accessGranted) {
-
+                    
                     let peoplePicker = ABPeoplePickerNavigationController()
                     peoplePicker.peoplePickerDelegate = self
                     
@@ -222,17 +224,17 @@ UIScrollViewDelegate {
                     })
                     
                 } else {
-            EWImage.showAlertWithMessage("Enable access to contacts for Echowaves in preferences", fromSender:self)
+                    EWImage.showAlertWithMessage("Enable access to contacts for Echowaves in preferences", fromSender:self)
                 }
             }
-
+            
         } else {
             let e = errorRef!.takeUnretainedValue() as AnyObject as NSError
             println("An error occured: \(e)")
-                        EWImage.showAlertWithMessage("Error accessing address book", fromSender:self)
+            EWImage.showAlertWithMessage("Error accessing address book", fromSender:self)
         }
         
-                    
+        
         
     }
     
@@ -247,33 +249,57 @@ UIScrollViewDelegate {
         
     }
     
+    
     func peoplePickerNavigationController(peoplePicker: ABPeoplePickerNavigationController!, didSelectPerson person: ABRecordRef!, property: ABPropertyID, identifier: ABMultiValueIdentifier) {
         let multiValue: ABMultiValueRef = ABRecordCopyValue(person, property).takeRetainedValue()
         let index = ABMultiValueGetIndexForIdentifier(multiValue, identifier)
-        let phone = ABMultiValueCopyValueAtIndex(multiValue, index).takeRetainedValue() as String
+        let selectedValue = ABMultiValueCopyValueAtIndex(multiValue, index).takeRetainedValue() as String
         
-        println("selected = \(phone)")
-
-                                    let smscontroller = MFMessageComposeViewController()
-                                    if MFMessageComposeViewController.canSendText() == true {
-                                        EWImage.shareImage(self.imageName,
-                                            waveName: self.waveName,
-                                            success: { (token) -> () in
-                                                smscontroller.recipients = [phone]
-                                                smscontroller.messageComposeDelegate = self;
+        println("selected = \(selectedValue)")
         
-                                                smscontroller.body = "Look at my photo and blend with my wave http://echowaves.com/mobile?token=\(token)"
-        
-                                                self.presentViewController(smscontroller,
-                                                    animated: true,
-                                                    completion: { () -> Void in
-                                                        NSLog("sms controller presented")
-                                                })
-                                            },
-                                            failure: { (error) -> () in
-                                                EWDataModel.showAlertWithMessage(error.description, fromSender: self)
-                                        })
-                                    }//if can send text
+        if property == kABPersonEmailProperty {
+            let mailController = MFMailComposeViewController()
+            mailController.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
+            
+            if MFMailComposeViewController.canSendMail() {
+                EWImage.shareImage(self.imageName,
+                    waveName: self.waveName,
+                    success: { (token) -> () in
+                        mailController.setToRecipients(["\(selectedValue)"])
+                        mailController.setSubject("Echowaves blending")
+                        mailController.setMessageBody("Look at my photo and blend with my wave http://echowaves.com/mobile?token=\(token)", isHTML: false)
+                        
+                        self.presentViewController(mailController,
+                            animated: true,
+                            completion: nil)
+                    },
+                    failure: { (error) -> () in
+                        EWDataModel.showAlertWithMessage(error.description, fromSender: self)
+                })
+            } else {
+                let sendMailErrorAlert = UIAlertView(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", delegate: self, cancelButtonTitle: "OK")
+                sendMailErrorAlert.show()
+            }
+        } else {
+            //this is not an email, this is phone, possibly mobile
+            let smsController = MFMessageComposeViewController()
+            if MFMessageComposeViewController.canSendText() == true {
+                EWImage.shareImage(self.imageName,
+                    waveName: self.waveName,
+                    success: { (token) -> () in
+                        smsController.recipients = [selectedValue]
+                        smsController.messageComposeDelegate = self;
+                        smsController.body = "Look at my photo and blend with my wave http://echowaves.com/mobile?token=\(token)"
+                        
+                        self.presentViewController(smsController,
+                            animated: true,
+                            completion: nil)
+                    },
+                    failure: { (error) -> () in
+                        EWDataModel.showAlertWithMessage(error.description, fromSender: self)
+                })
+            }//if can send text
+        } // else (this is phone for sms sending)
     }
     
     
@@ -306,5 +332,7 @@ UIScrollViewDelegate {
         
     }
     
-    
+    func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!) {
+        controller.dismissViewControllerAnimated(true, completion: nil)
+    }
 }
