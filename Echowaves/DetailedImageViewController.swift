@@ -268,6 +268,7 @@ UIScrollViewDelegate {
                         mailController.setToRecipients(["\(selectedValue)"])
                         mailController.setSubject("Echowaves blending")
                         mailController.setMessageBody("Look at my photo and blend with my wave http://echowaves.com/mobile?token=\(token)", isHTML: false)
+                        mailController.addAttachmentData(UIImageJPEGRepresentation(self.imageView.image!, 1.0), mimeType: "image/jpeg", fileName: self.imageName)
                         
                         self.presentViewController(mailController,
                             animated: true,
