@@ -19,7 +19,11 @@ class  PickWavesForUploadViewController : UIViewController, UITableViewDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+    }
+
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         EWWave.getAllMyWaves(
             { (waves) -> () in
                 self.myWaves = waves
@@ -32,9 +36,8 @@ class  PickWavesForUploadViewController : UIViewController, UITableViewDelegate,
         APP_DELEGATE.getPhotosCountSinceLast { (count) -> Void in
             self.waveNowButton.setTitle("Wave \(count) Now", forState: .Normal)
         }
-
+        
     }
-    
     
     @IBAction func waveOnClicked(sender:AnyObject!) {
         let waveOn:UISwitch = sender as UISwitch
