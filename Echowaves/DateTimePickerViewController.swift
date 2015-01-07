@@ -12,7 +12,6 @@ import Foundation
 class DateTimePickerViewController : UIViewController {
     @IBOutlet var datePicker:UIDatePicker!
     @IBOutlet var timePicker:UIDatePicker!
-    @IBOutlet var photosCount:UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +25,7 @@ class DateTimePickerViewController : UIViewController {
         
         EWImage.checkForNewAssetsToPostToWaveSinceDate(self.dateFromPickers(),
             success: { (assets) -> () in
-                self.photosCount.text =  "\(assets.count)"
+                self.title = "Wave \(assets.count) since:"
             }, failure: { (error) -> () in
                 EWWave.showErrorAlertWithMessage(error.description, fromSender: self)
                 NSLog("Error updating photos count")
@@ -41,7 +40,7 @@ class DateTimePickerViewController : UIViewController {
         
         EWImage.checkForNewAssetsToPostToWaveSinceDate(self.dateFromPickers(),
             success: { (assets) -> () in
-                self.photosCount.text =  "\(assets.count)"
+                self.title = "Wave \(assets.count) since:"
             }, failure: { (error) -> () in
                 EWWave.showErrorAlertWithMessage(error.description, fromSender: self)
                 NSLog("Error updating photos count")
@@ -53,7 +52,7 @@ class DateTimePickerViewController : UIViewController {
         NSLog("((((((((((((((((((((((( date changed")
         EWImage.checkForNewAssetsToPostToWaveSinceDate(self.dateFromPickers(),
             success: { (assets) -> () in
-                self.photosCount.text =  "\(assets.count)"
+                self.title = "Wave \(assets.count) since:"
             }, failure: { (error) -> () in
                 EWWave.showErrorAlertWithMessage(error.description, fromSender: self)
                 NSLog("Error updating photos count")
@@ -65,7 +64,7 @@ class DateTimePickerViewController : UIViewController {
         NSLog("))))))))))))))))))))))) time changed")
         EWImage.checkForNewAssetsToPostToWaveSinceDate(self.dateFromPickers(),
             success: { (assets) -> () in
-                self.photosCount.text = "\(assets.count)"
+                self.title = "Wave \(assets.count) since:"
             }, failure: { (error) -> () in
                 EWWave.showErrorAlertWithMessage(error.description, fromSender: self)
                 NSLog("Error updating photos count")
