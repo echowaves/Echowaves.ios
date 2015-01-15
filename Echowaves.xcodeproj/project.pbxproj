@@ -290,9 +290,7 @@
 				0A6277271A37A0D7001763EA /* PickWavesForUploadViewController.swift */,
 				0A6277291A38DCE3001763EA /* UploadProgressViewController.swift */,
 				0A6277351A3AA8B1001763EA /* AcceptBlendingRequestViewController.swift */,
-				0AD6E26318011F59008303E0 /* Images.xcassets */,
 				0AD6E24F18011F59008303E0 /* Supporting Files */,
-				0A13C8D119416C30004BD744 /* Echowaves-Bridging-Header.h */,
 			);
 			path = Echowaves;
 			sourceTree = "<group>";
@@ -304,6 +302,8 @@
 				0AD6E25018011F59008303E0 /* Echowaves-Info.plist */,
 				0AD6E25118011F59008303E0 /* InfoPlist.strings */,
 				0AD6E25618011F59008303E0 /* Echowaves-Prefix.pch */,
+				0A13C8D119416C30004BD744 /* Echowaves-Bridging-Header.h */,
+				0AD6E26318011F59008303E0 /* Images.xcassets */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
