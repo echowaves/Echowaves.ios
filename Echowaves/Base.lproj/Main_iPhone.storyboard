@@ -305,7 +305,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bdt-PK-ACm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3181" y="-781"/>
+            <point key="canvasLocation" x="3197" y="-793"/>
         </scene>
         <!--Detailed Image Page View Controller-->
         <scene sceneID="P3J-2s-K85">
@@ -746,7 +746,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H5c-jD-Jqd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3181" y="856"/>
+            <point key="canvasLocation" x="3197" y="856"/>
         </scene>
         <!--Pick Waves For Upload View Controller-->
         <scene sceneID="PDe-H7-1iw">
@@ -1330,6 +1330,6 @@
         <image name="waving" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lU3-tf-NsI"/>
+        <segue reference="AnV-QM-P86"/>
     </inferredMetricsTieBreakers>
 </document>

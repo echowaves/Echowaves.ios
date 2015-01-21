@@ -20,7 +20,8 @@ class WaveDetailsViewController : UIViewController, UIAlertViewDelegate {
         EWWave.getWaveDetails(
             self.waveName.text!,
             success: { (waveDetails) -> () in
-                if waveDetails.objectForKey("parent_wave_id") != nil {
+                
+                if !(waveDetails["parent_wave_id"] is NSNull) {
                     self.navigationItem.rightBarButtonItem =
                         UIBarButtonItem(
                             barButtonSystemItem: UIBarButtonSystemItem.Trash,
